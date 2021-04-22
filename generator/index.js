@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-22 17:58:06
+ * @LastEditTime: 2021-04-22 19:55:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -12,7 +12,9 @@
 module.exports = (api) => {
   api.extendPackage({
     dependencies: {
-      'axios': '^0.21.1'
+      'axios': '^0.21.1',
+      "less": "^3.12.0",
+      "less-loader": "^6.2.0",
     },
     scripts: {
       "serve_test": "cross-env API_ENV=test vue-cli-service serve",
@@ -43,7 +45,14 @@ module.exports = (api) => {
       ]
     },
     devDependencies: {
+      "eslint-plugin-prettier": "^3.1.3",
+      "babel-plugin-transform-class-properties": "^6.24.1",
       'husky': '^4.3.7',
+      "@vue/eslint-config-prettier": "^6.0.0",
+      "eslint-plugin-vue": "^6.2.2",
+      "prettier": "^1.19.1",
+      "cross-env": "^7.0.3",
+      "babel-plugin-transform-remove-console": "^6.9.4",
       'lint-staged': '^10.5.3'
     },
   })
