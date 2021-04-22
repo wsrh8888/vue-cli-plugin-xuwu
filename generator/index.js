@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-22 19:55:52
+ * @LastEditTime: 2021-04-22 20:19:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -44,7 +44,15 @@ module.exports = (api) => {
         "git add"
       ]
     },
+    browserslist: [
+      "> 1%",
+      "last 2 versions",
+      "ios >= 11",
+      "safari >= 11"
+    ],
     devDependencies: {
+      "@babel/preset-env": "^7.8.3",
+      "@babel/preset-env": "^7.8.3",
       "eslint-plugin-prettier": "^3.1.3",
       "babel-plugin-transform-class-properties": "^6.24.1",
       'husky': '^4.3.7',
