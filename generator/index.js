@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-26 19:29:41
+ * @LastEditTime: 2021-04-26 19:42:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = (api, options) => {
-  const {consolePlugin} = require('./common/index')(api)
+  const {consolePlugin, flexiblePlugin} = require('./common/index')(api)
 
   const isTs = api.entryFile.endsWith('.ts')
   const isVue3 = options.vueVersion === '3'
@@ -68,6 +68,7 @@ module.exports = (api, options) => {
   })
 
   api.render("./commonTemplate")
+  api.injectImports(api.entryFile, `import './plugins/index'`)
 
   
   if (options.useType === 'pc') {
@@ -75,6 +76,8 @@ module.exports = (api, options) => {
   } else if (options.useType === 'mobile') {
     // console插件
     consolePlugin(api)
+    // 适配插件
+    flexiblePlugin(api)
   }
 
 
