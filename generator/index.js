@@ -1,16 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-26 16:31:42
+ * @LastEditTime: 2021-04-26 19:29:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
  */
 'use strict';
 
+module.exports = (api, options) => {
+  const {consolePlugin} = require('./common/index')(api)
 
-module.exports = (api) => {
   const isTs = api.entryFile.endsWith('.ts')
+  const isVue3 = options.vueVersion === '3'
   api.extendPackage({
     dependencies: {
       'axios': '^0.21.1',
@@ -34,9 +36,7 @@ module.exports = (api) => {
       extends: [
         "plugin:vue/essential",
         "eslint:recommended",
-        "@vue/typescript/recommended",
         "@vue/prettier",
-        "@vue/prettier/@typescript-eslint"
       ]
     },
     lintStaged: {
@@ -66,11 +66,26 @@ module.exports = (api) => {
       'lint-staged': '^10.5.3'
     },
   })
+
   api.render("./commonTemplate")
-  if (isTs) {
-    api.render("./tsTemplate")
-  } else {
-    api.render("./jsTemplate")
-  }
+
   
+  if (options.useType === 'pc') {
+    
+  } else if (options.useType === 'mobile') {
+    // console插件
+    consolePlugin(api)
+  }
+
+
+  if (isTs === false && isVue3 === false) {
+    api.render("./jsTemplate")
+  } else if (isTs === true && isVue3 === false) {
+    api.render("./tsTemplate")
+  } else if (isTs === false && isVue3 === true) {
+    api.render("./jsTemplate")
+  } else if (isTs === true && isVue3 === true) {
+    api.render("./tsTemplate")
+  }
+
 };
