@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-22 20:19:08
+ * @LastEditTime: 2021-04-26 16:31:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -10,6 +10,7 @@
 
 
 module.exports = (api) => {
+  const isTs = api.entryFile.endsWith('.ts')
   api.extendPackage({
     dependencies: {
       'axios': '^0.21.1',
@@ -51,6 +52,7 @@ module.exports = (api) => {
       "safari >= 11"
     ],
     devDependencies: {
+      "babel-eslint": "^10.1.0",
       "@babel/preset-env": "^7.8.3",
       "@babel/preset-env": "^7.8.3",
       "eslint-plugin-prettier": "^3.1.3",
@@ -58,11 +60,17 @@ module.exports = (api) => {
       'husky': '^4.3.7',
       "@vue/eslint-config-prettier": "^6.0.0",
       "eslint-plugin-vue": "^6.2.2",
-      "prettier": "^1.19.1",
+      "prettier": "^2.2.1",
       "cross-env": "^7.0.3",
       "babel-plugin-transform-remove-console": "^6.9.4",
       'lint-staged': '^10.5.3'
     },
   })
-  api.render('./template')
+  api.render("./commonTemplate")
+  if (isTs) {
+    api.render("./tsTemplate")
+  } else {
+    api.render("./jsTemplate")
+  }
+  
 };
