@@ -29,7 +29,6 @@
     const scale = document.documentElement.clientWidth / pageWidth
     // 设置页面根节点字体大小
     document.documentElement.style.fontSize = baseSize * Math.min(scale, 2) + 'px'
-    console.log(document.documentElement.style.fontSize)
   }
 
 

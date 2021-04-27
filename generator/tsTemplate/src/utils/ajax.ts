@@ -24,7 +24,6 @@ ajax.interceptors.response.use(
     return response.data
   },
   (error) => {
-    console.log('err' + error)
     return Promise.reject(error)
   }
 )

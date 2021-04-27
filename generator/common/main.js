@@ -42,7 +42,6 @@ module.exports = (api, options) => {
         const contentMain = fs.readFileSync(api.resolve(api.entryFile), { encoding: 'utf-8' })
         const lines = contentMain.split(/\r?\n/g)
         const renderIndex = lines.findIndex(line => line.match(/vconsole/))
-        console.log(lines.findIndex(line => line.match(/new VConsole()/)), '3333333')
         if (lines.findIndex(line => line.match(/new VConsole()/)) === -1) {
           lines[renderIndex] += `${EOL} if (process.env.NODE_ENV !== 'prod') { 
             // @ts-ignore
