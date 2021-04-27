@@ -7,7 +7,7 @@
  * @FilePath: /vue-cli-plugin-structure/generator/template/api/common.js
  */
 import { test } from '@/utils/config'
-import ajax from '@/utils/ajax'
+import {ajax} from '@/utils/ajax'
 let axiosUrl = `${test}`
 
 export const testApi = () => {
