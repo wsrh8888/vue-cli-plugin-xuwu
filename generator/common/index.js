@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-04-27 21:17:21
+ * @LastEditTime: 2021-04-27 21:36:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -36,6 +36,7 @@ module.exports = (api, options) => {
       })
       api.extendPackage({
         devDependencies: {
+          "lib-flexible": "^0.3.2",
           "postcss-plugin-px2rem": "^0.8.1",
         }
       })
