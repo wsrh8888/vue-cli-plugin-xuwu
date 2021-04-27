@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-26 19:42:01
+ * @LastEditTime: 2021-04-27 20:00:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -74,10 +74,11 @@ module.exports = (api, options) => {
   if (options.useType === 'pc') {
     
   } else if (options.useType === 'mobile') {
+    console.log('3333333312111', options)
     // console插件
-    consolePlugin(api)
+    consolePlugin(api, options)
     // 适配插件
-    flexiblePlugin(api)
+    flexiblePlugin(api, options)
   }
 
 
