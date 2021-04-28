@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-04-28 11:28:35
+ * @LastEditTime: 2021-04-28 11:49:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -34,11 +34,10 @@ module.exports = (pkg, name) => {
       name: 'manuallyValue', 
       message: 'Check the features needed for your project', 
       choices: [
-        { name: 'commit格式化代码', value: 'commit' },
         { name: 'consoleLog控制台', value: 'consoleLog' },
         { name: '适配插件', value: 'flexible' }
       ],
-      default: answers => answers.useType === 'pc' ? ['commit'] : ['commit','consoleLog', 'flexible'],
+      default: answers => answers.useType === 'pc' ? [] : ['consoleLog', 'flexible'],
     }
   ]
   return prompts

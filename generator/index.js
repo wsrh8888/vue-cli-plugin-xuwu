@@ -1,18 +1,23 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-27 21:22:30
+ * @LastEditTime: 2021-04-28 11:53:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
  */
 'use strict';
 
+
 module.exports = (api, options) => {
   const {consolePlugin, flexiblePlugin} = require('./common/index')(api)
 
   const isTs = api.entryFile.endsWith('.ts')
   const isVue3 = options.vueVersion === '3'
+  const enumOption = {
+    consoleLog: consolePlugin(api, options),
+    flexible: flexiblePlugin(api, options)
+  }
   api.extendPackage({
     dependencies: {
       'axios': '^0.21.1',
@@ -70,14 +75,21 @@ module.exports = (api, options) => {
   api.render("./commonTemplate")
   api.injectImports(api.entryFile, `import './plugins/index'`)
 
-  
+  if (options.configType !== 'default') {
+    options.manuallyValue.forEach(element => {
+      enumOption[element]
+    });
+  }
+
   if (options.useType === 'pc') {
     
   } else if (options.useType === 'mobile') {
-    // console插件
-    consolePlugin(api, options)
-    // 适配插件
-    flexiblePlugin(api, options)
+    if (options.configType === 'default') {
+       // console插件
+      consolePlugin(api, options)
+      // 适配插件
+      flexiblePlugin(api, options)
+    } 
   }
 
 
