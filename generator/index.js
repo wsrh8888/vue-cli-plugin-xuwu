@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 17:38:26
+ * @LastEditTime: 2021-04-29 17:47:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -33,6 +33,11 @@ module.exports = (api, options) => {
       "build_pre": "cross-env API_ENV=pre vue-cli-service build",
       "build_prod": "cross-env API_ENV=prod vue-cli-service build",
       "build": "cross-env API_ENV=prod vue-cli-service build --report",
+    },
+    "scripts-info": {
+      "serve_test": "启动开发/测试环境",
+      "build_test": "打包测试环境",
+      "build": "分析打包后包含的模块的大小"
     },
     browserslist: [
       "> 1%",
