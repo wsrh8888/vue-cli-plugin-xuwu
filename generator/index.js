@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 17:47:28
+ * @LastEditTime: 2021-04-29 20:29:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -10,14 +10,15 @@
 
 
 module.exports = (api, options) => {
-  const {consolePlugin, flexiblePlugin, lintStagedPlugin} = require('./common/index')(api)
+  const {consolePlugin, flexiblePlugin, lintStagedPlugin, removeConsolePlugin} = require('./common/index')(api)
 
   const isTs = api.entryFile.endsWith('.ts')
   const isVue3 = options.vueVersion === '3'
   const enumOption = {
     consoleLog: consolePlugin,
     flexible: flexiblePlugin,
-    lintStaged: lintStagedPlugin
+    lintStaged: lintStagedPlugin,
+    removeConsole: removeConsolePlugin
   }
   api.extendPackage({
     dependencies: {
@@ -48,8 +49,7 @@ module.exports = (api, options) => {
     devDependencies: {
       "@babel/preset-env": "^7.8.3",
       "babel-plugin-transform-class-properties": "^6.24.1",
-      "cross-env": "^7.0.3",
-      "babel-plugin-transform-remove-console": "^6.9.4",
+      "cross-env": "^7.0.3"
     },
   })
 
@@ -65,9 +65,12 @@ module.exports = (api, options) => {
   if (options.useType === 'pc') {
     if (options.configType === 'default') {
       lintStagedPlugin(api, options)
+      removeConsolePlugin(api, options)
     } 
   } else if (options.useType === 'mobile') {
     if (options.configType === 'default') {
+      removeConsolePlugin(api, options)
+      
       lintStagedPlugin(api, options)
        // console插件
       consolePlugin(api, options)

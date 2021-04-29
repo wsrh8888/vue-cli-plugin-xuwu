@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-04-29 16:15:39
+ * @LastEditTime: 2021-04-29 20:27:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -34,11 +34,12 @@ module.exports = (pkg, name) => {
       name: 'manuallyValue', 
       message: 'Check the features needed for your project', 
       choices: [
+        {name: '生产环境去掉console', value: 'removeConsole'},
         { name: 'commit代码时统一风格', value: 'lintStaged' },
         { name: 'consoleLog控制台', value: 'consoleLog' },
         { name: '适配插件', value: 'flexible' }
       ],
-      default: answers => answers.useType === 'pc' ? ['lintStaged'] : ['consoleLog', 'flexible', 'lintStaged'],
+      default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole'],
     }
   ]
   return prompts

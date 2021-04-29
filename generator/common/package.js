@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-04-29 16:01:16
+ * @LastEditTime: 2021-04-29 20:25:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -45,5 +45,17 @@ module.exports = (api, options) => {
         },
       })
     },
+    /**
+     * @description: 生产环境package里增加去掉console的依赖包
+     * @param {*}
+     * @return {*}
+     */  
+    packageRemoveConsole() {
+      api.extendPackage({
+        devDependencies: {
+          "babel-plugin-transform-remove-console": "^6.9.4"
+        },
+      })
+    }
   }
 }
