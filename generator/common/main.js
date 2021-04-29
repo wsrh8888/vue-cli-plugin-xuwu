@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-04-27 20:54:10
+ * @LastEditTime: 2021-04-29 17:09:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -43,7 +43,7 @@ module.exports = (api, options) => {
         const lines = contentMain.split(/\r?\n/g)
         const renderIndex = lines.findIndex(line => line.match(/vconsole/))
         if (lines.findIndex(line => line.match(/new VConsole()/)) === -1) {
-          lines[renderIndex] += `${EOL} if (process.env.NODE_ENV !== 'prod') { 
+          lines[renderIndex] += `${EOL} if (process.env.API_ENV !== 'prod') { 
             // @ts-ignore
             Vue.use(new VConsole())
           }`

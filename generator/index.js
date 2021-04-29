@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 16:46:09
+ * @LastEditTime: 2021-04-29 17:24:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -26,12 +26,14 @@ module.exports = (api, options) => {
       "less-loader": "^6.2.0",
     },
     scripts: {
+      "serve_dev": "cross-env API_ENV=dev vue-cli-service serve",
       "serve_test": "cross-env API_ENV=test vue-cli-service serve",
       "serve_pre": "cross-env API_ENV=pre vue-cli-service serve",
       "serve_prod": "cross-env API_ENV=prod vue-cli-service serve",
       "build_test": "cross-env API_ENV=test vue-cli-service build",
       "build_pre": "cross-env API_ENV=pre vue-cli-service build",
       "build_prod": "cross-env API_ENV=prod vue-cli-service build",
+      "build": "cross-env API_ENV=prod vue-cli-service build --report",
     },
     browserslist: [
       "> 1%",
@@ -59,7 +61,7 @@ module.exports = (api, options) => {
   if (options.useType === 'pc') {
     if (options.configType === 'default') {
       lintStagedPlugin(api, options)
-   } 
+    } 
   } else if (options.useType === 'mobile') {
     if (options.configType === 'default') {
       lintStagedPlugin(api, options)
