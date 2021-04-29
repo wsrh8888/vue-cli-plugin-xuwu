@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 17:17:59
- * @LastEditTime: 2021-04-29 17:26:56
+ * @LastEditTime: 2021-04-29 17:38:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-structure/generator/template/vue.config.js
@@ -10,11 +10,11 @@ const process = require('process')
 const webpack = require('webpack')
 
 let webUrl = ''
-if (process.env.API_ENV === 'test') {
+if (process.env.NODE_ENV === 'production' && process.env.API_ENV === 'test') {
   webUrl = '/'
-} else if (process.env.API_ENV === 'prod') {
+} else if (process.env.NODE_ENV === 'production' &&process.env.API_ENV === 'prod') {
   webUrl = '/'
-} else if (process.env.API_ENV === 'pre') {
+} else if (process.env.NODE_ENV === 'production' &&process.env.API_ENV === 'pre') {
   webUrl = '/'
 } else {
   webUrl = '/'

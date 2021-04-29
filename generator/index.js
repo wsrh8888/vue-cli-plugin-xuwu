@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 17:24:24
+ * @LastEditTime: 2021-04-29 17:38:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -26,7 +26,6 @@ module.exports = (api, options) => {
       "less-loader": "^6.2.0",
     },
     scripts: {
-      "serve_dev": "cross-env API_ENV=dev vue-cli-service serve",
       "serve_test": "cross-env API_ENV=test vue-cli-service serve",
       "serve_pre": "cross-env API_ENV=pre vue-cli-service serve",
       "serve_prod": "cross-env API_ENV=prod vue-cli-service serve",
