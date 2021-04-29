@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-29 17:48:57
- * @LastEditTime: 2021-04-29 18:03:28
+ * @LastEditTime: 2021-04-29 18:05:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/README.md
@@ -10,7 +10,7 @@
 
 ## 引言
 
-```development
+```
 在日常开发中，经常创建一些新的项目，每次都通过各种方式去copy代码，导致经常丢失一些代码，项目结构也千差万别，为了解决这种情况。当创建完成vue-cli项目时候引入一个自定义插件，通过自定义选项，快速的根据自己的喜好完成项目基建。
 ```
 

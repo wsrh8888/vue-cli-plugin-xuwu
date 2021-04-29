@@ -6,6 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "vue",
+    "prettier", 
+    "eslint", 
+    "husky", 
+    "lib-flexible", 
+    "vconsole",
+    "cross-env",
+    "babel-plugin-transform-remove-console"
+  ],
   "author": "Robert",
   "license": "ISC",
   "files": [
