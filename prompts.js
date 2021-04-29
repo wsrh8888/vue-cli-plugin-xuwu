@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-04-28 11:49:18
+ * @LastEditTime: 2021-04-29 14:53:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -21,7 +21,7 @@ module.exports = (pkg, name) => {
     {
       type: 'list', 
       name: 'configType', 
-      message: '请选择使用的场景', 
+      message: '请选择配置', 
       choices: [
         { name: 'default(默认配置)', value: 'default' },
         { name: ' Manually select features', value: 'manually' }
