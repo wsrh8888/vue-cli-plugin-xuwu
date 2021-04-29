@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-04-29 20:55:54
+ * @LastEditTime: 2021-04-29 21:06:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -18,7 +18,7 @@ module.exports = (api, options) => {
   const {addFlexibleOptions, addConsoleOption} = require('./main')(api)
   const {addCssOptions} = require('./vue.config')(api)
   const {addCssMediaPlugin} = require('./main.vue')(api)
-  const {packageCommitPre, packageRemoveConsole} = require('./package')(api)
+  const {packageCommitPre, packageRemoveConsole, packageInitProject} = require('./package')(api)
   const {babelConfigReoveConsole} = require('./babel.config')(api)
 
   return {
@@ -65,6 +65,7 @@ module.exports = (api, options) => {
       const isVue3 = options.vueVersion === '3'
       api.render("./commonTemplate")
       api.injectImports(api.entryFile, `import './plugins/index'`)
+      packageInitProject(api)
       if (isTs === false && isVue3 === false) {
         api.render("./jsTemplate")
       } else if (isTs === true && isVue3 === false) {

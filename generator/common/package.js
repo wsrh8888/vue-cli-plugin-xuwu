@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-04-29 20:25:18
+ * @LastEditTime: 2021-04-29 21:05:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -56,6 +56,31 @@ module.exports = (api, options) => {
           "babel-plugin-transform-remove-console": "^6.9.4"
         },
       })
+    },
+    /**
+     * @description: 初始化项目模版
+     * @param {*}
+     * @return {*}
+     */
+    packageInitProject() {
+      api.extendPackage({
+        dependencies: {
+          'axios': '^0.21.1',
+          "less": "^3.12.0",
+          "less-loader": "^6.2.0",
+        },
+        browserslist: [
+          "> 1%",
+          "last 2 versions",
+          "ios >= 11",
+          "safari >= 11"
+        ],
+        devDependencies: {
+          "@babel/preset-env": "^7.8.3",
+          "babel-plugin-transform-class-properties": "^6.24.1"
+        },
+      })
     }
+
   }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-04-29 20:54:45
+ * @LastEditTime: 2021-04-29 20:58:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -40,7 +40,7 @@ module.exports = (pkg, name) => {
         { name: 'consoleLog控制台', value: 'consoleLog' },
         { name: '适配插件', value: 'flexible' }
       ],
-      default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole'],
+      default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole', 'initProject'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole', 'initProject'],
     }
   ]
   return prompts

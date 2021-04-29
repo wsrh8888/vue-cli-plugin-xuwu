@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 20:56:24
+ * @LastEditTime: 2021-04-29 21:08:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -19,11 +19,6 @@ module.exports = (api, options) => {
     initProject: initProjectPlugin
   }
   api.extendPackage({
-    dependencies: {
-      'axios': '^0.21.1',
-      "less": "^3.12.0",
-      "less-loader": "^6.2.0",
-    },
     scripts: {
       "serve_test": "cross-env API_ENV=test vue-cli-service serve",
       "serve_pre": "cross-env API_ENV=pre vue-cli-service serve",
@@ -45,8 +40,6 @@ module.exports = (api, options) => {
       "safari >= 11"
     ],
     devDependencies: {
-      "@babel/preset-env": "^7.8.3",
-      "babel-plugin-transform-class-properties": "^6.24.1",
       "cross-env": "^7.0.3"
     },
   })
