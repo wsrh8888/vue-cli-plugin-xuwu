@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-04-29 20:25:39
+ * @LastEditTime: 2021-04-29 20:55:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -58,6 +58,22 @@ module.exports = (api, options) => {
       addFlexibleOptions()
       addCssOptions()
       addCssMediaPlugin()
+    },
+    // 初始化项目结构
+    initProjectPlugin() {
+      const isTs = api.entryFile.endsWith('.ts')
+      const isVue3 = options.vueVersion === '3'
+      api.render("./commonTemplate")
+      api.injectImports(api.entryFile, `import './plugins/index'`)
+      if (isTs === false && isVue3 === false) {
+        api.render("./jsTemplate")
+      } else if (isTs === true && isVue3 === false) {
+        api.render("./tsTemplate")
+      } else if (isTs === false && isVue3 === true) {
+        api.render("./jsTemplate")
+      } else if (isTs === true && isVue3 === true) {
+        api.render("./tsTemplate")
+      }
     }
   }
 }

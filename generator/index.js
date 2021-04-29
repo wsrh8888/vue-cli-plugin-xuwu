@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 20:29:11
+ * @LastEditTime: 2021-04-29 20:56:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -10,15 +10,13 @@
 
 
 module.exports = (api, options) => {
-  const {consolePlugin, flexiblePlugin, lintStagedPlugin, removeConsolePlugin} = require('./common/index')(api)
-
-  const isTs = api.entryFile.endsWith('.ts')
-  const isVue3 = options.vueVersion === '3'
+  const {consolePlugin, flexiblePlugin, lintStagedPlugin, removeConsolePlugin, initProjectPlugin} = require('./common/index')(api)
   const enumOption = {
     consoleLog: consolePlugin,
     flexible: flexiblePlugin,
     lintStaged: lintStagedPlugin,
-    removeConsole: removeConsolePlugin
+    removeConsole: removeConsolePlugin,
+    initProject: initProjectPlugin
   }
   api.extendPackage({
     dependencies: {
@@ -53,8 +51,6 @@ module.exports = (api, options) => {
     },
   })
 
-  api.render("./commonTemplate")
-  api.injectImports(api.entryFile, `import './plugins/index'`)
 
   if (options.configType !== 'default') {
     options.manuallyValue.forEach(element => {
@@ -64,11 +60,14 @@ module.exports = (api, options) => {
 
   if (options.useType === 'pc') {
     if (options.configType === 'default') {
+      initProjectPlugin(api, options)
       lintStagedPlugin(api, options)
       removeConsolePlugin(api, options)
     } 
   } else if (options.useType === 'mobile') {
     if (options.configType === 'default') {
+      initProjectPlugin(api, options)
+
       removeConsolePlugin(api, options)
       
       lintStagedPlugin(api, options)
@@ -80,14 +79,6 @@ module.exports = (api, options) => {
   }
 
 
-  if (isTs === false && isVue3 === false) {
-    api.render("./jsTemplate")
-  } else if (isTs === true && isVue3 === false) {
-    api.render("./tsTemplate")
-  } else if (isTs === false && isVue3 === true) {
-    api.render("./jsTemplate")
-  } else if (isTs === true && isVue3 === true) {
-    api.render("./tsTemplate")
-  }
+  
 
 };
