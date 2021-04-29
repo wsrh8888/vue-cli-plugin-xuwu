@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-30 11:10:56
- * @LastEditTime: 2021-04-27 21:41:21
+ * @LastEditTime: 2021-04-29 16:52:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /class-record/src/App.vue
@@ -25,6 +25,7 @@ body {
 html,
 body,
 #app {
+  margin: 0;
   height: 100%;
   -webkit-overflow-scrolling: touch;
 }
