@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-28 11:53:43
+ * @LastEditTime: 2021-04-29 15:10:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -44,7 +44,7 @@ module.exports = (api, options) => {
         "@vue/prettier",
       ]
     },
-    lintStaged: {
+    "lint-staged": {
       "*.{js,vue,ts}": [
         "vue-cli-service lint",
         "git add"
