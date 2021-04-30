@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-04-30 16:50:29
+ * @LastEditTime: 2021-04-30 17:02:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -31,6 +31,7 @@ module.exports = (api, options) => {
     lintStagedPlugin() {
       api.render({
         "/.eslintrc.js":"./template/_eslintrc.js",
+        "/.eslintignore":"./template/_eslintignore",
         "/.prettierrc":"./template/_prettierrc"
       })
       packageCommitPre()
@@ -85,6 +86,34 @@ module.exports = (api, options) => {
       } else if (isTs === true && isVue3 === true) {
         api.render("../tsTemplate")
       }
+    },
+    // 环境区分,
+    crossEnvPlugin() {
+      api.extendPackage({
+        scripts: {
+          "serve_test": "cross-env API_ENV=test vue-cli-service serve",
+          "serve_pre": "cross-env API_ENV=pre vue-cli-service serve",
+          "serve_prod": "cross-env API_ENV=prod vue-cli-service serve",
+          "build_test": "cross-env API_ENV=test vue-cli-service build",
+          "build_pre": "cross-env API_ENV=pre vue-cli-service build",
+          "build_prod": "cross-env API_ENV=prod vue-cli-service build",
+          "build": "cross-env API_ENV=prod vue-cli-service build --report",
+        },
+        "scripts-info": {
+          "serve_test": "启动开发/测试环境",
+          "build_test": "打包测试环境",
+          "build": "分析打包后包含的模块的大小"
+        },
+        browserslist: [
+          "> 1%",
+          "last 2 versions",
+          "ios >= 11",
+          "safari >= 11"
+        ],
+        devDependencies: {
+          "cross-env": "^7.0.3"
+        },
+      })
     }
   }
 }

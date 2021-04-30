@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-init-structure",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "主动格式化vue-cli工程基础模版插件",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:dawwdadfrf/robert-ui.git"
+    "url": "https://gitee.com/dawwdadfrf/vue-cli-plugin-init-structure.git"
   }
 }
