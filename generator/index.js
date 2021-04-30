@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-29 21:08:02
+ * @LastEditTime: 2021-04-30 11:04:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -10,7 +10,7 @@
 
 
 module.exports = (api, options) => {
-  const {consolePlugin, flexiblePlugin, lintStagedPlugin, removeConsolePlugin, initProjectPlugin} = require('./common/index')(api)
+  const {consolePlugin, flexiblePlugin, lintStagedPlugin, removeConsolePlugin, initProjectPlugin} = require('./common/index')(api, options)
   const enumOption = {
     consoleLog: consolePlugin,
     flexible: flexiblePlugin,
@@ -47,31 +47,27 @@ module.exports = (api, options) => {
 
   if (options.configType !== 'default') {
     options.manuallyValue.forEach(element => {
-      enumOption[element](api, options)
+      enumOption[element]()
     });
   }
 
   if (options.useType === 'pc') {
     if (options.configType === 'default') {
-      initProjectPlugin(api, options)
-      lintStagedPlugin(api, options)
-      removeConsolePlugin(api, options)
+      initProjectPlugin()
+      lintStagedPlugin()
+      removeConsolePlugin()
     } 
   } else if (options.useType === 'mobile') {
     if (options.configType === 'default') {
-      initProjectPlugin(api, options)
+      initProjectPlugin()
 
-      removeConsolePlugin(api, options)
+      removeConsolePlugin()
       
-      lintStagedPlugin(api, options)
+      lintStagedPlugin()
        // console插件
-      consolePlugin(api, options)
+      consolePlugin()
       // 适配插件
-      flexiblePlugin(api, options)
+      flexiblePlugin()
     } 
   }
-
-
-  
-
 };

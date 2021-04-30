@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-04-29 21:05:59
+ * @LastEditTime: 2021-04-30 11:19:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -77,7 +77,7 @@ module.exports = (api, options) => {
         ],
         devDependencies: {
           "@babel/preset-env": "^7.8.3",
-          "babel-plugin-transform-class-properties": "^6.24.1"
+          
         },
       })
     }
