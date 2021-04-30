@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-04-30 17:02:35
+ * @LastEditTime: 2021-04-30 19:32:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -22,6 +22,14 @@ module.exports = (api, options) => {
   const {babelConfigReoveConsole} = require('./babel.config')(api, options)
 
   return {
+    // 拖拽插件
+    vuedraggablePlugin() {
+      api.extendPackage({
+        devDependencies: {
+          "vuedraggable": "^2.24.3",
+        }
+      })
+    },
     // 代码生产环境去掉console
     removeConsolePlugin() {
       packageRemoveConsole()

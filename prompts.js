@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-04-30 17:09:24
+ * @LastEditTime: 2021-04-30 19:28:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -39,7 +39,8 @@ module.exports = (pkg, name) => {
         {name: '生产环境去掉console', value: 'removeConsole'},
         { name: 'commit代码时统一风格', value: 'lintStaged' },
         { name: 'consoleLog控制台', value: 'consoleLog' },
-        { name: '适配插件', value: 'flexible' }
+        { name: '适配插件', value: 'flexible' },
+        { name: 'vue拖拽插件', value: 'vuedraggable' }
       ],
       default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole', 'initProject', 'crossEnv'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole', 'initProject', 'crossEnv'],
     }
