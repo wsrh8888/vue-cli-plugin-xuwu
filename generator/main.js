@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-04-30 19:32:24
+ * @LastEditTime: 2021-05-14 17:17:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -14,12 +14,12 @@
  * @return {*}
  */
 
-module.exports = (api, options) => {
-  const {addFlexibleOptions, addConsoleOption} = require('./main')(api, options)
-  const {addCssOptions} = require('./vue.config')(api, options)
-  const {addCssMediaPlugin} = require('./main.vue')(api, options)
-  const {packageCommitPre, packageRemoveConsole, packageInitProject} = require('./package')(api, options)
-  const {babelConfigReoveConsole} = require('./babel.config')(api, options)
+ module.exports = (api, options) => {
+  const {addFlexibleOptions, addConsoleOption} = require('./controller/main')(api, options)
+  const {addCssOptions} = require('./controller/vue.config')(api, options)
+  const {addCssMediaPlugin} = require('./controller/main.vue')(api, options)
+  const {packageCommitPre, packageRemoveConsole, packageInitProject} = require('./controller/package')(api, options)
+  const {babelConfigReoveConsole} = require('./controller/babel.config')(api, options)
 
   return {
     // 拖拽插件
@@ -38,9 +38,9 @@ module.exports = (api, options) => {
     // 增加代码格式化插件prettier+eslint相关
     lintStagedPlugin() {
       api.render({
-        "/.eslintrc.js":"./template/_eslintrc.js",
-        "/.eslintignore":"./template/_eslintignore",
-        "/.prettierrc":"./template/_prettierrc"
+        "/.eslintrc.js":"./module/template/_eslintrc.js",
+        "/.eslintignore":"./module/template/_eslintignore",
+        "/.prettierrc":"./module/template/_prettierrc"
       })
       packageCommitPre()
     },
@@ -58,15 +58,15 @@ module.exports = (api, options) => {
       const fs = require('fs')
       let contentMain
       try {
-        contentMain = fs.readFileSync(api.resolve(`./vue.config.js`), { encoding: 'utf-8' })
+        contentMain = fs.readFileSync(api.resolve(`./module/vue.config.js`), { encoding: 'utf-8' })
         console.log(contentMain, '323233333')
       } catch (error) {
         api.render({
-          "/vue.config.js":"./template/vue.config.js"
+          "/vue.config.js":"./module/template/vue.config.js"
         })
       }
       api.render({
-        "/src/utils/rem.js":"./template/rem.js"
+        "/src/utils/rem.js":"./module/template/rem.js"
       })
       api.extendPackage({
         devDependencies: {
@@ -82,17 +82,16 @@ module.exports = (api, options) => {
     initProjectPlugin() {
       const isTs = api.entryFile.endsWith('.ts')
       const isVue3 = options.vueVersion === '3'
-      api.render("../commonTemplate")
-      api.injectImports(api.entryFile, `import './plugins/index'`)
+      api.injectImports(api.entryFile, `import './module/plugins/index'`)
       packageInitProject()
       if (isTs === false && isVue3 === false) {
-        api.render("../jsTemplate")
+        api.render("./module/jsTemplate")
       } else if (isTs === true && isVue3 === false) {
-        api.render("../tsTemplate")
+        api.render("./module/tsTemplate")
       } else if (isTs === false && isVue3 === true) {
-        api.render("../jsTemplate")
+        api.render("./module/jsTemplate")
       } else if (isTs === true && isVue3 === true) {
-        api.render("../tsTemplate")
+        api.render("./module/tsTemplate")
       }
     },
     // 环境区分,

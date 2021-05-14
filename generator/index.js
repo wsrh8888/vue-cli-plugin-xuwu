@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-04-30 19:29:19
+ * @LastEditTime: 2021-05-14 16:51:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -18,7 +18,7 @@ module.exports = (api, options) => {
     initProjectPlugin, 
     crossEnvPlugin,
     vuedraggablePlugin
-  } = require('./common/index')(api, options)
+  } = require('./main')(api, options)
   const enumOption = {
     consoleLog: consolePlugin,
     flexible: flexiblePlugin,
@@ -45,8 +45,7 @@ module.exports = (api, options) => {
     if (options.configType === 'default') {
       initProjectPlugin()
       crossEnvPlugin()
-      removeConsolePlugin()
-      
+      removeConsolePlugin() 
       lintStagedPlugin()
        // console插件
       consolePlugin()

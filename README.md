@@ -40,3 +40,122 @@ vue add vue-cli-plugin-init-structure
   7.axios请求封装
   8.npm镜像源修改
 ```
+
+```
+vue-cli-plugin-init-structure
+├─ .DS_Store
+├─ README.md
+├─ generator
+│  ├─ common
+│  │  ├─ babel.config.js
+│  │  ├─ index.js
+│  │  ├─ main.js
+│  │  ├─ main.vue.js
+│  │  ├─ package.js
+│  │  ├─ template
+│  │  │  ├─ _eslintignore
+│  │  │  ├─ _eslintrc.js
+│  │  │  ├─ _prettierrc
+│  │  │  ├─ babel.config.js
+│  │  │  ├─ rem.js
+│  │  │  └─ vue.config.js
+│  │  └─ vue.config.js
+│  ├─ commonTemplate
+│  │  ├─ _npmrc
+│  │  └─ src
+│  │     ├─ App.vue
+│  │     └─ views
+│  │        └─ Home.vue
+│  ├─ index.js
+│  ├─ jsTemplate
+│  │  └─ src
+│  │     ├─ api
+│  │     │  ├─ common.js
+│  │     │  └─ index.js
+│  │     ├─ plugins
+│  │     │  ├─ element.js
+│  │     │  ├─ index.js
+│  │     │  └─ vant.js
+│  │     └─ utils
+│  │        ├─ ajax.js
+│  │        └─ config.js
+│  └─ tsTemplate
+│     └─ src
+│        ├─ api
+│        │  ├─ common.ts
+│        │  └─ index.ts
+│        ├─ plugins
+│        │  ├─ element.ts
+│        │  ├─ index.ts
+│        │  └─ vant.ts
+│        └─ utils
+│           ├─ ajax.ts
+│           └─ config.ts
+├─ index.js
+├─ package-lock.json
+├─ package.json
+├─ prompts.js
+├─ shims-tsx.d.ts
+├─ shims-vue.d.ts
+└─ tsconfig.json
+
+```
+```
+vue-cli-plugin-init-structure
+├─ .DS_Store
+├─ README.md
+├─ generator
+│  ├─ common
+│  │  ├─ babel.config.js
+│  │  ├─ index.js
+│  │  ├─ main.js
+│  │  ├─ main.vue.js
+│  │  ├─ package.js
+│  │  ├─ template
+│  │  │  ├─ _eslintignore
+│  │  │  ├─ _eslintrc.js
+│  │  │  ├─ _prettierrc
+│  │  │  ├─ babel.config.js
+│  │  │  ├─ rem.js
+│  │  │  └─ vue.config.js
+│  │  └─ vue.config.js
+│  ├─ commonTemplate
+│  │  ├─ _npmrc
+│  │  └─ src
+│  │     ├─ App.vue
+│  │     └─ views
+│  │        └─ Home.vue
+│  ├─ index.js
+│  ├─ jsTemplate
+│  │  └─ src
+│  │     ├─ api
+│  │     │  ├─ common.js
+│  │     │  └─ index.js
+│  │     ├─ plugins
+│  │     │  ├─ element.js
+│  │     │  ├─ index.js
+│  │     │  └─ vant.js
+│  │     └─ utils
+│  │        ├─ ajax.js
+│  │        └─ config.js
+│  └─ tsTemplate
+│     └─ src
+│        ├─ api
+│        │  ├─ common.ts
+│        │  └─ index.ts
+│        ├─ plugins
+│        │  ├─ element.ts
+│        │  ├─ index.ts
+│        │  └─ vant.ts
+│        └─ utils
+│           ├─ ajax.ts
+│           └─ config.ts
+├─ index.js
+├─ package-lock.json
+├─ package.json
+├─ prompts.js
+├─ shims-tsx.d.ts
+├─ shims-vue.d.ts
+└─ tsconfig.json
+
+```
