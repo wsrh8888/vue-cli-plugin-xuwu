@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-05-14 17:51:10
+ * @LastEditTime: 2021-05-14 20:34:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -46,14 +46,13 @@ module.exports = (pkg, name) => {
       message: 'Check the features needed for your project', 
       choices: [
         {name: '初始化环境变量', value: 'crossEnv'},
-        {name: '初始化配置文件', value: 'initProject'},
         {name: '生产环境去掉console', value: 'removeConsole'},
         { name: 'commit代码时统一风格', value: 'lintStaged' },
         { name: 'consoleLog控制台', value: 'consoleLog' },
         { name: '适配插件', value: 'flexible' },
         { name: 'vue拖拽插件', value: 'vuedraggable' }
       ],
-      default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole', 'initProject', 'crossEnv'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole', 'initProject', 'crossEnv'],
+      default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole', 'crossEnv'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole', 'crossEnv'],
     }, {
       when: answers => {return answers.language === 'uniapp' && answers.configType === 'manually'},
       type: 'checkbox', 
@@ -62,7 +61,7 @@ module.exports = (pkg, name) => {
       choices: [
         { name: 'commit代码时统一风格', value: 'lintStaged' },
       ],
-      default: ['lintStaged', 'removeConsole', 'initProject', 'crossEnv']
+      default: ['lintStaged', 'removeConsole', 'crossEnv']
     }
   ]
   return prompts

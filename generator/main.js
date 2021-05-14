@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-05-14 17:54:24
+ * @LastEditTime: 2021-05-14 20:34:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -18,10 +18,32 @@
   const {addFlexibleOptions, addConsoleOption} = require('./controller/main')(api, options)
   const {addCssOptions} = require('./controller/vue.config')(api, options)
   const {addCssMediaPlugin} = require('./controller/main.vue')(api, options)
-  const {packageCommitPre, packageRemoveConsole, packageInitProject} = require('./controller/package')(api, options)
+  const {packageCommitPre, packageRemoveConsole} = require('./controller/package')(api, options)
   const {babelConfigReoveConsole} = require('./controller/babel.config')(api, options)
 
   return {
+    // 请求
+    vueRequestPlugin() {
+      const isTs = api.entryFile.endsWith('.ts')
+      const {addRequest} = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
+      addRequest()
+    },
+    sassPlugin() {
+      api.extendPackage({
+        devDependencies: {
+          "sass-loader": "^10.2.0",
+          "sass": "^1.32.13"
+        }
+      })
+    },
+    lessPlugin() {
+      api.extendPackage({
+        devDependencies: {
+          "less": "^3.12.0",
+          "less-loader": "^6.2.0",
+        }
+      })
+    },
     // 拖拽插件
     vuedraggablePlugin() {
       api.extendPackage({
@@ -77,22 +99,6 @@
       addFlexibleOptions()
       addCssOptions()
       addCssMediaPlugin()
-    },
-    // 初始化项目结构
-    initProjectPlugin() {
-      const isTs = api.entryFile.endsWith('.ts')
-      const isVue3 = options.vueVersion === '3'
-      api.injectImports(api.entryFile, `import './module/plugins/index'`)
-      packageInitProject()
-      if (isTs === false && isVue3 === false) {
-        api.render("./module/jsTemplate")
-      } else if (isTs === true && isVue3 === false) {
-        api.render("./module/tsTemplate")
-      } else if (isTs === false && isVue3 === true) {
-        api.render("./module/jsTemplate")
-      } else if (isTs === true && isVue3 === true) {
-        api.render("./module/tsTemplate")
-      }
     },
     // 环境区分,
     crossEnvPlugin() {
