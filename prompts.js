@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-05-14 16:45:18
+ * @LastEditTime: 2021-05-14 17:51:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -9,7 +9,7 @@
 module.exports = (pkg, name) => {
   const prompts = [
     {
-      type: 'language', 
+      type: 'list', 
       name: 'language', 
       message: '请选择自己的语言', 
       choices: [

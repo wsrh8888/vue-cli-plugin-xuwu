@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-05-14 16:51:44
+ * @LastEditTime: 2021-05-14 17:53:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -19,6 +19,12 @@ module.exports = (api, options) => {
     crossEnvPlugin,
     vuedraggablePlugin
   } = require('./main')(api, options)
+  const defaultConfig = {
+    vue: {
+      pc: [initProjectPlugin, lintStagedPlugin, removeConsolePlugin, crossEnvPlugin],
+      mobile: [initProjectPlugin, crossEnvPlugin, removeConsolePlugin, lintStagedPlugin, consolePlugin, flexiblePlugin]
+    }
+  }
   const enumOption = {
     consoleLog: consolePlugin,
     flexible: flexiblePlugin,
@@ -32,25 +38,10 @@ module.exports = (api, options) => {
     options.manuallyValue.forEach(element => {
       enumOption[element]()
     });
-  }
-
-  if (options.useType === 'pc') {
-    if (options.configType === 'default') {
-      initProjectPlugin()
-      lintStagedPlugin()
-      removeConsolePlugin()
-      crossEnvPlugin()
-    } 
-  } else if (options.useType === 'mobile') {
-    if (options.configType === 'default') {
-      initProjectPlugin()
-      crossEnvPlugin()
-      removeConsolePlugin() 
-      lintStagedPlugin()
-       // console插件
-      consolePlugin()
-      // 适配插件
-      flexiblePlugin()
-    } 
+  } else {
+    console.log(options.language, options.useType)
+    defaultConfig[options.language][options.useType].forEach(config => {
+      config()
+    })
   }
 };

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-05-14 17:17:11
+ * @LastEditTime: 2021-05-14 17:54:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -38,9 +38,9 @@
     // 增加代码格式化插件prettier+eslint相关
     lintStagedPlugin() {
       api.render({
-        "/.eslintrc.js":"./module/template/_eslintrc.js",
-        "/.eslintignore":"./module/template/_eslintignore",
-        "/.prettierrc":"./module/template/_prettierrc"
+        "/.eslintrc.js":"./module/_eslintrc.js",
+        "/.eslintignore":"./module/_eslintignore",
+        "/.prettierrc":"./module/_prettierrc"
       })
       packageCommitPre()
     },
@@ -62,11 +62,11 @@
         console.log(contentMain, '323233333')
       } catch (error) {
         api.render({
-          "/vue.config.js":"./module/template/vue.config.js"
+          "/vue.config.js":"./module/vue.config.js"
         })
       }
       api.render({
-        "/src/utils/rem.js":"./module/template/rem.js"
+        "/src/utils/rem.js":"./module/rem.js"
       })
       api.extendPackage({
         devDependencies: {

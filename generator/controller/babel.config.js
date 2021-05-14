@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-04-30 11:29:55
+ * @LastEditTime: 2021-05-14 17:56:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/babel.config.js
@@ -37,7 +37,7 @@ module.exports = (api, options) => {
       if (lines.findIndex(line => line.match(/plugins/)) === -1 || !contentMain) {
         BabelConfigInit(api, options)
         api.render({
-          "/babel.config.js": "./template/babel.config.js"
+          "/babel.config.js": "../module/babel.config.js"
         })
         return
       } 
