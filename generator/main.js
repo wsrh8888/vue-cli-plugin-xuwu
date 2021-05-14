@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-05-14 20:39:32
+ * @LastEditTime: 2021-05-14 21:10:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -20,13 +20,12 @@
   const {addCssMediaPlugin} = require('./controller/main.vue')(api, options)
   const {packageCommitPre, packageRemoveConsole} = require('./controller/package')(api, options)
   const {babelConfigReoveConsole} = require('./controller/babel.config')(api, options)
-
+  const isTs = api.entryFile.endsWith('.ts')
+  const {configPlatforms, requestPlatforms} = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
   return {
     // 请求
     requestPlugin() {
-      const isTs = api.entryFile.endsWith('.ts')
-      const {addRequest} = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
-      addRequest()
+      requestPlatforms()
     },
     sassPlugin() {
       api.extendPackage({
@@ -102,6 +101,7 @@
     },
     // 环境区分,
     crossEnvPlugin() {
+      
       api.extendPackage({
         scripts: {
           "serve_test": "cross-env API_ENV=test vue-cli-service serve",
@@ -127,6 +127,7 @@
           "cross-env": "^7.0.3"
         },
       })
+      configPlatforms()
     }
   }
 }

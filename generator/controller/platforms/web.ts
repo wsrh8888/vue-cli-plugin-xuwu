@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-05-14 20:49:39
+ * @LastEditTime: 2021-05-14 21:08:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
  */
 module.exports = (api, options) => {
   return {
-    addRequest() {
+    requestPlatforms() {
       api.extendPackage({
         dependencies: {
           'axios': '^0.21.1'
@@ -17,6 +17,11 @@ module.exports = (api, options) => {
       api.render({
         "/src/utils/request.ts":"../../module/request/webTs/request.ts",
         "/src/api/index.ts": "../../module/request/webTs/index.ts",
+      })
+    },
+    configPlatforms() {
+      api.render({
+        "/src/utils/config.ts":"../../module/config/index.ts"
       })
     }
   }
