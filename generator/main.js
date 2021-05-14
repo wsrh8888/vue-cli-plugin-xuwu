@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-05-14 20:34:03
+ * @LastEditTime: 2021-05-14 20:39:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -23,7 +23,7 @@
 
   return {
     // 请求
-    vueRequestPlugin() {
+    requestPlugin() {
       const isTs = api.entryFile.endsWith('.ts')
       const {addRequest} = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
       addRequest()

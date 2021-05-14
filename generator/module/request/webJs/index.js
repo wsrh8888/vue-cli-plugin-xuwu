@@ -6,10 +6,10 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-structure/generator/template/api/common.js
  */
-import {ajax} from '@/utils/ajax'
+import {request} from '@/utils/request'
 
 export const testApi = () => {
-  return ajax({
+  return request({
     method: 'get',
     url: `/test`
   })

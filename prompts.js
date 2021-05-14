@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-05-14 20:34:40
+ * @LastEditTime: 2021-05-14 20:38:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -45,6 +45,7 @@ module.exports = (pkg, name) => {
       name: 'manuallyValue', 
       message: 'Check the features needed for your project', 
       choices: [
+        {name: 'ajax请求模版', value: 'requestTemplate'},
         {name: '初始化环境变量', value: 'crossEnv'},
         {name: '生产环境去掉console', value: 'removeConsole'},
         { name: 'commit代码时统一风格', value: 'lintStaged' },
@@ -52,7 +53,7 @@ module.exports = (pkg, name) => {
         { name: '适配插件', value: 'flexible' },
         { name: 'vue拖拽插件', value: 'vuedraggable' }
       ],
-      default: answers => answers.useType === 'pc' ? ['lintStaged', 'removeConsole', 'crossEnv'] : ['consoleLog', 'flexible', 'lintStaged', 'removeConsole', 'crossEnv'],
+      default: answers => answers.useType === 'pc' ? ['requestTemplate', 'lintStaged', 'removeConsole', 'crossEnv'] : ['consoleLog', 'requestTemplate','flexible', 'lintStaged', 'removeConsole', 'crossEnv'],
     }, {
       when: answers => {return answers.language === 'uniapp' && answers.configType === 'manually'},
       type: 'checkbox', 

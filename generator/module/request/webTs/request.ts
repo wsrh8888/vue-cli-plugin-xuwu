@@ -9,7 +9,7 @@
 import axios from 'axios'
 
 // 普通接口
-const ajax = axios.create({
+const request = axios.create({
   baseURL: '',
   url: '',
   data: {},
@@ -20,7 +20,7 @@ const ajax = axios.create({
   params: {}
 })
 
-ajax.interceptors.request.use(
+request.interceptors.request.use(
   (config) => {
     return config
   },
@@ -29,7 +29,7 @@ ajax.interceptors.request.use(
   }
 )
 
-ajax.interceptors.response.use(
+request.interceptors.response.use(
   (response) => {
     return response.data
   },
@@ -39,4 +39,4 @@ ajax.interceptors.response.use(
   }
 )
 
-export { ajax }
+export { request }
