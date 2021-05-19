@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-05-14 20:40:14
+ * @LastEditTime: 2021-05-18 19:49:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -11,6 +11,7 @@
 
 module.exports = (api, options) => {
   const {
+    sassPlugin,
     requestPlugin,
     consolePlugin, 
     flexiblePlugin, 
@@ -18,7 +19,7 @@ module.exports = (api, options) => {
     removeConsolePlugin, 
     crossEnvPlugin,
     vuedraggablePlugin
-  } = require('./main')(api, options)
+  } = require('./controller')(api, options)
   const defaultConfig = {
     vue: {
       pc: [ 
@@ -35,6 +36,20 @@ module.exports = (api, options) => {
         flexiblePlugin, 
         requestPlugin
       ]
+    },
+    uniapp: {
+      pc: [
+        lintStagedPlugin,
+        sassPlugin,
+        requestPlugin,
+        crossEnvPlugin
+      ],
+      mobile: [
+        lintStagedPlugin,
+        sassPlugin,
+        requestPlugin,
+        crossEnvPlugin
+      ]
     }
   }
   const enumOption = {
@@ -44,14 +59,16 @@ module.exports = (api, options) => {
     lintStaged: lintStagedPlugin,
     removeConsole: removeConsolePlugin,
     crossEnv: crossEnvPlugin,
-    vuedraggable: vuedraggablePlugin
+    vuedraggable: vuedraggablePlugin,
+    sass: sassPlugin
   }
   if (options.configType !== 'default') {
     options.manuallyValue.forEach(element => {
       enumOption[element]()
     });
   } else {
-    defaultConfig[options.language][options.useType].forEach(config => {
+    console.log(options.language)
+    defaultConfig[options.language][options.useType ? options.useType : 'pc'].forEach(config => {
       config()
     })
   }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-05-14 20:38:56
+ * @LastEditTime: 2021-05-18 19:43:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -62,7 +62,7 @@ module.exports = (pkg, name) => {
       choices: [
         { name: 'commit代码时统一风格', value: 'lintStaged' },
       ],
-      default: ['lintStaged', 'removeConsole', 'crossEnv']
+      default: ['lintStaged', 'sass', 'requestTemplate', 'crossEnv']
     }
   ]
   return prompts

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-05-14 20:29:20
+ * @LastEditTime: 2021-05-19 10:48:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -16,6 +16,9 @@ module.exports = (api, options) => {
      */
     packageCommitPre() {
       api.extendPackage({
+        scripts: {
+          "lint": "vue-cli-service lint"
+        },
         husky: {
           "hooks": {
             "pre-commit": "lint-staged"
@@ -35,13 +38,16 @@ module.exports = (api, options) => {
           ]
         },
         devDependencies: {
+          "@vue/cli-plugin-eslint": "^4.5.13",
+          "eslint-plugin-html": "^5.0.0",
           "babel-eslint": "^10.1.0",
           "eslint-plugin-prettier": "^3.1.3",
           'husky': '^4.3.7',
           "@vue/eslint-config-prettier": "^6.0.0",
           "eslint-plugin-vue": "^6.2.2",
-          "prettier": "^2.2.1",
-          'lint-staged': '^10.5.3'
+          "prettier": "^1.8.2",
+          'lint-staged': '^10.5.3',
+          "eslint": "^5.16.0"
         },
       })
     },
