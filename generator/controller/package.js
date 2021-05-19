@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-05-19 10:48:24
+ * @LastEditTime: 2021-05-19 20:36:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -62,6 +62,9 @@ module.exports = (api, options) => {
           "babel-plugin-transform-remove-console": "^6.9.4"
         },
       })
+    },
+    packageAddCrossEnv() {
+      
     }
   }
 }

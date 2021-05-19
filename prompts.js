@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-05-18 19:43:09
+ * @LastEditTime: 2021-05-19 20:33:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -61,6 +61,9 @@ module.exports = (pkg, name) => {
       message: 'Check the features needed for your project', 
       choices: [
         { name: 'commit代码时统一风格', value: 'lintStaged' },
+        { name: 'sass', value: 'sass' },
+        { name: 'ajax请求模板', value: 'requestTemplate' },
+        { name: '环境变量', value: 'crossEnv' },
       ],
       default: ['lintStaged', 'sass', 'requestTemplate', 'crossEnv']
     }
