@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-05-19 20:33:58
+ * @LastEditTime: 2021-05-24 20:29:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -40,7 +40,7 @@ module.exports = (pkg, name) => {
       default: 'default',
     },
     {
-      when: answers => {return answers.language === 'vue' && answers.configType === 'manually'},
+      when: answers => {return answers.language === 'vue'},
       type: 'checkbox', 
       name: 'manuallyValue', 
       message: 'Check the features needed for your project', 
@@ -66,7 +66,19 @@ module.exports = (pkg, name) => {
         { name: '环境变量', value: 'crossEnv' },
       ],
       default: ['lintStaged', 'sass', 'requestTemplate', 'crossEnv']
-    }
+    },
+    {
+      when: answers => {return answers.language === 'vue' && answers.configType === 'manually'},
+      type: 'list', 
+      name: 'uiPlugin', 
+      message: '请选择使用的UI库(按需引入)', 
+      choices: [
+        { name: 'Element', value: 'Element' },
+        { name: 'Vant', value: 'Vant' },
+        { name: 'AntDesignVue', value: 'AntDesignVue' }
+      ],
+      default: answers => answers.useType === 'pc' ? 'Element' : 'Vant',
+    },
   ]
   return prompts
 }

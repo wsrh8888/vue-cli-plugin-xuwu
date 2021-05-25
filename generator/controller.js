@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-05-14 21:10:56
+ * @LastEditTime: 2021-05-25 10:52:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -18,11 +18,31 @@
   const {addFlexibleOptions, addConsoleOption} = require('./controller/main')(api, options)
   const {addCssOptions} = require('./controller/vue.config')(api, options)
   const {addCssMediaPlugin} = require('./controller/main.vue')(api, options)
-  const {packageCommitPre, packageRemoveConsole} = require('./controller/package')(api, options)
+  const {packageCommitPre, packageRemoveConsole, packageAddUiConfig, packageElementUi, 
+    packageVantUi,
+    packageAntDesignUi
+  } = require('./controller/package')(api, options)
   const {babelConfigReoveConsole} = require('./controller/babel.config')(api, options)
   const isTs = api.entryFile.endsWith('.ts')
   const {configPlatforms, requestPlatforms} = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
   return {
+
+
+
+
+
+    ElementUi() {
+      packageAddUiConfig()
+      packageElementUi()
+    },
+    VantUi() {
+      packageAddUiConfig()
+      packageVantUi()
+    },
+    AntDesignUi() {
+      packageAddUiConfig()
+      packageAntDesignUi()
+    },
     // 请求
     requestPlugin() {
       requestPlatforms()
@@ -80,7 +100,6 @@
       let contentMain
       try {
         contentMain = fs.readFileSync(api.resolve(`./module/vue.config.js`), { encoding: 'utf-8' })
-        console.log(contentMain, '323233333')
       } catch (error) {
         api.render({
           "/vue.config.js":"./module/vue.config.js"
@@ -99,7 +118,7 @@
       addCssOptions()
       addCssMediaPlugin()
     },
-    // 环境区分,
+    // 环境区分
     crossEnvPlugin() {
       
       api.extendPackage({

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-05-14 17:56:41
+ * @LastEditTime: 2021-05-20 20:24:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/babel.config.js
@@ -39,7 +39,6 @@ module.exports = (api, options) => {
         api.render({
           "/babel.config.js": "../module/babel.config.js"
         })
-        return
       } 
       api.afterInvoke(() => {
         if (lines.findIndex(line => line.match(/transform-remove-console/)) === -1) {
@@ -49,6 +48,20 @@ module.exports = (api, options) => {
           fs.writeFileSync(`./babel.config.js`, lines.join(EOL), { encoding: 'utf-8' })
         }
       })
+    },
+    babelConfigUiImport() {
+      const { EOL } = require('os')
+      const fs = require('fs')
+      const contentMain
+      try {
+         contentMain = fs.readFileSync(api.resolve(`./babel.config.js`), { encoding: 'utf-8' })
+      } catch (error) {
+        api.render({
+          "/babel.config.js": "../module/babel.config.js"
+        })
+      }
+      
     }
+    
   }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-05-18 19:49:48
+ * @LastEditTime: 2021-05-20 19:32:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -18,7 +18,10 @@ module.exports = (api, options) => {
     lintStagedPlugin, 
     removeConsolePlugin, 
     crossEnvPlugin,
-    vuedraggablePlugin
+    vuedraggablePlugin,
+    ElementUi,
+    VantUi,
+    AntDesignUi
   } = require('./controller')(api, options)
   const defaultConfig = {
     vue: {
@@ -52,6 +55,7 @@ module.exports = (api, options) => {
       ]
     }
   }
+  // 普通配置插件
   const enumOption = {
     requestTemplate: requestPlugin,
     consoleLog: consolePlugin,
@@ -60,16 +64,30 @@ module.exports = (api, options) => {
     removeConsole: removeConsolePlugin,
     crossEnv: crossEnvPlugin,
     vuedraggable: vuedraggablePlugin,
-    sass: sassPlugin
+    sass: sassPlugin,
   }
+  // UI插件
+  const enumUiPlugin = {
+    Element: ElementUi,
+    Vant: VantUi,
+    AntDesign: AntDesignUi
+  }
+  /**
+   * @description: 处理自定义配置和默认配置
+   * @param {*} options
+   * @return {*}
+   */  
   if (options.configType !== 'default') {
     options.manuallyValue.forEach(element => {
       enumOption[element]()
     });
   } else {
-    console.log(options.language)
     defaultConfig[options.language][options.useType ? options.useType : 'pc'].forEach(config => {
       config()
     })
   }
+  // 处理UI插件
+  if (options.uiPlugin !== '') {
+    enumUiPlugin(options.uiPlugin)
+  } 
 };

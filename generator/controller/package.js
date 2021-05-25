@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-05-19 20:36:33
+ * @LastEditTime: 2021-05-25 10:53:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -63,8 +63,41 @@ module.exports = (api, options) => {
         },
       })
     },
-    packageAddCrossEnv() {
-      
+    /**
+     * @description: 增加按需引入依赖
+     * @param {*}
+     * @return {*}
+     */    
+    packageAddUiConfig() {
+      api.extendPackage({
+        devDependencies: {
+          "babel-plugin-component": "^1.1.1",
+        },
+      })
+    },
+    // 引入element
+    packageElementUi() {
+      api.extendPackage({
+        dependencies: {
+          "element-ui": "^2.13.2"
+        },
+      })
+    },
+    // 引入vant
+    packageVantUi() {
+      api.extendPackage({
+        dependencies: {
+          "vant": "^2.12.19",
+        },
+      })
+    },
+    // 引入ant-design
+    packageAntDesignUi() {
+      api.extendPackage({
+        dependencies: {
+          "ant-design-vue": "^1.7.5",
+        },
+      })
     }
   }
 }
