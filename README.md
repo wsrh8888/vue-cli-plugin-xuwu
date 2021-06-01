@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-29 17:48:57
- * @LastEditTime: 2021-04-30 17:24:47
+ * @LastEditTime: 2021-05-31 20:43:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/README.md
@@ -159,3 +159,8 @@ vue-cli-plugin-init-structure
 └─ tsconfig.json
 
 ```
+
+本地开发
+ npm install --save-dev file:../../vue-cli-plugin-init-structure
+
+ vue invoke vue-cli-plugin-init-structure  

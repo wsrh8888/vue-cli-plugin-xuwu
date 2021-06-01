@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-05-25 10:52:00
+ * @LastEditTime: 2021-06-01 11:11:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -15,33 +15,46 @@
  */
 
  module.exports = (api, options) => {
-  const {addFlexibleOptions, addConsoleOption} = require('./controller/main')(api, options)
-  const {addCssOptions} = require('./controller/vue.config')(api, options)
-  const {addCssMediaPlugin} = require('./controller/main.vue')(api, options)
-  const {packageCommitPre, packageRemoveConsole, packageAddUiConfig, packageElementUi, 
+  const {
+    addFlexibleOptions, 
+    addConsoleOption
+  } = require('./controller/main')(api, options)
+  const {
+    addCssOptions
+  } = require('./controller/vue.config')(api, options)
+  const {
+    addCssMediaPlugin
+  } = require('./controller/main.vue')(api, options)
+  const {
+    packageCommitPre, 
+    packageRemoveConsole, 
+    packageElementUi, 
     packageVantUi,
     packageAntDesignUi
   } = require('./controller/package')(api, options)
-  const {babelConfigReoveConsole} = require('./controller/babel.config')(api, options)
+  const {
+    babelConfigReoveConsole,
+    babelConfigAddElement 
+  } = require('./controller/babel.config')(api, options)
   const isTs = api.entryFile.endsWith('.ts')
-  const {configPlatforms, requestPlatforms} = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
+  const {
+    configPlatforms, 
+    requestPlatforms, 
+    elementUiPlatforms
+  } = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
   return {
-
-
-
-
-
     ElementUi() {
-      packageAddUiConfig()
       packageElementUi()
+      elementUiPlatforms()
+      babelConfigAddElement()
     },
     VantUi() {
-      packageAddUiConfig()
-      packageVantUi()
+      // packageAddUiConfig()
+      // packageVantUi()
     },
     AntDesignUi() {
-      packageAddUiConfig()
-      packageAntDesignUi()
+      // packageAddUiConfig()
+      // packageAntDesignUi()
     },
     // 请求
     requestPlugin() {
