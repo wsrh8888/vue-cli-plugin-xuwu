@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-05-31 20:34:32
+ * @LastEditTime: 2021-06-01 11:33:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -87,6 +87,25 @@ module.exports = (api, options) => {
       api.extendPackage({
         dependencies: {
           "ant-design-vue": "^1.7.5",
+        },
+      })
+    },
+    /**
+     * @description: babel.config.js文件初始化时候需要的配置
+     * @param {*}
+     * @return {*}
+     */    
+    packageBabelInit() {
+      api.extendPackage({
+        browserslist: [
+          "> 1%",
+          "last 2 versions",
+          "ios >= 11",
+          "safari >= 11"
+        ],
+        devDependencies: {
+          "@babel/preset-env": "^7.8.3",
+          "babel-plugin-transform-class-properties": "^6.24.1"
         },
       })
     }

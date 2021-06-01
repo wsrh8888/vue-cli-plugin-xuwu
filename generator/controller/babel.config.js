@@ -1,31 +1,22 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-06-01 11:11:04
+ * @LastEditTime: 2021-06-01 14:07:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/babel.config.js
  */
 
 const BabelConfigInit = (api, options) => {
-  console.log('444444')
+  const { packageBabelInit } = require('./package')(api, options)
   api.render({
     "/babel.config.js": "../module/babel.config.js"
   })
-  api.extendPackage({
-    browserslist: [
-      "> 1%",
-      "last 2 versions",
-      "ios >= 11",
-      "safari >= 11"
-    ],
-    devDependencies: {
-      "@babel/preset-env": "^7.8.3",
-      "babel-plugin-transform-class-properties": "^6.24.1"
-    },
-  })
+  packageBabelInit()
 }
 module.exports = (api, options) => {
+  const { elementTemplate, reoveConsoleTemplate } = require('../view/babel.config')(api, options)
+
   return {
     /**
      * @description: 在babel里增加生产环境去掉console  
@@ -52,9 +43,7 @@ module.exports = (api, options) => {
         lines = contentMain.split(/\r?\n/g)
         const renderIndex = lines.findIndex(line => line.match(/module.exports/))        
         if (lines.findIndex(line => line.match(/transform-remove-console/)) === -1) {
-          lines[renderIndex -1] += `${EOL} if (process.env.API_ENV === 'prod') {
-            plugins.push('transform-remove-console')
-          }`
+          lines[renderIndex -1] += `${EOL} ${reoveConsoleTemplate()}`
           fs.writeFileSync(`./babel.config.js`, lines.join(EOL), { encoding: 'utf-8' })
         }
       })
@@ -83,16 +72,7 @@ module.exports = (api, options) => {
         lines = contentMain.split(/\r?\n/g)
         const renderIndex = lines.findIndex(line => line.match(/module.exports/))        
         if (lines.findIndex(line => line.match(/element-ui/)) === -1) {
-          lines[renderIndex -1] += `${EOL}  plugins.push(
-            [
-              "component",
-              {
-                "libraryName": "element-ui",
-                "styleLibraryName": "theme-chalk"
-              },
-        
-            ],
-          )`
+          lines[renderIndex -1] += `${EOL}  ${elementTemplate()}`
           fs.writeFileSync(`./babel.config.js`, lines.join(EOL), { encoding: 'utf-8' })
         }
       })

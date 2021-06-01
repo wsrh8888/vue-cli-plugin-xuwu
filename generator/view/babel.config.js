@@ -1,14 +1,26 @@
 /*
  * @Author: your name
- * @Date: 2021-05-20 20:56:59
- * @LastEditTime: 2021-05-20 21:09:14
+ * @Date: 2021-06-01 11:34:28
+ * @LastEditTime: 2021-06-01 11:39:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/controller/template.js
+ * @FilePath: /vue-cli-plugin-init-structure/generator/view/babel.config.js
  */
 module.exports = () => {
   return {
-    ElementTemplate() {
+    reoveConsoleTemplate() {
+      return `
+        if (process.env.API_ENV === 'prod') {
+          plugins.push('transform-remove-console')
+        }
+      `
+    },
+    /**
+     * @description: element按需引入模板
+     * @param {*}
+     * @return {*}
+     */    
+    elementTemplate() {
       return `
         plugins.push([
           'component',
@@ -19,7 +31,7 @@ module.exports = () => {
         ])
       `
     },
-    VantTemplate() {
+    vantTemplate() {
       return `
         plugins.push([
           "import", {
@@ -30,7 +42,7 @@ module.exports = () => {
         ])
       `
     },
-    AntDesignTemplate(){
+    antDesignTemplate(){
       return `
         [
           'import',
