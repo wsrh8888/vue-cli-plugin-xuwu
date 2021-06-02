@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-02 14:31:21
+ * @LastEditTime: 2021-06-02 14:38:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -16,6 +16,7 @@ module.exports = (api, options) => {
   const {
     packageCommitPre,
     packageRemoveConsole,
+    packageAddConsolePanel,
     packageElementUi,
     // packageVantUi,
     // packageAntDesignUi,
@@ -82,7 +83,7 @@ module.exports = (api, options) => {
     },
     // 添加console相关配置
     consolePlugin() {
-      packageRemoveConsole()
+      packageAddConsolePanel()
       addConsoleOption()
     },
     // 添加适配相关操作
