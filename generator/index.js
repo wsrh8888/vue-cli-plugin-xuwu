@@ -1,12 +1,11 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-02 14:47:39
+ * @LastEditTime: 2021-06-02 14:47:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
  */
-asdsa
 module.exports = (api, options) => {
   const {
     sassPlugin,
