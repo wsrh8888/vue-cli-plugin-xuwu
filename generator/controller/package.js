@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-06-01 11:33:07
+ * @LastEditTime: 2021-06-02 14:19:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -63,7 +63,11 @@ module.exports = (api, options) => {
         },
       })
     },
-    // 引入element
+    /**
+     * @description: 引入element
+     * @param {*}
+     * @return {*}
+     */    
     packageElementUi() {
       api.extendPackage({
         devDependencies: {
@@ -74,7 +78,11 @@ module.exports = (api, options) => {
         },
       })
     },
-    // 引入vant
+    /**
+     * @description: 引入vant
+     * @param {*}
+     * @return {*}
+     */    
     packageVantUi() {
       api.extendPackage({
         dependencies: {
@@ -82,7 +90,11 @@ module.exports = (api, options) => {
         },
       })
     },
-    // 引入ant-design
+    /**
+     * @description: 引入ant-design
+     * @param {*}
+     * @return {*}
+     */    
     packageAntDesignUi() {
       api.extendPackage({
         dependencies: {
@@ -107,6 +119,101 @@ module.exports = (api, options) => {
           "@babel/preset-env": "^7.8.3",
           "babel-plugin-transform-class-properties": "^6.24.1"
         },
+      })
+    },
+    /**
+     * @description: 增加去掉console相关依赖
+     * @param {*}
+     * @return {*}
+     */     
+    packageRemoveConsole() {
+      api.extendPackage({
+        devDependencies: {
+          "vconsole": "^3.3.4",
+        }
+      })
+    },
+    /**
+     * @description: 添加移动端适配相关插件
+     * @param {*}
+     * @return {*}
+     */    
+    packageFlexible() {
+      api.extendPackage({
+        devDependencies: {
+          "lib-flexible": "^0.3.2",
+          "postcss-plugin-px2rem": "^0.8.1",
+        }
+      })
+    },
+    /**
+     * @description: scripts增加环境区分的命令
+     * @param {*}
+     * @return {*}
+     */    
+    packageCrossEnv() {
+      api.extendPackage({
+        scripts: {
+          "serve_test": "cross-env API_ENV=test vue-cli-service serve",
+          "serve_pre": "cross-env API_ENV=pre vue-cli-service serve",
+          "serve_prod": "cross-env API_ENV=prod vue-cli-service serve",
+          "build_test": "cross-env API_ENV=test vue-cli-service build",
+          "build_pre": "cross-env API_ENV=pre vue-cli-service build",
+          "build_prod": "cross-env API_ENV=prod vue-cli-service build",
+          "build": "cross-env API_ENV=prod vue-cli-service build --report",
+        },
+        "scripts-info": {
+          "serve_test": "启动开发/测试环境",
+          "build_test": "打包测试环境",
+          "build": "分析打包后包含的模块的大小"
+        },
+        browserslist: [
+          "> 1%",
+          "last 2 versions",
+          "ios >= 11",
+          "safari >= 11"
+        ],
+        devDependencies: {
+          "cross-env": "^7.0.3"
+        },
+      })
+    },
+    /**
+     * @description: 增加sass相关依赖
+     * @param {*}
+     * @return {*}
+     */    
+    packageSass() {
+      api.extendPackage({
+        devDependencies: {
+          "sass-loader": "^10.2.0",
+          "sass": "^1.32.13"
+        }
+      })
+    },
+    /**
+     * @description: 增加less相关依赖
+     * @param {*}
+     * @return {*}
+     */    
+    packageLess() {
+      api.extendPackage({
+        devDependencies: {
+          "less": "^3.12.0",
+          "less-loader": "^6.2.0",
+        }
+      })
+    },
+    /**
+     * @description: 增加拖拽组建相关依赖
+     * @param {*}
+     * @return {*}
+     */    
+    packageVuedraggable() {
+      api.extendPackage({
+        devDependencies: {
+          "vuedraggable": "^2.24.3",
+        }
       })
     }
   }

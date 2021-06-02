@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-01 11:27:38
+ * @LastEditTime: 2021-06-02 10:38:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -86,7 +86,6 @@ module.exports = (api, options) => {
       config()
     })
   }
-  console.log(options.uiPlugin)
   // 处理UI插件
   if (options.uiPlugin) {
     enumUiPlugin[options.uiPlugin]()

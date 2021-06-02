@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:28
- * @LastEditTime: 2021-04-27 20:30:58
+ * @LastEditTime: 2021-06-02 14:13:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/vue.config.js
@@ -46,6 +46,20 @@ module.exports = (api, options) => {
           },`
           fs.writeFileSync(`./vue.config.js`, configLines.join(EOL), { encoding: 'utf-8' })
         }
+      })
+    },
+    vueConfigFlexible() {
+      const fs = require('fs')
+      let contentMain
+      try {
+        contentMain = fs.readFileSync(api.resolve(`./module/vue.config.js`), { encoding: 'utf-8' })
+      } catch (error) {
+        api.render({
+          "/vue.config.js":"./module/vue.config.js"
+        })
+      }
+      api.render({
+        "/src/utils/rem.js":"./module/rem.js"
       })
     }
   }
