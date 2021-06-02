@@ -4,7 +4,6 @@
   "description": "主动格式化vue-cli工程基础模版插件",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix ./generator  --ext .vue,.js,.ts"
   },
   "husky": {
