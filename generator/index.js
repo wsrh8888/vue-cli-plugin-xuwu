@@ -6,17 +6,15 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
  */
-'use strict';
-
 
 module.exports = (api, options) => {
   const {
     sassPlugin,
     requestPlugin,
-    consolePlugin, 
-    flexiblePlugin, 
-    lintStagedPlugin, 
-    removeConsolePlugin, 
+    consolePlugin,
+    flexiblePlugin,
+    lintStagedPlugin,
+    removeConsolePlugin,
     crossEnvPlugin,
     vuedraggablePlugin,
     ElementUi,
@@ -25,34 +23,24 @@ module.exports = (api, options) => {
   } = require('./controller')(api, options)
   const defaultConfig = {
     vue: {
-      pc: [ 
-        lintStagedPlugin, 
-        removeConsolePlugin, 
-        crossEnvPlugin, 
+      pc: [
+        lintStagedPlugin,
+        removeConsolePlugin,
+        crossEnvPlugin,
         requestPlugin
       ],
-      mobile: [ 
-        crossEnvPlugin, 
-        removeConsolePlugin, 
-        lintStagedPlugin, 
-        consolePlugin, 
-        flexiblePlugin, 
+      mobile: [
+        crossEnvPlugin,
+        removeConsolePlugin,
+        lintStagedPlugin,
+        consolePlugin,
+        flexiblePlugin,
         requestPlugin
       ]
     },
     uniapp: {
-      pc: [
-        lintStagedPlugin,
-        sassPlugin,
-        requestPlugin,
-        crossEnvPlugin
-      ],
-      mobile: [
-        lintStagedPlugin,
-        sassPlugin,
-        requestPlugin,
-        crossEnvPlugin
-      ]
+      pc: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin],
+      mobile: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin]
     }
   }
   // 普通配置插件
@@ -64,7 +52,7 @@ module.exports = (api, options) => {
     removeConsole: removeConsolePlugin,
     crossEnv: crossEnvPlugin,
     vuedraggable: vuedraggablePlugin,
-    sass: sassPlugin,
+    sass: sassPlugin
   }
   // UI插件
   const enumUiPlugin = {
@@ -76,13 +64,15 @@ module.exports = (api, options) => {
    * @description: 处理自定义配置和默认配置
    * @param {*} options
    * @return {*}
-   */  
+   */
   if (options.configType !== 'default') {
-    options.manuallyValue.forEach(element => {
+    options.manuallyValue.forEach((element) => {
       enumOption[element]()
-    });
+    })
   } else {
-    defaultConfig[options.language][options.useType ? options.useType : 'pc'].forEach(config => {
+    defaultConfig[options.language][
+      options.useType ? options.useType : 'pc'
+    ].forEach((config) => {
       config()
     })
   }
@@ -90,4 +80,4 @@ module.exports = (api, options) => {
   if (options.uiPlugin) {
     enumUiPlugin[options.uiPlugin]()
   }
-};
+}

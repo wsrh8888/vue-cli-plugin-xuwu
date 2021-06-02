@@ -11,8 +11,7 @@ import { methodList } from '@/utils/interface'
 
 export const getCodeApi = () => {
   return request({
-    url: `214324234/aaaa`,
+    url: '214324234/aaaa',
     method: methodList.GET
   })
 }
-

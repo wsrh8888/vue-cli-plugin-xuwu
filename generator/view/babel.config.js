@@ -19,7 +19,7 @@ module.exports = () => {
      * @description: element按需引入模板
      * @param {*}
      * @return {*}
-     */    
+     */
     elementTemplate() {
       return `
         plugins.push([
@@ -42,7 +42,7 @@ module.exports = () => {
         ])
       `
     },
-    antDesignTemplate(){
+    antDesignTemplate() {
       return `
         [
           'import',

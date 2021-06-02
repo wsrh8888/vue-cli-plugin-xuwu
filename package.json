@@ -4,14 +4,15 @@
   "description": "主动格式化vue-cli工程基础模版插件",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix ./generator  --ext .vue,.js,.ts"
   },
   "keywords": [
     "vue",
-    "prettier", 
-    "eslint", 
-    "husky", 
-    "lib-flexible", 
+    "prettier",
+    "eslint",
+    "husky",
+    "lib-flexible",
     "vconsole",
     "cross-env",
     "babel-plugin-transform-remove-console"
@@ -26,5 +27,30 @@
   "repository": {
     "type": "git",
     "url": "https://gitee.com/dawwdadfrf/vue-cli-plugin-init-structure.git"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "prettier": "^2.3.0"
+  },
+  "dependencies": {
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.10.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "@vue/prettier",
+      "@vue/prettier/@typescript-eslint"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {}
   }
 }

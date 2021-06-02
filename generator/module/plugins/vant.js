@@ -24,29 +24,31 @@ import {
   Slider,
   Picker,
   CellGroup,
-  Col, Row,
+  Col,
+  Row,
   Image as VanImage,
   ImagePreview,
   NumberKeyboard,
   Cascader,
   PasswordInput,
-  Checkbox, CheckboxGroup,
+  Checkbox,
+  CheckboxGroup,
   DatetimePicker,
   Form,
-  RadioGroup, 
+  RadioGroup,
   Radio,
   Rate,
   Search,
   Switch,
   Uploader,
-  DropdownMenu, 
+  DropdownMenu,
   DropdownItem,
   Notify,
   PullRefresh,
   ShareSheet,
   Badge,
   Circle,
-  Collapse, 
+  Collapse,
   CollapseItem,
   CountDown,
   Divider,
@@ -65,77 +67,78 @@ import {
   Tag,
   Grid,
   GridItem,
-  IndexBar, 
+  IndexBar,
   IndexAnchor,
   NavBar,
   Calendar,
   Pagination,
-  Sidebar, 
+  Sidebar,
   SidebarItem,
-  Tab, Tabs,
-  Tabbar, TabbarItem,
+  Tab,
+  Tabs,
+  Tabbar,
+  TabbarItem,
   TreeSelect
 } from 'vant'
 
+Vue.use(TreeSelect)
+Vue.use(Tabbar)
+Vue.use(TabbarItem)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(Sidebar)
+Vue.use(SidebarItem)
+Vue.use(Pagination)
 
-Vue.use(TreeSelect);
-Vue.use(Tabbar);
-Vue.use(TabbarItem);
-Vue.use(Tab);
-Vue.use(Tabs);
-Vue.use(Sidebar);
-Vue.use(SidebarItem);
-Vue.use(Pagination);
+Vue.use(NavBar)
+Vue.use(IndexBar)
+Vue.use(IndexAnchor)
+Vue.use(Grid)
+Vue.use(GridItem)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
+Vue.use(Tag)
+Vue.use(Step)
+Vue.use(Steps)
+Vue.use(Sticky)
+Vue.use(Progress)
+Vue.use(Skeleton)
+Vue.use(Skeleton)
+Vue.use(Popover)
+Vue.use(NoticeBar)
+Vue.use(List)
+Vue.use(Lazyload)
+Vue.use(Empty)
+Vue.use(Divider)
+Vue.use(CountDown)
+Vue.use(Collapse)
+Vue.use(CollapseItem)
+Vue.use(Circle)
+Vue.use(Badge)
+Vue.use(PullRefresh)
+Vue.use(ShareSheet)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
+Vue.use(Uploader)
 
-Vue.use(NavBar);
-Vue.use(IndexBar);
-Vue.use(IndexAnchor);
-Vue.use(Grid);
-Vue.use(GridItem);
-Vue.use(Swipe);
-Vue.use(SwipeItem);
-Vue.use(Tag);
-Vue.use(Step);
-Vue.use(Steps);
-Vue.use(Sticky);
-Vue.use(Progress);
-Vue.use(Skeleton);
-Vue.use(Skeleton);
-Vue.use(Popover);
-Vue.use(NoticeBar);
-Vue.use(List);
-Vue.use(Lazyload);
-Vue.use(Empty);
-Vue.use(Divider);
-Vue.use(CountDown);
-Vue.use(Collapse);
-Vue.use(CollapseItem);
-Vue.use(Circle);
-Vue.use(Badge);
-Vue.use(PullRefresh);
-Vue.use(ShareSheet);
-Vue.use(DropdownMenu);
-Vue.use(DropdownItem);
-Vue.use(Uploader);
+Vue.use(Switch)
 
-Vue.use(Switch);
+Vue.use(Search)
 
-Vue.use(Search);
+Vue.use(Rate)
+Vue.use(Radio)
+Vue.use(RadioGroup)
+Vue.use(PasswordInput)
 
-Vue.use(Rate);
-Vue.use(Radio);
-Vue.use(RadioGroup);
-Vue.use(PasswordInput);
+Vue.use(Form)
 
-Vue.use(Form);
+Vue.use(DatetimePicker)
 
-Vue.use(DatetimePicker);
-
-Vue.use(Checkbox);
+Vue.use(Checkbox)
 
 Vue.use(CheckboxGroup)
 
-Vue.use(Cascader);
+Vue.use(Cascader)
 
 Vue.use(Calendar)
 
@@ -164,5 +167,3 @@ Vue.use(Overlay)
 Vue.prototype.$dialog = Dialog
 Vue.prototype.$toast = Toast
 Vue.prototype.$notify = Notify
-
-

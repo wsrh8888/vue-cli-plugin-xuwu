@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:28
- * @LastEditTime: 2021-06-02 14:13:28
+ * @LastEditTime: 2021-06-02 14:32:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/vue.config.js
  */
 
-module.exports = (api, options) => {
+module.exports = (api) => {
   return {
     /**
      * @description: 在vue.config里增加适配相关代码
@@ -19,10 +19,15 @@ module.exports = (api, options) => {
       api.afterInvoke(() => {
         const fs = require('fs')
         const { EOL } = require('os')
-        const contentVueConfig = fs.readFileSync(api.resolve(`./vue.config.js`), { encoding: 'utf-8' })
+        const contentVueConfig = fs.readFileSync(
+          api.resolve('./vue.config.js'),
+          { encoding: 'utf-8' }
+        )
         const configLines = contentVueConfig.split(/\r?\n/g)
-        const configIndex = configLines.findIndex(line => line.match(/module.exports/))
-        if (configLines.findIndex(line => line.match(/css:/)) === -1) {
+        const configIndex = configLines.findIndex((line) =>
+          line.match(/module.exports/)
+        )
+        if (configLines.findIndex((line) => line.match(/css:/)) === -1) {
           configLines[configIndex] += `${EOL}  css: {
             loaderOptions: {
               postcss: {
@@ -44,22 +49,25 @@ module.exports = (api, options) => {
               }
             }
           },`
-          fs.writeFileSync(`./vue.config.js`, configLines.join(EOL), { encoding: 'utf-8' })
+          fs.writeFileSync('./vue.config.js', configLines.join(EOL), {
+            encoding: 'utf-8'
+          })
         }
       })
     },
     vueConfigFlexible() {
       const fs = require('fs')
-      let contentMain
       try {
-        contentMain = fs.readFileSync(api.resolve(`./module/vue.config.js`), { encoding: 'utf-8' })
+        fs.readFileSync(api.resolve('./module/vue.config.js'), {
+          encoding: 'utf-8'
+        })
       } catch (error) {
         api.render({
-          "/vue.config.js":"./module/vue.config.js"
+          '/vue.config.js': './module/vue.config.js'
         })
       }
       api.render({
-        "/src/utils/rem.js":"./module/rem.js"
+        '/src/utils/rem.js': './module/rem.js'
       })
     }
   }

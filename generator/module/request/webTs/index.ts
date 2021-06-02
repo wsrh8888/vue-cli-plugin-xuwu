@@ -6,11 +6,11 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-structure/generator/template/api/common.js
  */
-import {request} from '@/utils/request'
+import { request } from '@/utils/request'
 
 export const testApi = () => {
   return request({
     method: 'get',
-    url: `test`
+    url: 'test'
   })
 }

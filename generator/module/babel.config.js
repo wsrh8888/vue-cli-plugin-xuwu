@@ -8,7 +8,7 @@
  */
 const plugins = [
   '@vue/babel-plugin-transform-vue-jsx',
-  "transform-class-properties"
+  'transform-class-properties'
 ]
 module.exports = {
   presets: [
@@ -16,8 +16,8 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        'useBuiltIns': 'usage',
-        'corejs': 3
+        useBuiltIns: 'usage',
+        corejs: 3
       }
     ]
   ],

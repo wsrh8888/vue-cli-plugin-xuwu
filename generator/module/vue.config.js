@@ -12,9 +12,15 @@ const webpack = require('webpack')
 let webUrl = ''
 if (process.env.NODE_ENV === 'production' && process.env.API_ENV === 'test') {
   webUrl = '/'
-} else if (process.env.NODE_ENV === 'production' &&process.env.API_ENV === 'prod') {
+} else if (
+  process.env.NODE_ENV === 'production' &&
+  process.env.API_ENV === 'prod'
+) {
   webUrl = '/'
-} else if (process.env.NODE_ENV === 'production' &&process.env.API_ENV === 'pre') {
+} else if (
+  process.env.NODE_ENV === 'production' &&
+  process.env.API_ENV === 'pre'
+) {
   webUrl = '/'
 } else {
   webUrl = '/'
@@ -26,12 +32,12 @@ module.exports = {
         'process.env': {
           API_ENV: JSON.stringify(process.env.API_ENV)
         }
-      }),
-    ],
+      })
+    ]
   },
-   productionSourceMap: false,
-   // eslint-loader 是否在保存的时候检查
-   lintOnSave: true,
-   publicPath: webUrl,
-   assetsDir: './static'
+  productionSourceMap: false,
+  // eslint-loader 是否在保存的时候检查
+  lintOnSave: true,
+  publicPath: webUrl,
+  assetsDir: './static'
 }

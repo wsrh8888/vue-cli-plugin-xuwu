@@ -6,17 +6,17 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
  */
-module.exports = (api, options) => {
+module.exports = (api) => {
   return {
     requestPlatforms() {
       api.render({
-        "/src/utils/request.js":"../../module/request/uniappJs/request.js",
-        "/src/api/index.js":"../../module/request/uniappJs/index.js"
+        '/src/utils/request.js': '../../module/request/uniappJs/request.js',
+        '/src/api/index.js': '../../module/request/uniappJs/index.js'
       })
     },
     configPlatforms() {
       api.render({
-        "/src/utils/config.js":"../../module/config/index.js"
+        '/src/utils/config.js': '../../module/config/index.js'
       })
     }
   }

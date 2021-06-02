@@ -12,9 +12,7 @@ if (process.env.NODE_ENV === 'development' || process.env.API_ENV === 'test') {
   test = '222'
 } else if (process.env.API_ENV === 'pre-releases') {
   test = '222'
-
 } else if (process.env.API_ENV === 'production') {
   test = '222'
-
 }
 export { test }

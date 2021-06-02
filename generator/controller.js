@@ -1,56 +1,41 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-02 14:19:39
+ * @LastEditTime: 2021-06-02 14:31:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
  */
 
-/**
- * @description: config.vue增加css移动端模块
- * @param {*} api
- * @param {*} options
- * @return {*}
- */
-
- module.exports = (api, options) => {
+module.exports = (api, options) => {
+  const { addFlexibleOptions, addConsoleOption, mainAddPlugins } =
+    require('./controller/main')(api, options)
+  const { addCssOptions, vueConfigFlexible } =
+    require('./controller/vue.config')(api, options)
+  const { addCssMediaPlugin } = require('./controller/main.vue')(api, options)
   const {
-    addFlexibleOptions, 
-    addConsoleOption,
-    mainAddPlugins
-  } = require('./controller/main')(api, options)
-  const {
-    addCssOptions,
-    vueConfigFlexible
-  } = require('./controller/vue.config')(api, options)
-  const {
-    addCssMediaPlugin
-  } = require('./controller/main.vue')(api, options)
-  const {
-    packageCommitPre, 
-    packageRemoveConsole, 
-    packageElementUi, 
-    packageVantUi,
-    packageAntDesignUi,
+    packageCommitPre,
     packageRemoveConsole,
+    packageElementUi,
+    // packageVantUi,
+    // packageAntDesignUi,
     packageFlexible,
     packageCrossEnv,
     packageSass,
     packageLess,
     packageVuedraggable
   } = require('./controller/package')(api, options)
-  const {
-    babelConfigReoveConsole,
-    babelConfigAddElement 
-  } = require('./controller/babel.config')(api, options)
+  const { babelConfigReoveConsole, babelConfigAddElement } =
+    require('./controller/babel.config')(api, options)
   const isTs = api.entryFile.endsWith('.ts')
   const {
-    configPlatforms, 
-    requestPlatforms, 
+    configPlatforms,
+    requestPlatforms,
     elementUiPlatforms,
     pluginsPlatforms
-  } = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
+  } = require(`./controller/platforms/${
+    options.language === 'vue' ? 'web' : 'uniapp'
+  }.${isTs ? 'ts' : 'js'}`)(api, options)
   return {
     ElementUi() {
       packageElementUi()
@@ -89,9 +74,9 @@
     // 增加代码格式化插件prettier+eslint相关
     lintStagedPlugin() {
       api.render({
-        "/.eslintrc.js":"./module/_eslintrc.js",
-        "/.eslintignore":"./module/_eslintignore",
-        "/.prettierrc":"./module/_prettierrc"
+        '/.eslintrc.js': './module/_eslintrc.js',
+        '/.eslintignore': './module/_eslintignore',
+        '/.prettierrc': './module/_prettierrc'
       })
       packageCommitPre()
     },
