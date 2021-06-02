@@ -7,6 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix ./generator  --ext .vue,.js,.ts"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue,ts}": [
+      "npm run lint",
+      "git add"
+    ]
+  },
   "keywords": [
     "vue",
     "prettier",
@@ -30,9 +41,9 @@
   },
   "devDependencies": {
     "eslint": "^7.27.0",
-    "prettier": "^2.3.0"
-  },
-  "dependencies": {
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint-plugin-prettier": "^3.4.0",
