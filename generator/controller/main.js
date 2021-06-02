@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-04-29 17:09:11
+ * @LastEditTime: 2021-06-02 10:23:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -50,6 +50,14 @@ module.exports = (api, options) => {
           fs.writeFileSync(api.entryFile, lines.join(EOL), { encoding: 'utf-8' })
         }
       })
+    },
+    /**
+     * @description: 在main文件中增加导入plugins入口
+     * @param {*}
+     * @return {*}
+     */    
+    mainAddPlugins() {
+      api.injectImports(api.entryFile, `import "./plugins";`)
     }
   }
 }

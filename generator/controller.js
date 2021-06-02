@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-01 11:11:59
+ * @LastEditTime: 2021-06-02 10:25:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -17,7 +17,8 @@
  module.exports = (api, options) => {
   const {
     addFlexibleOptions, 
-    addConsoleOption
+    addConsoleOption,
+    mainAddPlugins
   } = require('./controller/main')(api, options)
   const {
     addCssOptions
@@ -40,13 +41,16 @@
   const {
     configPlatforms, 
     requestPlatforms, 
-    elementUiPlatforms
+    elementUiPlatforms,
+    pluginsPlatforms
   } = require(`./controller/platforms/${options.language==='vue'?'web': 'uniapp'}.${isTs?'ts': 'js'}`)(api, options)
   return {
     ElementUi() {
       packageElementUi()
       elementUiPlatforms()
       babelConfigAddElement()
+      mainAddPlugins()
+      pluginsPlatforms()
     },
     VantUi() {
       // packageAddUiConfig()
