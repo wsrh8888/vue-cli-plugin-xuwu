@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-02 20:16:07
+ * @LastEditTime: 2021-06-04 20:53:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -52,6 +52,16 @@ module.exports = (api) => {
           '/src/plugins/index.js': '../../module/plugins/index.js'
         })
       }
+    },
+    flexiblePlatforms() {
+      api.render({
+        '/src/plugins/rem.js': '../../module/rem.js'
+      })
+      api.injectImports(
+        '/src/plugins/index.ts',
+        'import "lib-flexible/flexible"'
+      )
+      api.injectImports('/src/plugins/index.ts', 'import "./rem"')
     }
   }
 }

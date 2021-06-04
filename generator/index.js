@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-02 14:47:47
+ * @LastEditTime: 2021-06-04 20:03:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -17,16 +17,21 @@ module.exports = (api, options) => {
     crossEnvPlugin,
     vuedraggablePlugin,
     ElementUi,
-    VantUi,
-    AntDesignUi
+    VantUi
   } = require('./controller')(api, options)
+  /**
+   * @description: 默认配置
+   * @param {*}
+   * @return {*}
+   */
   const defaultConfig = {
     vue: {
       pc: [
         lintStagedPlugin,
         removeConsolePlugin,
         crossEnvPlugin,
-        requestPlugin
+        requestPlugin,
+        ElementUi
       ],
       mobile: [
         crossEnvPlugin,
@@ -34,7 +39,8 @@ module.exports = (api, options) => {
         lintStagedPlugin,
         consolePlugin,
         flexiblePlugin,
-        requestPlugin
+        requestPlugin,
+        VantUi
       ]
     },
     uniapp: {
@@ -42,7 +48,12 @@ module.exports = (api, options) => {
       mobile: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin]
     }
   }
-  // 普通配置插件
+  /**
+   * @description: 普通的全部配置
+   * @param {*}
+   * @return {*}
+   */
+
   const enumOption = {
     requestTemplate: requestPlugin,
     consoleLog: consolePlugin,
@@ -53,11 +64,14 @@ module.exports = (api, options) => {
     vuedraggable: vuedraggablePlugin,
     sass: sassPlugin
   }
-  // UI插件
+  /**
+   * @description: UI的全部配置
+   * @param {*}
+   * @return {*}
+   */
   const enumUiPlugin = {
     Element: ElementUi,
-    Vant: VantUi,
-    AntDesign: AntDesignUi
+    Vant: VantUi
   }
   /**
    * @description: 处理自定义配置和默认配置

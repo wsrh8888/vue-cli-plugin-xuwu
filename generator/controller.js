@@ -1,15 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-04 14:36:53
+ * @LastEditTime: 2021-06-04 20:53:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
  */
 
 module.exports = (api, options) => {
-  const { addFlexibleOptions, addConsoleOption, mainAddPlugins } =
-    require('./controller/main')(api, options)
+  const { addConsoleOption, mainAddPlugins } = require('./controller/main')(
+    api,
+    options
+  )
   const { addCssOptions, vueConfigFlexible } =
     require('./controller/vue.config')(api, options)
   const { addCssMediaPlugin } = require('./controller/main.vue')(api, options)
@@ -19,7 +21,6 @@ module.exports = (api, options) => {
     packageAddConsolePanel,
     packageElementUi,
     packageVantUi,
-    // packageAntDesignUi,
     packageFlexible,
     packageCrossEnv,
     packageSass,
@@ -34,7 +35,8 @@ module.exports = (api, options) => {
     requestPlatforms,
     vantUiPlatforms,
     elementUiPlatforms,
-    pluginsPlatforms
+    pluginsPlatforms,
+    flexiblePlatforms
   } = require(`./controller/platforms/${
     options.language === 'vue' ? 'web' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
@@ -47,15 +49,10 @@ module.exports = (api, options) => {
       pluginsPlatforms()
     },
     VantUi() {
-      // packageAddUiConfig()
+      pluginsPlatforms()
       packageVantUi()
       vantUiPlatforms()
       mainAddPlugins()
-      pluginsPlatforms()
-    },
-    AntDesignUi() {
-      // packageAddUiConfig()
-      // packageAntDesignUi()
     },
     // 请求
     requestPlugin() {
@@ -92,9 +89,11 @@ module.exports = (api, options) => {
     },
     // 添加适配相关操作
     flexiblePlugin() {
+      console.log('3433333333')
       vueConfigFlexible()
       packageFlexible()
-      addFlexibleOptions()
+      pluginsPlatforms()
+      flexiblePlatforms()
       addCssOptions()
       addCssMediaPlugin()
     },

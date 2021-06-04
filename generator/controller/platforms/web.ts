@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-02 20:17:27
+ * @LastEditTime: 2021-06-04 20:52:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -44,14 +44,24 @@ module.exports = (api) => {
     pluginsPlatforms() {
       const fs = require('fs')
       try {
-        fs.readFileSync(api.resolve('./src/plugins/index.js'), {
+        fs.readFileSync(api.resolve('./src/plugins/index.ts'), {
           encoding: 'utf-8'
         })
       } catch (error) {
         api.render({
-          '/src/plugins/index.js': '../../module/plugins/index.js'
+          '/src/plugins/index.ts': '../../module/plugins/index.ts'
         })
       }
+    },
+    flexiblePlatforms() {
+      api.render({
+        '/src/plugins/rem.js': '../../module/rem.js'
+      })
+      api.injectImports(
+        '/src/plugins/index.ts',
+        'import "lib-flexible/flexible"'
+      )
+      api.injectImports('/src/plugins/index.ts', 'import "./rem"')
     }
   }
 }

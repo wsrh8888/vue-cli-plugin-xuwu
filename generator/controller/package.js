@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-06-02 14:34:29
+ * @LastEditTime: 2021-06-04 19:58:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -84,18 +84,6 @@ module.exports = (api) => {
       api.extendPackage({
         dependencies: {
           vant: '^2.12.19'
-        }
-      })
-    },
-    /**
-     * @description: 引入ant-design
-     * @param {*}
-     * @return {*}
-     */
-    packageAntDesignUi() {
-      api.extendPackage({
-        dependencies: {
-          'ant-design-vue': '^1.7.5'
         }
       })
     },

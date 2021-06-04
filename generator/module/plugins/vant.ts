@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 19:08:47
- * @LastEditTime: 2021-05-20 20:22:38
+ * @LastEditTime: 2021-06-04 20:10:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/ui/vant.js
  */
 import Vue from 'vue'
+import 'vant/lib/index.css'
 
 import {
   Popup,
@@ -120,34 +121,22 @@ Vue.use(ShareSheet)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 Vue.use(Uploader)
-
 Vue.use(Switch)
-
 Vue.use(Search)
-
 Vue.use(Rate)
 Vue.use(Radio)
 Vue.use(RadioGroup)
 Vue.use(PasswordInput)
-
 Vue.use(Form)
-
 Vue.use(DatetimePicker)
-
 Vue.use(Checkbox)
-
 Vue.use(CheckboxGroup)
-
 Vue.use(Cascader)
-
 Vue.use(Calendar)
-
 Vue.use(Col)
 Vue.use(Row)
-
 Vue.use(CellGroup)
 Vue.use(VanImage)
-
 Vue.use(Icon)
 Vue.use(Picker)
 Vue.use(Popup)

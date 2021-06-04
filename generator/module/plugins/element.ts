@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-20 19:08:33
- * @LastEditTime: 2021-05-20 19:43:33
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/controller/ui/element.ts
- */
 import Vue from 'vue'
 import {
   Pagination,
@@ -54,7 +46,6 @@ import {
   Col,
   Upload,
   Progress,
-  Spinner,
   Badge,
   Card,
   Rate,
@@ -80,7 +71,6 @@ import {
   Calendar,
   Backtop,
   PageHeader,
-  CascaderPanel,
   Loading,
   MessageBox,
   Message,
@@ -133,7 +123,6 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Upload)
 Vue.use(Progress)
-Vue.use(Spinner)
 Vue.use(Badge)
 Vue.use(Card)
 Vue.use(Rate)
@@ -159,7 +148,6 @@ Vue.use(Image)
 Vue.use(Calendar)
 Vue.use(Backtop)
 Vue.use(PageHeader)
-Vue.use(CascaderPanel)
 
 Vue.use(Loading.directive)
 
