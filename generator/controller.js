@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-02 14:38:34
+ * @LastEditTime: 2021-06-04 14:36:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -18,7 +18,7 @@ module.exports = (api, options) => {
     packageRemoveConsole,
     packageAddConsolePanel,
     packageElementUi,
-    // packageVantUi,
+    packageVantUi,
     // packageAntDesignUi,
     packageFlexible,
     packageCrossEnv,
@@ -32,6 +32,7 @@ module.exports = (api, options) => {
   const {
     configPlatforms,
     requestPlatforms,
+    vantUiPlatforms,
     elementUiPlatforms,
     pluginsPlatforms
   } = require(`./controller/platforms/${
@@ -47,7 +48,10 @@ module.exports = (api, options) => {
     },
     VantUi() {
       // packageAddUiConfig()
-      // packageVantUi()
+      packageVantUi()
+      vantUiPlatforms()
+      mainAddPlugins()
+      pluginsPlatforms()
     },
     AntDesignUi() {
       // packageAddUiConfig()

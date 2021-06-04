@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-02 14:32:28
+ * @LastEditTime: 2021-06-02 20:16:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -23,6 +23,12 @@ module.exports = (api) => {
       api.render({
         '/src/utils/config.js': '../../module/config/index.js'
       })
+    },
+    vantUiPlatforms() {
+      api.render({
+        '/src/plugins/vant.js': '../../module/plugins/vant.js'
+      })
+      api.injectImports('/src/plugins/index.js', 'import "./vant.js"')
     },
     elementUiPlatforms() {
       api.render({

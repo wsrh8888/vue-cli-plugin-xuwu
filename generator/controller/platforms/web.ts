@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-02 14:32:10
+ * @LastEditTime: 2021-06-02 20:17:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -29,6 +29,12 @@ module.exports = (api) => {
         '/src/plugins/element.ts': '../../module/plugins/element.ts'
       })
       api.injectImports('/src/plugins/index.ts', 'import "./element.ts"')
+    },
+    vantUiPlatforms() {
+      api.render({
+        '/src/plugins/vant.ts': '../../module/plugins/vant.ts'
+      })
+      api.injectImports('/src/plugins/index.ts', 'import "./vant.ts"')
     },
     /**
      * @description: 判断在plugins下面是否有index文件，如果没有则创建
