@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-04 20:53:07
+ * @LastEditTime: 2021-06-05 19:03:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -55,7 +55,7 @@ module.exports = (api) => {
     },
     flexiblePlatforms() {
       api.render({
-        '/src/plugins/rem.js': '../../module/rem.js'
+        '/src/plugins/rem.js': '../../module/plugins/rem.js'
       })
       api.injectImports(
         '/src/plugins/index.ts',
