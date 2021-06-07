@@ -1,12 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-04 20:03:04
+ * @LastEditTime: 2021-06-07 11:17:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
  */
+
 module.exports = (api, options) => {
+  const vueVersion = api.rootOptions.vueVersion
   const {
     sassPlugin,
     requestPlugin,
@@ -25,7 +27,7 @@ module.exports = (api, options) => {
    * @return {*}
    */
   const defaultConfig = {
-    vue: {
+    vue2: {
       pc: [
         lintStagedPlugin,
         removeConsolePlugin,
@@ -43,6 +45,7 @@ module.exports = (api, options) => {
         VantUi
       ]
     },
+    vue3: {},
     uniapp: {
       pc: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin],
       mobile: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin]
@@ -53,16 +56,19 @@ module.exports = (api, options) => {
    * @param {*}
    * @return {*}
    */
-
   const enumOption = {
-    requestTemplate: requestPlugin,
-    consoleLog: consolePlugin,
-    flexible: flexiblePlugin,
-    lintStaged: lintStagedPlugin,
-    removeConsole: removeConsolePlugin,
-    crossEnv: crossEnvPlugin,
-    vuedraggable: vuedraggablePlugin,
-    sass: sassPlugin
+    vue2: {
+      requestTemplate: requestPlugin,
+      consoleLog: consolePlugin,
+      flexible: flexiblePlugin,
+      lintStaged: lintStagedPlugin,
+      removeConsole: removeConsolePlugin,
+      crossEnv: crossEnvPlugin,
+      vuedraggable: vuedraggablePlugin,
+      sass: sassPlugin
+    },
+    vue3: {},
+    uniapp: {}
   }
   /**
    * @description: UI的全部配置
@@ -70,8 +76,11 @@ module.exports = (api, options) => {
    * @return {*}
    */
   const enumUiPlugin = {
-    Element: ElementUi,
-    Vant: VantUi
+    vue2: {
+      Element: ElementUi,
+      Vant: VantUi
+    },
+    vue3: {}
   }
   /**
    * @description: 处理自定义配置和默认配置
@@ -79,15 +88,31 @@ module.exports = (api, options) => {
    * @return {*}
    */
   if (options.configType !== 'default') {
-    options.manuallyValue.forEach((element) => {
+    const language =
+      options.language === 'uniapp'
+        ? 'uniapp'
+        : options.language === 'vue'
+        ? vueVersion === '2'
+          ? 'vue2'
+          : 'vue3'
+        : ''
+    options.manuallyValue(language).forEach((element) => {
       enumOption[element]()
     })
   } else {
-    defaultConfig[options.language][
-      options.useType ? options.useType : 'pc'
-    ].forEach((config) => {
-      config()
-    })
+    const language =
+      options.language === 'uniapp'
+        ? 'uniapp'
+        : options.language === 'vue'
+        ? vueVersion === '2'
+          ? 'vue2'
+          : 'vue3'
+        : ''
+    defaultConfig[language][options.useType ? options.useType : 'pc'].forEach(
+      (config) => {
+        config()
+      }
+    )
   }
   // 处理UI插件
   if (options.uiPlugin) {

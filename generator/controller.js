@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-04 20:53:15
+ * @LastEditTime: 2021-06-07 11:26:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -38,7 +38,7 @@ module.exports = (api, options) => {
     pluginsPlatforms,
     flexiblePlatforms
   } = require(`./controller/platforms/${
-    options.language === 'vue' ? 'web' : 'uniapp'
+    options.language === 'vue' ? 'vue' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
   return {
     ElementUi() {
@@ -54,7 +54,11 @@ module.exports = (api, options) => {
       vantUiPlatforms()
       mainAddPlugins()
     },
-    // 请求
+    /**
+     * @description: ajax请求
+     * @param {*}
+     * @return {*}
+     */
     requestPlugin() {
       requestPlatforms()
     },
@@ -64,16 +68,28 @@ module.exports = (api, options) => {
     lessPlugin() {
       packageLess()
     },
-    // 拖拽插件
+    /**
+     * @description: 拖拽插件
+     * @param {*}
+     * @return {*}
+     */
     vuedraggablePlugin() {
       packageVuedraggable()
     },
-    // 代码生产环境去掉console
+    /**
+     * @description: 代码生产环境去掉console
+     * @param {*}
+     * @return {*}
+     */
     removeConsolePlugin() {
       packageRemoveConsole()
       babelConfigReoveConsole()
     },
-    // 增加代码格式化插件prettier+eslint相关
+    /**
+     * @description: 增加代码格式化插件prettier+eslint相关
+     * @param {*}
+     * @return {*}
+     */
     lintStagedPlugin() {
       api.render({
         '/.eslintrc.js': './module/_eslintrc.js',
@@ -82,14 +98,21 @@ module.exports = (api, options) => {
       })
       packageCommitPre()
     },
-    // 添加console相关配置
+    /**
+     * @description: 添加console相关配置
+     * @param {*}
+     * @return {*}
+     */
     consolePlugin() {
       packageAddConsolePanel()
       addConsoleOption()
     },
-    // 添加适配相关操作
+    /**
+     * @description: 添加适配相关操作
+     * @param {*}
+     * @return {*}
+     */
     flexiblePlugin() {
-      console.log('3433333333')
       vueConfigFlexible()
       packageFlexible()
       pluginsPlatforms()
@@ -97,7 +120,11 @@ module.exports = (api, options) => {
       addCssOptions()
       addCssMediaPlugin()
     },
-    // 环境区分
+    /**
+     * @description: 环境区分
+     * @param {*}
+     * @return {*}
+     */
     crossEnvPlugin() {
       packageCrossEnv()
       configPlatforms()
