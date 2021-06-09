@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:54:34
- * @LastEditTime: 2021-06-09 14:08:57
+ * @LastEditTime: 2021-06-09 14:20:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/module/rem.js

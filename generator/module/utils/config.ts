@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-02 14:24:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/module/config/index.ts
+ * @FilePath: /vue-cli-plugin-init-structure/generator/module/utils/index.ts
  */
 let test: string
 

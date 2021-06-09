@@ -37,7 +37,7 @@ module.exports = (api) => {
     },
     flexiblePlatforms() {
       api.render({
-        '/src/plugins/rem.ts': '../../module/config/rem.ts'
+        '/src/utils/rem.ts': '../../module/utils/rem.ts'
       })
       api.injectImports(
         '/src/plugins/index.ts',
