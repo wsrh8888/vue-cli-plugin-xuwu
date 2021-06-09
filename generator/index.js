@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-09 14:56:14
+ * @LastEditTime: 2021-06-09 15:18:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -102,33 +102,33 @@ module.exports = (api, options) => {
    * @param {*} options
    * @return {*}
    */
-  if (options.configType !== 'default') {
-    const language =
-      options.language === 'uniapp'
+  if (options.promptsPcConfig !== 'default') {
+    const promptsLanguage =
+      options.promptsLanguage === 'uniapp'
         ? 'uniapp'
-        : options.language === 'vue'
+        : options.promptsLanguage === 'vue'
         ? vueVersion === '2'
           ? 'vue2'
           : 'vue3'
         : ''
-    options.manuallyValue(language).forEach((element) => {
+    options.promptsManuallyConfig(promptsLanguage).forEach((element) => {
       enumOption[element]()
     })
   } else {
-    const language =
-      options.language === 'uniapp'
+    const promptsLanguage =
+      options.promptsLanguage === 'uniapp'
         ? 'uniapp'
-        : options.language === 'vue'
+        : options.promptsLanguage === 'vue'
         ? vueVersion === '2'
           ? 'vue2'
           : 'vue3'
         : ''
-    console.log(language, options.useType, '2222')
-    defaultConfig[language][options.useType ? options.useType : 'pc'].forEach(
-      (config) => {
-        config()
-      }
-    )
+    console.log(promptsLanguage, options.promptsScene, '2222')
+    defaultConfig[promptsLanguage][
+      options.promptsScene ? options.promptsScene : 'pc'
+    ].forEach((config) => {
+      config()
+    })
   }
   // 处理UI插件
   if (options.uiPlugin) {

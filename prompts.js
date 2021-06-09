@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-06-04 14:37:47
+ * @LastEditTime: 2021-06-09 15:38:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -10,7 +10,7 @@ module.exports = () => {
   const prompts = [
     {
       type: 'list',
-      name: 'language',
+      name: 'promptsLanguage',
       message: '请选择自己的语言',
       choices: [
         { name: 'vue', value: 'vue' },
@@ -19,9 +19,9 @@ module.exports = () => {
       default: 'vue'
     },
     {
-      when: (answers) => answers.language === 'vue',
+      when: (answers) => answers.promptsLanguage === 'vue',
       type: 'list',
-      name: 'useType',
+      name: 'promptsScene',
       message: '请选择使用的场景',
       choices: [
         { name: 'pc', value: 'pc' },
@@ -31,7 +31,7 @@ module.exports = () => {
     },
     {
       type: 'list',
-      name: 'configType',
+      name: 'promptsPcConfig',
       message: '请选择配置',
       choices: [
         { name: 'default(默认配置)', value: 'default' },
@@ -41,10 +41,13 @@ module.exports = () => {
     },
     {
       when: (answers) => {
-        return answers.language === 'vue' && answers.configType === 'manually'
+        return (
+          answers.promptsLanguage === 'vue' &&
+          answers.promptsPcConfig === 'manually'
+        )
       },
       type: 'checkbox',
-      name: 'manuallyValue',
+      name: 'promptsManuallyConfig',
       message: 'Check the features needed for your project',
       choices: [
         { name: 'ajax请求模版', value: 'requestTemplate' },
@@ -56,7 +59,7 @@ module.exports = () => {
         { name: 'vue拖拽插件', value: 'vuedraggable' }
       ],
       default: (answers) =>
-        answers.useType === 'pc'
+        answers.promptsScene === 'pc'
           ? ['requestTemplate', 'lintStaged', 'removeConsole', 'crossEnv']
           : [
               'consoleLog',
@@ -70,11 +73,12 @@ module.exports = () => {
     {
       when: (answers) => {
         return (
-          answers.language === 'uniapp' && answers.configType === 'manually'
+          answers.promptsLanguage === 'uniapp' &&
+          answers.promptsPcConfig === 'manually'
         )
       },
       type: 'checkbox',
-      name: 'manuallyValue',
+      name: 'promptsManuallyConfig',
       message: 'Check the features needed for your project',
       choices: [
         { name: 'commit代码时统一风格', value: 'lintStaged' },
@@ -86,7 +90,10 @@ module.exports = () => {
     },
     {
       when: (answers) => {
-        return answers.language === 'vue' && answers.configType === 'manually'
+        return (
+          answers.promptsLanguage === 'vue' &&
+          answers.promptsPcConfig === 'manually'
+        )
       },
       type: 'list',
       name: 'uiPlugin',
@@ -96,7 +103,7 @@ module.exports = () => {
         { name: 'Element', value: 'Element' },
         { name: 'Vant', value: 'Vant' }
       ],
-      default: (answers) => (answers.useType === 'pc' ? 'Element' : 'Vant')
+      default: (answers) => (answers.promptsScene === 'pc' ? 'Element' : 'Vant')
     }
   ]
   return prompts

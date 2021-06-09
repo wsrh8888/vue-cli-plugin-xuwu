@@ -45,7 +45,7 @@ module.exports = (api, options) => {
     flexiblePlatforms,
     elementPlusUiPlatforms
   } = require(`./controller/platforms/${
-    options.language === 'vue' ? 'vue' : 'uniapp'
+    options.promptsLanguage === 'vue' ? 'vue' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
   return {
     ElementUi() {
