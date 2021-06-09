@@ -14,7 +14,7 @@ module.exports = (api) => {
      * @param {*} options
      * @return {*}
      */
-    addConsoleOption() {
+    mainAddVconsole() {
       api.afterInvoke(() => {
         const { EOL } = require('os')
         const fs = require('fs')

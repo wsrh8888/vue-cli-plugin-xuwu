@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-09 15:11:54
+ * @LastEditTime: 2021-06-09 16:26:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -9,15 +9,15 @@
 
 module.exports = (api, options) => {
   const {
-    addConsoleOption,
+    mainAddVconsole,
     mainInit,
     mainAddRem,
     mainAddVconsoleVue3,
     mainAddElementVue3
   } = require('./controller/main')(api, options)
-  const { addCssOptions, vueConfigFlexible } =
+  const { vueConfigAddPx2rem, vueConfigAddFlexible } =
     require('./controller/vue.config')(api, options)
-  const { addCssMediaPlugin } = require('./controller/main.vue')(api, options)
+  const { mainVueAddMedia } = require('./controller/main.vue')(api, options)
   const {
     packageCommitPre,
     packageRemoveConsole,
@@ -38,27 +38,27 @@ module.exports = (api, options) => {
   } = require('./controller/babel.config')(api, options)
   const isTs = api.entryFile.endsWith('.ts')
   const {
-    configPlatforms,
-    requestPlatforms,
-    vantUiPlatforms,
-    elementUiPlatforms,
-    flexiblePlatforms,
-    elementPlusUiPlatforms
+    platformAddUtilsConfig,
+    platformAddUtilsRequest,
+    platformAddPluginsVant,
+    platformAddPluginsElement,
+    platformAddUtilsRem,
+    platformAddPluginsElementVue3
   } = require(`./controller/platforms/${
     options.promptsLanguage === 'vue' ? 'vue' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
   return {
     uiElement() {
       packageElementUi()
-      elementUiPlatforms()
+      platformAddPluginsElement()
       babelConfigAddElement()
     },
     uiVant() {
       packageVantUi()
-      vantUiPlatforms()
+      platformAddPluginsVant()
     },
     uiElementVue3() {
-      elementPlusUiPlatforms()
+      platformAddPluginsElementVue3()
       packageElementPlusUi()
       babelConfigAddElementPlus()
       mainInit()
@@ -70,7 +70,7 @@ module.exports = (api, options) => {
      * @return {*}
      */
     pluginRequest() {
-      requestPlatforms()
+      platformAddUtilsRequest()
     },
     pluginSassPlugin() {
       packageSass()
@@ -116,11 +116,11 @@ module.exports = (api, options) => {
     pluginAddVconsole() {
       //  增加环境变量
       packageCrossEnv()
-      configPlatforms()
+      platformAddUtilsConfig()
       mainInit()
       mainAddVconsoleVue3()
       packageAddConsolePanel()
-      addConsoleOption()
+      mainAddVconsole()
     },
     /**
      * @description: 添加vconsole相关配置（vue3）
@@ -130,7 +130,7 @@ module.exports = (api, options) => {
     pluginAddVconsoleVue3() {
       //  增加环境变量
       packageCrossEnv()
-      configPlatforms()
+      platformAddUtilsConfig()
       mainInit()
       packageAddConsolePanel()
       mainAddVconsoleVue3()
@@ -141,12 +141,12 @@ module.exports = (api, options) => {
      * @return {*}
      */
     pluginFlexible() {
-      vueConfigFlexible()
+      vueConfigAddFlexible()
       packageFlexible()
-      flexiblePlatforms()
+      platformAddUtilsRem()
       mainAddRem()
-      addCssOptions()
-      addCssMediaPlugin()
+      vueConfigAddPx2rem()
+      mainVueAddMedia()
     },
     /**
      * @description: 环境区分
@@ -155,7 +155,7 @@ module.exports = (api, options) => {
      */
     pluginCrossEnv() {
       packageCrossEnv()
-      configPlatforms()
+      platformAddUtilsConfig()
     }
   }
 }

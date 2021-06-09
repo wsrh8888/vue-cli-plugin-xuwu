@@ -14,7 +14,7 @@ module.exports = (api) => {
      * @param {*} options
      * @return {*}
      */
-    addCssMediaPlugin() {
+    mainVueAddMedia() {
       api.afterInvoke(() => {
         const fs = require('fs')
         const { EOL } = require('os')

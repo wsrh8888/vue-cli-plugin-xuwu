@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:28
- * @LastEditTime: 2021-06-04 20:18:45
+ * @LastEditTime: 2021-06-09 16:13:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/vue.config.js
@@ -15,7 +15,7 @@ module.exports = (api) => {
      * @param {*} options
      * @return {*}
      */
-    addCssOptions() {
+    vueConfigAddPx2rem() {
       api.afterInvoke(() => {
         const fs = require('fs')
         const { EOL } = require('os')
@@ -55,7 +55,7 @@ module.exports = (api) => {
         }
       })
     },
-    vueConfigFlexible() {
+    vueConfigAddFlexible() {
       const fs = require('fs')
       try {
         fs.readFileSync(api.resolve('../module/vue.config.js'), {

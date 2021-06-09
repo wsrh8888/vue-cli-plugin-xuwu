@@ -8,14 +8,14 @@
  */
 module.exports = (api) => {
   return {
-    requestPlatforms() {
+    platformAddUtilsRequest() {
       api.render({
         '/src/utils/request.ts': '../../module/request/uniappTs/request.ts',
         '/src/utils/interface.ts': '../../module/request/uniappTs/interface.ts',
         '/src/api/index.ts': '../../module/request/uniappTs/index.ts'
       })
     },
-    configPlatforms() {
+    platformAddUtilsConfig() {
       api.render({
         '/src/utils/config.ts': '../../module/utils/config.ts'
       })

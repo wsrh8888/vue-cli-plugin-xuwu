@@ -1,20 +1,20 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-09 14:11:41
+ * @LastEditTime: 2021-06-09 16:24:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
  */
 module.exports = (api) => {
   return {
-    requestPlatforms() {
+    platformAddUtilsRequest() {
       api.render({
         '/src/utils/request.js': '../../module/request/uniappJs/request.js',
         '/src/api/index.js': '../../module/request/uniappJs/index.js'
       })
     },
-    configPlatforms() {
+    platformAddUtilsConfig() {
       api.render({
         '/src/utils/config.js': '../../module/utils/config.js'
       })

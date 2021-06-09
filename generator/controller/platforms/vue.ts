@@ -8,7 +8,7 @@
  */
 module.exports = (api) => {
   return {
-    requestPlatforms() {
+    platformAddUtilsRequest() {
       api.extendPackage({
         dependencies: {
           axios: '^0.21.1'
@@ -19,27 +19,27 @@ module.exports = (api) => {
         '/src/api/index.ts': '../../module/request/webTs/index.ts'
       })
     },
-    configPlatforms() {
+    platformAddUtilsConfig() {
       api.render({
         '/src/utils/config.ts': '../../module/utils/config.ts'
       })
     },
-    elementUiPlatforms() {
+    platformAddPluginsElement() {
       api.render({
         '/src/plugins/element.ts': '../../module/plugins/element.ts'
       })
     },
-    vantUiPlatforms() {
+    platformAddPluginsVant() {
       api.render({
         '/src/plugins/vant.ts': '../../module/plugins/vant.ts'
       })
     },
-    flexiblePlatforms() {
+    platformAddUtilsRem() {
       api.render({
         '/src/utils/rem.ts': '../../module/utils/rem.ts'
       })
     },
-    elementPlusUiPlatforms() {
+    platformAddPluginsElementVue3() {
       api.render({
         '/src/plugins/element.js': '../../module/plugins/elementPlus.js'
       })
