@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-09 15:18:50
+ * @LastEditTime: 2021-06-09 15:58:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -10,18 +10,18 @@
 module.exports = (api, options) => {
   const vueVersion = api.rootOptions.vueVersion
   const {
-    sassPlugin,
-    requestPlugin,
-    flexiblePlugin,
-    lintStagedPlugin,
-    removeConsolePlugin,
-    crossEnvPlugin,
-    vuedraggablePlugin,
-    ElementUi,
-    VantUi,
-    addConsolePlugin,
-    addConsolePluginVue3,
-    ElementPlusUi
+    pluginSassPlugin,
+    pluginRequest,
+    pluginFlexible,
+    pluginLintStaged,
+    pluginRemoveConsole,
+    pluginCrossEnv,
+    pluginVuedraggable,
+    uiElement,
+    uiVant,
+    pluginAddVconsole,
+    pluginAddVconsoleVue3,
+    uiElementVue3
   } = require('./controller')(api, options)
   /**
    * @description: 默认配置
@@ -31,37 +31,42 @@ module.exports = (api, options) => {
   const defaultConfig = {
     vue2: {
       pc: [
-        lintStagedPlugin,
-        removeConsolePlugin,
-        crossEnvPlugin,
-        requestPlugin,
-        ElementUi
+        pluginLintStaged,
+        pluginRemoveConsole,
+        pluginCrossEnv,
+        pluginRequest,
+        uiElement
       ],
       mobile: [
-        crossEnvPlugin,
-        removeConsolePlugin,
-        lintStagedPlugin,
-        addConsolePlugin,
-        flexiblePlugin,
-        requestPlugin,
-        VantUi
+        pluginCrossEnv,
+        pluginRemoveConsole,
+        pluginLintStaged,
+        pluginAddVconsole,
+        pluginFlexible,
+        pluginRequest,
+        uiVant
       ]
     },
     vue3: {
       pc: [],
       mobile: [
-        ElementPlusUi,
-        crossEnvPlugin,
-        addConsolePluginVue3,
-        requestPlugin,
-        flexiblePlugin,
-        removeConsolePlugin,
-        lintStagedPlugin
+        uiElementVue3,
+        pluginCrossEnv,
+        pluginAddVconsoleVue3,
+        pluginRequest,
+        pluginFlexible,
+        pluginRemoveConsole,
+        pluginLintStaged
       ]
     },
     uniapp: {
-      pc: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin],
-      mobile: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin]
+      pc: [pluginLintStaged, pluginSassPlugin, pluginRequest, pluginCrossEnv],
+      mobile: [
+        pluginLintStaged,
+        pluginSassPlugin,
+        pluginRequest,
+        pluginCrossEnv
+      ]
     }
   }
   /**
@@ -71,14 +76,14 @@ module.exports = (api, options) => {
    */
   const enumOption = {
     vue2: {
-      templateRequest: requestPlugin,
-      templateAddVconsole: addConsolePlugin,
-      templateFlexible: flexiblePlugin,
-      templateLintStaged: lintStagedPlugin,
-      templateRemoveConsole: removeConsolePlugin,
-      templateCrossEnv: crossEnvPlugin,
-      templateVuedraggable: vuedraggablePlugin,
-      templateSass: sassPlugin
+      templateRequest: pluginRequest,
+      templateAddVconsole: pluginAddVconsole,
+      templateFlexible: pluginFlexible,
+      templateLintStaged: pluginLintStaged,
+      templateRemoveConsole: pluginRemoveConsole,
+      templateCrossEnv: pluginCrossEnv,
+      templateVuedraggable: pluginVuedraggable,
+      templateSass: pluginSassPlugin
     },
     vue3: {},
     uniapp: {}
@@ -90,11 +95,11 @@ module.exports = (api, options) => {
    */
   const enumUiPlugin = {
     vue2: {
-      Element: ElementUi,
-      Vant: VantUi
+      Element: uiElement,
+      Vant: uiVant
     },
     vue3: {
-      Element: ElementPlusUi
+      Element: uiElementVue3
     }
   }
   /**

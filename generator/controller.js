@@ -48,16 +48,16 @@ module.exports = (api, options) => {
     options.promptsLanguage === 'vue' ? 'vue' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
   return {
-    ElementUi() {
+    uiElement() {
       packageElementUi()
       elementUiPlatforms()
       babelConfigAddElement()
     },
-    VantUi() {
+    uiVant() {
       packageVantUi()
       vantUiPlatforms()
     },
-    ElementPlusUi() {
+    uiElementVue3() {
       elementPlusUiPlatforms()
       packageElementPlusUi()
       babelConfigAddElementPlus()
@@ -69,10 +69,10 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    requestPlugin() {
+    pluginRequest() {
       requestPlatforms()
     },
-    sassPlugin() {
+    pluginSassPlugin() {
       packageSass()
     },
     lessPlugin() {
@@ -83,7 +83,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    vuedraggablePlugin() {
+    pluginVuedraggable() {
       packageVuedraggable()
     },
     /**
@@ -91,7 +91,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    removeConsolePlugin() {
+    pluginRemoveConsole() {
       packageRemoveConsole()
       babelConfigReoveConsole()
     },
@@ -100,7 +100,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    lintStagedPlugin() {
+    pluginLintStaged() {
       api.render({
         '/.eslintrc.js': './module/_eslintrc.js',
         '/.eslintignore': './module/_eslintignore',
@@ -113,7 +113,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    addConsolePlugin() {
+    pluginAddVconsole() {
       //  增加环境变量
       packageCrossEnv()
       configPlatforms()
@@ -127,7 +127,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    addConsolePluginVue3() {
+    pluginAddVconsoleVue3() {
       //  增加环境变量
       packageCrossEnv()
       configPlatforms()
@@ -140,7 +140,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    flexiblePlugin() {
+    pluginFlexible() {
       vueConfigFlexible()
       packageFlexible()
       flexiblePlatforms()
@@ -153,7 +153,7 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    crossEnvPlugin() {
+    pluginCrossEnv() {
       packageCrossEnv()
       configPlatforms()
     }
