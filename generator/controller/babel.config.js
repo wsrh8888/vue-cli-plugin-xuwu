@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-06-02 14:35:34
+ * @LastEditTime: 2021-06-08 10:54:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/babel.config.js
@@ -15,7 +15,7 @@ const babelConfigInit = (api, options) => {
   packageBabelInit()
 }
 module.exports = (api, options) => {
-  const { elementTemplate, reoveConsoleTemplate } =
+  const { elementTemplate, elementPlusTemplate, reoveConsoleTemplate } =
     require('../view/babel.config')(api, options)
 
   return {
@@ -95,6 +95,40 @@ module.exports = (api, options) => {
         )
         if (lines.findIndex((line) => line.match(/element-ui/)) === -1) {
           lines[renderIndex - 1] += `${EOL}  ${elementTemplate()}`
+          fs.writeFileSync('./babel.config.js', lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    babelConfigAddElementPlus() {
+      const { EOL } = require('os')
+      const fs = require('fs')
+      let contentMain
+      try {
+        contentMain = fs.readFileSync(api.resolve('./babel.config.js'), {
+          encoding: 'utf-8'
+        })
+      } catch (error) {
+        babelConfigInit(api, options)
+        contentMain = fs.readFileSync(api.resolve('./babel.config.js'), {
+          encoding: 'utf-8'
+        })
+      }
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
+        babelConfigInit(api, options)
+      }
+      api.afterInvoke(() => {
+        contentMain = fs.readFileSync(api.resolve('./babel.config.js'), {
+          encoding: 'utf-8'
+        })
+        lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) =>
+          line.match(/module.exports/)
+        )
+        if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {
+          lines[renderIndex - 1] += `${EOL}  ${elementPlusTemplate()}`
           fs.writeFileSync('./babel.config.js', lines.join(EOL), {
             encoding: 'utf-8'
           })

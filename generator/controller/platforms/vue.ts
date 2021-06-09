@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-07 11:22:41
+ * @LastEditTime: 2021-06-09 11:29:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -28,7 +28,6 @@ module.exports = (api) => {
       api.render({
         '/src/plugins/element.ts': '../../module/plugins/element.ts'
       })
-      api.injectImports('/src/plugins/index.ts', 'import "./element.ts"')
     },
     vantUiPlatforms() {
       api.render({
@@ -62,6 +61,11 @@ module.exports = (api) => {
         'import "lib-flexible/flexible"'
       )
       api.injectImports('/src/plugins/index.ts', 'import "./rem"')
+    },
+    elementPlusUiPlatforms() {
+      api.render({
+        '/src/plugins/element.js': '../../module/plugins/elementPlus.js'
+      })
     }
   }
 }

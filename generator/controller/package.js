@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-06-04 19:58:56
+ * @LastEditTime: 2021-06-08 10:59:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -72,6 +72,21 @@ module.exports = (api) => {
         },
         dependencies: {
           'element-ui': '^2.13.2'
+        }
+      })
+    },
+    /**
+     * @description: 引入elementPlus
+     * @param {*}
+     * @return {*}
+     */
+    packageElementPlusUi() {
+      api.extendPackage({
+        devDependencies: {
+          'babel-plugin-import': '^1.13.3'
+        },
+        dependencies: {
+          'element-plus': '^1.0.2-beta.46'
         }
       })
     },

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-01 11:34:28
- * @LastEditTime: 2021-06-01 11:39:19
+ * @LastEditTime: 2021-06-09 10:40:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/view/babel.config.js
@@ -27,6 +27,19 @@ module.exports = () => {
           {
             libraryName: 'element-ui',
             styleLibraryName: 'theme-chalk'
+          },
+        ])
+      `
+    },
+    elementPlusTemplate() {
+      return `
+        plugins.push([
+          "import",
+          {
+            libraryName: "element-plus",
+            customStyleName: (name) => {
+              return "element-plus/lib/theme-chalk/"+name+".css";
+            },
           },
         ])
       `

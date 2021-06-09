@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-07 11:17:41
+ * @LastEditTime: 2021-06-09 11:33:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -19,7 +19,8 @@ module.exports = (api, options) => {
     crossEnvPlugin,
     vuedraggablePlugin,
     ElementUi,
-    VantUi
+    VantUi,
+    ElementPlusUi
   } = require('./controller')(api, options)
   /**
    * @description: 默认配置
@@ -45,7 +46,18 @@ module.exports = (api, options) => {
         VantUi
       ]
     },
-    vue3: {},
+    vue3: {
+      pc: [],
+      mobile: [
+        ElementPlusUi,
+        crossEnvPlugin,
+        consolePlugin,
+        requestPlugin,
+        flexiblePlugin,
+        removeConsolePlugin,
+        lintStagedPlugin
+      ]
+    },
     uniapp: {
       pc: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin],
       mobile: [lintStagedPlugin, sassPlugin, requestPlugin, crossEnvPlugin]
@@ -80,7 +92,9 @@ module.exports = (api, options) => {
       Element: ElementUi,
       Vant: VantUi
     },
-    vue3: {}
+    vue3: {
+      Element: ElementPlusUi
+    }
   }
   /**
    * @description: 处理自定义配置和默认配置
@@ -108,6 +122,7 @@ module.exports = (api, options) => {
           ? 'vue2'
           : 'vue3'
         : ''
+    console.log(language, options.useType, '2222')
     defaultConfig[language][options.useType ? options.useType : 'pc'].forEach(
       (config) => {
         config()

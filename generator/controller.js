@@ -1,17 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-07 11:26:35
+ * @LastEditTime: 2021-06-09 11:28:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
  */
 
 module.exports = (api, options) => {
-  const { addConsoleOption, mainAddPlugins } = require('./controller/main')(
-    api,
-    options
-  )
+  const { addConsoleOption, mainAddPlugins, mainInit } =
+    require('./controller/main')(api, options)
   const { addCssOptions, vueConfigFlexible } =
     require('./controller/vue.config')(api, options)
   const { addCssMediaPlugin } = require('./controller/main.vue')(api, options)
@@ -20,6 +18,7 @@ module.exports = (api, options) => {
     packageRemoveConsole,
     packageAddConsolePanel,
     packageElementUi,
+    packageElementPlusUi,
     packageVantUi,
     packageFlexible,
     packageCrossEnv,
@@ -27,8 +26,11 @@ module.exports = (api, options) => {
     packageLess,
     packageVuedraggable
   } = require('./controller/package')(api, options)
-  const { babelConfigReoveConsole, babelConfigAddElement } =
-    require('./controller/babel.config')(api, options)
+  const {
+    babelConfigReoveConsole,
+    babelConfigAddElement,
+    babelConfigAddElementPlus
+  } = require('./controller/babel.config')(api, options)
   const isTs = api.entryFile.endsWith('.ts')
   const {
     configPlatforms,
@@ -36,7 +38,8 @@ module.exports = (api, options) => {
     vantUiPlatforms,
     elementUiPlatforms,
     pluginsPlatforms,
-    flexiblePlatforms
+    flexiblePlatforms,
+    elementPlusUiPlatforms
   } = require(`./controller/platforms/${
     options.language === 'vue' ? 'vue' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
@@ -53,6 +56,12 @@ module.exports = (api, options) => {
       packageVantUi()
       vantUiPlatforms()
       mainAddPlugins()
+    },
+    ElementPlusUi() {
+      elementPlusUiPlatforms()
+      packageElementPlusUi()
+      babelConfigAddElementPlus()
+      mainInit()
     },
     /**
      * @description: ajax请求
