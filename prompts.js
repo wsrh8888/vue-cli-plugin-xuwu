@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-06-09 15:38:57
+ * @LastEditTime: 2021-06-09 15:44:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -50,24 +50,29 @@ module.exports = () => {
       name: 'promptsManuallyConfig',
       message: 'Check the features needed for your project',
       choices: [
-        { name: 'ajax请求模版', value: 'requestTemplate' },
-        { name: '初始化环境变量', value: 'crossEnv' },
-        { name: '生产环境去掉console', value: 'removeConsole' },
-        { name: 'commit代码时统一风格', value: 'lintStaged' },
-        { name: 'consoleLog控制台', value: 'consoleLog' },
-        { name: '适配插件', value: 'flexible' },
-        { name: 'vue拖拽插件', value: 'vuedraggable' }
+        { name: 'ajax请求模版', value: 'templateRequest' },
+        { name: '初始化环境变量', value: 'templateCrossEnv' },
+        { name: '生产环境去掉console', value: 'templateRemoveConsole' },
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'consoleLog控制台', value: 'templateAddVconsole' },
+        { name: '适配插件', value: 'templateFlexible' },
+        { name: 'vue拖拽插件', value: 'templateVuedraggable' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
-          ? ['requestTemplate', 'lintStaged', 'removeConsole', 'crossEnv']
+          ? [
+              'templateRequest',
+              'templateLintStaged',
+              'templateRemoveConsole',
+              'templateCrossEnv'
+            ]
           : [
-              'consoleLog',
-              'requestTemplate',
-              'flexible',
-              'lintStaged',
-              'removeConsole',
-              'crossEnv'
+              'templateAddVconsole',
+              'templateRequest',
+              'templateFlexible',
+              'templateLintStaged',
+              'templateRemoveConsole',
+              'templateCrossEnv'
             ]
     },
     {
@@ -81,12 +86,17 @@ module.exports = () => {
       name: 'promptsManuallyConfig',
       message: 'Check the features needed for your project',
       choices: [
-        { name: 'commit代码时统一风格', value: 'lintStaged' },
-        { name: 'sass', value: 'sass' },
-        { name: 'ajax请求模板', value: 'requestTemplate' },
-        { name: '环境变量', value: 'crossEnv' }
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'templateSass', value: 'templateSass' },
+        { name: 'ajax请求模板', value: 'templateRequest' },
+        { name: '环境变量', value: 'templateCrossEnv' }
       ],
-      default: ['lintStaged', 'sass', 'requestTemplate', 'crossEnv']
+      default: [
+        'templateLintStaged',
+        'templateSass',
+        'templateRequest',
+        'templateCrossEnv'
+      ]
     },
     {
       when: (answers) => {
@@ -96,7 +106,7 @@ module.exports = () => {
         )
       },
       type: 'list',
-      name: 'uiPlugin',
+      name: 'promptsUiConfig',
       message: '请选择使用的UI库(按需引入)',
       choices: [
         { name: '无', value: '' },

@@ -71,14 +71,14 @@ module.exports = (api, options) => {
    */
   const enumOption = {
     vue2: {
-      requestTemplate: requestPlugin,
-      consoleLog: addConsolePlugin,
-      flexible: flexiblePlugin,
-      lintStaged: lintStagedPlugin,
-      removeConsole: removeConsolePlugin,
-      crossEnv: crossEnvPlugin,
-      vuedraggable: vuedraggablePlugin,
-      sass: sassPlugin
+      templateRequest: requestPlugin,
+      templateAddVconsole: addConsolePlugin,
+      templateFlexible: flexiblePlugin,
+      templateLintStaged: lintStagedPlugin,
+      templateRemoveConsole: removeConsolePlugin,
+      templateCrossEnv: crossEnvPlugin,
+      templateVuedraggable: vuedraggablePlugin,
+      templateSass: sassPlugin
     },
     vue3: {},
     uniapp: {}
@@ -131,7 +131,7 @@ module.exports = (api, options) => {
     })
   }
   // 处理UI插件
-  if (options.uiPlugin) {
-    enumUiPlugin[options.uiPlugin]()
+  if (options.promptsUiConfig) {
+    enumUiPlugin[options.promptsUiConfig]()
   }
 }
