@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-09 11:29:17
+ * @LastEditTime: 2021-06-09 14:12:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -21,7 +21,7 @@ module.exports = (api) => {
     },
     configPlatforms() {
       api.render({
-        '/src/utils/config.ts': '../../module/config/index.ts'
+        '/src/utils/config.ts': '../../module/utils/config.ts'
       })
     },
     elementUiPlatforms() {
@@ -35,32 +35,14 @@ module.exports = (api) => {
       })
       api.injectImports('/src/plugins/index.ts', 'import "./vant.ts"')
     },
-    /**
-     * @description: 判断在plugins下面是否有index文件，如果没有则创建
-     * @param {*}
-     * @return {*}
-     */
-    pluginsPlatforms() {
-      const fs = require('fs')
-      try {
-        fs.readFileSync(api.resolve('./src/plugins/index.ts'), {
-          encoding: 'utf-8'
-        })
-      } catch (error) {
-        api.render({
-          '/src/plugins/index.ts': '../../module/plugins/index.ts'
-        })
-      }
-    },
     flexiblePlatforms() {
       api.render({
-        '/src/plugins/rem.ts': '../../module/plugins/rem.ts'
+        '/src/plugins/rem.ts': '../../module/config/rem.ts'
       })
       api.injectImports(
         '/src/plugins/index.ts',
         'import "lib-flexible/flexible"'
       )
-      api.injectImports('/src/plugins/index.ts', 'import "./rem"')
     },
     elementPlusUiPlatforms() {
       api.render({

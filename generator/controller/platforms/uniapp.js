@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-05-18 19:51:13
+ * @LastEditTime: 2021-06-09 14:11:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -16,7 +16,7 @@ module.exports = (api) => {
     },
     configPlatforms() {
       api.render({
-        '/src/utils/config.js': '../../module/config/index.js'
+        '/src/utils/config.js': '../../module/utils/config.js'
       })
     }
   }

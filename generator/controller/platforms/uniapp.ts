@@ -17,7 +17,7 @@ module.exports = (api) => {
     },
     configPlatforms() {
       api.render({
-        '/src/utils/config.ts': '../../module/config/index.ts'
+        '/src/utils/config.ts': '../../module/utils/config.ts'
       })
     }
   }

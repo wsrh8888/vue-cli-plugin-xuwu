@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:54:34
- * @LastEditTime: 2021-06-07 10:56:00
+ * @LastEditTime: 2021-06-09 14:08:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/module/rem.js
@@ -11,7 +11,7 @@
   // 基准大小
   const baseSize = 37.5
   // 设置 rem 函数
-  function setRem(pageWidth: number) {
+  function setRem(pageWidth) {
     // 当前页面宽度相对于 750 宽的缩放比例，可根据自己需要修改。
     const scale = document.documentElement.clientWidth / pageWidth
     // 设置页面根节点字体大小

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-06-09 11:26:48
+ * @LastEditTime: 2021-06-09 14:03:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -15,7 +15,6 @@ module.exports = (api) => {
      * @return {*}
      */
     addConsoleOption() {
-      api.injectImports(api.entryFile, 'import VConsole from "vconsole"')
       api.afterInvoke(() => {
         const { EOL } = require('os')
         const fs = require('fs')
@@ -34,14 +33,6 @@ module.exports = (api) => {
           })
         }
       })
-    },
-    /**
-     * @description: 在main文件中增加导入plugins入口
-     * @param {*}
-     * @return {*}
-     */
-    mainAddPlugins() {
-      api.injectImports(api.entryFile, 'import "./plugins";')
     },
     /**
      * @description: 初始化入口文件
