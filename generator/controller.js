@@ -1,17 +1,20 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-09 14:06:53
+ * @LastEditTime: 2021-06-09 15:11:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
  */
 
 module.exports = (api, options) => {
-  const { addConsoleOption, mainInit } = require('./controller/main')(
-    api,
-    options
-  )
+  const {
+    addConsoleOption,
+    mainInit,
+    mainAddRem,
+    mainAddVconsoleVue3,
+    mainAddElementVue3
+  } = require('./controller/main')(api, options)
   const { addCssOptions, vueConfigFlexible } =
     require('./controller/vue.config')(api, options)
   const { addCssMediaPlugin } = require('./controller/main.vue')(api, options)
@@ -59,6 +62,7 @@ module.exports = (api, options) => {
       packageElementPlusUi()
       babelConfigAddElementPlus()
       mainInit()
+      mainAddElementVue3()
     },
     /**
      * @description: ajax请求
@@ -109,9 +113,27 @@ module.exports = (api, options) => {
      * @param {*}
      * @return {*}
      */
-    consolePlugin() {
+    addConsolePlugin() {
+      //  增加环境变量
+      packageCrossEnv()
+      configPlatforms()
+      mainInit()
+      mainAddVconsoleVue3()
       packageAddConsolePanel()
       addConsoleOption()
+    },
+    /**
+     * @description: 添加vconsole相关配置（vue3）
+     * @param {*}
+     * @return {*}
+     */
+    addConsolePluginVue3() {
+      //  增加环境变量
+      packageCrossEnv()
+      configPlatforms()
+      mainInit()
+      packageAddConsolePanel()
+      mainAddVconsoleVue3()
     },
     /**
      * @description: 添加适配相关操作
@@ -122,6 +144,7 @@ module.exports = (api, options) => {
       vueConfigFlexible()
       packageFlexible()
       flexiblePlatforms()
+      mainAddRem()
       addCssOptions()
       addCssMediaPlugin()
     },

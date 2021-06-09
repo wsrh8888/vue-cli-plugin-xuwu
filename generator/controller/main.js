@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-06-09 14:03:16
+ * @LastEditTime: 2021-06-09 15:14:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -54,7 +54,6 @@ module.exports = (api) => {
         isHasStore =
           lines.findIndex((line) => line.match(/import router from /)) !== -1
         if (lines.findIndex((line) => line.match(/const app/)) === -1) {
-          console.log(55555555)
           let mainContent = `${EOL} 
               import { createApp } from 'vue'
               import App from './App.vue'
@@ -66,6 +65,68 @@ module.exports = (api) => {
               app.mount('#app')
           `
           fs.writeFileSync(api.entryFile, mainContent, {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddRem() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/const app/))
+        if (lines.findIndex((line) => line.match(/rem/)) === -1) {
+          lines[renderIndex] += `${EOL} 
+            import './utils/rem'
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddVconsoleVue3() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/const app/))
+        if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
+          lines[renderIndex] += `${EOL}  
+            import VConsole from 'vconsole'
+            if (process.env.API_ENV !== 'prod') {
+              // @ts-ignore
+              app.use(new VConsole())
+            }
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddElementVue3() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/const app/))
+        if (lines.findIndex((line) => line.match(/import element/)) === -1) {
+          lines[renderIndex] += `${EOL} 
+            import element from './plugins/element'
+            app.use(element)
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
             encoding: 'utf-8'
           })
         }

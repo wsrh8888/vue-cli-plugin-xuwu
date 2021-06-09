@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-09 11:33:37
+ * @LastEditTime: 2021-06-09 14:56:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -12,7 +12,6 @@ module.exports = (api, options) => {
   const {
     sassPlugin,
     requestPlugin,
-    consolePlugin,
     flexiblePlugin,
     lintStagedPlugin,
     removeConsolePlugin,
@@ -20,6 +19,8 @@ module.exports = (api, options) => {
     vuedraggablePlugin,
     ElementUi,
     VantUi,
+    addConsolePlugin,
+    addConsolePluginVue3,
     ElementPlusUi
   } = require('./controller')(api, options)
   /**
@@ -40,7 +41,7 @@ module.exports = (api, options) => {
         crossEnvPlugin,
         removeConsolePlugin,
         lintStagedPlugin,
-        consolePlugin,
+        addConsolePlugin,
         flexiblePlugin,
         requestPlugin,
         VantUi
@@ -51,7 +52,7 @@ module.exports = (api, options) => {
       mobile: [
         ElementPlusUi,
         crossEnvPlugin,
-        consolePlugin,
+        addConsolePluginVue3,
         requestPlugin,
         flexiblePlugin,
         removeConsolePlugin,
@@ -71,7 +72,7 @@ module.exports = (api, options) => {
   const enumOption = {
     vue2: {
       requestTemplate: requestPlugin,
-      consoleLog: consolePlugin,
+      consoleLog: addConsolePlugin,
       flexible: flexiblePlugin,
       lintStaged: lintStagedPlugin,
       removeConsole: removeConsolePlugin,

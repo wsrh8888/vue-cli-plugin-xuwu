@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-09 14:12:46
+ * @LastEditTime: 2021-06-09 14:27:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
@@ -33,16 +33,11 @@ module.exports = (api) => {
       api.render({
         '/src/plugins/vant.ts': '../../module/plugins/vant.ts'
       })
-      api.injectImports('/src/plugins/index.ts', 'import "./vant.ts"')
     },
     flexiblePlatforms() {
       api.render({
         '/src/utils/rem.ts': '../../module/utils/rem.ts'
       })
-      api.injectImports(
-        '/src/plugins/index.ts',
-        'import "lib-flexible/flexible"'
-      )
     },
     elementPlusUiPlatforms() {
       api.render({
