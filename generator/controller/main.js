@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-06-10 10:59:20
+ * @LastEditTime: 2021-06-10 11:16:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -200,10 +200,11 @@ module.exports = (api) => {
           encoding: 'utf-8'
         })
         const lines = contentMain.split(/\r?\n/g)
-        const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
-        if (lines.findIndex((line) => line.match(/vant/)) === -1) {
+        const renderIndex = lines.findIndex((line) => line.match(/const app/))
+        if (lines.findIndex((line) => line.match(/import vant/)) === -1) {
           lines[renderIndex] += `${EOL} 
-            import './plugins/vant'
+            import vant from './plugins/vant'
+            app.use(vant)
           `
           fs.writeFileSync(api.entryFile, lines.join(EOL), {
             encoding: 'utf-8'

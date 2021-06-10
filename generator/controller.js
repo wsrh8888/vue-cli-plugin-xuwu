@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-10 11:02:54
+ * @LastEditTime: 2021-06-10 11:26:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -16,8 +16,8 @@ module.exports = (api, options) => {
     mainAddVconsoleVue3,
     mainAddElementVue3,
     mainAddElement,
-    mainAddVant
-    // mainAddVantVue3
+    mainAddVant,
+    mainAddVantVue3
   } = require('./controller/main')(api, options)
   const { vueConfigAddPx2rem, vueConfigAddFlexible } =
     require('./controller/vue.config')(api, options)
@@ -33,7 +33,8 @@ module.exports = (api, options) => {
     packageCrossEnv,
     packageSass,
     packageLess,
-    packageVuedraggable
+    packageVuedraggable,
+    packageVantVue3
   } = require('./controller/package')(api, options)
   const {
     babelConfigReoveConsole,
@@ -47,7 +48,8 @@ module.exports = (api, options) => {
     platformAddPluginsVant,
     platformAddPluginsElement,
     platformAddUtilsRem,
-    platformAddPluginsElementVue3
+    platformAddPluginsElementVue3,
+    platformAddPluginsVantVue3
   } = require(`./controller/platforms/${
     options.promptsLanguage === 'vue' ? 'vue' : 'uniapp'
   }.${isTs ? 'ts' : 'js'}`)(api, options)
@@ -62,6 +64,11 @@ module.exports = (api, options) => {
       packageVantUi()
       platformAddPluginsVant()
       mainAddVant()
+    },
+    uiVantVue3() {
+      packageVantVue3()
+      platformAddPluginsVantVue3()
+      mainAddVantVue3()
     },
     uiElementVue3() {
       platformAddPluginsElementVue3()

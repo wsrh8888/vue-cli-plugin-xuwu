@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-06-08 10:59:17
+ * @LastEditTime: 2021-06-10 11:31:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/package.js
@@ -203,6 +203,13 @@ module.exports = (api) => {
       api.extendPackage({
         devDependencies: {
           vuedraggable: '^2.24.3'
+        }
+      })
+    },
+    packageVantVue3() {
+      api.extendPackage({
+        devDependencies: {
+          vant: '^3.0.18'
         }
       })
     }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-10 10:05:31
+ * @LastEditTime: 2021-06-10 11:32:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.ts
@@ -32,6 +32,11 @@ module.exports = (api) => {
     platformAddPluginsVant() {
       api.render({
         '/src/plugins/vant.ts': '../../module/plugins/vant.ts'
+      })
+    },
+    platformAddPluginsVantVue3() {
+      api.render({
+        '/src/plugins/vant.ts': '../../module/plugins/vantVue3.ts'
       })
     },
     platformAddUtilsRem() {

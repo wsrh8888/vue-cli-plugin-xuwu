@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-10 10:46:48
+ * @LastEditTime: 2021-06-10 11:35:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -22,7 +22,8 @@ module.exports = (api, options) => {
     pluginAddVconsole,
     pluginFlexibleVue3,
     pluginAddVconsoleVue3,
-    uiElementVue3
+    uiElementVue3,
+    uiVantVue3
   } = require('./controller')(api, options)
   /**
    * @description: 默认配置
@@ -49,15 +50,21 @@ module.exports = (api, options) => {
       ]
     },
     vue3: {
-      pc: [],
-      mobile: [
+      pc: [
+        pluginLintStaged,
+        pluginRemoveConsole,
         uiElementVue3,
+        pluginCrossEnv,
+        pluginRequest
+      ],
+      mobile: [
         pluginCrossEnv,
         pluginAddVconsoleVue3,
         pluginRequest,
         pluginFlexibleVue3,
         pluginRemoveConsole,
-        pluginLintStaged
+        pluginLintStaged,
+        uiVantVue3
       ]
     },
     uniapp: {
@@ -86,7 +93,16 @@ module.exports = (api, options) => {
       templateVuedraggable: pluginVuedraggable,
       templateSass: pluginSassPlugin
     },
-    vue3: {},
+    vue3: {
+      templateRequest: pluginRequest,
+      templateAddVconsole: pluginAddVconsoleVue3,
+      templateFlexible: pluginFlexibleVue3,
+      templateLintStaged: pluginLintStaged,
+      templateRemoveConsole: pluginRemoveConsole,
+      templateCrossEnv: pluginCrossEnv,
+      templateVuedraggable: pluginVuedraggable,
+      templateSass: pluginSassPlugin
+    },
     uniapp: {}
   }
   /**
