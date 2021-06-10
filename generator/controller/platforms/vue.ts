@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-09 14:27:14
+ * @LastEditTime: 2021-06-10 10:05:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.js
+ * @FilePath: /vue-cli-plugin-init-structure/generator/controller/controller.ts
  */
 module.exports = (api) => {
   return {
@@ -41,7 +41,7 @@ module.exports = (api) => {
     },
     platformAddPluginsElementVue3() {
       api.render({
-        '/src/plugins/element.js': '../../module/plugins/elementPlus.js'
+        '/src/plugins/element.ts': '../../module/plugins/elementPlus.ts'
       })
     }
   }

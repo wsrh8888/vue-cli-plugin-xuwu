@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-09 15:58:05
+ * @LastEditTime: 2021-06-10 10:46:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -20,6 +20,7 @@ module.exports = (api, options) => {
     uiElement,
     uiVant,
     pluginAddVconsole,
+    pluginFlexibleVue3,
     pluginAddVconsoleVue3,
     uiElementVue3
   } = require('./controller')(api, options)
@@ -54,7 +55,7 @@ module.exports = (api, options) => {
         pluginCrossEnv,
         pluginAddVconsoleVue3,
         pluginRequest,
-        pluginFlexible,
+        pluginFlexibleVue3,
         pluginRemoveConsole,
         pluginLintStaged
       ]

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-09 16:26:44
+ * @LastEditTime: 2021-06-10 11:02:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -12,8 +12,12 @@ module.exports = (api, options) => {
     mainAddVconsole,
     mainInit,
     mainAddRem,
+    mainAddRemVue3,
     mainAddVconsoleVue3,
-    mainAddElementVue3
+    mainAddElementVue3,
+    mainAddElement,
+    mainAddVant
+    // mainAddVantVue3
   } = require('./controller/main')(api, options)
   const { vueConfigAddPx2rem, vueConfigAddFlexible } =
     require('./controller/vue.config')(api, options)
@@ -52,10 +56,12 @@ module.exports = (api, options) => {
       packageElementUi()
       platformAddPluginsElement()
       babelConfigAddElement()
+      mainAddElement()
     },
     uiVant() {
       packageVantUi()
       platformAddPluginsVant()
+      mainAddVant()
     },
     uiElementVue3() {
       platformAddPluginsElementVue3()
@@ -114,11 +120,10 @@ module.exports = (api, options) => {
      * @return {*}
      */
     pluginAddVconsole() {
-      //  增加环境变量
+      // 依赖 增加环境变量
       packageCrossEnv()
       platformAddUtilsConfig()
-      mainInit()
-      mainAddVconsoleVue3()
+      // console配置
       packageAddConsolePanel()
       mainAddVconsole()
     },
@@ -136,7 +141,20 @@ module.exports = (api, options) => {
       mainAddVconsoleVue3()
     },
     /**
-     * @description: 添加适配相关操作
+     * @description: 添加适配相关操作（vue3）
+     * @param {*}
+     * @return {*}
+     */
+    pluginFlexibleVue3() {
+      vueConfigAddFlexible()
+      packageFlexible()
+      platformAddUtilsRem()
+      mainAddRemVue3()
+      vueConfigAddPx2rem()
+      mainVueAddMedia()
+    },
+    /**
+     * @description: 添加适配相关操作（vue2）
      * @param {*}
      * @return {*}
      */

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-06-09 15:14:23
+ * @LastEditTime: 2021-06-10 10:59:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -15,6 +15,7 @@ module.exports = (api) => {
      * @return {*}
      */
     mainAddVconsole() {
+      console.log('3333333333')
       api.afterInvoke(() => {
         const { EOL } = require('os')
         const fs = require('fs')
@@ -22,7 +23,7 @@ module.exports = (api) => {
           encoding: 'utf-8'
         })
         const lines = contentMain.split(/\r?\n/g)
-        const renderIndex = lines.findIndex((line) => line.match(/vconsole/))
+        const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
         if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
           lines[renderIndex] += `${EOL} if (process.env.API_ENV !== 'prod') { 
             // @ts-ignore
@@ -78,9 +79,30 @@ module.exports = (api) => {
           encoding: 'utf-8'
         })
         const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
+        if (lines.findIndex((line) => line.match(/rem/)) === -1) {
+          lines[renderIndex] += `${EOL} 
+            import 'lib-flexible/flexible'
+            import './utils/rem'
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddRemVue3() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
         const renderIndex = lines.findIndex((line) => line.match(/const app/))
         if (lines.findIndex((line) => line.match(/rem/)) === -1) {
           lines[renderIndex] += `${EOL} 
+            import 'lib-flexible/flexible'
             import './utils/rem'
           `
           fs.writeFileSync(api.entryFile, lines.join(EOL), {
@@ -125,6 +147,63 @@ module.exports = (api) => {
           lines[renderIndex] += `${EOL} 
             import element from './plugins/element'
             app.use(element)
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddElement() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
+        if (lines.findIndex((line) => line.match(/element/)) === -1) {
+          lines[renderIndex] += `${EOL} 
+            import './plugins/element'
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddVant() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
+        if (lines.findIndex((line) => line.match(/vant/)) === -1) {
+          lines[renderIndex] += `${EOL} 
+            import './plugins/vant'
+          `
+          fs.writeFileSync(api.entryFile, lines.join(EOL), {
+            encoding: 'utf-8'
+          })
+        }
+      })
+    },
+    mainAddVantVue3() {
+      api.afterInvoke(() => {
+        const { EOL } = require('os')
+        const fs = require('fs')
+        let contentMain = fs.readFileSync(api.resolve(api.entryFile), {
+          encoding: 'utf-8'
+        })
+        const lines = contentMain.split(/\r?\n/g)
+        const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
+        if (lines.findIndex((line) => line.match(/vant/)) === -1) {
+          lines[renderIndex] += `${EOL} 
+            import './plugins/vant'
           `
           fs.writeFileSync(api.entryFile, lines.join(EOL), {
             encoding: 'utf-8'

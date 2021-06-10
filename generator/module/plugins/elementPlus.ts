@@ -1,11 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-06-08 11:12:23
- * @LastEditTime: 2021-06-09 10:01:23
+ * @LastEditTime: 2021-06-10 11:03:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/module/plugins/elementPlus.ts
  */
+import type { App } from 'vue'
+
 import {
   ElAlert,
   ElAside,
@@ -180,19 +182,15 @@ const plugins = [
   ElNotification
 ]
 
-// const defaultInstallOpt = {
-//   size: "",
-//   zIndex: 2000,
-// };
-
-const install = (app) => {
-  // const option = Object.assign(defaultInstallOpt, opt)
+const install = (app: App): void => {
   app.config.globalProperties.$message = ElMessage
 
   components.forEach((component) => {
     app.component(component.name, component)
   })
-  plugins.forEach(() => {})
+  plugins.forEach((plugin) => {
+    app.use(plugin)
+  })
 }
 
 export default {
