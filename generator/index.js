@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-10 11:35:08
+ * @LastEditTime: 2021-06-10 15:11:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
@@ -103,7 +103,12 @@ module.exports = (api, options) => {
       templateVuedraggable: pluginVuedraggable,
       templateSass: pluginSassPlugin
     },
-    uniapp: {}
+    uniapp: {
+      templateLintStaged: pluginLintStaged,
+      templateSass: pluginSassPlugin,
+      templateRequest: pluginRequest,
+      templateCrossEnv: pluginCrossEnv
+    }
   }
   /**
    * @description: UI的全部配置
@@ -116,7 +121,8 @@ module.exports = (api, options) => {
       Vant: uiVant
     },
     vue3: {
-      Element: uiElementVue3
+      Element: uiElementVue3,
+      Vant: uiVantVue3
     }
   }
   /**
@@ -133,8 +139,8 @@ module.exports = (api, options) => {
           ? 'vue2'
           : 'vue3'
         : ''
-    options.promptsManuallyConfig(promptsLanguage).forEach((element) => {
-      enumOption[element]()
+    options.promptsManuallyConfig.forEach((element) => {
+      enumOption[promptsLanguage][element]()
     })
   } else {
     const promptsLanguage =
@@ -145,7 +151,6 @@ module.exports = (api, options) => {
           ? 'vue2'
           : 'vue3'
         : ''
-    console.log(promptsLanguage, options.promptsScene, '2222')
     defaultConfig[promptsLanguage][
       options.promptsScene ? options.promptsScene : 'pc'
     ].forEach((config) => {
@@ -154,6 +159,14 @@ module.exports = (api, options) => {
   }
   // 处理UI插件
   if (options.promptsUiConfig) {
-    enumUiPlugin[options.promptsUiConfig]()
+    const promptsLanguage =
+      options.promptsLanguage === 'uniapp'
+        ? 'uniapp'
+        : options.promptsLanguage === 'vue'
+        ? vueVersion === '2'
+          ? 'vue2'
+          : 'vue3'
+        : ''
+    enumUiPlugin[promptsLanguage][options.promptsUiConfig]()
   }
 }

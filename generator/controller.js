@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-06-10 11:26:18
+ * @LastEditTime: 2021-06-10 14:29:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/console.js
@@ -83,6 +83,11 @@ module.exports = (api, options) => {
      * @return {*}
      */
     pluginRequest() {
+      // 环境依赖
+      packageCrossEnv()
+      platformAddUtilsConfig()
+      //
+      platformAddUtilsConfig()
       platformAddUtilsRequest()
     },
     pluginSassPlugin() {
