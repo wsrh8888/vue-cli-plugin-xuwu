@@ -1,7 +1,7 @@
 {
   "name": "vue-cli-plugin-xuwu",
   "version": "1.0.6",
-  "description": "主动格式化vue-cli工程基础模版插件",
+  "description": "xuwu模板助手，通过插件的方式对vue生态圈的所有项目进行高效，便捷的扩展",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix ./generator  --ext .vue,.js,.ts"
@@ -25,14 +25,18 @@
     "lib-flexible",
     "vconsole",
     "cross-env",
-    "babel-plugin-transform-remove-console"
+    "babel-plugin-transform-remove-console",
+    "基础建设",
+    "扩展",
+    "完善"
   ],
   "author": "Robert",
   "license": "ISC",
   "files": [
     "generator",
     "index.js",
-    "prompts.js"
+    "prompts.js",
+    "README.md"
   ],
   "repository": {
     "type": "git",

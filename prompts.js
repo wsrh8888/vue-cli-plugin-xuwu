@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-07-07 10:34:12
+ * @LastEditTime: 2021-07-07 20:39:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/prompts.js
@@ -13,7 +13,7 @@ module.exports = () => {
       name: 'promptsLanguage',
       message: '请选择自己的语言',
       choices: [
-        { name: 'vue', value: 'vue' },
+        { name: 'vue-cli', value: 'vue' },
         { name: 'uniapp', value: 'uniapp' }
       ],
       default: 'vue'
