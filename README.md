@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-29 17:48:57
- * @LastEditTime: 2021-07-07 14:45:18
+ * @LastEditTime: 2021-07-07 14:48:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/README.md
@@ -102,6 +102,6 @@ vue-cli-plugin-xuwu
 ```
 
 本地开发
- npm install --save-dev file:../../vue-cli-plugin-xuwu
+ npm install --save-dev file:../../xuwu
 
- vue invoke vue-cli-plugin-xuwu
+ vue invoke xuwu
