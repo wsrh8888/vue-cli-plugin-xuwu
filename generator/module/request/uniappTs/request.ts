@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 19:29:26
- * @LastEditTime: 2021-05-14 20:03:21
+ * @LastEditTime: 2021-07-07 14:35:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/module/request/request_uniapp.ts
+ * @FilePath: /xuwu/generator/module/request/request_uniapp.ts
  */
 import { methodList } from './interface'
 

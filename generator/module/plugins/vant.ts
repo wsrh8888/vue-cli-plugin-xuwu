@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-04 20:10:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/controller/ui/vant.js
+ * @FilePath: /xuwu/generator/controller/ui/vant.js
  */
 import Vue from 'vue'
 import 'vant/lib/index.css'

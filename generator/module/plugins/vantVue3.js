@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 11:36:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/module/plugins/vantVue3.js
+ * @FilePath: /xuwu/generator/module/plugins/vantVue3.js
  */
 /*
  * @Author: your name
@@ -12,7 +12,7 @@
  * @LastEditTime: 2021-06-10 10:29:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/module/plugins/elementPlus.js
+ * @FilePath: /xuwu/generator/module/plugins/elementPlus.js
  */
 import 'vant/lib/index.css'
 

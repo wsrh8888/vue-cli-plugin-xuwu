@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-05-20 20:03:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/controller/ui/antDesign.ts
+ * @FilePath: /xuwu/generator/controller/ui/antDesign.ts
  */
 import Vue from 'vue'
 import {

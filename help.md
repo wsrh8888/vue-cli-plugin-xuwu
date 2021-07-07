@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-07-07 14:27:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/help.md
+ * @FilePath: /xuwu/help.md
 -->
 # vue-cli插件xuwu(虚无)模板助手
 

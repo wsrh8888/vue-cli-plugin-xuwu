@@ -4,5 +4,5 @@
  * @LastEditTime: 2021-06-04 20:47:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-init-structure/generator/module/plugins/index.ts
+ * @FilePath: /xuwu/generator/module/plugins/index.ts
  */

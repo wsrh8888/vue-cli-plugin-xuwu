@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 15:11:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-plagin/vue-cli-plugin-init-structure/generator/index.js
+ * @FilePath: /vue-plagin/xuwu/generator/index.js
  */
 
 module.exports = (api, options) => {

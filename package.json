@@ -36,7 +36,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/dawwdadfrf/vue-cli-plugin-init-structure.git"
+    "url": "https://gitee.com/dawwdadfrf/xuwu.git"
   },
   "devDependencies": {
     "eslint": "^7.27.0",
