@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-05-14 19:42:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/request_vue.ts
+ * @FilePath: /vue-cli-plugin-xuwu/generator/module/request_vue.ts
  */
 import axios from 'axios'
 

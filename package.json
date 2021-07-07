@@ -1,5 +1,5 @@
 {
-  "name": "xuwu",
+  "name": "vue-cli-plugin-xuwu",
   "version": "1.0.6",
   "description": "主动格式化vue-cli工程基础模版插件",
   "main": "index.js",
@@ -36,7 +36,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/dawwdadfrf/xuwu.git"
+    "url": "https://gitee.com/dawwdadfrf/vue-cli-plugin-xuwu.git"
   },
   "devDependencies": {
     "eslint": "^7.27.0",

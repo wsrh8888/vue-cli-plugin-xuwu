@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 14:29:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/common/console.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
  */
 
 module.exports = (api, options) => {

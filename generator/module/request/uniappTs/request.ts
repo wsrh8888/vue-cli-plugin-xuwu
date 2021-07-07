@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-07-07 14:35:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/request/request_uniapp.ts
+ * @FilePath: /vue-cli-plugin-xuwu/generator/module/request/request_uniapp.ts
  */
 import { methodList } from './interface'
 

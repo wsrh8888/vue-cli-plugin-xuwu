@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 10:29:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/plugins/elementPlus.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/elementPlus.js
  */
 import {
   ElAlert,

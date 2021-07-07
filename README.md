@@ -1,17 +1,17 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-29 17:48:57
- * @LastEditTime: 2021-07-07 14:34:12
+ * @LastEditTime: 2021-07-07 14:45:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/README.md
+ * @FilePath: /vue-cli-plugin-xuwu/README.md
 -->
 # vue-cli 工程初始化模版插件
 
 ## 地址
 
 ```
-git地址：https://gitee.com/dawwdadfrf/xuwu.git
+git地址：https://gitee.com/dawwdadfrf/vue-cli-plugin-xuwu.git
 ```
 ## 引言
 
@@ -25,7 +25,7 @@ git地址：https://gitee.com/dawwdadfrf/xuwu.git
 ## 安装命令
 
 ``` development
-vue add xuwu
+vue add vue-cli-plugin-xuwu
 ```
 ## 功能说明
 ```
@@ -42,7 +42,7 @@ vue add xuwu
 ```
 
 ```
-xuwu
+vue-cli-plugin-xuwu
 ├─ .DS_Store
 ├─ README.md
 ├─ generator
@@ -102,6 +102,6 @@ xuwu
 ```
 
 本地开发
- npm install --save-dev file:../../xuwu
+ npm install --save-dev file:../../vue-cli-plugin-xuwu
 
- vue invoke xuwu
+ vue invoke vue-cli-plugin-xuwu

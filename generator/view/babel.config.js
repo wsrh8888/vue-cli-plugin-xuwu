@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-09 10:40:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/view/babel.config.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/view/babel.config.js
  */
 module.exports = () => {
   return {

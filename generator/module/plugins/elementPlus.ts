@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 11:03:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/plugins/elementPlus.ts
+ * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/elementPlus.ts
  */
 import type { App } from 'vue'
 

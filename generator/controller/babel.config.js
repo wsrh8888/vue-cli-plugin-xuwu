@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-08 10:54:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/common/babel.config.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
  */
 
 const babelConfigInit = (api, options) => {

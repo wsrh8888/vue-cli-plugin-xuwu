@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-05-14 20:05:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/reuest_uniapp.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/module/reuest_uniapp.js
  */
 
 export function request({

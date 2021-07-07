@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-09 14:20:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/rem.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/module/rem.js
  */
 ;(function () {
   const ua = navigator.userAgent.toLowerCase()

@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-07-07 10:34:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/prompts.js
+ * @FilePath: /vue-cli-plugin-xuwu/prompts.js
  */
 module.exports = () => {
   const prompts = [

@@ -4,9 +4,9 @@
  * @LastEditTime: 2021-07-07 14:27:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/help.md
+ * @FilePath: /vue-cli-plugin-xuwu/help.md
 -->
-# vue-cli插件xuwu(虚无)模板助手
+# vue-cli插件vue-cli-plugin-xuwu(虚无)模板助手
 
 ## 开发背景
 日常工作中经常会创建一些新的项目工程，项目会包括pc端和移动端，每次创建项目时候都需要从不同项目中去copy新项目中需要的基础建设代码，每次迁移完成完成后就会遇到各种各样莫名其妙的问题 
@@ -19,10 +19,10 @@
  ```
  import 'element-ui/lib/theme-chalk/index.css'
  ```
-而每次解决这些问题都需要花费大量的时间，而且极其的不方便，基于这种情况着手开始开发xuwu模版助手。
+而每次解决这些问题都需要花费大量的时间，而且极其的不方便，基于这种情况着手开始开发vue-cli-plugin-xuwu模版助手。
 
 ## 目的
-xuwu模板助手是一款自由开放的vue插件，通过插件的方式对vue生态圈的所有项目进行高效，便捷的扩展。从源头上降低因各种原因导致基础建设的不完整。从而提高团队项目结构的和代码风格的一致性。因插件针对的是所有vue相关生态圈，所以不会内嵌任何相关脚手架，只是在创建完成后对项目进行完善补充。
+vue-cli-plugin-xuwu模板助手是一款自由开放的vue插件，通过插件的方式对vue生态圈的所有项目进行高效，便捷的扩展。从源头上降低因各种原因导致基础建设的不完整。从而提高团队项目结构的和代码风格的一致性。因插件针对的是所有vue相关生态圈，所以不会内嵌任何相关脚手架，只是在创建完成后对项目进行完善补充。
 
 ## 使用场景
 > 提示：  
@@ -33,13 +33,13 @@ xuwu模板助手是一款自由开放的vue插件，通过插件的方式对vue�
 
 ## 安装
 ```
-npm install xuwu
-vue add xuwu
+npm install vue-cli-plugin-xuwu
+vue add vue-cli-plugin-xuwu
 ```
 
 
 ## 功能介绍
-> xuwu模板助手在安装时一直秉持着自由的原则，所有的功能均可以选择性的安装，也可以使用作者推荐的功能进行安装，目前xuwu模板助手在web项目方向完成了6个基础功能的封装，2个UI框架的封装，在uniapp方向完成了4个基础功能的开发，总共涉及了16个页面。
+> vue-cli-plugin-xuwu模板助手在安装时一直秉持着自由的原则，所有的功能均可以选择性的安装，也可以使用作者推荐的功能进行安装，目前vue-cli-plugin-xuwu模板助手在web项目方向完成了6个基础功能的封装，2个UI框架的封装，在uniapp方向完成了4个基础功能的开发，总共涉及了16个页面。
 
 ### vue-cli 
 1. #### 扩展环境变量  

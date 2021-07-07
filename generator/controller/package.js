@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 11:31:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/common/package.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
  */
 module.exports = (api) => {
   return {

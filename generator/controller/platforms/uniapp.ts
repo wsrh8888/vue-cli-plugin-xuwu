@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-06-10 10:05:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/controller/controller.ts
+ * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.ts
  */
 module.exports = (api) => {
   return {
