@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-06-10 11:16:40
+ * @LastEditTime: 2021-07-07 11:00:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/generator/common/main.js
@@ -15,7 +15,6 @@ module.exports = (api) => {
      * @return {*}
      */
     mainAddVconsole() {
-      console.log('3333333333')
       api.afterInvoke(() => {
         const { EOL } = require('os')
         const fs = require('fs')

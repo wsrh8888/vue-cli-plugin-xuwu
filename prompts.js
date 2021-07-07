@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-06-09 15:53:19
+ * @LastEditTime: 2021-07-07 10:34:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-init-structure/prompts.js
@@ -51,12 +51,11 @@ module.exports = () => {
       message: 'Check the features needed for your project',
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
-        { name: '初始化环境变量', value: 'templateCrossEnv' },
+        { name: '扩展环境变量', value: 'templateCrossEnv' },
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
-        { name: '适配插件', value: 'templateFlexible' },
-        { name: 'vue拖拽插件', value: 'templateVuedraggable' }
+        { name: '适配插件', value: 'templateFlexible' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -87,9 +86,9 @@ module.exports = () => {
       message: 'Check the features needed for your project',
       choices: [
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
-        { name: 'templateSass', value: 'templateSass' },
+        { name: 'sass依赖', value: 'templateSass' },
         { name: 'ajax请求模板', value: 'templateRequest' },
-        { name: '环境变量', value: 'templateCrossEnv' }
+        { name: '扩展环境变量', value: 'templateCrossEnv' }
       ],
       default: [
         'templateLintStaged',
