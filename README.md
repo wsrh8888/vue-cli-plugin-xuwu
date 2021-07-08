@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-05 11:39:28
- * @LastEditTime: 2021-07-08 15:08:16
+ * @LastEditTime: 2021-07-08 19:40:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/help.md
@@ -31,10 +31,20 @@ xuwu模板助手是一款自由开放的vue插件，通过插件的方式对vue�
 * vue-cli创建的web项目（pc和移动端）
 * uniapp创建的项目
 
-## 安装
+## 安装教程
 ```
 vue add xuwu
 ```
+>### 1.选择自己的语言，目前可以选择vue-cli和uniapp两种  
+> ![Alt](images/language.png)  
+> ### 2.选择项目的使用场景，可以选择pc端还是移动端
+> ![Alt](images/scene.png)
+> ### 3.选择推荐的功能还是自定义选择。
+> ![Alt](images/config.png)
+> ### 4. 自定义选择包括全部的功能选项
+> ![Alt](images/configContent.png)
+> ### 5. 请选择要使用的ui库，目前移动端默认使用vant，pc端默认使用element
+> ![Alt](images/ui.png)
 ## 地址
 ```
 git地址：https://gitee.com/dawwdadfrf/xuwu.git
