@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-05 11:39:28
- * @LastEditTime: 2021-07-08 19:40:22
+ * @LastEditTime: 2021-07-08 19:42:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/help.md
@@ -71,9 +71,9 @@ git地址：https://gitee.com/dawwdadfrf/xuwu.git
 #### UI库在移动端默认使用Vant在pc端默认使用Element。均通过按需引入的方式引入。
 
 ### uniapp
-1. #### 扩展环境变量（同上）
-2. #### ajax请求模板（同上）
-3. #### commit代码时统一风格（同上）
+1. #### 扩展环境变量
+2. #### ajax请求模板
+3. #### commit代码时统一风格
 4. #### sass依赖
 #### uniapp官方推荐使用sass来解析样式。
 
