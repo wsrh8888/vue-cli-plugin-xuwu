@@ -10,16 +10,8 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
-    "paths": {
-      "@/*": [
-        "generator/tsTemplate/src/*"
-      ]
-    },
     "lib": [
       "esnext",
       "dom",
@@ -28,11 +20,8 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "generator/module/**/*.ts",
+    "generator/module/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -1,18 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 11:17:13
- * @LastEditTime: 2021-06-10 11:36:16
+ * @LastEditTime: 2021-07-26 16:53:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/vantVue3.js
- */
-/*
- * @Author: your name
- * @Date: 2021-06-08 11:12:15
- * @LastEditTime: 2021-06-10 10:29:16
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/elementPlus.js
  */
 import 'vant/lib/index.css'
 import type { App } from 'vue'

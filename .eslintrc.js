@@ -4,7 +4,9 @@ module.exports = {
     node: true
   },
   globals: {
-    uni: false
+    uni: false,
+    process: false,
+    'element-ui': false
   },
   extends: ['plugin:vue/essential', '@vue/prettier'],
   rules: {
@@ -42,7 +44,7 @@ module.exports = {
         arrowParens: 'always'
       }
     ],
-    "eslintno-warning-comments": 0,
+    'eslintno-warning-comments': 0,
     'no-alert': 0, //禁止使用alert confirm prompt
     'no-array-constructor': 2, //禁止使用数组构造器
     'no-bitwise': 0, //禁止使用按位运算符
@@ -151,9 +153,7 @@ module.exports = {
     'no-useless-call': 2, //禁止不必要的call和apply
     'no-void': 2, //禁用void操作符
     'no-var': 2, //禁用var，用let和const代替
-    'no-warning-comments': [
-      0,
-    ], //不能有警告备注
+    'no-warning-comments': [0], //不能有警告备注
     'no-with': 2, //禁用with
 
     'array-bracket-spacing': [2, 'never'], //是否允许非空数组里面有多余的空格
@@ -255,8 +255,8 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
-    "ecmaFeatures": {
-      "legacyDecorators": true
+    ecmaFeatures: {
+      legacyDecorators: true
     }
   }
 }
