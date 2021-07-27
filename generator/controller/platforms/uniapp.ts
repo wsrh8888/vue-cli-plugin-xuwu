@@ -1,11 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-10 10:05:55
+ * @LastEditTime: 2021-07-27 10:22:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.ts
  */
+console.log('333测试')
 module.exports = (api) => {
   return {
     platformAddUtilsRequest() {
