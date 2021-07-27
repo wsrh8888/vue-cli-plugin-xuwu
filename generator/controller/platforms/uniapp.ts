@@ -10,9 +10,9 @@ module.exports = (api) => {
   return {
     platformAddUtilsRequest() {
       api.render({
-        '/src/utils/request.ts': '../../module/request/uniappTs/request.ts',
-        '/src/utils/interface.ts': '../../module/request/uniappTs/interface.ts',
-        '/src/api/index.ts': '../../module/request/uniappTs/index.ts'
+        '/src/utils/request.ts': '../../module/request/uniapp/request.ts',
+        '/src/utils/interface.ts': '../../module/request/uniapp/interface.ts',
+        '/src/api/index.ts': '../../module/request/uniapp/index.ts'
       })
     },
     platformAddUtilsConfig() {

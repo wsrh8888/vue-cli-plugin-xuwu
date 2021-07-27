@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-06-10 11:32:39
+ * @LastEditTime: 2021-07-27 10:32:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.js
@@ -15,8 +15,8 @@ module.exports = (api) => {
         }
       })
       api.render({
-        '/src/utils/request.js': '../../module/request/webJs/request.js',
-        '/src/api/index.js': '../../module/request/webJs/index.js'
+        '/src/utils/request.js': '../../module/request/web/request.js',
+        '/src/api/index.js': '../../module/request/web/index.js'
       })
     },
     platformAddUtilsConfig() {
