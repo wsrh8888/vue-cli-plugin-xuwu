@@ -1,13 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 11:17:13
- * @LastEditTime: 2021-07-26 16:53:29
+ * @LastEditTime: 2021-07-27 10:17:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/vantVue3.js
  */
 import 'vant/lib/index.css'
-import type { App } from 'vue'
 
 import {
   Popup,
@@ -153,7 +152,7 @@ const components = [
   TabbarItem,
   TreeSelect
 ]
-const install = (app: App) => {
+const install = (app: any) => {
   components.forEach((component: any) => {
     app.component(component.name, component)
   })

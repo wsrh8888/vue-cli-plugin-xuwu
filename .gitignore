@@ -1,2 +1,5 @@
 node_modules
 .DS_Store
+generator/module/plugins/*.js
+generator/module/request/**/*.js
+generator/module/utils/*.js

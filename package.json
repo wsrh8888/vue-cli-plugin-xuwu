@@ -4,7 +4,7 @@
   "description": "xuwu模板助手，通过插件的方式对vue生态圈的所有项目进行高效，便捷的扩展",
   "main": "index.js",
   "scripts": {
-    "build": "tsc", 
+    "build": "tsc ",
     "lint": "eslint --fix ./generator  --ext .vue,.js,.ts"
   },
   "husky": {
@@ -71,6 +71,7 @@
     "rules": {}
   },
   "dependencies": {
+    "@types/node": "^16.4.3",
     "typescript": "^4.3.5"
   }
 }

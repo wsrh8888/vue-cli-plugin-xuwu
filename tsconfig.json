@@ -17,11 +17,13 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
+    "types": ["node"]
   },
+  "files": ["shims.d.ts"],
   "include": [
     "generator/module/**/*.ts",
-    "generator/module/**/*.tsx"
+    "generator/module/**/*.tsx",
   ],
   "exclude": [
     "node_modules"

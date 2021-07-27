@@ -5,8 +5,7 @@ module.exports = {
   },
   globals: {
     uni: false,
-    process: false,
-    'element-ui': false
+    process: false
   },
   extends: ['plugin:vue/essential', '@vue/prettier'],
   rules: {
