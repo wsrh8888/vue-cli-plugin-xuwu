@@ -1,5 +1,4 @@
 import Vue from 'vue'
-console.log('3333')
 import {
   Pagination,
   Dialog,
