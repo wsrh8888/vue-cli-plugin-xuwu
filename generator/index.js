@@ -1,14 +1,22 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-06-10 15:11:33
+ * @LastEditTime: 2021-07-28 20:00:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
  */
 
 module.exports = (api, options) => {
-  const vueVersion = api.rootOptions.vueVersion
+  let vueVersion = '2'
+  try {
+    let packageData = JSON.parse(api.generator.files['package.json'])
+    const version =
+      packageData.dependencies.vue || packageData.devDependencies.vue
+    vueVersion = version[version.indexOf('.') - 1].toString()
+  } catch (error) {
+    vueVersion = '2'
+  }
   const {
     pluginSassPlugin,
     pluginRequest,
@@ -135,9 +143,9 @@ module.exports = (api, options) => {
       options.promptsLanguage === 'uniapp'
         ? 'uniapp'
         : options.promptsLanguage === 'vue'
-        ? vueVersion === '2'
-          ? 'vue2'
-          : 'vue3'
+        ? vueVersion !== '2'
+          ? 'vue3'
+          : 'vue2'
         : ''
     options.promptsManuallyConfig.forEach((element) => {
       enumOption[promptsLanguage][element]()
@@ -147,9 +155,9 @@ module.exports = (api, options) => {
       options.promptsLanguage === 'uniapp'
         ? 'uniapp'
         : options.promptsLanguage === 'vue'
-        ? vueVersion === '2'
-          ? 'vue2'
-          : 'vue3'
+        ? vueVersion !== '2'
+          ? 'vue3'
+          : 'vue2'
         : ''
     defaultConfig[promptsLanguage][
       options.promptsScene ? options.promptsScene : 'pc'
@@ -163,9 +171,9 @@ module.exports = (api, options) => {
       options.promptsLanguage === 'uniapp'
         ? 'uniapp'
         : options.promptsLanguage === 'vue'
-        ? vueVersion === '2'
-          ? 'vue2'
-          : 'vue3'
+        ? vueVersion !== '2'
+          ? 'vue3'
+          : 'vue2'
         : ''
     enumUiPlugin[promptsLanguage][options.promptsUiConfig]()
   }

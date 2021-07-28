@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-xuwu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "xuwu模板助手，通过插件的方式对vue生态圈的所有项目进行高效，便捷的扩展",
   "main": "index.js",
   "scripts": {
