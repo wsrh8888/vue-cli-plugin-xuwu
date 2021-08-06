@@ -1,15 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-06 11:22:36
+ * @LastEditTime: 2021-08-06 17:46:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
  */
 
 module.exports = (api, options) => {
-  const { vueVersion } = require('./utils/tools')(api, options)
-  const promptsLanguage = options.promptsLanguage
+  const { vueVersion, language, scene } = require('./utils/tools')(api, options)
   const {
     pluginSassPlugin,
     pluginRequest,
@@ -143,17 +142,15 @@ module.exports = (api, options) => {
    */
   if (options.promptsPcConfig !== 'default') {
     options.promptsManuallyConfig.forEach((element) => {
-      enumsPluginConfig[promptsLanguage][vueVersion][element]()
+      enumsPluginConfig[language][vueVersion][element]()
     })
   } else {
-    defaultConfig[promptsLanguage][vueVersion][
-      options.promptsScene ? options.promptsScene : 'pc'
-    ].forEach((config) => {
+    defaultConfig[language][vueVersion][scene].forEach((config) => {
       config()
     })
   }
   // 处理UI插件
   if (options.promptsUiConfig) {
-    enumsUiConfig[promptsLanguage][vueVersion][options.promptsUiConfig]()
+    enumsUiConfig[language][vueVersion][options.promptsUiConfig]()
   }
 }

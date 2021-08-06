@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-08-06 11:08:28
+ * @LastEditTime: 2021-08-06 17:01:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/prompts.js
@@ -19,7 +19,7 @@ module.exports = () => {
       default: 'web'
     },
     {
-      when: (answers) => answers.promptsLanguage === 'vue',
+      when: (answers) => answers.promptsLanguage === 'web',
       type: 'list',
       name: 'promptsScene',
       message: '请选择使用的场景',
@@ -42,7 +42,7 @@ module.exports = () => {
     {
       when: (answers) => {
         return (
-          answers.promptsLanguage === 'vue' &&
+          answers.promptsLanguage === 'web' &&
           answers.promptsPcConfig === 'manually'
         )
       },
@@ -100,7 +100,7 @@ module.exports = () => {
     {
       when: (answers) => {
         return (
-          answers.promptsLanguage === 'vue' &&
+          answers.promptsLanguage === 'web' &&
           answers.promptsPcConfig === 'manually'
         )
       },

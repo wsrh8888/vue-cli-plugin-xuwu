@@ -1,13 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-07-07 20:17:27
+ * @LastEditTime: 2021-08-06 17:47:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
  */
 
 module.exports = (api, options) => {
+  const { tsOrJs, language } = require('./utils/tools')(api, options)
+
   const {
     mainAddVconsole,
     mainInit,
@@ -41,7 +43,6 @@ module.exports = (api, options) => {
     babelConfigAddElement,
     babelConfigAddElementPlus
   } = require('./controller/babel.config')(api, options)
-  const isTs = api.entryFile.endsWith('.ts')
   const {
     platformAddUtilsConfig,
     platformAddUtilsRequest,
@@ -50,9 +51,7 @@ module.exports = (api, options) => {
     platformAddUtilsRem,
     platformAddPluginsElementVue3,
     platformAddPluginsVantVue3
-  } = require(`./controller/platforms/${
-    options.promptsLanguage === 'vue' ? 'vue' : 'uniapp'
-  }.${isTs ? 'ts' : 'js'}`)(api, options)
+  } = require(`./controller/platforms/${language}.${tsOrJs}`)(api, options)
 
   const pluginCrossEnv = () => {
     packageCrossEnv()
