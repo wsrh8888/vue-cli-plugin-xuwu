@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 17:17:59
- * @LastEditTime: 2021-04-29 17:38:44
+ * @LastEditTime: 2021-08-06 11:04:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-structure/generator/template/vue.config.js
@@ -25,6 +25,12 @@ if (process.env.NODE_ENV === 'production' && process.env.API_ENV === 'test') {
 } else {
   webUrl = '/'
 }
+
+/**
+ * @description: vue-cli相关配置，具体配置的含义翻阅文档
+ * @param 文档地址{https://cli.vuejs.org/zh/config/#pages}
+ * @return {*}
+ */
 module.exports = {
   configureWebpack: {
     plugins: [
@@ -36,8 +42,10 @@ module.exports = {
     ]
   },
   productionSourceMap: false,
-  // eslint-loader 是否在保存的时候检查
+  //lintOnSave 设置为 true 或 'warning' 时，eslint-loader 会将 lint 错误输出为编译警告。默认情况下，警告仅仅会被输出到命令行，且不会使得编译失败。
+  //lintOnSave 如果你希望让 lint 错误在开发时直接显示在浏览器中，你可以使用 lintOnSave: 'default'。这会强制 eslint-loader 将 lint 错误输出为编译错误，同时也意味着 lint 错误将会导致编译失败。
   lintOnSave: true,
+  transpileDependencies: [], //用来对node_modules中某个依赖包的es6语法转为es5
   publicPath: webUrl,
   assetsDir: './static'
 }
