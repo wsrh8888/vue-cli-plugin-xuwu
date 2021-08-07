@@ -1,19 +1,20 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:35:36
- * @LastEditTime: 2021-08-07 16:02:52
+ * @LastEditTime: 2021-08-07 19:35:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.vue.js
  */
+const { BaseInfo } = require('../utils/tools')
 
-export default class MainVue {
-  _api: any
-  _version: string = ''
-  _options: any = {}
-  constructor(api, options) {
-    this._api = api
-    this._options = options
+module.exports = class MainVue {
+  api
+  options = {}
+  constructor() {
+    const baseInfo = BaseInfo.init()
+    this.api = baseInfo.api
+    this.options = baseInfo.options
   }
   /**
    * @description: 在vue.config里增加适配相关代码
@@ -21,12 +22,12 @@ export default class MainVue {
    * @param {*} options
    * @return {*}
    */
-  mainVueAddMedia(): void {
-    this._api.afterInvoke(() => {
+  mainVueAddMedia() {
+    this.api.afterInvoke(() => {
       const fs = require('fs')
       const { EOL } = require('os')
       const contentVueConfig = fs.readFileSync(
-        this._api.resolve('./src/App.vue'),
+        this.api.resolve('./src/App.vue'),
         {
           encoding: 'utf-8'
         }

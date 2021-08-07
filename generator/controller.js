@@ -1,17 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-07 16:05:01
+ * @LastEditTime: 2021-08-07 19:41:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
  */
-import Tools from './utils/tools'
-import MainVue from './controller/main.vue'
-
+const { Utils } = require('./utils/tools')
+const MainVue = require('./controller/main.vue')
+const VueConfig = require('./controller/vue.config')
 module.exports = (api, options) => {
-  const tools = new Tools(api, options)
-  const mainVue = new MainVue(api, options)
+  const mainVue = new MainVue()
+  const vueConfig = new VueConfig()
+  const utils = new Utils()
   const {
     mainAddVconsole,
     mainInit,
@@ -23,8 +24,6 @@ module.exports = (api, options) => {
     mainAddVant,
     mainAddVantVue3
   } = require('./controller/main')(api, options)
-  const { vueConfigAddPx2rem, vueConfigAddFlexible } =
-    require('./controller/vue.config')(api, options)
   const {
     packageCommitPre,
     packageRemoveConsole,
@@ -52,7 +51,7 @@ module.exports = (api, options) => {
     platformAddUtilsRem,
     platformAddPluginsElementVue3,
     platformAddPluginsVantVue3
-  } = require(`./controller/platforms/${tools.language()}.${tools.tsOrJs()}`)(
+  } = require(`./controller/platforms/${utils.language()}.${utils.tsOrJs()}`)(
     api,
     options
   )
@@ -123,20 +122,20 @@ module.exports = (api, options) => {
   }
   const pluginFlexibleVue3 = () => {
     pluginCrossEnv()
-    vueConfigAddFlexible()
+    vueConfig.vueConfigAddFlexible()
     packageFlexible()
     platformAddUtilsRem()
     mainAddRemVue3()
-    vueConfigAddPx2rem()
+    vueConfig.vueConfigAddPx2rem()
     mainVue.mainVueAddMedia()
   }
   const pluginFlexible = () => {
     pluginCrossEnv()
-    vueConfigAddFlexible()
+    vueConfig.vueConfigAddFlexible()
     packageFlexible()
     platformAddUtilsRem()
     mainAddRem()
-    vueConfigAddPx2rem()
+    vueConfig.vueConfigAddPx2rem()
     mainVue.mainVueAddMedia()
   }
   return {

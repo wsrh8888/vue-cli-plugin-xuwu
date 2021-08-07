@@ -1,15 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-07 15:57:30
+ * @LastEditTime: 2021-08-07 19:28:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
  */
-import Tools from './utils/tools'
+
+const { BaseInfo, Utils } = require('./utils/tools')
 
 module.exports = (api, options) => {
-  const tools = new Tools(api, options)
+  BaseInfo.init(api, options)
+  const utils = new Utils()
   const {
     pluginSassPlugin,
     pluginRequest,
@@ -143,10 +145,10 @@ module.exports = (api, options) => {
    */
   if (options.promptsPcConfig !== 'default') {
     options.promptsManuallyConfig.forEach((element) => {
-      enumsPluginConfig[tools.language()][tools.vueVersion()][element]()
+      enumsPluginConfig[utils.language()][utils.vueVersion()][element]()
     })
   } else {
-    defaultConfig[tools.language()][tools.vueVersion()][tools.scene()].forEach(
+    defaultConfig[utils.language()][utils.vueVersion()][utils.scene()].forEach(
       (config) => {
         config()
       }
@@ -154,7 +156,7 @@ module.exports = (api, options) => {
   }
   // 处理UI插件
   if (options.promptsUiConfig) {
-    enumsUiConfig[tools.language()][tools.vueVersion()][
+    enumsUiConfig[utils.language()][utils.vueVersion()][
       options.promptsUiConfig
     ]()
   }
