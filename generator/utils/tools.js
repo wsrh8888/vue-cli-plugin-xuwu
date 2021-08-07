@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-07 19:47:47
+ * @LastEditTime: 2021-08-07 20:03:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/utils/tools.js
@@ -29,28 +29,44 @@ class BaseInfo {
     return this.single
   }
   /**
-   * @description: 获取api对象值
+   * @description: 获取全局属性，api
    * @param {*}
    * @return {*}
    */
   static getApi() {
-    return this.api
+    if (this.single === undefined) {
+      throw new Error('初始化实例失败')
+    }
+    return this.single.api
   }
+  /**
+   * @description: 获取全局属性，option
+   * @param {*}
+   * @return {*}
+   */
   static getOption() {
-    return this.options
+    if (this.single === undefined) {
+      throw new Error('初始化实例失败')
+    }
+    return this.single.options
+  }
+  getVueVersion() {
+    let result = 'vue2'
+    try {
+      let packageData = JSON.parse(this.api.generator.files['package.json'])
+      let version =
+        packageData.dependencies.vue || packageData.devDependencies.vue
+      result = 'vue' + version[version.indexOf('.') - 1].toString()
+    } catch (error) {
+      result = 'vue2'
+    }
+    return result
   }
 }
 
 class Utils {
-  api = undefined
-  options = undefined
-
-  constructor() {
-    const baseInfo = BaseInfo.init()
-    this.api = baseInfo.api
-    this.options = baseInfo.options
-    console.log('34333', baseInfo)
-  }
+  api = BaseInfo.getApi()
+  options = BaseInfo.getOption()
   /**
    * @description: 当前项目的vue版本
    * @param {*}

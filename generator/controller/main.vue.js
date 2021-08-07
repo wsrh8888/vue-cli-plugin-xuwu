@@ -1,21 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:35:36
- * @LastEditTime: 2021-08-07 19:35:19
+ * @LastEditTime: 2021-08-07 21:01:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.vue.js
  */
 const { BaseInfo } = require('../utils/tools')
 
-module.exports = class MainVue {
-  api
-  options = {}
-  constructor() {
-    const baseInfo = BaseInfo.init()
-    this.api = baseInfo.api
-    this.options = baseInfo.options
-  }
+class MainVue {
+  api = BaseInfo.getApi()
+  options = BaseInfo.getOption()
+
   /**
    * @description: 在vue.config里增加适配相关代码
    * @param {*} api
@@ -53,3 +49,5 @@ module.exports = class MainVue {
     })
   }
 }
+
+module.exports = MainVue

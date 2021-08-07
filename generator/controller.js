@@ -1,158 +1,116 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-07 19:41:04
+ * @LastEditTime: 2021-08-07 21:54:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
  */
 const { Utils } = require('./utils/tools')
-const MainVue = require('./controller/main.vue')
-const VueConfig = require('./controller/vue.config')
-module.exports = (api, options) => {
-  const mainVue = new MainVue()
-  const vueConfig = new VueConfig()
-  const utils = new Utils()
-  const {
-    mainAddVconsole,
-    mainInit,
-    mainAddRem,
-    mainAddRemVue3,
-    mainAddVconsoleVue3,
-    mainAddElementVue3,
-    mainAddElement,
-    mainAddVant,
-    mainAddVantVue3
-  } = require('./controller/main')(api, options)
-  const {
-    packageCommitPre,
-    packageRemoveConsole,
-    packageAddConsolePanel,
-    packageElementUi,
-    packageElementPlusUi,
-    packageVantUi,
-    packageFlexible,
-    packageCrossEnv,
-    packageSass,
-    packageLess,
-    packageVuedraggable,
-    packageVantVue3
-  } = require('./controller/package')(api, options)
-  const {
-    babelConfigReoveConsole,
-    babelConfigAddElement,
-    babelConfigAddElementPlus
-  } = require('./controller/babel.config')(api, options)
-  const {
-    platformAddUtilsConfig,
-    platformAddUtilsRequest,
-    platformAddPluginsVant,
-    platformAddPluginsElement,
-    platformAddUtilsRem,
-    platformAddPluginsElementVue3,
-    platformAddPluginsVantVue3
-  } = require(`./controller/platforms/${utils.language()}.${utils.tsOrJs()}`)(
-    api,
-    options
-  )
+const FileMainVue = require('./controller/main.vue')
+const FileVueConfig = require('./controller/vue.config')
+const FileMain = require('./controller/main')
+const FilePackage = require('./controller/package')
+const FileBabelConfig = require('./controller/babel.config')
 
-  const pluginCrossEnv = () => {
-    packageCrossEnv()
-    platformAddUtilsConfig()
+class Controller {
+  fileMainVue = new FileMainVue()
+  fileVueConfig = new FileVueConfig()
+  utils = new Utils()
+  fileMain = new FileMain()
+  filePackage = new FilePackage()
+  fileBabelConfig = new FileBabelConfig()
+  platformAddUtilsConfig = () => {}
+  platformAddUtilsRequest = () => {}
+  platformAddPluginsVant = () => {}
+  platformAddPluginsElementVue3 = () => {}
+  platformAddPluginsElement = () => {}
+  platformAddUtilsRem = () => {}
+  platformAddPluginsVantVue3 = () => {}
+
+  static pluginCrossEnv() {
+    this.filePackage.packageCrossEnv()
+    this.platformAddUtilsConfig()
   }
-  const uiElement = () => {
-    packageElementUi()
-    platformAddPluginsElement()
-    babelConfigAddElement()
-    mainAddElement()
+  static uiElement() {
+    this.filePackage.packageElementUi()
+    this.platformAddPluginsElement()
+    this.fileBabelConfig.babelConfigAddElement()
+    this.fileMain.mainAddElement()
   }
-  const uiVant = () => {
-    packageVantUi()
-    platformAddPluginsVant()
-    mainAddVant()
+  static uiVant() {
+    this.filePackage.packageVantUi()
+    this.platformAddPluginsVant()
+    this.fileMain.mainAddVant()
   }
-  const uiVantVue3 = () => {
-    packageVantVue3()
-    platformAddPluginsVantVue3()
-    mainAddVantVue3()
+  static uiVantVue3() {
+    this.filePackage.packageVantVue3()
+    this.platformAddPluginsVantVue3()
+    this.fileMain.mainAddVantVue3()
   }
-  const uiElementVue3 = () => {
-    platformAddPluginsElementVue3()
-    packageElementPlusUi()
-    babelConfigAddElementPlus()
-    mainInit()
-    mainAddElementVue3()
+  static uiElementVue3() {
+    this.platformAddPluginsElementVue3()
+    this.filePackage.packageElementPlusUi()
+    this.fileBabelConfig.babelConfigAddElementPlus()
+    this.fileMain.mainInit()
+    this.fileMain.mainAddElementVue3()
   }
-  const pluginRequest = () => {
-    pluginCrossEnv()
-    platformAddUtilsRequest()
+  static pluginRequest() {
+    this.pluginCrossEnv()
+    this.platformAddUtilsRequest()
   }
-  const pluginSassPlugin = () => {
-    packageSass()
+  static pluginSassPlugin() {
+    this.filePackage.packageSass()
   }
-  const lessPlugin = () => {
-    packageLess()
+  static lessPlugin() {
+    this.filePackage.packageLess()
   }
-  const pluginVuedraggable = () => {
-    packageVuedraggable()
+  static pluginVuedraggable() {
+    this.filePackage.packageVuedraggable()
   }
-  const pluginRemoveConsole = () => {
-    packageRemoveConsole()
-    babelConfigReoveConsole()
+  static pluginRemoveConsole() {
+    console.log('33333', this.filePackage)
+    this.filePackage.packageRemoveConsole()
+    this.fileBabelConfig.babelConfigReoveConsole()
   }
-  const pluginLintStaged = () => {
-    api.render({
-      '/.eslintrc.js': './module/_eslintrc.js',
-      '/.eslintignore': './module/_eslintignore',
-      '/.prettierrc': './module/_prettierrc'
-    })
-    packageCommitPre()
+  static pluginLintStaged() {
+    // api.render({
+    //   '/.eslintrc.js': './module/_eslintrc.js',
+    //   '/.eslintignore': './module/_eslintignore',
+    //   '/.prettierrc': './module/_prettierrc'
+    // })
+    // this.filePackage.packageCommitPre()
   }
 
-  const pluginAddVconsole = () => {
-    pluginCrossEnv()
-    packageAddConsolePanel()
-    mainAddVconsole()
+  static pluginAddVconsole() {
+    this.pluginCrossEnv()
+    this.filePackage.packageAddConsolePanel()
+    this.fileMain.mainAddVconsole()
   }
-  const pluginAddVconsoleVue3 = () => {
-    pluginCrossEnv()
-    mainInit()
-    packageAddConsolePanel()
-    mainAddVconsoleVue3()
+  static pluginFlexibleVue3() {
+    this.pluginCrossEnv()
+    this.fileVueConfig.vueConfigAddFlexible()
+    this.filePackage.packageFlexible()
+    this.platformAddUtilsRem()
+    this.fileMain.mainAddRemVue3()
+    this.fileVueConfig.vueConfigAddPx2rem()
+    this.fileMainVue.mainVueAddMedia()
   }
-  const pluginFlexibleVue3 = () => {
-    pluginCrossEnv()
-    vueConfig.vueConfigAddFlexible()
-    packageFlexible()
-    platformAddUtilsRem()
-    mainAddRemVue3()
-    vueConfig.vueConfigAddPx2rem()
-    mainVue.mainVueAddMedia()
+  static pluginFlexible() {
+    this.pluginCrossEnv()
+    this.fileVueConfig.vueConfigAddFlexible()
+    this.filePackage.packageFlexible()
+    this.platformAddUtilsRem()
+    this.fileMain.mainAddRem()
+    this.fileVueConfig.vueConfigAddPx2rem()
+    this.fileMainVue.mainVueAddMedia()
   }
-  const pluginFlexible = () => {
-    pluginCrossEnv()
-    vueConfig.vueConfigAddFlexible()
-    packageFlexible()
-    platformAddUtilsRem()
-    mainAddRem()
-    vueConfig.vueConfigAddPx2rem()
-    mainVue.mainVueAddMedia()
-  }
-  return {
-    uiElement,
-    uiVant,
-    uiVantVue3,
-    uiElementVue3,
-    pluginRequest,
-    pluginSassPlugin,
-    lessPlugin,
-    pluginVuedraggable,
-    pluginRemoveConsole,
-    pluginLintStaged,
-    pluginAddVconsole,
-    pluginAddVconsoleVue3,
-    pluginFlexibleVue3,
-    pluginFlexible,
-    pluginCrossEnv
+  static pluginAddVconsoleVue3() {
+    this.pluginCrossEnv()
+    this.fileMain.mainInit()
+    this.filePackage.packageAddConsolePanel()
+    this.fileMain.mainAddVconsoleVue3()
   }
 }
+
+module.exports = Controller

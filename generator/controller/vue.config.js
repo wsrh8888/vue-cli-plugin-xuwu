@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:28
- * @LastEditTime: 2021-08-07 19:36:34
+ * @LastEditTime: 2021-08-07 20:56:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/vue.config.js
@@ -15,15 +15,9 @@ const { BaseInfo } = require('../utils/tools')
  * @param {*} options
  * @return {*}
  */
-
-module.exports = class VueConfig {
-  api
-  options
-  constructor() {
-    const baseInfo = BaseInfo.init()
-    this.api = baseInfo.api
-    this.options = baseInfo.options
-  }
+class VueConfig {
+  api = BaseInfo.getApi()
+  options = BaseInfo.getOption()
   vueConfigAddPx2rem() {
     this.api.afterInvoke(() => {
       const fs = require('fs')
@@ -79,3 +73,5 @@ module.exports = class VueConfig {
     }
   }
 }
+
+module.exports = VueConfig
