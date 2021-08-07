@@ -1,15 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-06 17:47:14
+ * @LastEditTime: 2021-08-07 16:05:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
  */
+import Tools from './utils/tools'
+import MainVue from './controller/main.vue'
 
 module.exports = (api, options) => {
-  const { tsOrJs, language } = require('./utils/tools')(api, options)
-
+  const tools = new Tools(api, options)
+  const mainVue = new MainVue(api, options)
   const {
     mainAddVconsole,
     mainInit,
@@ -23,7 +25,6 @@ module.exports = (api, options) => {
   } = require('./controller/main')(api, options)
   const { vueConfigAddPx2rem, vueConfigAddFlexible } =
     require('./controller/vue.config')(api, options)
-  const { mainVueAddMedia } = require('./controller/main.vue')(api, options)
   const {
     packageCommitPre,
     packageRemoveConsole,
@@ -51,7 +52,10 @@ module.exports = (api, options) => {
     platformAddUtilsRem,
     platformAddPluginsElementVue3,
     platformAddPluginsVantVue3
-  } = require(`./controller/platforms/${language}.${tsOrJs}`)(api, options)
+  } = require(`./controller/platforms/${tools.language()}.${tools.tsOrJs()}`)(
+    api,
+    options
+  )
 
   const pluginCrossEnv = () => {
     packageCrossEnv()
@@ -124,7 +128,7 @@ module.exports = (api, options) => {
     platformAddUtilsRem()
     mainAddRemVue3()
     vueConfigAddPx2rem()
-    mainVueAddMedia()
+    mainVue.mainVueAddMedia()
   }
   const pluginFlexible = () => {
     pluginCrossEnv()
@@ -133,7 +137,7 @@ module.exports = (api, options) => {
     platformAddUtilsRem()
     mainAddRem()
     vueConfigAddPx2rem()
-    mainVueAddMedia()
+    mainVue.mainVueAddMedia()
   }
   return {
     uiElement,

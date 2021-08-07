@@ -1,27 +1,27 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-07 15:49:55
+ * @LastEditTime: 2021-08-07 15:58:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/utils/tools.js
  */
 
-export class Utils {
+export default class Utils {
   _api: any
   _version: string = ''
   _options: any = {}
 
-  constructor(api) {
+  constructor(api, options) {
     this._api = api
-    // this._options = options
+    this._options = options
   }
   /**
    * @description: 当前项目的vue版本
    * @param {*}
    * @return {*}
    */
-  vueVersion() {
+  vueVersion(): string {
     let result = 'vue2'
     try {
       let packageData = JSON.parse(this._api.generator.files['package.json'])
@@ -39,8 +39,8 @@ export class Utils {
    * @param {*}
    * @return {*}
    */
-  language = (options) => {
-    return options.promptsLanguage
+  language(): string {
+    return this._options.promptsLanguage
   }
 
   /**
@@ -48,8 +48,8 @@ export class Utils {
    * @param {*}
    * @return {*}
    */
-  scene = (options) => {
-    return options.promptsScene ? options.promptsScene : 'pc'
+  scene(): string {
+    return this._options.promptsScene ? this._options.promptsScene : 'pc'
   }
 
   /**
@@ -57,7 +57,7 @@ export class Utils {
    * @param {*}
    * @return {*}
    */
-  tsOrJs() {
+  tsOrJs(): string {
     return this._api.entryFile.endsWith('.ts') ? 'ts' : 'js'
   }
 }
