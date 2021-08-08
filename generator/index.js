@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-08 12:46:15
+ * @LastEditTime: 2021-08-08 15:14:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
@@ -136,9 +136,7 @@ module.exports = (api, options) => {
       .defaultConfig()
       [Xuwu.getLanguage()][Xuwu.getVueVersion()][Xuwu.getScene()].forEach(
         (element) => {
-          element(template.getControllerThis())
-          // template.getControllerThis().pluginRemoveConsole()
-          // template.getControllerThis()[element]()
+          element()
         }
       )
   }
