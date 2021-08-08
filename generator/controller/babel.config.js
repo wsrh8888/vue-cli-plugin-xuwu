@@ -1,17 +1,21 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-08-07 21:07:26
+ * @LastEditTime: 2021-08-08 10:40:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
  */
 const StaticBabelConfig = require('../static/babel.config')
-const { BaseInfo } = require('../utils/tools')
-
+const Xuwu = require('../utils/tools')
+const FilePackage = require('./package')
 class BabelConfig {
-  api = BaseInfo.getApi()
-  options = BaseInfo.getOption()
+  api = Xuwu.getApi()
+  options = Xuwu.getOption()
+  filePackage = undefined
+  constructor() {
+    this.filePackage = new FilePackage()
+  }
   babelConfigReoveConsole() {
     const { EOL } = require('os')
     const fs = require('fs')
@@ -123,11 +127,10 @@ class BabelConfig {
     })
   }
   babelConfigInit() {
-    const { packageBabelInit } = require('./package')
     this.api.render({
       '/babel.config.js': '../module/babel.config.js'
     })
-    packageBabelInit()
+    this.filePackage.packageBabelInit()
   }
 }
 /**

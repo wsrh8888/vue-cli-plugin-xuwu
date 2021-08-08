@@ -1,16 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-07 20:59:45
+ * @LastEditTime: 2021-08-08 11:20:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
  */
-const { BaseInfo } = require('../utils/tools')
+const Xuwu = require('../utils/tools')
 
 class Package {
-  api = BaseInfo.getApi()
-  options = BaseInfo.getOption()
+  api = Xuwu.getApi()
+  options = Xuwu.getOption()
   /**
    * @description: 在package里增加代码格式化插件
    * @param {*} this.api

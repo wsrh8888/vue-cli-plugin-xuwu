@@ -1,79 +1,71 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-07 21:54:51
+ * @LastEditTime: 2021-08-08 12:45:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
  */
-const { Utils } = require('./utils/tools')
 const FileMainVue = require('./controller/main.vue')
 const FileVueConfig = require('./controller/vue.config')
 const FileMain = require('./controller/main')
 const FilePackage = require('./controller/package')
 const FileBabelConfig = require('./controller/babel.config')
-
+const Platforms = require('./controller/platforms/index')
 class Controller {
   fileMainVue = new FileMainVue()
   fileVueConfig = new FileVueConfig()
-  utils = new Utils()
   fileMain = new FileMain()
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
-  platformAddUtilsConfig = () => {}
-  platformAddUtilsRequest = () => {}
-  platformAddPluginsVant = () => {}
-  platformAddPluginsElementVue3 = () => {}
-  platformAddPluginsElement = () => {}
-  platformAddUtilsRem = () => {}
-  platformAddPluginsVantVue3 = () => {}
-
-  static pluginCrossEnv() {
-    this.filePackage.packageCrossEnv()
-    this.platformAddUtilsConfig()
+  platforms = new Platforms()
+  pluginCrossEnv() {
+    // this.filePackage.packageCrossEnv()
+    // Platforms.platformAddUtilsConfig()
   }
-  static uiElement() {
-    this.filePackage.packageElementUi()
-    this.platformAddPluginsElement()
-    this.fileBabelConfig.babelConfigAddElement()
-    this.fileMain.mainAddElement()
+  uiElement(_this) {
+    _this.filePackage.packageElementUi()
+    console.log(11111, _this.platforms.getPlatforms())
+    _this.platforms.getPlatforms().platformAddPluginsElement()
+    _this.fileBabelConfig.babelConfigAddElement()
+    _this.fileMain.mainAddElement()
   }
-  static uiVant() {
+  uiVant() {
     this.filePackage.packageVantUi()
-    this.platformAddPluginsVant()
+    Platforms.platformAddPluginsVant()
     this.fileMain.mainAddVant()
   }
-  static uiVantVue3() {
+  uiVantVue3() {
     this.filePackage.packageVantVue3()
-    this.platformAddPluginsVantVue3()
+    Platforms.platformAddPluginsVantVue3()
     this.fileMain.mainAddVantVue3()
   }
-  static uiElementVue3() {
-    this.platformAddPluginsElementVue3()
+  uiElementVue3() {
+    Platforms.platformAddPluginsElementVue3()
     this.filePackage.packageElementPlusUi()
     this.fileBabelConfig.babelConfigAddElementPlus()
     this.fileMain.mainInit()
     this.fileMain.mainAddElementVue3()
   }
-  static pluginRequest() {
-    this.pluginCrossEnv()
-    this.platformAddUtilsRequest()
+  pluginRequest(_this) {
+    _this.pluginCrossEnv()
+    // _this.platformAddUtilsRequest()
   }
-  static pluginSassPlugin() {
+  pluginSassPlugin() {
     this.filePackage.packageSass()
   }
-  static lessPlugin() {
+  lessPlugin() {
     this.filePackage.packageLess()
   }
-  static pluginVuedraggable() {
+  pluginVuedraggable() {
     this.filePackage.packageVuedraggable()
   }
-  static pluginRemoveConsole() {
-    console.log('33333', this.filePackage)
-    this.filePackage.packageRemoveConsole()
-    this.fileBabelConfig.babelConfigReoveConsole()
+  pluginRemoveConsole(_this) {
+    console.log(_this)
+    _this.filePackage.packageRemoveConsole()
+    _this.fileBabelConfig.babelConfigReoveConsole()
   }
-  static pluginLintStaged() {
+  pluginLintStaged() {
     // api.render({
     //   '/.eslintrc.js': './module/_eslintrc.js',
     //   '/.eslintignore': './module/_eslintignore',
@@ -82,30 +74,30 @@ class Controller {
     // this.filePackage.packageCommitPre()
   }
 
-  static pluginAddVconsole() {
-    this.pluginCrossEnv()
-    this.filePackage.packageAddConsolePanel()
-    this.fileMain.mainAddVconsole()
+  pluginAddVconsole(_this) {
+    _this.pluginCrossEnv()
+    _this.filePackage.packageAddConsolePanel()
+    _this.fileMain.mainAddVconsole()
   }
-  static pluginFlexibleVue3() {
+  pluginFlexibleVue3() {
     this.pluginCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
-    this.platformAddUtilsRem()
+    Platforms.platformAddUtilsRem()
     this.fileMain.mainAddRemVue3()
     this.fileVueConfig.vueConfigAddPx2rem()
     this.fileMainVue.mainVueAddMedia()
   }
-  static pluginFlexible() {
+  pluginFlexible() {
     this.pluginCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
-    this.platformAddUtilsRem()
+    Platforms.platformAddUtilsRem()
     this.fileMain.mainAddRem()
     this.fileVueConfig.vueConfigAddPx2rem()
     this.fileMainVue.mainVueAddMedia()
   }
-  static pluginAddVconsoleVue3() {
+  pluginAddVconsoleVue3() {
     this.pluginCrossEnv()
     this.fileMain.mainInit()
     this.filePackage.packageAddConsolePanel()

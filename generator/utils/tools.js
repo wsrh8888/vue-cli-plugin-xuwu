@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-07 20:03:51
+ * @LastEditTime: 2021-08-07 22:59:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/utils/tools.js
  */
 
-class BaseInfo {
+class Xuwu {
   api = undefined
   options = undefined
   static single
@@ -24,7 +24,7 @@ class BaseInfo {
    */
   static init(api, options) {
     if (this.single === undefined && api && options) {
-      this.single = new BaseInfo(api, options)
+      this.single = new Xuwu(api, options)
     }
     return this.single
   }
@@ -50,10 +50,12 @@ class BaseInfo {
     }
     return this.single.options
   }
-  getVueVersion() {
+  static getVueVersion() {
     let result = 'vue2'
     try {
-      let packageData = JSON.parse(this.api.generator.files['package.json'])
+      let packageData = JSON.parse(
+        this.single.api.generator.files['package.json']
+      )
       let version =
         packageData.dependencies.vue || packageData.devDependencies.vue
       result = 'vue' + version[version.indexOf('.') - 1].toString()
@@ -62,36 +64,13 @@ class BaseInfo {
     }
     return result
   }
-}
-
-class Utils {
-  api = BaseInfo.getApi()
-  options = BaseInfo.getOption()
-  /**
-   * @description: 当前项目的vue版本
-   * @param {*}
-   * @return {*}
-   */
-  vueVersion() {
-    let result = 'vue2'
-    try {
-      let packageData = JSON.parse(this.api.generator.files['package.json'])
-      let version =
-        packageData.dependencies.vue || packageData.devDependencies.vue
-      result = 'vue' + version[version.indexOf('.') - 1].toString()
-    } catch (error) {
-      result = 'vue2'
-    }
-    return result
-  }
-
   /**
    * @description: 当前项目是web项目还是uniapp项目
    * @param {*}
    * @return {*}
    */
-  language() {
-    return this.options.promptsLanguage
+  static getLanguage() {
+    return this.single.options.promptsLanguage
   }
 
   /**
@@ -99,8 +78,10 @@ class Utils {
    * @param {*}
    * @return {*}
    */
-  scene() {
-    return this.options.promptsScene ? this.options.promptsScene : 'pc'
+  static getScene() {
+    return this.single.options.promptsScene
+      ? this.single.options.promptsScene
+      : 'pc'
   }
 
   /**
@@ -108,12 +89,9 @@ class Utils {
    * @param {*}
    * @return {*}
    */
-  tsOrJs() {
-    return this.api.entryFile.endsWith('.ts') ? 'ts' : 'js'
+  static getTsOrJs() {
+    return this.single.api.entryFile.endsWith('.ts') ? 'ts' : 'js'
   }
 }
 
-module.exports = {
-  BaseInfo,
-  Utils
-}
+module.exports = Xuwu

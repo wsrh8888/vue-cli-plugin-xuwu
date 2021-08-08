@@ -1,69 +1,69 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-07 21:56:21
+ * @LastEditTime: 2021-08-08 12:46:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
  */
 
-const { BaseInfo, Utils } = require('./utils/tools')
+const Xuwu = require('./utils/tools')
 const Controller = require('./controller')
-
 class Template {
+  controller = new Controller()
   defaultConfig() {
     return {
       web: {
         vue2: {
           pc: [
-            Controller.pluginLintStaged,
-            Controller.pluginRemoveConsole,
-            Controller.pluginCrossEnv,
-            Controller.pluginRequest,
-            Controller.uiElement
+            this.controller.pluginLintStaged,
+            this.controller.pluginRemoveConsole,
+            this.controller.pluginCrossEnv,
+            this.controller.pluginRequest,
+            this.controller.uiElement
           ],
           mobile: [
-            Controller.pluginCrossEnv,
-            Controller.pluginRemoveConsole,
-            Controller.pluginLintStaged,
-            Controller.pluginAddVconsole,
-            Controller.pluginFlexible,
-            Controller.pluginRequest,
-            Controller.uiVant
+            this.controller.pluginCrossEnv,
+            this.controller.pluginRemoveConsole,
+            this.controller.pluginLintStaged,
+            this.controller.pluginAddVconsole,
+            this.controller.pluginFlexible,
+            this.controller.pluginRequest,
+            this.controller.uiVant
           ]
         },
         vue3: {
           pc: [
-            Controller.pluginLintStaged,
-            Controller.pluginRemoveConsole,
-            Controller.uiElementVue3,
-            Controller.pluginCrossEnv,
-            Controller.pluginRequest
+            this.controller.pluginLintStaged,
+            this.controller.pluginRemoveConsole,
+            this.controller.uiElementVue3,
+            this.controller.pluginCrossEnv,
+            this.controller.pluginRequest
           ],
           mobile: [
-            Controller.pluginCrossEnv,
-            Controller.pluginAddVconsoleVue3,
-            Controller.pluginRequest,
-            Controller.pluginFlexibleVue3,
-            Controller.pluginRemoveConsole,
-            Controller.pluginLintStaged,
-            Controller.uiVantVue3
+            this.controller.pluginCrossEnv,
+            this.controller.pluginAddVconsoleVue3,
+            this.controller.pluginRequest,
+            this.controller.pluginFlexibleVue3,
+            this.controller.pluginRemoveConsole,
+            this.controller.pluginLintStaged,
+            this.controller.uiVantVue3
           ]
         }
       },
       uniapp: {
         vue2: {
           pc: [
-            Controller.pluginLintStaged,
-            Controller.pluginSassPlugin,
-            Controller.pluginRequest,
-            Controller.pluginCrossEnv
+            this.controller.pluginLintStaged,
+            this.controller.pluginSassPlugin,
+            this.controller.pluginRequest,
+            this.controller.pluginCrossEnv
           ],
           mobile: [
-            Controller.pluginLintStaged,
-            Controller.pluginSassPlugin,
-            Controller.pluginRequest,
-            Controller.pluginCrossEnv
+            this.controller.pluginLintStaged,
+            this.controller.pluginSassPlugin,
+            this.controller.pluginRequest,
+            this.controller.pluginCrossEnv
           ]
         }
       }
@@ -73,32 +73,32 @@ class Template {
     return {
       web: {
         vue2: {
-          templateRequest: Controller.pluginRequest,
-          templateAddVconsole: Controller.pluginAddVconsole,
-          templateFlexible: Controller.pluginFlexible,
-          templateLintStaged: Controller.pluginLintStaged,
-          templateRemoveConsole: Controller.pluginRemoveConsole,
-          templateCrossEnv: Controller.pluginCrossEnv,
-          templateVuedraggable: Controller.pluginVuedraggable,
-          templateSass: Controller.pluginSassPlugin
+          templateRequest: this.controller.pluginRequest,
+          templateAddVconsole: this.controller.pluginAddVconsole,
+          templateFlexible: this.controller.pluginFlexible,
+          templateLintStaged: this.controller.pluginLintStaged,
+          templateRemoveConsole: this.controller.pluginRemoveConsole,
+          templateCrossEnv: this.controller.pluginCrossEnv,
+          templateVuedraggable: this.controller.pluginVuedraggable,
+          templateSass: this.controller.pluginSassPlugin
         },
         vue3: {
-          templateRequest: Controller.pluginRequest,
-          templateAddVconsole: Controller.pluginAddVconsoleVue3,
-          templateFlexible: Controller.pluginFlexibleVue3,
-          templateLintStaged: Controller.pluginLintStaged,
-          templateRemoveConsole: Controller.pluginRemoveConsole,
-          templateCrossEnv: Controller.pluginCrossEnv,
-          templateVuedraggable: Controller.pluginVuedraggable,
-          templateSass: Controller.pluginSassPlugin
+          templateRequest: this.controller.pluginRequest,
+          templateAddVconsole: this.controller.pluginAddVconsoleVue3,
+          templateFlexible: this.controller.pluginFlexibleVue3,
+          templateLintStaged: this.controller.pluginLintStaged,
+          templateRemoveConsole: this.controller.pluginRemoveConsole,
+          templateCrossEnv: this.controller.pluginCrossEnv,
+          templateVuedraggable: this.controller.pluginVuedraggable,
+          templateSass: this.controller.pluginSassPlugin
         }
       },
       uniapp: {
         vue2: {
-          templateLintStaged: Controller.pluginLintStaged,
-          templateSass: Controller.pluginSassPlugin,
-          templateRequest: Controller.pluginRequest,
-          templateCrossEnv: Controller.pluginCrossEnv
+          templateLintStaged: this.controller.pluginLintStaged,
+          templateSass: this.controller.pluginSassPlugin,
+          templateRequest: this.controller.pluginRequest,
+          templateCrossEnv: this.controller.pluginCrossEnv
         }
       }
     }
@@ -107,34 +107,38 @@ class Template {
     return {
       web: {
         vue2: {
-          Element: Controller.uiElement,
-          Vant: Controller.uiVant
+          Element: this.controller.uiElement,
+          Vant: this.controller.uiVant
         },
         vue3: {
-          Element: Controller.uiElementVue3,
-          Vant: Controller.uiVantVue3
+          Element: this.controller.uiElementVue3,
+          Vant: this.controller.uiVantVue3
         }
       }
     }
   }
+  getControllerThis() {
+    return this.controller
+  }
 }
 
 module.exports = (api, options) => {
-  BaseInfo.init(api, options)
-  const utils = new Utils()
+  Xuwu.init(api, options)
   const template = new Template()
   if (options.promptsPcConfig !== 'default') {
     options.promptsManuallyConfig.forEach((element) => {
-      template.enumsPluginConfig[utils.language()][utils.vueVersion()][
+      template.enumsPluginConfig[Xuwu.getLanguage()][Xuwu.getVueVersion()][
         element
       ]()
     })
   } else {
     template
       .defaultConfig()
-      [utils.language()][utils.vueVersion()][utils.scene()].forEach(
+      [Xuwu.getLanguage()][Xuwu.getVueVersion()][Xuwu.getScene()].forEach(
         (element) => {
-          console.log(element)
+          element(template.getControllerThis())
+          // template.getControllerThis().pluginRemoveConsole()
+          // template.getControllerThis()[element]()
         }
       )
   }
@@ -142,6 +146,6 @@ module.exports = (api, options) => {
   if (options.promptsUiConfig) {
     template
       .enumsUiConfig()
-      [utils.language()][utils.vueVersion()][options.promptsUiConfig]()
+      [Xuwu.getLanguage()][Xuwu.getVueVersion()][options.promptsUiConfig]()
   }
 }

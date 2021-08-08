@@ -1,16 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:35:36
- * @LastEditTime: 2021-08-07 21:01:45
+ * @LastEditTime: 2021-08-07 22:54:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.vue.js
  */
-const { BaseInfo } = require('../utils/tools')
+const Xuwu = require('../utils/tools')
 
 class MainVue {
-  api = BaseInfo.getApi()
-  options = BaseInfo.getOption()
+  api = Xuwu.getApi()
+  options = Xuwu.getOption()
 
   /**
    * @description: 在vue.config里增加适配相关代码

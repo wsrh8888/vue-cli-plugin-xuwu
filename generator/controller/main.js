@@ -1,15 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-08-07 21:02:49
+ * @LastEditTime: 2021-08-07 22:54:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
  */
-const { BaseInfo } = require('../utils/tools')
+const Xuwu = require('../utils/tools')
 class Main {
-  api = BaseInfo.getApi()
-  options = BaseInfo.getOption()
+  api = Xuwu.getApi()
+  options = Xuwu.getOption()
   /**
    * @description: 在main里增加console相关配置代码
    * @param {*} this.api

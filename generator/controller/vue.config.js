@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:28
- * @LastEditTime: 2021-08-07 20:56:16
+ * @LastEditTime: 2021-08-07 22:54:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/vue.config.js
  */
 
-const { BaseInfo } = require('../utils/tools')
+const Xuwu = require('../utils/tools')
 
 /**
  * @description: 在vue.config里增加适配相关代码
@@ -16,8 +16,8 @@ const { BaseInfo } = require('../utils/tools')
  * @return {*}
  */
 class VueConfig {
-  api = BaseInfo.getApi()
-  options = BaseInfo.getOption()
+  api = Xuwu.getApi()
+  options = Xuwu.getOption()
   vueConfigAddPx2rem() {
     this.api.afterInvoke(() => {
       const fs = require('fs')
