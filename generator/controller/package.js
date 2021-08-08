@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-08 13:39:19
+ * @LastEditTime: 2021-08-08 18:30:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
@@ -12,10 +12,9 @@ class Package {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
   /**
-   * @description: 在package里增加代码格式化插件
-   * @param {*} this.api
-   * @param {*} options
-   * @return {*}
+   * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageCommitPre() {
     this.api.extendPackage({
@@ -48,9 +47,9 @@ class Package {
     })
   }
   /**
-   * @description: 生产环境package里增加去掉console的依赖包
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加去掉console相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageRemoveConsole() {
     this.api.extendPackage({
@@ -60,9 +59,9 @@ class Package {
     })
   }
   /**
-   * @description: 引入element
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加elementUI的按需引入相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageElementUi() {
     this.api.extendPackage({
@@ -75,9 +74,9 @@ class Package {
     })
   }
   /**
-   * @description: 引入elementPlus
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加elementPlusUi相关的按需引入的的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageElementPlusUi() {
     this.api.extendPackage({
@@ -90,9 +89,9 @@ class Package {
     })
   }
   /**
-   * @description: 引入vant
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加vantUi和按需引入相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageVantUi() {
     this.api.extendPackage({
@@ -102,9 +101,21 @@ class Package {
     })
   }
   /**
-   * @description: babel.config.js文件初始化时候需要的配置
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加vantUi3相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
+   */
+  packageVantVue3() {
+    this.api.extendPackage({
+      devDependencies: {
+        vant: '^3.0.18'
+      }
+    })
+  }
+  /**
+   * @description: 在package.json文件里 增加babel.config.js初始化相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageBabelInit() {
     this.api.extendPackage({
@@ -116,9 +127,9 @@ class Package {
     })
   }
   /**
-   * @description: 增加console控制台面板
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加console控制台面板初始化时相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageAddConsolePanel() {
     this.api.extendPackage({
@@ -128,9 +139,9 @@ class Package {
     })
   }
   /**
-   * @description: 添加移动端适配相关插件
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加移动端适配相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageFlexible() {
     this.api.extendPackage({
@@ -141,9 +152,9 @@ class Package {
     })
   }
   /**
-   * @description: scripts增加环境区分的命令
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加环境区分变量和命令相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageCrossEnv() {
     this.api.extendPackage({
@@ -168,9 +179,9 @@ class Package {
     })
   }
   /**
-   * @description: 增加sass相关依赖
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加sass相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageSass() {
     this.api.extendPackage({
@@ -181,9 +192,9 @@ class Package {
     })
   }
   /**
-   * @description: 增加less相关依赖
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加less相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageLess() {
     this.api.extendPackage({
@@ -194,21 +205,14 @@ class Package {
     })
   }
   /**
-   * @description: 增加拖拽组建相关依赖
-   * @param {*}
-   * @return {*}
+   * @description: 在package.json文件里，增加拖拽组建相关的依赖包和配置
+   * @param {*} 无
+   * @return {*} 无
    */
   packageVuedraggable() {
     this.api.extendPackage({
       devDependencies: {
         vuedraggable: '^2.24.3'
-      }
-    })
-  }
-  packageVantVue3() {
-    this.api.extendPackage({
-      devDependencies: {
-        vant: '^3.0.18'
       }
     })
   }

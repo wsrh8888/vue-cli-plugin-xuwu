@@ -1,12 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-07 22:59:30
+ * @LastEditTime: 2021-08-08 18:48:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/utils/tools.js
  */
 
+/**
+ * @description: Xuwu项目全局属性
+ * @param {*}
+ * @return {*}
+ */
 class Xuwu {
   api = undefined
   options = undefined
@@ -50,6 +55,11 @@ class Xuwu {
     }
     return this.single.options
   }
+  /**
+   * @description: 获取全局属性，vue的版本
+   * @param {*}
+   * @return {string} |vue2 | vue3|
+   */
   static getVueVersion() {
     let result = 'vue2'
     try {
@@ -65,18 +75,18 @@ class Xuwu {
     return result
   }
   /**
-   * @description: 当前项目是web项目还是uniapp项目
+   * @description: 获取全局属性，项目的类型
    * @param {*}
-   * @return {*}
+   * @return {string} |web|uniapp|
    */
   static getLanguage() {
     return this.single.options.promptsLanguage
   }
 
   /**
-   * @description: 判断项目的使用场景是pc端还是移动端
+   * @description: 获取全局属性，使用场景
    * @param {*}
-   * @return {*}
+   * @return {string} |pc|mobile|
    */
   static getScene() {
     return this.single.options.promptsScene
@@ -85,9 +95,9 @@ class Xuwu {
   }
 
   /**
-   * @description: 判断项目是js项目还是ts项目
+   * @description: 获取全局属性，项目使用的语言类型
    * @param {*}
-   * @return {*}
+   * @return {string} |js|ts|
    */
   static getTsOrJs() {
     return this.single.api.entryFile.endsWith('.ts') ? 'ts' : 'js'
