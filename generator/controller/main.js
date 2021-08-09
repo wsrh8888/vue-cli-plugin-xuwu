@@ -1,12 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-08-07 22:54:28
+ * @LastEditTime: 2021-08-09 14:58:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
  */
 const Xuwu = require('../utils/tools')
+const Template = require('../static/template')
+
 class Main {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
@@ -29,12 +31,7 @@ class Main {
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
       if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
-        lines[renderIndex] += `${EOL} 
-        import VConsole from 'vconsole'
-        if (process.env.API_ENV !== 'prod') { 
-          // @ts-ignore
-          Vue.use(new VConsole())
-        }`
+        lines[renderIndex] += `${EOL} ${Template.vConsoleVue2()}`
         fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
@@ -127,13 +124,7 @@ class Main {
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
-        lines[renderIndex] += `${EOL}  
-          import VConsole from 'vconsole'
-          if (process.env.API_ENV !== 'prod') {
-            // @ts-ignore
-            app.use(new VConsole())
-          }
-        `
+        lines[renderIndex] += `${EOL}  ${Template.vConsoleVue2()}`
         fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })

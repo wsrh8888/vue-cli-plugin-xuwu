@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:35:36
- * @LastEditTime: 2021-08-07 22:54:24
+ * @LastEditTime: 2021-08-09 14:51:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.vue.js
  */
 const Xuwu = require('../utils/tools')
-
+const Template = require('../static/template')
 class MainVue {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
@@ -35,13 +35,7 @@ class MainVue {
           line.match(/@media only screen and (min-width: 375px)/)
         ) === -1
       ) {
-        lines[index] += `${EOL}  @media only screen and (min-width: 375px) {
-            #app {
-              width: 375px;
-              height: 100%;
-              margin: 0 auto;
-            }
-          }`
+        lines[index] += `${EOL}  ${Template.mainVueTemplate()}`
         fs.writeFileSync('./src/App.vue', lines.join(EOL), {
           encoding: 'utf-8'
         })

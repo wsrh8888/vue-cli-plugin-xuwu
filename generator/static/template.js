@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-01 11:34:28
- * @LastEditTime: 2021-08-09 14:42:27
+ * @LastEditTime: 2021-08-09 14:58:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/view/babel.config.js
@@ -115,5 +115,49 @@ module.exports = class Template {
         }
       }
     },`
+  }
+  /**
+   * @description: 字符串模板，在main.vue文件中增加适配css，在generator/common/main.vue.js文件中使用
+   * @param {*}
+   * @return {string}
+   */
+  static mainVueTemplate() {
+    return `
+      @media only screen and (min-width: 375px) {
+        #app {
+          width: 375px;
+          height: 100%;
+          margin: 0 auto;
+        }
+      }
+    `
+  }
+  /**
+   * @description: 字符串模板，在main.vue文件中增加Vconsole相关配置，在generator/common/main.js文件中使用
+   * @param {*}
+   * @return {string}
+   */
+  static vConsoleVue2() {
+    return `
+      import VConsole from 'vconsole'
+      if (process.env.API_ENV !== 'prod') { 
+        // @ts-ignore
+        Vue.use(new VConsole())
+      }
+    `
+  }
+  /**
+   * @description: 字符串模板，在main.vue文件中增加Vconsole相关配置，在generator/common/main.js文件中使用
+   * @param {*}
+   * @return {string}
+   */
+  static vConsoleVue3() {
+    return `
+      import VConsole from 'vconsole'
+      if (process.env.API_ENV !== 'prod') {
+        // @ts-ignore
+        app.use(new VConsole())
+      }
+    `
   }
 }
