@@ -1,14 +1,21 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-08-09 14:58:44
+ * @LastEditTime: 2021-08-09 16:51:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
  */
 const Xuwu = require('../utils/tools')
 const Template = require('../static/template')
+const { EOL } = require('os')
+const Fs = require('fs')
 
+/**
+ * @description: main.js/main.ts文件配置
+ * @param {*}
+ * @return {*}
+ */
 class Main {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
@@ -20,9 +27,7 @@ class Main {
    */
   mainAddVconsole() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      const contentMain = fs.readFileSync(
+      const contentMain = Fs.readFileSync(
         this.api.resolve(this.api.entryFile),
         {
           encoding: 'utf-8'
@@ -32,24 +37,22 @@ class Main {
       const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
       if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
         lines[renderIndex] += `${EOL} ${Template.vConsoleVue2()}`
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
   /**
-   * @description: 初始化入口文件
+   * @description: 初始化入口文件,vue3专用
    * @param {*}
    * @return {*}
    */
   mainInit() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
       let isHasRoute
       let isHasStore
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -68,17 +71,20 @@ class Main {
             ${isHasStore ? 'app.use(store);' : ''}
             app.mount('#app')
         `
-        fs.writeFileSync(this.api.entryFile, mainContent, {
+        Fs.writeFileSync(this.api.entryFile, mainContent, {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: 在入口文件增加引入Rem相关内容
+   * @param {*}
+   * @return {*}
+   */
   mainAddRem() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -88,17 +94,20 @@ class Main {
           import 'lib-flexible/flexible'
           import './utils/rem'
         `
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: 在入口文件增加引入Rem相关内容，vue3专用
+   * @param {*}
+   * @return {*}
+   */
   mainAddRemVue3() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -108,7 +117,7 @@ class Main {
           import 'lib-flexible/flexible'
           import './utils/rem'
         `
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -116,26 +125,27 @@ class Main {
   }
   mainAddVconsoleVue3() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
         lines[renderIndex] += `${EOL}  ${Template.vConsoleVue2()}`
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: 在入口文件增加Element相关引入内容,vue3专用
+   * @param {*}
+   * @return {*}
+   */
   mainAddElementVue3() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -145,17 +155,20 @@ class Main {
           import element from './plugins/element'
           app.use(element)
         `
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: 在入口文件增加Element相关引入内容
+   * @param {*}
+   * @return {*}
+   */
   mainAddElement() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -164,17 +177,20 @@ class Main {
         lines[renderIndex] += `${EOL} 
           import './plugins/element'
         `
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: 在入口文件增加vant相关引入内容
+   * @param {*}
+   * @return {*}
+   */
   mainAddVant() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -183,17 +199,20 @@ class Main {
         lines[renderIndex] += `${EOL} 
           import './plugins/vant'
         `
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: 在入口文件增加vant相关引入内容，vue3专用
+   * @param {*}
+   * @return {*}
+   */
   mainAddVantVue3() {
     this.api.afterInvoke(() => {
-      const { EOL } = require('os')
-      const fs = require('fs')
-      let contentMain = fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -203,7 +222,7 @@ class Main {
           import vant from './plugins/vant'
           app.use(vant)
         `
-        fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
