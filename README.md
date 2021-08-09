@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-05 11:39:28
- * @LastEditTime: 2021-07-08 19:42:12
+ * @LastEditTime: 2021-08-09 16:33:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/help.md
@@ -47,7 +47,7 @@ vue add xuwu
 > ![Alt](images/ui.png)
 ## 地址
 ```
-git地址：https://gitee.com/dawwdadfrf/xuwu.git
+git地址：https://github.com/wsrh8888/vue-cli-plugin-xuwu.git
 ```
 
 ## 功能介绍

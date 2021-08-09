@@ -41,7 +41,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/dawwdadfrf/vue-cli-plugin-xuwu.git"
+    "url": "https://github.com/wsrh8888/vue-cli-plugin-xuwu.git"
   },
   "devDependencies": {
     "@vue/eslint-config-prettier": "^6.0.0",
