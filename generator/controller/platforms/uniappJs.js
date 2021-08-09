@@ -7,7 +7,7 @@
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.js
  */
 
-const Xuwu = require('../../utils/tools')
+const Xuwu = require('../../utils/xuwu')
 
 class UniappJs {
   api = Xuwu.getApi()

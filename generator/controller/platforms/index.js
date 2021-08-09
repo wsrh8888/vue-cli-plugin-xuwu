@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/controller/platrorm.js
  */
-const Xuwu = require('../../utils/tools')
+const Xuwu = require('../../utils/xuwu')
 const UniappJs = require('./uniappJs')
 const UniappTs = require('./uniappTs')
 const WebJs = require('./webJs')

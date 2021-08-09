@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-08-09 15:50:34
+ * @LastEditTime: 2021-08-09 16:54:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
  */
 const Template = require('../static/template')
-const Xuwu = require('../utils/tools')
+const Xuwu = require('../utils/xuwu')
 const FilePackage = require('./package')
 const Fs = require('fs')
 const { EOL } = require('os')

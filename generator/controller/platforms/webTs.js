@@ -7,7 +7,7 @@
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.ts
  */
 
-const Xuwu = require('../../utils/tools')
+const Xuwu = require('../../utils/xuwu')
 class WebTs {
   api = Xuwu.getApi()
   options = Xuwu.getOption()

@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
  */
-const Xuwu = require('../utils/tools')
+const Xuwu = require('../utils/xuwu')
 const Template = require('../static/template')
 const { EOL } = require('os')
 const Fs = require('fs')

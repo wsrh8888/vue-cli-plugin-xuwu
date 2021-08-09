@@ -7,7 +7,7 @@
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/vue.config.js
  */
 
-const Xuwu = require('../utils/tools')
+const Xuwu = require('../utils/xuwu')
 const Template = require('../static/template')
 /**
  * @description: 在vue.config里增加适配相关代码

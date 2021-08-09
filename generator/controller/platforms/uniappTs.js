@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.ts
  */
-const Xuwu = require('../../utils/tools')
+const Xuwu = require('../../utils/xuwu')
 
 class UniappTs {
   api = Xuwu.getApi()

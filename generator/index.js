@@ -7,7 +7,7 @@
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
  */
 
-const Xuwu = require('./utils/tools')
+const Xuwu = require('./utils/xuwu')
 const Controller = require('./controller')
 class Template {
   controller = new Controller()

@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
  */
-const Xuwu = require('../utils/tools')
+const Xuwu = require('../utils/xuwu')
 
 class Package {
   api = Xuwu.getApi()

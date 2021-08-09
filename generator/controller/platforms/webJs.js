@@ -7,7 +7,7 @@
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.js
  */
 
-const Xuwu = require('../../utils/tools')
+const Xuwu = require('../../utils/xuwu')
 
 /**
  * @description: 平台相关的webJS

@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-08-09 14:15:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/utils/tools.js
+ * @FilePath: /xuwu/generator/utils/xuwu.js
  */
 
 /**
