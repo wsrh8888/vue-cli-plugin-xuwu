@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-08 15:14:15
+ * @LastEditTime: 2021-08-09 11:53:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
@@ -11,6 +11,11 @@ const Xuwu = require('./utils/tools')
 const Controller = require('./controller')
 class Template {
   controller = new Controller()
+  /**
+   * @description: 默认安装的逻辑插件
+   * @param {*}
+   * @return {*}
+   */
   defaultConfig() {
     return {
       web: {
@@ -69,6 +74,11 @@ class Template {
       }
     }
   }
+  /**
+   * @description: 全部的逻辑插件清单
+   * @param {*}
+   * @return {*}
+   */
   enumsPluginConfig() {
     return {
       web: {
@@ -103,6 +113,11 @@ class Template {
       }
     }
   }
+  /**
+   * @description: 全部的ui插件清单
+   * @param {*}
+   * @return {*}
+   */
   enumsUiConfig() {
     return {
       web: {
@@ -116,9 +131,6 @@ class Template {
         }
       }
     }
-  }
-  getControllerThis() {
-    return this.controller
   }
 }
 

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-08 18:48:33
+ * @LastEditTime: 2021-08-09 14:15:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/utils/tools.js
@@ -10,7 +10,7 @@
 /**
  * @description: Xuwu项目全局属性
  * @param {*}
- * @return {*}
+ * @return {void}
  */
 class Xuwu {
   api = undefined
@@ -25,7 +25,7 @@ class Xuwu {
    * @description: 使用单例模式初始化基类的api，和option属性。全局使用
    * @param {*} api
    * @param {*} options
-   * @return {*}
+   * @return {Xuwu}
    */
   static init(api, options) {
     if (this.single === undefined && api && options) {

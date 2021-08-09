@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-07 22:38:20
- * @LastEditTime: 2021-08-08 13:44:31
+ * @LastEditTime: 2021-08-09 14:04:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/controller/platrorm.js
@@ -23,6 +23,11 @@ class Platforms {
   webJs = new WebJs()
   webTs = new WebTs()
 
+  /**
+   * @description: 关于平台相关的调度中心
+   * @param {*}
+   * @return {*}
+   */
   getPlatforms() {
     if (this.language === 'web' && this.tsOrJs === 'js') {
       return this.webJs

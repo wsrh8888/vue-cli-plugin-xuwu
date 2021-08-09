@@ -1,90 +1,66 @@
 /*
  * @Author: your name
- * @Date: 2021-06-01 11:34:28
- * @LastEditTime: 2021-08-08 18:17:56
+ * @Date: 2021-04-27 20:21:28
+ * @LastEditTime: 2021-08-09 14:43:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/view/babel.config.js
+ * @FilePath: /vue-cli-plugin-xuwu/generator/common/vue.config.js
  */
 
-module.exports = class BabelConfig {
+const Xuwu = require('../utils/tools')
+const Template = require('../static/template')
+/**
+ * @description: 在vue.config里增加适配相关代码
+ * @param {*}
+ * @return {void}
+ */
+class VueConfig {
+  api = Xuwu.getApi()
+  options = Xuwu.getOption()
   /**
-   * @description: 模板文字，在babel.config.js中配置删除console日志信息
-   * @param {*} 无
-   * @return {*} string
+   * @description: 在vue.config.js文件中增加px转rem配置
+   * @param {*}
+   * @return {*}
    */
-  static reoveConsoleTemplate() {
-    return `
-      if (process.env.API_ENV === 'prod') {
-        plugins.push('transform-remove-console')
+  vueConfigAddPx2rem() {
+    this.api.afterInvoke(() => {
+      const fs = require('fs')
+      const { EOL } = require('os')
+      const contentVueConfig = fs.readFileSync(
+        this.api.resolve('./vue.config.js'),
+        {
+          encoding: 'utf-8'
+        }
+      )
+      const configLines = contentVueConfig.split(/\r?\n/g)
+      const configIndex = configLines.findIndex((line) =>
+        line.match(/module.exports/)
+      )
+      if (configLines.findIndex((line) => line.match(/css:/)) === -1) {
+        configLines[configIndex] += `${EOL}  ${Template.px2remTemplate()}`
+        fs.writeFileSync('./vue.config.js', configLines.join(EOL), {
+          encoding: 'utf-8'
+        })
       }
-    `
+    })
   }
   /**
-   * @description: 模板文字，在babel.config.js中配置element按需引入模板
-   * @param {*} 无
-   * @return {*} string
+   * @description: 在vue.config.js文件中增加打包后路径位置相关配置
+   * @param {*}
+   * @return {*}
    */
-  static elementTemplate() {
-    return `
-      plugins.push([
-        'component',
-        {
-          libraryName: 'element-ui',
-          styleLibraryName: 'theme-chalk'
-        },
-      ])
-    `
-  }
-  /**
-   * @description: 模板文字，在babel.config.js中配置elementPlugins按需引入模板
-   * @param {*} 无
-   * @return {*} string
-   */
-  static elementPlusTemplate() {
-    return `
-      plugins.push([
-        "import",
-        {
-          libraryName: "element-plus",
-          customStyleName: (name) => {
-            return "element-plus/lib/theme-chalk/"+name+".css";
-          },
-        },
-      ])
-    `
-  }
-  /**
-   * @description: 模板文字，在babel.config.js中配置vant的按需引入
-   * @param {*} 无
-   * @return {*} string
-   */
-  static vantTemplate() {
-    return `
-      plugins.push([
-        "import", {
-          "libraryName": "vant",
-          "libraryDirectory": "es",
-          "style": true
-        }
-      ])
-    `
-  }
-  /**
-   * @description: 模板文字，在babel.config.js中配置ant-design的按需引入
-   * @param {*} 无
-   * @return {*} string
-   */
-  static antDesignTemplate() {
-    return `
-      [
-        'import',
-        { 
-          libraryName: 'ant-design-vue', 
-          libraryDirectory: 'es', 
-          style: true 
-        }
-      ]
-    `
+  vueConfigAddFlexible() {
+    const fs = require('fs')
+    try {
+      fs.readFileSync(this.api.resolve('../module/vue.config.js'), {
+        encoding: 'utf-8'
+      })
+    } catch (error) {
+      this.api.render({
+        '/vue.config.js': '../module/vue.config.js'
+      })
+    }
   }
 }
+
+module.exports = VueConfig

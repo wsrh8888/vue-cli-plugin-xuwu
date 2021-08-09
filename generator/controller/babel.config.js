@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-08-08 10:40:34
+ * @LastEditTime: 2021-08-09 14:41:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
  */
-const StaticBabelConfig = require('../static/babel.config')
+const Template = require('../static/template')
 const Xuwu = require('../utils/tools')
 const FilePackage = require('./package')
 class BabelConfig {
@@ -45,9 +45,7 @@ class BabelConfig {
       if (
         lines.findIndex((line) => line.match(/transform-remove-console/)) === -1
       ) {
-        lines[
-          renderIndex - 1
-        ] += `${EOL} ${StaticBabelConfig.reoveConsoleTemplate()}`
+        lines[renderIndex - 1] += `${EOL} ${Template.reoveConsoleTemplate()}`
         fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
@@ -81,9 +79,7 @@ class BabelConfig {
         line.match(/module.exports/)
       )
       if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {
-        lines[
-          renderIndex - 1
-        ] += `${EOL}  ${StaticBabelConfig.elementPlusTemplate()}`
+        lines[renderIndex - 1] += `${EOL}  ${Template.elementPlusTemplate()}`
         fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
@@ -117,9 +113,7 @@ class BabelConfig {
         line.match(/module.exports/)
       )
       if (lines.findIndex((line) => line.match(/element-ui/)) === -1) {
-        lines[
-          renderIndex - 1
-        ] += `${EOL}  ${StaticBabelConfig.elementTemplate()}`
+        lines[renderIndex - 1] += `${EOL}  ${Template.elementTemplate()}`
         fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
