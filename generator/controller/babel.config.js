@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-08-09 14:41:26
+ * @LastEditTime: 2021-08-09 15:50:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
@@ -9,33 +9,46 @@
 const Template = require('../static/template')
 const Xuwu = require('../utils/tools')
 const FilePackage = require('./package')
+const Fs = require('fs')
+const { EOL } = require('os')
 class BabelConfig {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
-  filePackage = undefined
-  constructor() {
-    this.filePackage = new FilePackage()
-  }
-  babelConfigReoveConsole() {
-    const { EOL } = require('os')
-    const fs = require('fs')
+  filePackage = new FilePackage()
+
+  /**
+   * @description: 判断是否存在babel.config.js文件
+   * @param {*}
+   * @return {string}
+   */
+  fileIsExists() {
     let contentMain
     try {
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
         encoding: 'utf-8'
       })
     } catch (error) {
       this.babelConfigInit()
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
         encoding: 'utf-8'
       })
     }
+    return contentMain
+  }
+  /**
+   * @description: babelConfig.js文件中添加去掉console相关配置
+   * @param {*}
+   * @return {*}
+   */
+  babelConfigReoveConsole() {
+    let contentMain = this.fileIsExists()
+
     let lines = contentMain.split(/\r?\n/g)
     if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
       this.babelConfigInit()
     }
     this.api.afterInvoke(() => {
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
         encoding: 'utf-8'
       })
       lines = contentMain.split(/\r?\n/g)
@@ -46,32 +59,26 @@ class BabelConfig {
         lines.findIndex((line) => line.match(/transform-remove-console/)) === -1
       ) {
         lines[renderIndex - 1] += `${EOL} ${Template.reoveConsoleTemplate()}`
-        fs.writeFileSync('./babel.config.js', lines.join(EOL), {
+        Fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: babelConfig.js文件Element按需引入配置
+   * @param {*}
+   * @return {void}
+   */
   babelConfigAddElementPlus() {
-    const { EOL } = require('os')
-    const fs = require('fs')
-    let contentMain
-    try {
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
-        encoding: 'utf-8'
-      })
-    } catch (error) {
-      this.babelConfigInit()
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
-        encoding: 'utf-8'
-      })
-    }
+    let contentMain = this.fileIsExists()
+
     let lines = contentMain.split(/\r?\n/g)
     if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
       this.babelConfigInit()
     }
     this.api.afterInvoke(() => {
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
         encoding: 'utf-8'
       })
       lines = contentMain.split(/\r?\n/g)
@@ -80,32 +87,26 @@ class BabelConfig {
       )
       if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {
         lines[renderIndex - 1] += `${EOL}  ${Template.elementPlusTemplate()}`
-        fs.writeFileSync('./babel.config.js', lines.join(EOL), {
+        Fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: babelConfig.js文件Element按需引入配置
+   * @param {*}
+   * @return {void}
+   */
   babelConfigAddElement() {
-    const { EOL } = require('os')
-    const fs = require('fs')
-    let contentMain
-    try {
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
-        encoding: 'utf-8'
-      })
-    } catch (error) {
-      this.babelConfigInit()
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
-        encoding: 'utf-8'
-      })
-    }
+    let contentMain = this.fileIsExists()
+
     let lines = contentMain.split(/\r?\n/g)
     if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
       this.babelConfigInit()
     }
     this.api.afterInvoke(() => {
-      contentMain = fs.readFileSync(this.api.resolve('./babel.config.js'), {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
         encoding: 'utf-8'
       })
       lines = contentMain.split(/\r?\n/g)
@@ -114,12 +115,17 @@ class BabelConfig {
       )
       if (lines.findIndex((line) => line.match(/element-ui/)) === -1) {
         lines[renderIndex - 1] += `${EOL}  ${Template.elementTemplate()}`
-        fs.writeFileSync('./babel.config.js', lines.join(EOL), {
+        Fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
+  /**
+   * @description: babelConfig.js文件初始化
+   * @param {*}
+   * @return {void}
+   */
   babelConfigInit() {
     this.api.render({
       '/babel.config.js': '../module/babel.config.js'
@@ -127,11 +133,5 @@ class BabelConfig {
     this.filePackage.packageBabelInit()
   }
 }
-/**
- * @description: 在babel里增加生产环境去掉console
- * @param {*} this.api
- * @param {*} options
- * @return {*}
- */
 
 module.exports = BabelConfig

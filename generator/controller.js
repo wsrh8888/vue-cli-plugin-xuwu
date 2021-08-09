@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-09 14:31:05
+ * @LastEditTime: 2021-08-09 15:34:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
@@ -32,7 +32,7 @@ class Controller {
    */
   pluginCrossEnv = () => {
     this.filePackage.packageCrossEnv()
-    this.platforms.getPlatforms().platformAddUtilsConfig()
+    this.platforms.platformAddUtilsConfig()
   }
   /**
    * @description: ElementUi，vue2用法
@@ -41,7 +41,7 @@ class Controller {
    */
   uiElement = () => {
     this.filePackage.packageElementUi()
-    this.platforms.getPlatforms().platformAddPluginsElement()
+    this.platforms.platformAddPluginsElement()
     this.fileBabelConfig.babelConfigAddElement()
     this.fileMain.mainAddElement()
   }
@@ -52,7 +52,7 @@ class Controller {
    */
   uiVant = () => {
     this.filePackage.packageVantUi()
-    this.platforms.getPlatforms().platformAddPluginsVant()
+    this.platforms.platformAddPluginsVant()
     this.fileMain.mainAddVant()
   }
   /**
@@ -62,7 +62,7 @@ class Controller {
    */
   uiVantVue3 = () => {
     this.filePackage.packageVantVue3()
-    this.platforms.getPlatforms().platformAddPluginsVantVue3()
+    this.platforms.platformAddPluginsVantVue3()
     this.fileMain.mainAddVantVue3()
   }
   /**
@@ -71,7 +71,7 @@ class Controller {
    * @return {void}
    */
   uiElementVue3 = () => {
-    this.platforms.getPlatforms().platformAddPluginsElementVue3()
+    this.platforms.platformAddPluginsElementVue3()
     this.filePackage.packageElementPlusUi()
     this.fileBabelConfig.babelConfigAddElementPlus()
     this.fileMain.mainInit()
@@ -84,7 +84,7 @@ class Controller {
    */
   pluginRequest = () => {
     this.pluginCrossEnv()
-    this.platforms.getPlatforms().platformAddUtilsRequest()
+    this.platforms.platformAddUtilsRequest()
   }
   /**
    * @description: sass识别功能
@@ -147,7 +147,7 @@ class Controller {
     this.pluginCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
-    this.platforms.getPlatforms().platformAddUtilsRem()
+    this.platforms.platformAddUtilsRem()
     this.fileMain.mainAddRemVue3()
     this.fileVueConfig.vueConfigAddPx2rem()
     this.fileMainVue.mainVueAddMedia()
@@ -161,7 +161,7 @@ class Controller {
     this.pluginCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
-    this.platforms.getPlatforms().platformAddUtilsRem()
+    this.platforms.platformAddUtilsRem()
     this.fileMain.mainAddRem()
     this.fileVueConfig.vueConfigAddPx2rem()
     this.fileMainVue.mainVueAddMedia()

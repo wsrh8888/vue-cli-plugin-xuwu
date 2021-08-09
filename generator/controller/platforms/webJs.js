@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-08-09 14:09:38
+ * @LastEditTime: 2021-08-09 15:21:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.js
@@ -9,6 +9,11 @@
 
 const Xuwu = require('../../utils/tools')
 
+/**
+ * @description: 平台相关的webJS
+ * @param {*}
+ * @return {void}
+ */
 class WebJs {
   api = Xuwu.getApi()
   options = Xuwu.getOption()

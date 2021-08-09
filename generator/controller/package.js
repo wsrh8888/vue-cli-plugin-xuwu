@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-08 18:30:24
+ * @LastEditTime: 2021-08-09 15:39:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
@@ -13,8 +13,8 @@ class Package {
   options = Xuwu.getOption()
   /**
    * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageCommitPre() {
     this.api.extendPackage({
@@ -48,8 +48,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加去掉console相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageRemoveConsole() {
     this.api.extendPackage({
@@ -60,8 +60,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加elementUI的按需引入相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageElementUi() {
     this.api.extendPackage({
@@ -75,8 +75,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加elementPlusUi相关的按需引入的的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageElementPlusUi() {
     this.api.extendPackage({
@@ -90,8 +90,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加vantUi和按需引入相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageVantUi() {
     this.api.extendPackage({
@@ -102,8 +102,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加vantUi3相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageVantVue3() {
     this.api.extendPackage({
@@ -114,8 +114,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里 增加babel.config.js初始化相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageBabelInit() {
     this.api.extendPackage({
@@ -128,8 +128,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加console控制台面板初始化时相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageAddConsolePanel() {
     this.api.extendPackage({
@@ -140,8 +140,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加移动端适配相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageFlexible() {
     this.api.extendPackage({
@@ -153,8 +153,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加环境区分变量和命令相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageCrossEnv() {
     this.api.extendPackage({
@@ -180,8 +180,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加sass相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageSass() {
     this.api.extendPackage({
@@ -193,8 +193,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加less相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageLess() {
     this.api.extendPackage({
@@ -206,8 +206,8 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加拖拽组建相关的依赖包和配置
-   * @param {*} 无
-   * @return {*} 无
+   * @param {*}
+   * @return {void}
    */
   packageVuedraggable() {
     this.api.extendPackage({
