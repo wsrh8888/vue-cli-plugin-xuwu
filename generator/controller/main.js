@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-08-09 16:51:10
+ * @LastEditTime: 2021-08-10 10:51:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
@@ -131,7 +131,7 @@ class Main {
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
-        lines[renderIndex] += `${EOL}  ${Template.vConsoleVue2()}`
+        lines[renderIndex] += `${EOL}  ${Template.vConsoleVue3()}`
         Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
