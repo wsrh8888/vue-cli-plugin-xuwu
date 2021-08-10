@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-27 16:33:49
- * @LastEditTime: 2021-07-27 16:46:11
+ * @LastEditTime: 2021-08-09 16:57:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/module/utils/system.ts
@@ -9,8 +9,8 @@
 
 /**
  * @description: 获取当前设备的操作系统
- * @param {null}
- * @return {*} String
+ * @param {*}
+ * @return {string}
  */
 export const geSystem = () => {
   let ua = navigator.userAgent
@@ -32,7 +32,7 @@ export const geSystem = () => {
 /**
  * @description: 获取当前设备使用的浏览器或者在哪里打开的
  * @param {*} null
- * @return {String} string
+ * @return {string}
  */
 export const getBrowser = () => {
   let ua = navigator.userAgent
