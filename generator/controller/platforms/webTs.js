@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-08-12 14:12:40
+ * @LastEditTime: 2021-08-12 15:30:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.ts
@@ -38,13 +38,23 @@ class WebTs {
     })
   }
   /**
+   * @description: 引入AntDesignVue3按需引入相关文件
+   * @param {*}
+   * @return {void}
+   */
+  platformAddPluginsAntDesignVue3() {
+    this.api.render({
+      '/src/plugins/antDesign.ts': '../../module/plugins/antDesignVue3.ts'
+    })
+  }
+  /**
    * @description: 引入AntDesign按需引入相关文件
    * @param {*}
    * @return {void}
    */
   platformAddPluginsAntDesign() {
     this.api.render({
-      '/src/plugins/antDesign.ts': '../../module/plugins/antDesign.js'
+      '/src/plugins/antDesign.ts': '../../module/plugins/antDesign.ts'
     })
   }
   /**

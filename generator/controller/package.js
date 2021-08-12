@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-12 14:44:45
+ * @LastEditTime: 2021-08-12 15:27:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
@@ -95,6 +95,19 @@ class Package {
     this.api.extendPackage({
       dependencies: {
         'element-plus': '^1.0.2-beta.46'
+      }
+    })
+  }
+  /**
+   * @description: 在package.json文件里，增加antVue3和按需引入相关的依赖包和配置
+   * @param {*}
+   * @return {void}
+   */
+  packageAntDesignVue3() {
+    this.babelPluginImport()
+    this.api.extendPackage({
+      devDependencies: {
+        'ant-design-vue': '^2.2.5'
       }
     })
   }

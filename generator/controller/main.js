@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-08-12 14:14:00
+ * @LastEditTime: 2021-08-12 16:00:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
@@ -106,6 +106,7 @@ class Main {
    * @return {*}
    */
   mainAddRemVue3() {
+    this.mainInit()
     this.api.afterInvoke(() => {
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
@@ -124,6 +125,7 @@ class Main {
     })
   }
   mainAddVconsoleVue3() {
+    this.mainInit()
     this.api.afterInvoke(() => {
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
@@ -144,6 +146,7 @@ class Main {
    * @return {*}
    */
   mainAddElementVue3() {
+    this.mainInit()
     this.api.afterInvoke(() => {
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
@@ -176,6 +179,31 @@ class Main {
       if (lines.findIndex((line) => line.match(/element/)) === -1) {
         lines[renderIndex] += `${EOL} 
           import './plugins/element'
+        `
+        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
+  }
+  
+  /**
+   * @description: 在入口文件增加AntDesign相关引入内容
+   * @param {*}
+   * @return {*}
+   */
+   mainAddAntDesignVue3() {
+    this.mainInit()
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+        encoding: 'utf-8'
+      })
+      const lines = contentMain.split(/\r?\n/g)
+      const renderIndex = lines.findIndex((line) => line.match(/const app/))
+      if (lines.findIndex((line) => line.match(/import AntDesign/)) === -1) {
+        lines[renderIndex] += `${EOL} 
+          import AntDesign from './plugins/antDesign'
+          app.use(AntDesign)
         `
         Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
@@ -233,6 +261,7 @@ class Main {
    * @return {*}
    */
   mainAddVantVue3() {
+    this.mainInit()
     this.api.afterInvoke(() => {
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-12 15:01:13
+ * @LastEditTime: 2021-08-12 16:00:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
@@ -46,6 +46,17 @@ class Controller {
     this.fileMain.mainAddElement()
   }
   /**
+   * @description: AntDesignUi，vue3用法
+   * @param {*}
+   * @return {void}
+   */
+  uiAntDesignVue3 = () => {
+    this.filePackage.packageAntDesignVue3()
+    this.platforms.platformAddPluginsAntDesignVue3()
+    this.fileBabelConfig.babelConfigAddAntDesign()
+    this.fileMain.mainAddAntDesignVue3()
+  }
+  /**
    * @description: AntDesignUi，vue2用法
    * @param {*}
    * @return {void}
@@ -87,7 +98,6 @@ class Controller {
     this.platforms.platformAddPluginsElementVue3()
     this.filePackage.packageElementPlusUi()
     this.fileBabelConfig.babelConfigAddElementPlus()
-    this.fileMain.mainInit()
     this.fileMain.mainAddElementVue3()
   }
   /**
@@ -186,7 +196,6 @@ class Controller {
    */
   pluginAddVconsoleVue3 = () => {
     this.pluginCrossEnv()
-    this.fileMain.mainInit()
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsoleVue3()
   }

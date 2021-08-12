@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-12 11:13:29
+ * @LastEditTime: 2021-08-12 15:12:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
@@ -128,7 +128,8 @@ class Template {
         },
         vue3: {
           Element: this.controller.uiElementVue3,
-          Vant: this.controller.uiVantVue3
+          Vant: this.controller.uiVantVue3,
+          AntDesign: this.controller.uiAntDesignVue3
         }
       }
     }
