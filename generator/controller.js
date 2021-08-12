@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-09 15:34:16
+ * @LastEditTime: 2021-08-12 14:13:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
@@ -44,6 +44,16 @@ class Controller {
     this.platforms.platformAddPluginsElement()
     this.fileBabelConfig.babelConfigAddElement()
     this.fileMain.mainAddElement()
+  }
+  /**
+   * @description: AntDesignUi，vue2用法
+   * @param {*}
+   * @return {void}
+   */
+  uiAntDesign = () => {
+    this.filePackage.packageAntDesignVue2()
+    this.platforms.platformAddPluginsAntDesign()
+    this.fileMain.mainAddAntDesign()
   }
   /**
    * @description: VantUi，vue2用法

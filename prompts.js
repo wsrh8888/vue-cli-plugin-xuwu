@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-08-06 17:01:33
+ * @LastEditTime: 2021-08-12 14:15:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/prompts.js
@@ -110,7 +110,8 @@ module.exports = () => {
       choices: [
         { name: '无', value: '' },
         { name: 'Element', value: 'Element' },
-        { name: 'Vant', value: 'Vant' }
+        { name: 'Vant', value: 'Vant' },
+        { name: 'AntDesign', value: 'AntDesign' }
       ],
       default: (answers) => (answers.promptsScene === 'pc' ? 'Element' : 'Vant')
     }

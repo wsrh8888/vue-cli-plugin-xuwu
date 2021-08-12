@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-07 22:38:20
- * @LastEditTime: 2021-08-09 15:36:34
+ * @LastEditTime: 2021-08-12 14:10:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/controller/platrorm.js
@@ -70,6 +70,18 @@ class Platforms {
       return this.uniappJs.platformAddUtilsConfig()
     } else if (this.language === 'uniapp' && this.tsOrJs === 'ts') {
       return this.uniappTs.platformAddUtilsConfig()
+    }
+  }
+  /**
+   * @description: 引入AntDesign按需引入相关文件
+   * @param {*}
+   * @return {void}
+   */
+  platformAddPluginsAntDesign() {
+    if (this.language === 'web' && this.tsOrJs === 'js') {
+      return this.webJs.platformAddPluginsAntDesign()
+    } else if (this.language === 'web' && this.tsOrJs === 'ts') {
+      return this.webTs.platformAddPluginsAntDesign()
     }
   }
   /**

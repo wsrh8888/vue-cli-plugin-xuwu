@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-01 11:34:28
- * @LastEditTime: 2021-08-09 14:58:38
+ * @LastEditTime: 2021-08-12 14:07:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/view/babel.config.js
@@ -82,7 +82,7 @@ module.exports = class Template {
         { 
           libraryName: 'ant-design-vue', 
           libraryDirectory: 'es', 
-          style: true 
+          style: 'css' 
         }
       ]
     `

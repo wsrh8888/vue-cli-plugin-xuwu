@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-10 10:34:53
+ * @LastEditTime: 2021-08-12 11:13:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
@@ -122,6 +122,7 @@ class Template {
     return {
       web: {
         vue2: {
+          AntDesign: this.controller.uiAntDesign,
           Element: this.controller.uiElement,
           Vant: this.controller.uiVant
         },
@@ -139,9 +140,9 @@ module.exports = (api, options) => {
   const template = new Template()
   if (options.promptsPcConfig !== 'default') {
     options.promptsManuallyConfig.forEach((element) => {
-      template.enumsPluginConfig()[Xuwu.getLanguage()][Xuwu.getVueVersion()][
-        element
-      ]()
+      template
+        .enumsPluginConfig()
+        [Xuwu.getLanguage()][Xuwu.getVueVersion()][element]()
     })
   } else {
     template

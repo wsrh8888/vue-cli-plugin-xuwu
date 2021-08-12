@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-08-09 15:21:05
+ * @LastEditTime: 2021-08-12 14:12:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.js
@@ -30,7 +30,7 @@ class WebJs {
     })
     this.api.render({
       '/src/utils/request.js': '../../module/request/web/request.js',
-      '/src/this.api/index.js': '../../module/request/web/index.js'
+      '/src/api/index.js': '../../module/request/web/index.js'
     })
   }
   /**
@@ -41,6 +41,16 @@ class WebJs {
   platformAddUtilsConfig() {
     this.api.render({
       '/src/utils/config.js': '../../module/utils/config.js'
+    })
+  }
+  /**
+   * @description: 引入AntDesign按需引入相关文件
+   * @param {*}
+   * @return {void}
+   */
+  platformAddPluginsAntDesign() {
+    this.api.render({
+      '/src/plugins/antDesign.js': '../../module/plugins/antDesign.js'
     })
   }
   /**
