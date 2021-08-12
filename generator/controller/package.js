@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-12 14:09:56
+ * @LastEditTime: 2021-08-12 14:44:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
@@ -74,15 +74,25 @@ class Package {
     })
   }
   /**
+   * @description:  在package.json文件里，增加babel-plugin-import相关的依赖
+   * @param {*}
+   * @return {*}
+   */
+  babelPluginImport() {
+    this.api.extendPackage({
+      devDependencies: {
+        'babel-plugin-import': '^1.13.3'
+      }
+    })
+  }
+  /**
    * @description: 在package.json文件里，增加elementPlusUi相关的按需引入的的依赖包和配置
    * @param {*}
    * @return {void}
    */
   packageElementPlusUi() {
+    this.babelPluginImport()
     this.api.extendPackage({
-      devDependencies: {
-        'babel-plugin-import': '^1.13.3'
-      },
       dependencies: {
         'element-plus': '^1.0.2-beta.46'
       }
@@ -94,6 +104,7 @@ class Package {
    * @return {void}
    */
   packageAntDesignVue2() {
+    this.babelPluginImport()
     this.api.extendPackage({
       devDependencies: {
         'ant-design-vue': '^1.7.7'
@@ -106,6 +117,7 @@ class Package {
    * @return {void}
    */
   packageVantUi() {
+    this.babelPluginImport()
     this.api.extendPackage({
       dependencies: {
         vant: '^2.12.19'
@@ -118,6 +130,7 @@ class Package {
    * @return {void}
    */
   packageVantVue3() {
+    this.babelPluginImport()
     this.api.extendPackage({
       devDependencies: {
         vant: '^3.0.18'

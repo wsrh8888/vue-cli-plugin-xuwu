@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-01 11:34:28
- * @LastEditTime: 2021-08-12 14:07:58
+ * @LastEditTime: 2021-08-12 14:45:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/view/babel.config.js
@@ -64,7 +64,7 @@ module.exports = class Template {
       plugins.push([
         "import", {
           "libraryName": "vant",
-          "libraryDirectory": "es",
+          "libraryDirectory": "lib",
           "style": true
         }
       ])
@@ -77,14 +77,14 @@ module.exports = class Template {
    */
   static antDesignTemplate() {
     return `
-      [
+      plugins.push([
         'import',
         { 
           libraryName: 'ant-design-vue', 
           libraryDirectory: 'es', 
           style: 'css' 
         }
-      ]
+      ])
     `
   }
   /**

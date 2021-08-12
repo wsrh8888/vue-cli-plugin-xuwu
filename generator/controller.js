@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-12 14:13:10
+ * @LastEditTime: 2021-08-12 15:01:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
@@ -53,6 +53,7 @@ class Controller {
   uiAntDesign = () => {
     this.filePackage.packageAntDesignVue2()
     this.platforms.platformAddPluginsAntDesign()
+    this.fileBabelConfig.babelConfigAddAntDesign()
     this.fileMain.mainAddAntDesign()
   }
   /**
@@ -63,6 +64,7 @@ class Controller {
   uiVant = () => {
     this.filePackage.packageVantUi()
     this.platforms.platformAddPluginsVant()
+    this.fileBabelConfig.babelConfigAddVant()
     this.fileMain.mainAddVant()
   }
   /**
@@ -73,6 +75,7 @@ class Controller {
   uiVantVue3 = () => {
     this.filePackage.packageVantVue3()
     this.platforms.platformAddPluginsVantVue3()
+    this.fileBabelConfig.babelConfigAddVant()
     this.fileMain.mainAddVantVue3()
   }
   /**
