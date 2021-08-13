@@ -1,0 +1,23 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-08-12 19:44:03
+ * @LastEditTime: 2021-08-13 10:31:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /xuwu/two.md
+-->
+# vue-cli插件xuwu(虚无)模板助手1.1
+
+# 优化
+1. 使用es6重构代码
+2. 将部分js文件不再单独维护，使用ts编译后得到
+3. 优化全局属性获取方式，由值传递模式改为单例模式共享数据
+4. 优化vant组件按需引入关于样式引入问题
+
+# 新增
+1. 增加antDesignVue相关功能
+2. 新增加系统相关工具
+3. 增加文件注释
+4. vue.config.js模块增加依赖中es6解析为es5的配置
+
+
