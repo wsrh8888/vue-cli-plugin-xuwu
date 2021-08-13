@@ -186,13 +186,13 @@ class Main {
       }
     })
   }
-  
+
   /**
    * @description: 在入口文件增加AntDesign相关引入内容
    * @param {*}
    * @return {*}
    */
-   mainAddAntDesignVue3() {
+  mainAddAntDesignVue3() {
     this.mainInit()
     this.api.afterInvoke(() => {
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
