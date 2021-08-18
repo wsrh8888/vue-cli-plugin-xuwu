@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-08-12 15:01:04
+ * @LastEditTime: 2021-08-18 10:48:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
@@ -178,7 +178,7 @@ class BabelConfig {
     })
   }
   /**
-   * @description: babelConfig.js文件初始化
+   * @description: babelConfig.js文件初始化,（es6转es5初始化）
    * @param {*}
    * @return {void}
    */

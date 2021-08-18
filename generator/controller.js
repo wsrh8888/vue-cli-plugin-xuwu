@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-12 16:00:10
+ * @LastEditTime: 2021-08-18 10:32:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
@@ -25,6 +25,15 @@ class Controller {
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
   platforms = new Platforms()
+  /**
+   * @description: 兼容低版本浏览器，将ES6转为ES5代码
+   * @param {*}
+   * @return {void}
+   */
+  pluginEs6ToEs5 = () => {
+    this.fileBabelConfig.babelConfigInit()
+    
+  }
   /**
    * @description: 扩展环境变量功能
    * @param {*}

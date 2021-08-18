@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-12 15:12:06
+ * @LastEditTime: 2021-08-18 10:27:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
@@ -25,7 +25,8 @@ class Template {
             this.controller.pluginRemoveConsole,
             this.controller.pluginCrossEnv,
             this.controller.pluginRequest,
-            this.controller.uiElement
+            this.controller.uiElement,
+            this.controller.pluginEs6ToEs5
           ],
           mobile: [
             this.controller.pluginCrossEnv,
@@ -34,7 +35,8 @@ class Template {
             this.controller.pluginAddVconsole,
             this.controller.pluginFlexible,
             this.controller.pluginRequest,
-            this.controller.uiVant
+            this.controller.uiVant,
+            this.controller.pluginEs6ToEs5
           ]
         },
         vue3: {
@@ -43,7 +45,8 @@ class Template {
             this.controller.pluginRemoveConsole,
             this.controller.uiElementVue3,
             this.controller.pluginCrossEnv,
-            this.controller.pluginRequest
+            this.controller.pluginRequest,
+            this.controller.pluginEs6ToEs5
           ],
           mobile: [
             this.controller.pluginCrossEnv,
@@ -52,7 +55,8 @@ class Template {
             this.controller.pluginFlexibleVue3,
             this.controller.pluginRemoveConsole,
             this.controller.pluginLintStaged,
-            this.controller.uiVantVue3
+            this.controller.uiVantVue3,
+            this.controller.pluginEs6ToEs5
           ]
         }
       },
@@ -90,7 +94,8 @@ class Template {
           templateRemoveConsole: this.controller.pluginRemoveConsole,
           templateCrossEnv: this.controller.pluginCrossEnv,
           templateVuedraggable: this.controller.pluginVuedraggable,
-          templateSass: this.controller.pluginSassPlugin
+          templateSass: this.controller.pluginSassPlugin,
+          templateES5: this.controller.pluginEs6ToEs5
         },
         vue3: {
           templateRequest: this.controller.pluginRequest,
@@ -100,7 +105,8 @@ class Template {
           templateRemoveConsole: this.controller.pluginRemoveConsole,
           templateCrossEnv: this.controller.pluginCrossEnv,
           templateVuedraggable: this.controller.pluginVuedraggable,
-          templateSass: this.controller.pluginSassPlugin
+          templateSass: this.controller.pluginSassPlugin,
+          templateES5: this.controller.pluginEs6ToEs5
         }
       },
       uniapp: {

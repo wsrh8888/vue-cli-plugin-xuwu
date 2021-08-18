@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc && npm run lint",
-    "lint": "eslint --fix ./generator  --ext .vue,.js,.ts"
+    "lint": "eslint --fix ./prompts.js ./generator  --ext .vue,.js,.ts"
   },
   "husky": {
     "hooks": {

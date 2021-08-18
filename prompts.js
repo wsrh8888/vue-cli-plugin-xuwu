@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-08-12 14:15:00
+ * @LastEditTime: 2021-08-17 20:17:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/prompts.js
@@ -52,6 +52,7 @@ module.exports = () => {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
+        { name: '打包编译为ES5', value: 'templateES5' },
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
@@ -61,6 +62,7 @@ module.exports = () => {
         answers.promptsScene === 'pc'
           ? [
               'templateRequest',
+              'templateES5',
               'templateLintStaged',
               'templateRemoveConsole',
               'templateCrossEnv'
@@ -68,6 +70,7 @@ module.exports = () => {
           : [
               'templateAddVconsole',
               'templateRequest',
+              'templateES5',
               'templateFlexible',
               'templateLintStaged',
               'templateRemoveConsole',
