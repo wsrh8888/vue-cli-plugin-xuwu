@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-09 14:15:26
+ * @LastEditTime: 2021-08-17 19:02:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/generator/utils/xuwu.js
@@ -20,6 +20,18 @@ class Xuwu {
   constructor(api, options) {
     this.api = api
     this.options = options
+  }
+  /**
+   * @description: 判断package中是否存在某个依赖包
+   * @param {*} value package包的名字
+   * @return {*}
+   */
+  static isExistPackage(value) {
+    return (
+      this.single.api.generator.files['package.json'].search(
+        '"' + value + '"'
+      ) !== -1
+    )
   }
   /**
    * @description: 使用单例模式初始化基类的api，和option属性。全局使用
