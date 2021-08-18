@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-12 15:27:14
+ * @LastEditTime: 2021-08-18 10:50:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
@@ -11,6 +11,23 @@ const Xuwu = require('../utils/xuwu')
 class Package {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
+  /**
+   * @description: 过滤已经安装的依赖
+   * @param {*} data
+   * @return {*}
+   */
+  packageFilter(data) {
+    let temp = {}
+    Object.keys(data).forEach((element) => {
+      if (!Xuwu.isExistPackage(element)) {
+        temp = {
+          ...temp,
+          [element]: data[element]
+        }
+      }
+    })
+    return temp
+  }
   /**
    * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置
    * @param {*}
@@ -32,7 +49,7 @@ class Package {
       'lint-staged': {
         '*.{js,vue,ts}': ['vue-cli-service lint', 'git add']
       },
-      devDependencies: {
+      devDependencies: this.packageFilter({
         '@vue/cli-plugin-eslint': '^4.5.13',
         'eslint-plugin-html': '^5.0.0',
         'babel-eslint': '^10.1.0',
@@ -43,7 +60,7 @@ class Package {
         prettier: '^1.8.2',
         'lint-staged': '^10.5.3',
         eslint: '^5.16.0'
-      }
+      })
     })
   }
   /**
@@ -53,9 +70,9 @@ class Package {
    */
   packageRemoveConsole() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'babel-plugin-transform-remove-console': '^6.9.4'
-      }
+      })
     })
   }
   /**
@@ -64,13 +81,23 @@ class Package {
    * @return {void}
    */
   packageElementUi() {
+    this.babelPluginComponent()
     this.api.extendPackage({
-      devDependencies: {
-        'babel-plugin-component': '^1.1.1'
-      },
-      dependencies: {
+      dependencies: this.packageFilter({
         'element-ui': '^2.13.2'
-      }
+      })
+    })
+  }
+  /**
+   * @description:  在package.json文件里，增加babel-plugin-component相关的依赖
+   * @param {*}
+   * @return {*}
+   */
+  babelPluginComponent() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        'babel-plugin-component': '^1.1.1'
+      })
     })
   }
   /**
@@ -80,9 +107,9 @@ class Package {
    */
   babelPluginImport() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'babel-plugin-import': '^1.13.3'
-      }
+      })
     })
   }
   /**
@@ -106,9 +133,9 @@ class Package {
   packageAntDesignVue3() {
     this.babelPluginImport()
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'ant-design-vue': '^2.2.5'
-      }
+      })
     })
   }
   /**
@@ -119,9 +146,9 @@ class Package {
   packageAntDesignVue2() {
     this.babelPluginImport()
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'ant-design-vue': '^1.7.7'
-      }
+      })
     })
   }
   /**
@@ -145,9 +172,9 @@ class Package {
   packageVantVue3() {
     this.babelPluginImport()
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         vant: '^3.0.18'
-      }
+      })
     })
   }
   /**
@@ -157,11 +184,18 @@ class Package {
    */
   packageBabelInit() {
     this.api.extendPackage({
-      browserslist: ['> 1%', 'last 2 versions', 'ios >= 11', 'safari >= 11'],
-      devDependencies: {
+      browserslist: [
+        '> 1%',
+        'last 2 versions',
+        'not dead',
+        'ios >= 11',
+        'safari >= 11'
+      ],
+      devDependencies: this.packageFilter({
         '@babel/preset-env': '^7.8.3',
+        '@vue/cli-plugin-babel': '~4.5.0',
         'babel-plugin-transform-class-properties': '^6.24.1'
-      }
+      })
     })
   }
   /**
@@ -171,9 +205,9 @@ class Package {
    */
   packageAddConsolePanel() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         vconsole: '^3.3.4'
-      }
+      })
     })
   }
   /**
@@ -183,10 +217,10 @@ class Package {
    */
   packageFlexible() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'lib-flexible': '^0.3.2',
         'postcss-plugin-px2rem': '^0.8.1'
-      }
+      })
     })
   }
   /**
@@ -210,10 +244,9 @@ class Package {
         build_test: '打包测试环境',
         build: '分析打包后包含的模块的大小'
       },
-      browserslist: ['> 1%', 'last 2 versions', 'ios >= 11', 'safari >= 11'],
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'cross-env': '^7.0.3'
-      }
+      })
     })
   }
   /**
@@ -223,10 +256,10 @@ class Package {
    */
   packageSass() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         'sass-loader': '^10.2.0',
         sass: '^1.32.13'
-      }
+      })
     })
   }
   /**
@@ -236,10 +269,10 @@ class Package {
    */
   packageLess() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         less: '^3.12.0',
         'less-loader': '^6.2.0'
-      }
+      })
     })
   }
   /**
@@ -249,9 +282,9 @@ class Package {
    */
   packageVuedraggable() {
     this.api.extendPackage({
-      devDependencies: {
+      devDependencies: this.packageFilter({
         vuedraggable: '^2.24.3'
-      }
+      })
     })
   }
 }
