@@ -1,13 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-05 11:39:28
- * @LastEditTime: 2021-08-09 16:33:43
+ * @LastEditTime: 2021-08-18 14:21:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /xuwu/help.md
 -->
 # vue-cli插件xuwu(虚无)模板助手
 
+fff
 ## 开发背景
 日常工作中经常会创建一些新的项目工程，项目会包括pc端和移动端，每次创建项目时候都需要从不同项目中去copy新项目中需要的基础建设代码，每次迁移完成完成后就会遇到各种各样莫名其妙的问题 
  1. 因忘记迁移某些依赖或代码导致出现各种错误
