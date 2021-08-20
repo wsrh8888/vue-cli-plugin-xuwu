@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-06-01 11:34:28
- * @LastEditTime: 2021-08-12 14:45:07
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/view/babel.config.js
- */
-
 module.exports = class Template {
   /**
    * @description: 字符串模板，去掉console日志
@@ -158,6 +149,26 @@ module.exports = class Template {
         // @ts-ignore
         app.use(new VConsole())
       }
+    `
+  }
+  /**
+   * @description: ES6转为es5
+   * @param {*}
+   * @return {*}
+   */  
+  static Es6ToEs5Template() {
+    return `
+      plugins.push([
+        '@vue/babel-plugin-transform-vue-jsx',
+        'transform-class-properties'
+      ])
+      presets.push([
+        '@babel/preset-env',
+        {
+          useBuiltIns: 'usage',
+          corejs: 3
+        }
+      ])
     `
   }
 }

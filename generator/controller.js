@@ -23,8 +23,8 @@ class Controller {
    * @return {void}
    */
   pluginEs6ToEs5 = () => {
-    this.fileBabelConfig.babelConfigInit()
-    
+    this.fileBabelConfig.babelConfigEs6ToEs5()
+    this.filePackage.packageBabelEs6ToEs5()
   }
   /**
    * @description: 扩展环境变量功能

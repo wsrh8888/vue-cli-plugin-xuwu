@@ -170,7 +170,7 @@ class BabelConfig {
     })
   }
   /**
-   * @description: babelConfig.js文件初始化,（es6转es5初始化）
+   * @description: babelConfig.js文件初始化
    * @param {*}
    * @return {void}
    */
@@ -178,8 +178,37 @@ class BabelConfig {
     this.api.render({
       '/babel.config.js': '../module/babel.config.js'
     })
-    this.filePackage.packageBabelInit()
   }
+  /**
+   * @Author: 任皓  
+   * @description: babelConfig.js配置Es6转为es5
+   * @param {*}
+   * @return {*}
+   */  
+  babelConfigEs6ToEs5() {
+    let contentMain = this.fileIsExists()
+
+    let lines = contentMain.split(/\r?\n/g)
+    if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
+      this.babelConfigInit()
+    }
+    this.api.afterInvoke(() => {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
+        encoding: 'utf-8'
+      })
+      lines = contentMain.split(/\r?\n/g)
+      const renderIndex = lines.findIndex((line) =>
+        line.match(/module.exports/)
+      )
+      if (lines.findIndex((line) => line.match(/transform-class-properties/)) === -1) {
+        lines[renderIndex - 1] += `${EOL}  ${Template.Es6ToEs5Template()}`
+        Fs.writeFileSync('./babel.config.js', lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
+  }
+
 }
 
 module.exports = BabelConfig
