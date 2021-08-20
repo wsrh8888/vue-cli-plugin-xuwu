@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 20:09:23
- * @LastEditTime: 2021-08-07 23:06:33
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/controller/controller.ts
- */
 const Xuwu = require('../../utils/xuwu')
 
 class UniappTs {

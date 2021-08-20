@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-22 17:17:59
- * @LastEditTime: 2021-08-18 10:49:14
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-structure/generator/template/vue.config.js
- */
 const process = require('process')
 const webpack = require('webpack')
 

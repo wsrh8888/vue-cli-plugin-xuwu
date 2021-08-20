@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-07 19:50:06
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/utils/xuwu.js
- */
-
 class Main {
   api: number = 20
   options: number = 20

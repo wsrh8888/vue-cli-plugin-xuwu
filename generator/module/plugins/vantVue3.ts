@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-06-10 11:17:13
- * @LastEditTime: 2021-08-12 15:01:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/vantVue3.js
- */
-
 import {
   Popup,
   Cell,

@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-08-07 22:38:20
- * @LastEditTime: 2021-08-12 15:27:59
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/controller/platrorm.js
- */
 const Xuwu = require('../../utils/xuwu')
 const UniappJs = require('./uniappJs')
 const UniappTs = require('./uniappTs')

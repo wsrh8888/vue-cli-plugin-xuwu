@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-20 19:08:47
- * @LastEditTime: 2021-08-12 15:01:35
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/controller/ui/vant.js
- */
 import Vue from 'vue'
 
 import {

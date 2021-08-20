@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-07-26 14:50:22
- * @LastEditTime: 2021-07-27 10:43:00
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue2ts/utils/html2canvas.js
- */
 import html2canvas from 'html2canvas'
 
 /**

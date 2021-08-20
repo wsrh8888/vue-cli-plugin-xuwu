@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-26 19:18:55
- * @LastEditTime: 2021-08-18 10:32:28
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/common/console.js
- */
 const FileMainVue = require('./controller/main.vue')
 const FileVueConfig = require('./controller/vue.config')
 const FileMain = require('./controller/main')

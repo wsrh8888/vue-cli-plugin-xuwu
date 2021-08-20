@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-06-08 11:12:23
- * @LastEditTime: 2021-07-27 10:02:39
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/module/plugins/elementPlus.ts
- */
-
 import {
   ElAlert,
   ElAside,

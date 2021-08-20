@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-20 19:09:30
- * @LastEditTime: 2021-05-20 20:03:15
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/controller/ui/antDesign.ts
- */
 import Vue from 'vue'
 import {
   Message,
