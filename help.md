@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-04-29 17:48:57
- * @LastEditTime: 2021-08-20 17:21:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/README.md
--->
 # vue-cli 工程初始化模版插件
 
 ## 地址

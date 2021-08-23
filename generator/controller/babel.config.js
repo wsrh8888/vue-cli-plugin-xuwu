@@ -180,7 +180,6 @@ class BabelConfig {
     })
   }
   /**
-   * @Author: 任皓  
    * @description: babelConfig.js配置Es6转为es5
    * @param {*}
    * @return {*}
