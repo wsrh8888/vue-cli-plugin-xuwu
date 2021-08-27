@@ -158,7 +158,7 @@ module.exports = class Template {
    */
   static es6ToEs5Template() {
     return `
-      plugins.push([
+      plugins.push(...[
         '@vue/babel-plugin-transform-vue-jsx',
         'transform-class-properties'
       ])
