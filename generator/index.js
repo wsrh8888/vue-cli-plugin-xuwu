@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-22 16:33:29
- * @LastEditTime: 2021-08-18 10:27:44
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-plagin/vue-cli-plugin-xuwu/generator/index.js
- */
-
 const Xuwu = require('./utils/xuwu')
 const Controller = require('./controller')
 class Template {

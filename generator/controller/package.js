@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-28 18:52:01
- * @LastEditTime: 2021-08-18 10:50:52
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/common/package.js
- */
 const Xuwu = require('../utils/xuwu')
 
 class Package {
@@ -178,11 +170,11 @@ class Package {
     })
   }
   /**
-   * @description: 在package.json文件里 增加babel.config.js初始化相关的依赖包和配置
+   * @description: 在package.json文件里 增加Es6转为Es5相关依赖包
    * @param {*}
    * @return {void}
    */
-  packageBabelInit() {
+  packageBabelEs6ToEs5() {
     this.api.extendPackage({
       browserslist: [
         '> 1%',

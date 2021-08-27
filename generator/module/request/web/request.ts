@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 19:28:42
- * @LastEditTime: 2021-05-14 19:42:23
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/module/request_vue.ts
- */
 import axios from 'axios'
 
 // 普通接口

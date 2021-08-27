@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-04-29 17:48:57
- * @LastEditTime: 2021-07-07 14:48:25
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/README.md
--->
 # vue-cli 工程初始化模版插件
 
 ## 地址
@@ -41,65 +33,6 @@ vue add vue-cli-plugin-xuwu
   8.npm镜像源修改
 ```
 
-```
-vue-cli-plugin-xuwu
-├─ .DS_Store
-├─ README.md
-├─ generator
-│  ├─ common
-│  │  ├─ babel.config.js
-│  │  ├─ index.js
-│  │  ├─ main.js
-│  │  ├─ main.vue.js
-│  │  ├─ package.js
-│  │  ├─ template
-│  │  │  ├─ _eslintignore
-│  │  │  ├─ _eslintrc.js
-│  │  │  ├─ _prettierrc
-│  │  │  ├─ babel.config.js
-│  │  │  ├─ rem.js
-│  │  │  └─ vue.config.js
-│  │  └─ vue.config.js
-│  ├─ commonTemplate
-│  │  ├─ _npmrc
-│  │  └─ src
-│  │     ├─ App.vue
-│  │     └─ views
-│  │        └─ Home.vue
-│  ├─ index.js
-│  ├─ jsTemplate
-│  │  └─ src
-│  │     ├─ api
-│  │     │  ├─ common.js
-│  │     │  └─ index.js
-│  │     ├─ plugins
-│  │     │  ├─ element.js
-│  │     │  ├─ index.js
-│  │     │  └─ vant.js
-│  │     └─ utils
-│  │        ├─ ajax.js
-│  │        └─ config.js
-│  └─ tsTemplate
-│     └─ src
-│        ├─ api
-│        │  ├─ common.ts
-│        │  └─ index.ts
-│        ├─ plugins
-│        │  ├─ element.ts
-│        │  ├─ index.ts
-│        │  └─ vant.ts
-│        └─ utils
-│           ├─ ajax.ts
-│           └─ config.ts
-├─ index.js
-├─ package-lock.json
-├─ package.json
-├─ prompts.js
-├─ shims-tsx.d.ts
-├─ shims-vue.d.ts
-└─ tsconfig.json
-
-```
 
 本地开发
  npm install --save-dev file:../../xuwu

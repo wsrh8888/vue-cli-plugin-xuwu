@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-29 20:17:38
- * @LastEditTime: 2021-08-18 10:48:38
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/common/babel.config.js
- */
 const Template = require('../static/template')
 const Xuwu = require('../utils/xuwu')
 const FilePackage = require('./package')
@@ -178,7 +170,7 @@ class BabelConfig {
     })
   }
   /**
-   * @description: babelConfig.js文件初始化,（es6转es5初始化）
+   * @description: babelConfig.js文件初始化
    * @param {*}
    * @return {void}
    */
@@ -186,8 +178,36 @@ class BabelConfig {
     this.api.render({
       '/babel.config.js': '../module/babel.config.js'
     })
-    this.filePackage.packageBabelInit()
   }
+  /**
+   * @description: babelConfig.js配置Es6转为es5
+   * @param {*}
+   * @return {*}
+   */  
+  babelConfigEs6ToEs5() {
+    let contentMain = this.fileIsExists()
+
+    let lines = contentMain.split(/\r?\n/g)
+    if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
+      this.babelConfigInit()
+    }
+    this.api.afterInvoke(() => {
+      contentMain = Fs.readFileSync(this.api.resolve('./babel.config.js'), {
+        encoding: 'utf-8'
+      })
+      lines = contentMain.split(/\r?\n/g)
+      const renderIndex = lines.findIndex((line) =>
+        line.match(/module.exports/)
+      )
+      if (lines.findIndex((line) => line.match(/transform-class-properties/)) === -1) {
+        lines[renderIndex - 1] += `${EOL}  ${Template.Es6ToEs5Template()}`
+        Fs.writeFileSync('./babel.config.js', lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
+  }
+
 }
 
 module.exports = BabelConfig

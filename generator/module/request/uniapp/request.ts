@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-05-14 19:29:26
- * @LastEditTime: 2021-07-27 10:15:31
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/module/request/request_uniapp.ts
- */
 import { methodList } from './interface'
 
 export function request({

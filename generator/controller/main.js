@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-27 20:21:33
- * @LastEditTime: 2021-08-12 16:00:01
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/generator/common/main.js
- */
 const Xuwu = require('../utils/xuwu')
 const Template = require('../static/template')
 const { EOL } = require('os')

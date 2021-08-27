@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-07-27 16:33:49
- * @LastEditTime: 2021-08-09 16:57:39
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/module/utils/system.ts
- */
-
 /**
  * @description: 获取当前设备的操作系统
  * @param {*}

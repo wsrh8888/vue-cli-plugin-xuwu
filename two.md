@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-08-12 19:44:03
- * @LastEditTime: 2021-08-13 10:31:09
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /xuwu/two.md
--->
 # vue-cli插件xuwu(虚无)模板助手1.1
 
 # 优化

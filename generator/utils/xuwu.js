@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-08-06 11:26:06
- * @LastEditTime: 2021-08-17 19:02:38
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /xuwu/generator/utils/xuwu.js
- */
-
 /**
  * @description: Xuwu项目全局属性
  * @param {*}

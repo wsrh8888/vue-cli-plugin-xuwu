@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-04-26 16:32:03
- * @LastEditTime: 2021-08-17 20:17:48
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /vue-cli-plugin-xuwu/prompts.js
- */
 module.exports = () => {
   const prompts = [
     {
