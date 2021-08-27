@@ -183,7 +183,7 @@ class BabelConfig {
    * @description: babelConfig.js配置Es6转为es5
    * @param {*}
    * @return {*}
-   */  
+   */
   babelConfigEs6ToEs5() {
     let contentMain = this.fileIsExists()
 
@@ -199,15 +199,17 @@ class BabelConfig {
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       )
-      if (lines.findIndex((line) => line.match(/transform-class-properties/)) === -1) {
-        lines[renderIndex - 1] += `${EOL}  ${Template.Es6ToEs5Template()}`
+      if (
+        lines.findIndex((line) => line.match(/transform-class-properties/)) ===
+        -1
+      ) {
+        lines[renderIndex - 1] += `${EOL}  ${Template.es6ToEs5Template()}`
         Fs.writeFileSync('./babel.config.js', lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
     })
   }
-
 }
 
 module.exports = BabelConfig

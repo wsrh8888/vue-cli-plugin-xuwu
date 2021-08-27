@@ -155,8 +155,8 @@ module.exports = class Template {
    * @description: ES6转为es5
    * @param {*}
    * @return {*}
-   */  
-  static Es6ToEs5Template() {
+   */
+  static es6ToEs5Template() {
     return `
       plugins.push([
         '@vue/babel-plugin-transform-vue-jsx',
