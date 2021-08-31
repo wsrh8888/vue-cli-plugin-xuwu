@@ -1,18 +1,17 @@
 const Xuwu = require('../../utils/xuwu')
+const FilePackage = require('../package')
+
 class WebTs {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
+  filePackage = new FilePackage()
   /**
    * @description: 添加ajax请求相关的依赖和默认配置
    * @param {*}
    * @return {void}
    */
   platformAddUtilsRequest() {
-    this.api.extendPackage({
-      dependencies: {
-        axios: '^0.21.1'
-      }
-    })
+    this.filePackage.packageAddAxios()
     this.api.render({
       '/src/utils/request.ts': '../../module/request/web/request.ts',
       '/src/api/index.ts': '../../module/request/web/index.ts'

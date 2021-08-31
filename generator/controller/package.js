@@ -216,6 +216,18 @@ class Package {
     })
   }
   /**
+   * @description: 在package.json文件里，增加axios相关依赖
+   * @param {*}
+   * @return {void}
+   */
+  packageAddAxios() {
+    this.api.extendPackage({
+      dependencies: this.packageFilter({
+        axios: '^0.21.1'
+      })
+    })
+  }
+  /**
    * @description: 在package.json文件里，增加环境区分变量和命令相关的依赖包和配置
    * @param {*}
    * @return {void}

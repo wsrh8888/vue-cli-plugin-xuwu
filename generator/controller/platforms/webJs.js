@@ -1,4 +1,5 @@
 const Xuwu = require('../../utils/xuwu')
+const FilePackage = require('../package')
 
 /**
  * @description: 平台相关的webJS
@@ -8,17 +9,14 @@ const Xuwu = require('../../utils/xuwu')
 class WebJs {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
+  filePackage = new FilePackage()
   /**
    * @description: 添加ajax请求相关的依赖和默认配置
    * @param {*}
    * @return {void}
    */
   platformAddUtilsRequest() {
-    this.api.extendPackage({
-      dependencies: {
-        axios: '^0.21.1'
-      }
-    })
+    this.filePackage.packageAddAxios()
     this.api.render({
       '/src/utils/request.js': '../../module/request/web/request.js',
       '/src/api/index.js': '../../module/request/web/index.js'
