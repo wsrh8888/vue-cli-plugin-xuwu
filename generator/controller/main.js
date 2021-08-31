@@ -168,7 +168,7 @@ class Main {
       })
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
-      if (lines.findIndex((line) => line.match(/element/)) === -1) {
+      if (lines.findIndex((line) => line.match(/plugins\/element/)) === -1) {
         lines[renderIndex] += `${EOL} 
           import './plugins/element'
         `

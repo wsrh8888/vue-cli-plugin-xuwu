@@ -188,7 +188,7 @@ class BabelConfig {
     let contentMain = this.fileIsExists()
 
     let lines = contentMain.split(/\r?\n/g)
-    if (lines.findIndex((line) => line.match(/plugins/)) === -1) {
+    if (lines.findIndex((line) => line.match(/plugins =/)) === -1 || lines.findIndex((line) => line.match(/presets =/)) === -1) {
       this.babelConfigInit()
     }
     this.api.afterInvoke(() => {
