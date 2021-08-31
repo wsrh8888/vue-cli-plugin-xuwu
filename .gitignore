@@ -3,3 +3,4 @@ node_modules
 generator/module/plugins/*.js
 generator/module/request/**/*.js
 generator/module/utils/*.js
+package-lock.json

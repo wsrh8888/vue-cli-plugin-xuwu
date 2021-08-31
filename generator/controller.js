@@ -34,6 +34,7 @@ class Controller {
   pluginCrossEnv = () => {
     this.filePackage.packageCrossEnv()
     this.platforms.platformAddUtilsConfig()
+    this.platforms.pluginGitGnore()
   }
   /**
    * @description: ElementUi，vue2用法

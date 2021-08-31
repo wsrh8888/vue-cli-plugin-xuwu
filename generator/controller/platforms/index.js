@@ -27,6 +27,7 @@ class Platforms {
    */
   platformsLintStaged() {
     this.api.render({
+      '/.gitignore': '../../module/module/_gitignore',
       '/.eslintrc.js': '../../module/_eslintrc.js',
       '/.eslintignore': '../../module/_eslintignore',
       '/.prettierrc': '../../module/_prettierrc'
