@@ -11,7 +11,7 @@ declare module "@/utils/config"
 declare module "process"
 declare module "App"
 declare module "uni"
-
+declare module "axios"
 
 
 
