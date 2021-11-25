@@ -157,18 +157,7 @@ module.exports = class Template {
    * @return {*}
    */
   static es6ToEs5Template() {
-    return `
-      plugins.push(...[
-        '@vue/babel-plugin-transform-vue-jsx',
-        'transform-class-properties'
-      ])
-      presets.push([
-        '@babel/preset-env',
-        {
-          useBuiltIns: 'usage',
-          corejs: 3
-        }
-      ])
-    `
+    return `plugins.push(...['@vue/babel-plugin-transform-vue-jsx','transform-class-properties'])
+      presets.push(['@babel/preset-env',{useBuiltIns: 'usage',corejs: 3}])`
   }
 }
