@@ -54,6 +54,14 @@ class Platforms {
    * @return {void}
    */
   platformAddUtilsConfig() {
+    if (Xuwu.buildToolName() === 'vite') {
+      this.api.render({
+        '/.env.pre': '../../module/ENV/.env.pre',
+        '/.env.prod': '../../module/ENV/.env.prod',
+        '/.env.test': '../../module/ENV/.env.test'
+      })
+      return
+    }
     if (this.language === 'web' && this.tsOrJs === 'js') {
       return this.webJs.platformAddUtilsConfig()
     } else if (this.language === 'web' && this.tsOrJs === 'ts') {

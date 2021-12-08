@@ -12,6 +12,9 @@ declare module "process"
 declare module "App"
 declare module "uni"
 declare module "axios"
+declare module "vite/client"
+declare module "vite"
+
 
 
 

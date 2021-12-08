@@ -13,10 +13,17 @@ class WebTs {
         axios: '^0.21.1'
       }
     })
-    this.api.render({
-      '/src/utils/request.ts': '../../module/request/web/request.ts',
-      '/src/api/index.ts': '../../module/request/web/index.ts'
-    })
+    if (Xuwu.buildToolName() === 'vite') {
+      this.api.render({
+        '/src/utils/request.ts': '../../module/request/web/request.ts',
+        '/src/api/index.ts': '../../module/request/web/indexVite.ts'
+      })
+    } else {
+      this.api.render({
+        '/src/utils/request.ts': '../../module/request/web/request.ts',
+        '/src/api/index.ts': '../../module/request/web/index.ts'
+      })
+    }
   }
   /**
    * @description: 引入全局url相关文件

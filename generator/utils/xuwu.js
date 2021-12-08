@@ -12,6 +12,18 @@ class Xuwu {
     this.api = api
     this.options = options
   }
+  /*******
+   * @description: 判断项目中使用的打包工具
+   * @param {*}
+   * @return {*}
+   */
+  static buildToolName() {
+    if (this.single.api.generator.files['package.json'].search('"vite"')) {
+      return 'vite'
+    } else {
+      return 'webpack'
+    }
+  }
   /**
    * @description: 判断package中是否存在某个依赖包
    * @param {*} value package包的名字

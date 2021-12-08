@@ -4,25 +4,33 @@ const FileMain = require('./controller/main')
 const FilePackage = require('./controller/package')
 const FileBabelConfig = require('./controller/babel.config')
 const Platforms = require('./controller/platforms/index')
+const FileViteConfig = require('./controller/vite.config')
+const Extension = require('./controller/extension')
+const Xuwu = require('./utils/xuwu')
 
 /**
  * @description: 组件的拼装中心，将一个大的功能模块拆解成不同的小模块
  * @param {*}
  * @return {void}
  */
-class Controller {
+class Compiler {
   fileMainVue = new FileMainVue()
   fileVueConfig = new FileVueConfig()
   fileMain = new FileMain()
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
   platforms = new Platforms()
+  fileViteConfig = new FileViteConfig()
+  extension = new Extension()
   /**
    * @description: 兼容低版本浏览器，将ES6转为ES5代码
    * @param {*}
    * @return {void}
    */
   pluginEs6ToEs5 = () => {
+    if (Xuwu.buildToolName() === 'vite') {
+      return
+    }
     this.fileBabelConfig.babelConfigEs6ToEs5()
     this.filePackage.packageBabelEs6ToEs5()
   }
@@ -32,7 +40,12 @@ class Controller {
    * @return {void}
    */
   pluginCrossEnv = () => {
-    this.filePackage.packageCrossEnv()
+    // 判断是webpack还是vite
+    if (Xuwu.buildToolName() === 'vite') {
+      this.filePackage.packageCrossEnvVite()
+    } else {
+      this.filePackage.packageCrossEnv()
+    }
     this.platforms.platformAddUtilsConfig()
   }
   /**
@@ -140,8 +153,13 @@ class Controller {
    * @return {void}
    */
   pluginRemoveConsole = () => {
-    this.filePackage.packageRemoveConsole()
-    this.fileBabelConfig.babelConfigReoveConsole()
+    if (Xuwu.buildToolName() === 'vite') {
+      this.pluginCrossEnv()
+      this.fileViteConfig.viteConfigRemoveConsole()
+    } else {
+      this.filePackage.packageRemoveConsole()
+      this.fileBabelConfig.babelConfigRemoveConsole()
+    }
   }
   /**
    * @description: commit代码时统一风格功能
@@ -162,12 +180,28 @@ class Controller {
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsole()
   }
+  /*******
+   * @description: 适配插件 vite的写法
+   * @param {*}
+   * @return {*}
+   */
+  pluginFlexileVite = () => {
+    this.extension.postcssConfigFile()
+    this.filePackage.packageFlexibleVite()
+    this.platforms.platformAddUtilsRem()
+    this.fileMain.mainAddRemVue3()
+    this.fileMainVue.mainVueAddMedia()
+  }
   /**
    * @description: 适配插件功能，vue3写法
    * @param {*}
    * @return {void}
    */
   pluginFlexibleVue3 = () => {
+    if (Xuwu.buildToolName() === 'vite') {
+      this.pluginFlexileVite()
+      return
+    }
     this.pluginCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
@@ -202,4 +236,4 @@ class Controller {
   }
 }
 
-module.exports = Controller
+module.exports = Compiler

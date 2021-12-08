@@ -42,6 +42,7 @@ module.exports = {
         arrowParens: 'always'
       }
     ],
+    'vue/valid-template-root': 0,
     'no-alert': 0, //禁止使用alert confirm prompt
     'no-array-constructor': 2, //禁止使用数组构造器
     'no-bitwise': 0, //禁止使用按位运算符

@@ -1,7 +1,7 @@
 const Xuwu = require('./utils/xuwu')
-const Controller = require('./controller')
+const Compiler = require('./Compiler')
 class Template {
-  controller = new Controller()
+  compiler = new Compiler()
   /**
    * @description: 默认安装的逻辑插件
    * @param {*}
@@ -12,58 +12,58 @@ class Template {
       web: {
         vue2: {
           pc: [
-            this.controller.pluginLintStaged,
-            this.controller.pluginRemoveConsole,
-            this.controller.pluginCrossEnv,
-            this.controller.pluginRequest,
-            this.controller.uiElement,
-            this.controller.pluginEs6ToEs5
+            this.compiler.pluginLintStaged,
+            this.compiler.pluginRemoveConsole,
+            this.compiler.pluginCrossEnv,
+            this.compiler.pluginRequest,
+            this.compiler.uiElement,
+            this.compiler.pluginEs6ToEs5
           ],
           mobile: [
-            this.controller.pluginCrossEnv,
-            this.controller.pluginRemoveConsole,
-            this.controller.pluginLintStaged,
-            this.controller.pluginAddVconsole,
-            this.controller.pluginFlexible,
-            this.controller.pluginRequest,
-            this.controller.uiVant,
-            this.controller.pluginEs6ToEs5
+            this.compiler.pluginCrossEnv,
+            this.compiler.pluginRemoveConsole,
+            this.compiler.pluginLintStaged,
+            this.compiler.pluginAddVconsole,
+            this.compiler.pluginFlexible,
+            this.compiler.pluginRequest,
+            this.compiler.uiVant,
+            this.compiler.pluginEs6ToEs5
           ]
         },
         vue3: {
           pc: [
-            this.controller.pluginLintStaged,
-            this.controller.pluginRemoveConsole,
-            this.controller.uiElementVue3,
-            this.controller.pluginCrossEnv,
-            this.controller.pluginRequest,
-            this.controller.pluginEs6ToEs5
+            this.compiler.pluginLintStaged,
+            this.compiler.pluginRemoveConsole,
+            this.compiler.uiElementVue3,
+            this.compiler.pluginCrossEnv,
+            this.compiler.pluginRequest,
+            this.compiler.pluginEs6ToEs5
           ],
           mobile: [
-            this.controller.pluginCrossEnv,
-            this.controller.pluginAddVconsoleVue3,
-            this.controller.pluginRequest,
-            this.controller.pluginFlexibleVue3,
-            this.controller.pluginRemoveConsole,
-            this.controller.pluginLintStaged,
-            this.controller.uiVantVue3,
-            this.controller.pluginEs6ToEs5
+            this.compiler.pluginCrossEnv,
+            this.compiler.pluginAddVconsoleVue3,
+            this.compiler.pluginRequest,
+            this.compiler.pluginFlexibleVue3,
+            this.compiler.pluginRemoveConsole,
+            this.compiler.pluginLintStaged,
+            this.compiler.uiVantVue3,
+            this.compiler.pluginEs6ToEs5
           ]
         }
       },
       uniapp: {
         vue2: {
           pc: [
-            this.controller.pluginLintStaged,
-            this.controller.pluginSassPlugin,
-            this.controller.pluginRequest,
-            this.controller.pluginCrossEnv
+            this.compiler.pluginLintStaged,
+            this.compiler.pluginSassPlugin,
+            this.compiler.pluginRequest,
+            this.compiler.pluginCrossEnv
           ],
           mobile: [
-            this.controller.pluginLintStaged,
-            this.controller.pluginSassPlugin,
-            this.controller.pluginRequest,
-            this.controller.pluginCrossEnv
+            this.compiler.pluginLintStaged,
+            this.compiler.pluginSassPlugin,
+            this.compiler.pluginRequest,
+            this.compiler.pluginCrossEnv
           ]
         }
       }
@@ -78,34 +78,34 @@ class Template {
     return {
       web: {
         vue2: {
-          templateRequest: this.controller.pluginRequest,
-          templateAddVconsole: this.controller.pluginAddVconsole,
-          templateFlexible: this.controller.pluginFlexible,
-          templateLintStaged: this.controller.pluginLintStaged,
-          templateRemoveConsole: this.controller.pluginRemoveConsole,
-          templateCrossEnv: this.controller.pluginCrossEnv,
-          templateVuedraggable: this.controller.pluginVuedraggable,
-          templateSass: this.controller.pluginSassPlugin,
-          templateES5: this.controller.pluginEs6ToEs5
+          templateRequest: this.compiler.pluginRequest,
+          templateAddVconsole: this.compiler.pluginAddVconsole,
+          templateFlexible: this.compiler.pluginFlexible,
+          templateLintStaged: this.compiler.pluginLintStaged,
+          templateRemoveConsole: this.compiler.pluginRemoveConsole,
+          templateCrossEnv: this.compiler.pluginCrossEnv,
+          templateVuedraggable: this.compiler.pluginVuedraggable,
+          templateSass: this.compiler.pluginSassPlugin,
+          templateES5: this.compiler.pluginEs6ToEs5
         },
         vue3: {
-          templateRequest: this.controller.pluginRequest,
-          templateAddVconsole: this.controller.pluginAddVconsoleVue3,
-          templateFlexible: this.controller.pluginFlexibleVue3,
-          templateLintStaged: this.controller.pluginLintStaged,
-          templateRemoveConsole: this.controller.pluginRemoveConsole,
-          templateCrossEnv: this.controller.pluginCrossEnv,
-          templateVuedraggable: this.controller.pluginVuedraggable,
-          templateSass: this.controller.pluginSassPlugin,
-          templateES5: this.controller.pluginEs6ToEs5
+          templateRequest: this.compiler.pluginRequest,
+          templateAddVconsole: this.compiler.pluginAddVconsoleVue3,
+          templateFlexible: this.compiler.pluginFlexibleVue3,
+          templateLintStaged: this.compiler.pluginLintStaged,
+          templateRemoveConsole: this.compiler.pluginRemoveConsole,
+          templateCrossEnv: this.compiler.pluginCrossEnv,
+          templateVuedraggable: this.compiler.pluginVuedraggable,
+          templateSass: this.compiler.pluginSassPlugin,
+          templateES5: this.compiler.pluginEs6ToEs5
         }
       },
       uniapp: {
         vue2: {
-          templateLintStaged: this.controller.pluginLintStaged,
-          templateSass: this.controller.pluginSassPlugin,
-          templateRequest: this.controller.pluginRequest,
-          templateCrossEnv: this.controller.pluginCrossEnv
+          templateLintStaged: this.compiler.pluginLintStaged,
+          templateSass: this.compiler.pluginSassPlugin,
+          templateRequest: this.compiler.pluginRequest,
+          templateCrossEnv: this.compiler.pluginCrossEnv
         }
       }
     }
@@ -119,14 +119,14 @@ class Template {
     return {
       web: {
         vue2: {
-          AntDesign: this.controller.uiAntDesign,
-          Element: this.controller.uiElement,
-          Vant: this.controller.uiVant
+          AntDesign: this.compiler.uiAntDesign,
+          Element: this.compiler.uiElement,
+          Vant: this.compiler.uiVant
         },
         vue3: {
-          Element: this.controller.uiElementVue3,
-          Vant: this.controller.uiVantVue3,
-          AntDesign: this.controller.uiAntDesignVue3
+          Element: this.compiler.uiElementVue3,
+          Vant: this.compiler.uiVantVue3,
+          AntDesign: this.compiler.uiAntDesignVue3
         }
       }
     }

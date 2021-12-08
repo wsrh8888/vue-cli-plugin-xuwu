@@ -4,5 +4,5 @@
   "bracketSpacing": true,
   "htmlWhitespaceSensitivity": "ignore",
   "trailingComma": "none",
-  printWidth:500
+  "printWidth":500
 }

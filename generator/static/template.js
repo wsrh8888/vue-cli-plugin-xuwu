@@ -151,6 +151,15 @@ module.exports = class Template {
       }
     `
   }
+  static vConsoleVue3Vite() {
+    return `
+      import VConsole from 'vconsole'
+      if (import.meta.env.VITE_API_ENV !== 'prod') {
+        // @ts-ignore
+        app.use(new VConsole())
+      }
+    `
+  }
   /**
    * @description: ES6转为es5
    * @param {*}
@@ -159,5 +168,13 @@ module.exports = class Template {
   static es6ToEs5Template() {
     return `plugins.push(...['@vue/babel-plugin-transform-vue-jsx','transform-class-properties'])
       presets.push(['@babel/preset-env',{useBuiltIns: 'usage',corejs: 3}])`
+  }
+  /*******
+   * @description: vite环境下去掉console
+   * @param {*}
+   * @return {*}
+   */
+  static viteDropConsole() {
+    return `minify: 'terser', terserOptions: { compress: { drop_console: command === 'build' && loadEnv(mode, __dirname).VITE_API_ENV === 'prod', drop_debugger: command === 'build' && loadEnv(mode, __dirname).VITE_API_ENV === 'prod'}}`
   }
 }

@@ -19,10 +19,17 @@ class WebJs {
         axios: '^0.21.1'
       }
     })
-    this.api.render({
-      '/src/utils/request.js': '../../module/request/web/request.js',
-      '/src/api/index.js': '../../module/request/web/index.js'
-    })
+    if (Xuwu.buildToolName() === 'vite') {
+      this.api.render({
+        '/src/utils/request.js': '../../module/request/web/request.js',
+        '/src/api/index.js': '../../module/request/web/indexVite.js'
+      })
+    } else {
+      this.api.render({
+        '/src/utils/request.js': '../../module/request/web/request.js',
+        '/src/api/index.js': '../../module/request/web/index.js'
+      })
+    }
   }
   /**
    * @description: 引入全局url相关文件

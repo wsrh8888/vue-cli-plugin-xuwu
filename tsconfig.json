@@ -19,7 +19,7 @@
       "dom.iterable",
       "scripthost"
     ],
-    "types": ["node"]
+    "types": ["vite/client", "node"]
   },
   "files": ["shims.d.ts"],
   "include": [

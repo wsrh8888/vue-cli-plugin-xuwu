@@ -32,7 +32,7 @@ class BabelConfig {
    * @param {*}
    * @return {*}
    */
-  babelConfigReoveConsole() {
+  babelConfigRemoveConsole() {
     let contentMain = this.fileIsExists()
 
     let lines = contentMain.split(/\r?\n/g)

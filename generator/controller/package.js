@@ -202,6 +202,16 @@ class Package {
       })
     })
   }
+  packageFlexibleVite() {
+    this.api.extendPackage({
+      browserslist: ['last 2 versions', '> 1%', 'iOS 7', 'last 3 iOS versions'],
+      devDependencies: this.packageFilter({
+        autoprefixer: '^10.4.0',
+        'lib-flexible': '^0.3.2',
+        'postcss-plugin-px2rem': '^0.8.1'
+      })
+    })
+  }
   /**
    * @description: 在package.json文件里，增加移动端适配相关的依赖包和配置
    * @param {*}
@@ -213,6 +223,28 @@ class Package {
         'lib-flexible': '^0.3.2',
         'postcss-plugin-px2rem': '^0.8.1'
       })
+    })
+  }
+  /**
+   * @description: 在package.json文件里，增加Vite环境区分变量和命令相关的依赖包和配置
+   * @param {*}
+   * @return {void}
+   */
+  packageCrossEnvVite() {
+    this.api.extendPackage({
+      scripts: {
+        serve_test: 'vite serve --mode=test',
+        serve_pre: 'vite serve --mode=pre',
+        serve_prod: 'vite serve --mode=prod',
+        build_test: 'vite build --mode=test',
+        build_pre: 'vite build --mode=pre',
+        build_prod: 'vite build --mode=prod'
+      },
+      'scripts-info': {
+        serve_test: '启动开发/测试环境',
+        build_test: '打包测试环境',
+        build: '分析打包后包含的模块的大小'
+      }
     })
   }
   /**
