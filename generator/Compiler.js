@@ -60,11 +60,29 @@ class Compiler {
     this.fileMain.mainAddElement()
   }
   /**
+   * @description: AntDesignUi，vue3用法 vite
+   * @param {*}
+   * @return {void}
+   */
+  uiAntDesignVue3Vite = () => {
+    this.lessPlugin()
+    this.fileViteConfig.viteConfigLess()
+    this.filePackage.packageVue3Vite()
+    this.filePackage.packageAntDesignVue3()
+    this.platforms.platformAddPluginsAntDesignVue3()
+    this.fileViteConfig.viteConfigAddAntDesign()
+    this.fileMain.mainAddAntDesignVue3()
+  }
+  /**
    * @description: AntDesignUi，vue3用法
    * @param {*}
    * @return {void}
    */
   uiAntDesignVue3 = () => {
+    if (Xuwu.buildToolName() === 'vite') {
+      this.uiAntDesignVue3Vite()
+      return
+    }
     this.filePackage.packageAntDesignVue3()
     this.platforms.platformAddPluginsAntDesignVue3()
     this.fileBabelConfig.babelConfigAddAntDesign()
@@ -93,15 +111,39 @@ class Compiler {
     this.fileMain.mainAddVant()
   }
   /**
+   * @description: VantUi，vue3 Vite用法
+   * @param {*}
+   * @return {void}
+   */
+  uiVantVue3Vite = () => {
+    this.filePackage.packageVantVue3()
+    this.filePackage.packageVue3Vite()
+    this.platforms.platformAddPluginsVantVue3()
+    this.fileViteConfig.viteConfigAddVant()
+    this.fileMain.mainAddVantVue3()
+  }
+  /**
    * @description: VantUi，vue3用法
    * @param {*}
    * @return {void}
    */
   uiVantVue3 = () => {
+    if (Xuwu.buildToolName() === 'vite') {
+      this.uiVantVue3Vite()
+      return
+    }
     this.filePackage.packageVantVue3()
     this.platforms.platformAddPluginsVantVue3()
     this.fileBabelConfig.babelConfigAddVant()
     this.fileMain.mainAddVantVue3()
+  }
+  uiElementVue3Vite() {
+    this.pluginSassPlugin()
+    this.filePackage.packageVue3Vite()
+    this.platforms.platformAddPluginsElementVue3()
+    this.filePackage.packageElementPlusUi()
+    this.fileMain.mainAddElementVue3()
+    this.fileViteConfig.viteConfigAddElement()
   }
   /**
    * @description: ElementUi，vue3用法
@@ -109,6 +151,10 @@ class Compiler {
    * @return {void}
    */
   uiElementVue3 = () => {
+    if (Xuwu.buildToolName() === 'vite') {
+      this.uiElementVue3Vite()
+      return
+    }
     this.platforms.platformAddPluginsElementVue3()
     this.filePackage.packageElementPlusUi()
     this.fileBabelConfig.babelConfigAddElementPlus()
@@ -168,7 +214,11 @@ class Compiler {
    */
   pluginLintStaged = () => {
     this.platforms.platformsLintStaged()
-    this.filePackage.packageCommitPre()
+    if (Xuwu.buildToolName() === 'vite') {
+      this.filePackage.packageCommitVite()
+    } else {
+      this.filePackage.packageCommitPre()
+    }
   }
   /**
    * @description: consoleLog控制台功能，Vue2写法

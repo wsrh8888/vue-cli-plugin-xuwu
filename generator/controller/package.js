@@ -21,6 +21,39 @@ class Package {
     return temp
   }
   /**
+   * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置Vite相关
+   * @param {*}
+   * @return {void}
+   */
+  packageCommitVite() {
+    this.api.extendPackage({
+      scripts: {
+        lint: 'eslint --fix ./ --ext .js,.vue,.ts '
+      },
+      husky: {
+        hooks: {
+          'pre-commit': 'lint-staged'
+        }
+      },
+      eslintConfig: {
+        extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier']
+      },
+      'lint-staged': {
+        '*.{js,vue,ts}': ['npm run lint', 'git add']
+      },
+      devDependencies: this.packageFilter({
+        '@vue/eslint-config-prettier': '^6.0.0',
+        'eslint-plugin-html': '^5.0.0',
+        'eslint-plugin-prettier': '^3.1.3',
+        husky: '^4.3.7',
+        'eslint-plugin-vue': '^6.2.2',
+        prettier: '^1.8.2',
+        'lint-staged': '^10.5.3',
+        eslint: '^5.16.0'
+      })
+    })
+  }
+  /**
    * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置
    * @param {*}
    * @return {void}
@@ -113,7 +146,7 @@ class Package {
     this.babelPluginImport()
     this.api.extendPackage({
       dependencies: {
-        'element-plus': '^1.0.2-beta.46'
+        'element-plus': '^1.2.0-beta.5'
       }
     })
   }
@@ -149,7 +182,9 @@ class Package {
    * @return {void}
    */
   packageVantUi() {
-    this.babelPluginImport()
+    if (Xuwu.buildToolName() !== 'vite') {
+      this.babelPluginImport()
+    }
     this.api.extendPackage({
       dependencies: {
         vant: '^2.12.19'
@@ -161,11 +196,25 @@ class Package {
    * @param {*}
    * @return {void}
    */
-  packageVantVue3() {
-    this.babelPluginImport()
+  packageVue3Vite() {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
-        vant: '^3.0.18'
+        'vite-plugin-style-import': '^1.4.0'
+      })
+    })
+  }
+  /**
+   * @description: 在package.json文件里，增加vantUi3相关的依赖包和配置
+   * @param {*}
+   * @return {void}
+   */
+  packageVantVue3() {
+    if (Xuwu.buildToolName() !== 'vite') {
+      this.babelPluginImport()
+    }
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        vant: '^3.3.6'
       })
     })
   }
