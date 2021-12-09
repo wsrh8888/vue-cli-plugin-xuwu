@@ -27,9 +27,9 @@ class Platforms {
    */
   platformsLintStaged() {
     this.api.render({
-      '/.eslintrc.js': '../../module/_eslintrc.js',
-      '/.eslintignore': '../../module/_eslintignore',
-      '/.prettierrc': '../../module/_prettierrc'
+      '/.eslintrc.js': '../../template/_eslintrc.js',
+      '/.eslintignore': '../../template/_eslintignore',
+      '/.prettierrc': '../../template/_prettierrc'
     })
   }
   /**
@@ -56,9 +56,9 @@ class Platforms {
   platformAddUtilsConfig() {
     if (Xuwu.getBuildToolName() === 'vite') {
       this.api.render({
-        '/.env.pre': '../../module/ENV/.env.pre',
-        '/.env.prod': '../../module/ENV/.env.prod',
-        '/.env.test': '../../module/ENV/.env.test'
+        '/.env.pre': '../../template/ENV/.env.pre',
+        '/.env.prod': '../../template/ENV/.env.prod',
+        '/.env.test': '../../template/ENV/.env.test'
       })
       return
     }

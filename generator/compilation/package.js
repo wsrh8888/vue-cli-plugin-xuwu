@@ -3,6 +3,14 @@ const Xuwu = require('../utils/xuwu')
 class Package {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
+
+  packageAddAxios() {
+    this.api.extendPackage({
+      dependencies: {
+        axios: '^0.21.1'
+      }
+    })
+  }
   /**
    * @description: 过滤已经安装的依赖
    * @param {*} data

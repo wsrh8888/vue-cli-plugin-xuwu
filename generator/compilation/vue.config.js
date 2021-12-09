@@ -43,12 +43,12 @@ class VueConfig {
   vueConfigAddFlexible() {
     const fs = require('fs')
     try {
-      fs.readFileSync(this.api.resolve('../module/vue.config.js'), {
+      fs.readFileSync(this.api.resolve('../template/vue.config.js'), {
         encoding: 'utf-8'
       })
     } catch (error) {
       this.api.render({
-        '/vue.config.js': '../module/vue.config.js'
+        '/vue.config.js': '../template/vue.config.js'
       })
     }
   }

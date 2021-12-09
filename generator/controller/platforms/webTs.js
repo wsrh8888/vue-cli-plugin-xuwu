@@ -15,13 +15,13 @@ class WebTs {
     })
     if (Xuwu.getBuildToolName() === 'vite') {
       this.api.render({
-        '/src/utils/request.ts': '../../module/request/web/request.ts',
-        '/src/api/index.ts': '../../module/request/web/indexVite.ts'
+        '/src/utils/request.ts': '../../template/request/web/request.ts',
+        '/src/api/index.ts': '../../template/request/web/indexVite.ts'
       })
     } else {
       this.api.render({
-        '/src/utils/request.ts': '../../module/request/web/request.ts',
-        '/src/api/index.ts': '../../module/request/web/index.ts'
+        '/src/utils/request.ts': '../../template/request/web/request.ts',
+        '/src/api/index.ts': '../../template/request/web/index.ts'
       })
     }
   }
@@ -32,7 +32,7 @@ class WebTs {
    */
   platformAddUtilsConfig() {
     this.api.render({
-      '/src/utils/config.ts': '../../module/utils/config.ts'
+      '/src/utils/config.ts': '../../template/utils/config.ts'
     })
   }
   /**
@@ -42,7 +42,7 @@ class WebTs {
    */
   platformAddPluginsAntDesignVue3() {
     this.api.render({
-      '/src/plugins/antDesign.ts': '../../module/plugins/antDesignVue3.ts'
+      '/src/plugins/antDesign.ts': '../../template/plugins/antDesignVue3.ts'
     })
   }
   /**
@@ -52,7 +52,7 @@ class WebTs {
    */
   platformAddPluginsAntDesign() {
     this.api.render({
-      '/src/plugins/antDesign.ts': '../../module/plugins/antDesign.ts'
+      '/src/plugins/antDesign.ts': '../../template/plugins/antDesign.ts'
     })
   }
   /**
@@ -62,7 +62,7 @@ class WebTs {
    */
   platformAddPluginsElement() {
     this.api.render({
-      '/src/plugins/element.ts': '../../module/plugins/element.ts'
+      '/src/plugins/element.ts': '../../template/plugins/element.ts'
     })
   }
   /**
@@ -72,7 +72,7 @@ class WebTs {
    */
   platformAddPluginsVant() {
     this.api.render({
-      '/src/plugins/vant.ts': '../../module/plugins/vant.ts'
+      '/src/plugins/vant.ts': '../../template/plugins/vant.ts'
     })
   }
   /**
@@ -82,7 +82,7 @@ class WebTs {
    */
   platformAddPluginsVantVue3() {
     this.api.render({
-      '/src/plugins/vant.ts': '../../module/plugins/vantVue3.ts'
+      '/src/plugins/vant.ts': '../../template/plugins/vantVue3.ts'
     })
   }
   /**
@@ -92,7 +92,7 @@ class WebTs {
    */
   platformAddUtilsRem() {
     this.api.render({
-      '/src/utils/rem.ts': '../../module/utils/rem.ts'
+      '/src/utils/rem.ts': '../../template/utils/rem.ts'
     })
   }
   /**
@@ -102,7 +102,7 @@ class WebTs {
    */
   platformAddPluginsElementVue3() {
     this.api.render({
-      '/src/plugins/element.ts': '../../module/plugins/elementPlus.ts'
+      '/src/plugins/element.ts': '../../template/plugins/elementPlus.ts'
     })
   }
 }

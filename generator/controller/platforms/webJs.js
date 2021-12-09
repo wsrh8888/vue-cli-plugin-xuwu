@@ -14,20 +14,13 @@ class WebJs {
    * @return {void}
    */
   platformAddUtilsRequest() {
-    this.api.extendPackage({
-      dependencies: {
-        axios: '^0.21.1'
-      }
-    })
+   
     if (Xuwu.getBuildToolName() === 'vite') {
-      this.api.render({
-        '/src/utils/request.js': '../../module/request/web/request.js',
-        '/src/api/index.js': '../../module/request/web/indexVite.js'
-      })
+      
     } else {
       this.api.render({
-        '/src/utils/request.js': '../../module/request/web/request.js',
-        '/src/api/index.js': '../../module/request/web/index.js'
+        '/src/utils/request.js': '../../template/request/web/request.js',
+        '/src/api/index.js': '../../template/request/web/index.js'
       })
     }
   }
@@ -38,7 +31,7 @@ class WebJs {
    */
   platformAddUtilsConfig() {
     this.api.render({
-      '/src/utils/config.js': '../../module/utils/config.js'
+      '/src/utils/config.js': '../../template/utils/config.js'
     })
   }
 
@@ -49,7 +42,7 @@ class WebJs {
    */
   platformAddPluginsAntDesignVue3() {
     this.api.render({
-      '/src/plugins/antDesign.js': '../../module/plugins/antDesignVue3.js'
+      '/src/plugins/antDesign.js': '../../template/plugins/antDesignVue3.js'
     })
   }
   /**
@@ -59,7 +52,7 @@ class WebJs {
    */
   platformAddPluginsAntDesign() {
     this.api.render({
-      '/src/plugins/antDesign.js': '../../module/plugins/antDesign.js'
+      '/src/plugins/antDesign.js': '../../template/plugins/antDesign.js'
     })
   }
   /**
@@ -69,7 +62,7 @@ class WebJs {
    */
   platformAddPluginsVant() {
     this.api.render({
-      '/src/plugins/vant.js': '../../module/plugins/vant.js'
+      '/src/plugins/vant.js': '../../template/plugins/vant.js'
     })
   }
   /**
@@ -79,7 +72,7 @@ class WebJs {
    */
   platformAddPluginsVantVue3() {
     this.api.render({
-      '/src/plugins/vant.js': '../../module/plugins/vantVue3.js'
+      '/src/plugins/vant.js': '../../template/plugins/vantVue3.js'
     })
   }
   /**
@@ -89,7 +82,7 @@ class WebJs {
    */
   platformAddPluginsElement() {
     this.api.render({
-      '/src/plugins/element.js': '../../module/plugins/element.js'
+      '/src/plugins/element.js': '../../template/plugins/element.js'
     })
   }
   /**
@@ -99,7 +92,7 @@ class WebJs {
    */
   platformAddUtilsRem() {
     this.api.render({
-      '/src/utils/rem.js': '../../module/utils/rem.js'
+      '/src/utils/rem.js': '../../template/utils/rem.js'
     })
   }
   /**
@@ -109,7 +102,7 @@ class WebJs {
    */
   platformAddPluginsElementVue3() {
     this.api.render({
-      '/src/plugins/element.js': '../../module/plugins/elementPlus.js'
+      '/src/plugins/element.js': '../../template/plugins/elementPlus.js'
     })
   }
 }

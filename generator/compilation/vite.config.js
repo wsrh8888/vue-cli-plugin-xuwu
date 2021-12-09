@@ -29,7 +29,7 @@ class ViteConfig {
       }
     } catch (error) {
       this.api.render({
-        '/vite.config.js': '../module/vite.config.js'
+        '/vite.config.js': '../template/vite.config.js'
       })
     }
   }

@@ -5,14 +5,14 @@ class UniappJs {
   options = Xuwu.getOption()
   platformAddUtilsRequest() {
     this.api.render({
-      '/src/utils/request.js': '../../module/request/uniapp/request.js',
-      '/src/utils/interface.js': '../../module/request/uniapp/interface.js',
-      '/src/api/index.js': '../../module/request/uniapp/index.js'
+      '/src/utils/request.js': '../../template/request/uniapp/request.js',
+      '/src/utils/interface.js': '../../template/request/uniapp/interface.js',
+      '/src/api/index.js': '../../template/request/uniapp/index.js'
     })
   }
   platformAddUtilsConfig() {
     this.api.render({
-      '/src/utils/config.js': '../../module/utils/config.js'
+      '/src/utils/config.js': '../../template/utils/config.js'
     })
   }
 }
