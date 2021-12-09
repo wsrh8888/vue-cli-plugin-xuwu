@@ -28,7 +28,7 @@ class Compiler {
    * @return {void}
    */
   pluginEs6ToEs5 = () => {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       return
     }
     this.fileBabelConfig.babelConfigEs6ToEs5()
@@ -41,7 +41,7 @@ class Compiler {
    */
   pluginCrossEnv = () => {
     // 判断是webpack还是vite
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.filePackage.packageCrossEnvVite()
     } else {
       this.filePackage.packageCrossEnv()
@@ -79,7 +79,7 @@ class Compiler {
    * @return {void}
    */
   uiAntDesignVue3 = () => {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.uiAntDesignVue3Vite()
       return
     }
@@ -128,7 +128,7 @@ class Compiler {
    * @return {void}
    */
   uiVantVue3 = () => {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.uiVantVue3Vite()
       return
     }
@@ -151,7 +151,7 @@ class Compiler {
    * @return {void}
    */
   uiElementVue3 = () => {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.uiElementVue3Vite()
       return
     }
@@ -199,7 +199,7 @@ class Compiler {
    * @return {void}
    */
   pluginRemoveConsole = () => {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.pluginCrossEnv()
       this.fileViteConfig.viteConfigRemoveConsole()
     } else {
@@ -214,7 +214,7 @@ class Compiler {
    */
   pluginLintStaged = () => {
     this.platforms.platformsLintStaged()
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.filePackage.packageCommitVite()
     } else {
       this.filePackage.packageCommitPre()
@@ -248,7 +248,7 @@ class Compiler {
    * @return {void}
    */
   pluginFlexibleVue3 = () => {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.pluginFlexileVite()
       return
     }

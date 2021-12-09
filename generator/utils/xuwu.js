@@ -17,7 +17,7 @@ class Xuwu {
    * @param {*}
    * @return {*}
    */
-  static buildToolName() {
+  static getBuildToolName() {
     if (this.single.api.generator.files['package.json'].search('"vite"')) {
       return 'vite'
     } else {

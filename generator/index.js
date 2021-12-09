@@ -1,7 +1,8 @@
 const Xuwu = require('./utils/xuwu')
-const Compiler = require('./Compiler')
+const ViteWebVue3 = require('./platform/vite-web-vue3')
+
 class Template {
-  compiler = new Compiler()
+  'vite-web-vue3' = new ViteWebVue3()
   /**
    * @description: 默认安装的逻辑插件
    * @param {*}
@@ -136,11 +137,19 @@ class Template {
 module.exports = (api, options) => {
   Xuwu.init(api, options)
   const template = new Template()
+  const newOptions = [
+    ...options.promptsManuallyConfig,
+    ...options.promptsUiConfig
+  ]
   if (options.promptsPcConfig !== 'default') {
-    options.promptsManuallyConfig.forEach((element) => {
-      template
-        .enumsPluginConfig()
-        [Xuwu.getLanguage()][Xuwu.getVueVersion()][element]()
+    newOptions.forEach((element) => {
+      let data =
+        Xuwu.getBuildToolName() +
+        '-' +
+        Xuwu.getLanguage() +
+        '-' +
+        Xuwu.getVueVersion()
+      template[data][element]()
     })
   } else {
     template
@@ -150,11 +159,5 @@ module.exports = (api, options) => {
           element()
         }
       )
-  }
-  // 处理UI插件
-  if (options.promptsUiConfig) {
-    template
-      .enumsUiConfig()
-      [Xuwu.getLanguage()][Xuwu.getVueVersion()][options.promptsUiConfig]()
   }
 }

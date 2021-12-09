@@ -54,7 +54,7 @@ class Platforms {
    * @return {void}
    */
   platformAddUtilsConfig() {
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.api.render({
         '/.env.pre': '../../module/ENV/.env.pre',
         '/.env.prod': '../../module/ENV/.env.prod',

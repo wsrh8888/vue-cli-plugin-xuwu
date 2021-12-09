@@ -126,7 +126,7 @@ class Main {
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
         lines[renderIndex] += `${EOL}  ${
-          Xuwu.buildToolName() === 'vite'
+          Xuwu.getBuildToolName() === 'vite'
             ? Template.vConsoleVue3Vite()
             : Template.vConsoleVue3()
         }`

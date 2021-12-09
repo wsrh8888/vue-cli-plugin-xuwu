@@ -19,7 +19,7 @@ class WebJs {
         axios: '^0.21.1'
       }
     })
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.api.render({
         '/src/utils/request.js': '../../module/request/web/request.js',
         '/src/api/index.js': '../../module/request/web/indexVite.js'

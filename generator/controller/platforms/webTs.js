@@ -13,7 +13,7 @@ class WebTs {
         axios: '^0.21.1'
       }
     })
-    if (Xuwu.buildToolName() === 'vite') {
+    if (Xuwu.getBuildToolName() === 'vite') {
       this.api.render({
         '/src/utils/request.ts': '../../module/request/web/request.ts',
         '/src/api/index.ts': '../../module/request/web/indexVite.ts'

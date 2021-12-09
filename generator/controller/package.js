@@ -182,7 +182,7 @@ class Package {
    * @return {void}
    */
   packageVantUi() {
-    if (Xuwu.buildToolName() !== 'vite') {
+    if (Xuwu.getBuildToolName() !== 'vite') {
       this.babelPluginImport()
     }
     this.api.extendPackage({
@@ -209,7 +209,7 @@ class Package {
    * @return {void}
    */
   packageVantVue3() {
-    if (Xuwu.buildToolName() !== 'vite') {
+    if (Xuwu.getBuildToolName() !== 'vite') {
       this.babelPluginImport()
     }
     this.api.extendPackage({
