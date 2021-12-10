@@ -21,6 +21,13 @@ class RootConfig {
       '/.env.test': '../template/root/.env.test'
     })
   }
+  eslintConfigFile() {
+    this.api.render({
+      '/.eslintrc.js': '../template/root/_eslintrc.js',
+      '/.eslintignore': '../template/root/_eslintignore',
+      '/.prettierrc': '../template/root/_prettierrc'
+    })
+  }
 }
 
 module.exports = RootConfig

@@ -3,8 +3,11 @@ const FilePackage = require('../compilation/package')
 class Common {
   filePackage = new FilePackage()
 
-  commonSass = () => {
+  cssSass = () => {
     this.filePackage.packageSass()
+  }
+  cssLess = () => {
+    this.filePackage.packageLess()
   }
 }
 

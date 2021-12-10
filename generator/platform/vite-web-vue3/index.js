@@ -60,6 +60,8 @@ class ViteWebVue3 extends Common{
   templateRemoveConsole= () => {
     this.templateCrossEnv()
     this.fileViteConfig.viteConfigRemoveConsole()
+    this.filePackage.packageAddAxios()
+
   }
   /******* 
    * @description: 扩展环境变量
@@ -72,7 +74,7 @@ class ViteWebVue3 extends Common{
    * @description: Element Ui
    */  
   UiElement = () => {
-    this.commonSass()
+    this.cssSass()
     this.filePackage.packageVue3Vite()
     this.fileUtils.element()
     this.filePackage.packageElementPlusUi()
@@ -80,10 +82,20 @@ class ViteWebVue3 extends Common{
     this.fileViteConfig.viteConfigAddElement()
   }
   UiVant = () => {
-    
+    this.filePackage.packageVantVue3()
+    this.filePackage.packageVue3Vite()
+    this.fileUtils.vant()
+    this.fileViteConfig.viteConfigAddVant()
+    this.fileMain.mainAddVantVue3()
   }
   UiAntDesign = () => {
-    
+    this.cssLess()
+    this.fileViteConfig.viteConfigLess()
+    this.filePackage.packageVue3Vite()
+    this.filePackage.packageAntDesignVue3()
+    this.fileUtils.antDesign()
+    this.fileViteConfig.viteConfigAddAntDesign()
+    this.fileMain.mainAddAntDesignVue3()
   }
 }
 module.exports = ViteWebVue3

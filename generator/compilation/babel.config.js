@@ -22,7 +22,7 @@ class BabelConfig {
       }
     } catch (error) {
       this.api.render({
-        "/babel.config.js": "../template/vite.config.js",
+        "/babel.config.js": "../template/babel.config.js",
       });
     }
   }
@@ -37,7 +37,7 @@ class BabelConfig {
       let contentMain = Fs.readFileSync(this.api.resolve("./babel.config.js"), {
         encoding: "utf-8",
       });
-      lines = contentMain.split(/\r?\n/g);
+      let lines = contentMain.split(/\r?\n/g);
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       );
@@ -62,7 +62,7 @@ class BabelConfig {
       let contentMain = Fs.readFileSync(this.api.resolve("./babel.config.js"), {
         encoding: "utf-8",
       });
-      lines = contentMain.split(/\r?\n/g);
+      let lines = contentMain.split(/\r?\n/g);
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       );
@@ -85,7 +85,7 @@ class BabelConfig {
       let contentMain = Fs.readFileSync(this.api.resolve("./babel.config.js"), {
         encoding: "utf-8",
       });
-      lines = contentMain.split(/\r?\n/g);
+      let lines = contentMain.split(/\r?\n/g);
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       );
@@ -108,7 +108,7 @@ class BabelConfig {
       let contentMain = Fs.readFileSync(this.api.resolve("./babel.config.js"), {
         encoding: "utf-8",
       });
-      lines = contentMain.split(/\r?\n/g);
+      let lines = contentMain.split(/\r?\n/g);
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       );
@@ -132,7 +132,7 @@ class BabelConfig {
       let contentMain = Fs.readFileSync(this.api.resolve("./babel.config.js"), {
         encoding: "utf-8",
       });
-      lines = contentMain.split(/\r?\n/g);
+      let lines = contentMain.split(/\r?\n/g);
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       );
@@ -155,7 +155,7 @@ class BabelConfig {
       let contentMain = Fs.readFileSync(this.api.resolve("./babel.config.js"), {
         encoding: "utf-8",
       });
-      lines = contentMain.split(/\r?\n/g);
+      let lines = contentMain.split(/\r?\n/g);
       const renderIndex = lines.findIndex((line) =>
         line.match(/module.exports/)
       );
