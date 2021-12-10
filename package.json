@@ -14,7 +14,7 @@
   },
   "lint-staged": {
     "*.{js,vue,ts}": [
-      "npm run build",
+      "npm run lint",
       "git add"
     ]
   },

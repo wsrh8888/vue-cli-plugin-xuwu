@@ -1,3 +1,6 @@
 node_modules
 .DS_Store
-template/plugins/**/*.js
+generator/template/plugins/**/*.js
+generator/template/request/**/*.js
+generator/template/utils/*.js
+generator/template/vite.config.js
