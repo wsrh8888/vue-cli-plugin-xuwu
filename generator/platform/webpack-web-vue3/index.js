@@ -1,4 +1,22 @@
-class WebpackWebVue3 {
+const FileMainVue = require('../../compilation/main.vue')
+const FileVueConfig = require('../../compilation/vue.config')
+const FileMain = require('../../compilation/main')
+const FilePackage = require('../../compilation/package')
+const FileBabelConfig = require('../../compilation/babel.config')
+const FileUtils = require('../../compilation/utils')
+const FileViteConfig = require('../../compilation/vite.config')
+const FileRootConfig = require('../../compilation/root.config')
+const Common = require('../main')
+class WebpackWebVue3 extends Common {
+  fileMainVue = new FileMainVue()
+  fileVueConfig = new FileVueConfig()
+  fileMain = new FileMain()
+  filePackage = new FilePackage()
+  fileBabelConfig = new FileBabelConfig()
+  fileUtils = new FileUtils()
+  fileViteConfig = new FileViteConfig()
+  fileRootConfig = new FileRootConfig()
+
   // 默认选择的模版
   defaultPc = () => {
     this.templateLintStaged()
@@ -17,7 +35,7 @@ class WebpackWebVue3 {
     this.uiVant()
   }
   templateAddVconsole = () => {
-    this.pluginCrossEnv()
+    this.templateCrossEnv()
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsoleVue3()
   }
@@ -31,10 +49,10 @@ class WebpackWebVue3 {
     this.filePackage.packageBabelEs6ToEs5()
   }
   templateFlexible = () => {
-    this.pluginCrossEnv()
+    this.templateCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
-    this.platforms.platformAddUtilsRem()
+    this.fileUtils.rem()
     this.fileMain.mainAddRemVue3()
     this.fileVueConfig.vueConfigAddPx2rem()
     this.fileMainVue.mainVueAddMedia()
@@ -52,20 +70,20 @@ class WebpackWebVue3 {
     this.fileUtils.utilConfig()
   }
   uiElement = () => {
-    this.platforms.platformAddPluginsElementVue3()
+    this.fileUtils.element()
     this.filePackage.packageElementPlusUi()
     this.fileBabelConfig.babelConfigAddElementPlus()
     this.fileMain.mainAddElementVue3()
   }
   uiVant = () => {
     this.filePackage.packageVantVue3()
-    this.platforms.platformAddPluginsVantVue3()
+    this.fileUtils.vant()
     this.fileBabelConfig.babelConfigAddVant()
     this.fileMain.mainAddVantVue3()
   }
   uiAntDesign = () => {
     this.filePackage.packageAntDesignVue3()
-    this.platforms.platformAddPluginsAntDesignVue3()
+    this.fileUtils.antDesign()
     this.fileBabelConfig.babelConfigAddAntDesign()
     this.fileMain.mainAddAntDesignVue3()
   }

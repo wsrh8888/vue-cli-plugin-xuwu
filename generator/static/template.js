@@ -18,13 +18,20 @@ module.exports = class Template {
    */
   static elementTemplate() {
     return `
-      plugins.push([
-        'component',
-        {
-          libraryName: 'element-ui',
-          styleLibraryName: 'theme-chalk'
+    plugins.push([
+      'import',
+      {
+        libraryName: 'element-plus',
+        customName: (name) => {
+          name = name.slice(3)
+          return "element-plus/es/components/" + name
         },
-      ])
+        customStyleName: (name) => {
+          name = name.slice(3)
+          return "element-plus/es/components" + name + "/style/css"
+        }
+      }
+    ])
     `
   }
   /**
