@@ -175,7 +175,7 @@ module.exports = class Template {
    * @return {*}
    */
   static viteDropConsole() {
-    return `minify: 'terser', terserOptions: { compress: { drop_console: command === 'build' && loadEnv(mode, __dirname).VITE_API_ENV === 'prod', drop_debugger: command === 'build' && loadEnv(mode, __dirname).VITE_API_ENV === 'prod'}}`
+    return 'minify: "terser", terserOptions: { compress: { drop_console: command === "build" && loadEnv(mode, __dirname).VITE_API_ENV === "prod", drop_debugger: command === "build" && loadEnv(mode, __dirname).VITE_API_ENV === "prod"}}'
   }
   static viteVantVue3() {
     return 'styleImport({ libs: [ { libraryName: "vant", esModule: true,  resolveStyle: (name) => `vant/es/${name}/style/index`,},],})'

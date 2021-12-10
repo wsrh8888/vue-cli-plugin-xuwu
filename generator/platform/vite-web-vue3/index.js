@@ -16,7 +16,6 @@ class ViteWebVue3 extends Common {
   fileUtils = new FileUtils()
   fileViteConfig = new FileViteConfig()
   fileRootConfig = new FileRootConfig()
-  constructor() {}
 
   defaultPc = () => {
     this.templateLintStaged()

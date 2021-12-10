@@ -14,7 +14,7 @@ class ViteConfig {
   fileInit() {
     let contentMain
     try {
-      contentMain = Fs.readFileSync(this.api.resolve('./vite.config.js'), {
+      contentMain = Fs.readFileSync(this.api.resolve(this.getViteFileName()), {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
@@ -27,9 +27,12 @@ class ViteConfig {
       }
     } catch (error) {
       this.api.render({
-        '/vite.config.js': '../template/vite.config.js'
+        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../template/vite.config.${Xuwu.getTsOrJs()}`
       })
     }
+  }
+  getViteFileName() {
+    return `./vite.config.${Xuwu.getTsOrJs()}`
   }
   /**
    * @description: viteConfig.js文件中添加去掉console相关配置
@@ -39,9 +42,12 @@ class ViteConfig {
   viteConfigAddAntDesign() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve('./vite.config.js'), {
-        encoding: 'utf-8'
-      })
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
       let lines = contentMain.split(/\r?\n/g)
 
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
@@ -56,7 +62,7 @@ class ViteConfig {
         ) {
           lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
         }
-        Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
+        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -70,9 +76,12 @@ class ViteConfig {
   viteConfigRemoveConsole() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve('./vite.config.js'), {
-        encoding: 'utf-8'
-      })
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
       let lines = contentMain.split(/\r?\n/g)
 
       const renderIndex = lines.findIndex((line) =>
@@ -80,7 +89,7 @@ class ViteConfig {
       )
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
         lines[renderIndex] += `${EOL} build:{ ${Template.viteDropConsole()}},`
-        Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
+        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -89,9 +98,12 @@ class ViteConfig {
   viteConfigAddElement() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve('./vite.config.js'), {
-        encoding: 'utf-8'
-      })
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
       let lines = contentMain.split(/\r?\n/g)
 
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
@@ -106,7 +118,7 @@ class ViteConfig {
         ) {
           lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
         }
-        Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
+        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -114,16 +126,19 @@ class ViteConfig {
   }
   viteConfigLess() {
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve('./vite.config.js'), {
-        encoding: 'utf-8'
-      })
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
       let lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) =>
         line.match(/export default defineConfig\(\(\{/)
       )
       if (lines.findIndex((line) => line.match(/less/)) === -1) {
         lines[renderIndex] += `${EOL} ${Template.viteLess()},`
-        Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
+        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -132,9 +147,12 @@ class ViteConfig {
   viteConfigAddVant() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve('./vite.config.js'), {
-        encoding: 'utf-8'
-      })
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
       let lines = contentMain.split(/\r?\n/g)
 
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
@@ -149,7 +167,7 @@ class ViteConfig {
         ) {
           lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
         }
-        Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
+        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
           encoding: 'utf-8'
         })
       }

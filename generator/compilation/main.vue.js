@@ -3,7 +3,6 @@ const Template = require('../static/template')
 class MainVue {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
-  constructor() {}
   /**
    * @description: 在vue.config里增加适配相关代码
    * @param {*} api

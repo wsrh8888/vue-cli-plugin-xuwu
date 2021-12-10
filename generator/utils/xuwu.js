@@ -14,8 +14,6 @@ class Xuwu {
   }
   /*******
    * @description: 判断项目中使用的打包工具
-   * @param {*}
-   * @return {*}
    */
   static getBuildToolName() {
     if (
@@ -29,7 +27,6 @@ class Xuwu {
   /**
    * @description: 判断package中是否存在某个依赖包
    * @param {*} value package包的名字
-   * @return {*}
    */
   static isExistPackage(value) {
     return (
@@ -40,9 +37,6 @@ class Xuwu {
   }
   /**
    * @description: 使用单例模式初始化基类的api，和option属性。全局使用
-   * @param {*} api
-   * @param {*} options
-   * @return {Xuwu}
    */
   static init(api, options) {
     if (this.single === undefined && api && options) {
@@ -52,8 +46,6 @@ class Xuwu {
   }
   /**
    * @description: 获取全局属性，api
-   * @param {*}
-   * @return {*}
    */
   static getApi() {
     if (this.single === undefined) {
@@ -63,8 +55,6 @@ class Xuwu {
   }
   /**
    * @description: 获取全局属性，option
-   * @param {*}
-   * @return {*}
    */
   static getOption() {
     if (this.single === undefined) {
@@ -74,7 +64,6 @@ class Xuwu {
   }
   /**
    * @description: 获取全局属性，vue的版本
-   * @param {*}
    * @return {string} |vue2 | vue3|
    */
   static getVueVersion() {
@@ -93,7 +82,6 @@ class Xuwu {
   }
   /**
    * @description: 获取全局属性，项目的类型
-   * @param {*}
    * @return {string} |web|uniapp|
    */
   static getLanguage() {
@@ -102,7 +90,6 @@ class Xuwu {
 
   /**
    * @description: 获取全局属性，使用场景
-   * @param {*}
    * @return {string} |pc|mobile|
    */
   static getScene() {
@@ -113,7 +100,6 @@ class Xuwu {
 
   /**
    * @description: 获取全局属性，项目使用的语言类型
-   * @param {*}
    * @return {string} |js|ts|
    */
   static getTsOrJs() {
