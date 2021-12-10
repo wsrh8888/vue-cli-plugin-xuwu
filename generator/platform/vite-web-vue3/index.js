@@ -7,7 +7,7 @@ const FileUtils = require('../../compilation/utils')
 const FileViteConfig = require('../../compilation/vite.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
-class ViteWebVue3 extends Common{
+class ViteWebVue3 extends Common {
   fileMainVue = new FileMainVue()
   fileVueConfig = new FileVueConfig()
   fileMain = new FileMain()
@@ -16,80 +16,88 @@ class ViteWebVue3 extends Common{
   fileUtils = new FileUtils()
   fileViteConfig = new FileViteConfig()
   fileRootConfig = new FileRootConfig()
+  constructor() {}
 
-  // 默认选择的模版
-  defaultTemplate = () => {
-    console.log('default')
+  defaultPc = () => {
+    this.templateLintStaged()
+    this.templateRemoveConsole()
+    this.templateCrossEnv()
+    this.templateRequest()
+    this.uiElement()
   }
-  /******* 
+  defaultMobile = () => {
+    this.templateLintStaged()
+    this.templateCrossEnv()
+    this.templateRemoveConsole()
+    this.templateAddVconsole()
+    this.templateFlexible()
+    this.templateRequest()
+    this.uiVant()
+  }
+  /*******
    * @description: consoleLog控制台
-   */  
-  templateAddVconsole= () => {
+   */
+  templateAddVconsole = () => {
     this.templateCrossEnv()
     this.fileViteConfig.viteConfigRemoveConsole()
   }
-  /******* 
+  /*******
    * @description: ajax请求模板
-   */  
-  templateRequest= () => {
+   */
+  templateRequest = () => {
     this.templateCrossEnv()
     this.fileUtils.request()
   }
-  templateES5= () => {
-
-  }
-  /******* 
+  templateES5 = () => {}
+  /*******
    * @description: 适配插件
-   */  
-  templateFlexible= () => {
+   */
+  templateFlexible = () => {
     this.fileRootConfig.postcssConfigFile()
     this.filePackage.packageFlexibleVite()
     this.fileUtils.rem()
     this.fileMain.mainAddRemVue3()
     this.fileMainVue.mainVueAddMedia()
   }
-  /******* 
+  /*******
    * @description: commit代码时统一风格
-   */  
-  templateLintStaged= () => {
-
-  }
-  /******* 
+   */
+  templateLintStaged = () => {}
+  /*******
    * @description: templateAddVconsole
-   */  
-  templateRemoveConsole= () => {
+   */
+  templateRemoveConsole = () => {
     this.templateCrossEnv()
     this.fileViteConfig.viteConfigRemoveConsole()
     this.filePackage.packageAddAxios()
-
   }
-  /******* 
+  /*******
    * @description: 扩展环境变量
-   */  
-  templateCrossEnv= () => {
+   */
+  templateCrossEnv = () => {
     this.filePackage.packageCrossEnvVite()
     this.fileRootConfig.envConfigFile()
   }
-  /******* 
+  /*******
    * @description: Element Ui
-   */  
-  UiElement = () => {
-    this.cssSass()
+   */
+  uiElement = () => {
+    this.templateSass()
     this.filePackage.packageVue3Vite()
     this.fileUtils.element()
     this.filePackage.packageElementPlusUi()
     this.fileMain.mainAddElementVue3()
     this.fileViteConfig.viteConfigAddElement()
   }
-  UiVant = () => {
+  uiVant = () => {
     this.filePackage.packageVantVue3()
     this.filePackage.packageVue3Vite()
     this.fileUtils.vant()
     this.fileViteConfig.viteConfigAddVant()
     this.fileMain.mainAddVantVue3()
   }
-  UiAntDesign = () => {
-    this.cssLess()
+  uiAntDesign = () => {
+    this.templateLess()
     this.fileViteConfig.viteConfigLess()
     this.filePackage.packageVue3Vite()
     this.filePackage.packageAntDesignVue3()

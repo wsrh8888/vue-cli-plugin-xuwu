@@ -3,10 +3,10 @@ const FilePackage = require('../compilation/package')
 class Common {
   filePackage = new FilePackage()
 
-  cssSass = () => {
+  templateSass = () => {
     this.filePackage.packageSass()
   }
-  cssLess = () => {
+  templateLess = () => {
     this.filePackage.packageLess()
   }
 }

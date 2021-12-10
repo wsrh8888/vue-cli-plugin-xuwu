@@ -18,13 +18,11 @@ class ViteConfig {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
-      console.log(lines)
       if (
         lines.findIndex((line) =>
           line.match(/export default defineConfig\(\(\{ mode, command \}\)/)
         ) === -1
       ) {
-        console.log('2222')
         throw Error
       }
     } catch (error) {
@@ -45,7 +43,7 @@ class ViteConfig {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
-      console.log(lines)
+
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/ant-design-vue/)) === -1) {
         lines[renderIndex] = lines[renderIndex].replace(
@@ -76,12 +74,11 @@ class ViteConfig {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
-      console.log(lines)
+
       const renderIndex = lines.findIndex((line) =>
         line.match(/export default defineConfig\(\(\{/)
       )
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
-        console.log(renderIndex, 'renderIndex')
         lines[renderIndex] += `${EOL} build:{ ${Template.viteDropConsole()}},`
         Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
           encoding: 'utf-8'
@@ -96,7 +93,7 @@ class ViteConfig {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
-      console.log(lines)
+
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {
         lines[renderIndex] = lines[renderIndex].replace(
@@ -125,7 +122,6 @@ class ViteConfig {
         line.match(/export default defineConfig\(\(\{/)
       )
       if (lines.findIndex((line) => line.match(/less/)) === -1) {
-        console.log(renderIndex, 'renderIndex')
         lines[renderIndex] += `${EOL} ${Template.viteLess()},`
         Fs.writeFileSync('./vite.config.js', lines.join(EOL), {
           encoding: 'utf-8'
@@ -140,7 +136,7 @@ class ViteConfig {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
-      console.log(lines)
+
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/vant/)) === -1) {
         lines[renderIndex] = lines[renderIndex].replace(

@@ -1,37 +1,73 @@
 class WebpackWebVue3 {
   // 默认选择的模版
-  defaultTemplate = () => {
-
+  defaultPc = () => {
+    this.templateLintStaged()
+    this.templateRemoveConsole()
+    this.templateCrossEnv()
+    this.templateRequest()
+    this.uiElement()
   }
-  templateAddVconsole= () => {
-
+  defaultMobile = () => {
+    this.templateLintStaged()
+    this.templateCrossEnv()
+    this.templateRemoveConsole()
+    this.templateAddVconsole()
+    this.templateFlexible()
+    this.templateRequest()
+    this.uiVant()
   }
-  templateRequest= () => {
-
+  templateAddVconsole = () => {
+    this.pluginCrossEnv()
+    this.filePackage.packageAddConsolePanel()
+    this.fileMain.mainAddVconsoleVue3()
   }
-  templateES5= () => {
-
+  templateRequest = () => {
+    this.templateCrossEnv()
+    this.fileUtils.request()
+    this.filePackage.packageAddAxios()
   }
-  templateFlexible= () => {
-
+  templateES5 = () => {
+    this.fileBabelConfig.babelConfigEs6ToEs5()
+    this.filePackage.packageBabelEs6ToEs5()
   }
-  templateLintStaged= () => {
-
+  templateFlexible = () => {
+    this.pluginCrossEnv()
+    this.fileVueConfig.vueConfigAddFlexible()
+    this.filePackage.packageFlexible()
+    this.platforms.platformAddUtilsRem()
+    this.fileMain.mainAddRemVue3()
+    this.fileVueConfig.vueConfigAddPx2rem()
+    this.fileMainVue.mainVueAddMedia()
   }
-  templateRemoveConsole= () => {
-
+  templateLintStaged = () => {
+    this.filePackage.packageCommitPre()
+    this.fileRootConfig.eslintConfigFile()
   }
-  templateCrossEnv= () => {
-
+  templateRemoveConsole = () => {
+    this.filePackage.packageRemoveConsole()
+    this.fileBabelConfig.babelConfigRemoveConsole()
   }
-  UiElement = () => {
-    
+  templateCrossEnv = () => {
+    this.filePackage.packageCrossEnv()
+    this.fileUtils.utilConfig()
   }
-  UiVant = () => {
-    
+  uiElement = () => {
+    this.platforms.platformAddPluginsElementVue3()
+    this.filePackage.packageElementPlusUi()
+    this.fileBabelConfig.babelConfigAddElementPlus()
+    this.fileMain.mainAddElementVue3()
   }
-  UiAntDesign = () => {
-    
+  uiVant = () => {
+    this.filePackage.packageVantVue3()
+    this.platforms.platformAddPluginsVantVue3()
+    this.fileBabelConfig.babelConfigAddVant()
+    this.fileMain.mainAddVantVue3()
+  }
+  uiAntDesign = () => {
+    this.filePackage.packageAntDesignVue3()
+    this.platforms.platformAddPluginsAntDesignVue3()
+    this.fileBabelConfig.babelConfigAddAntDesign()
+    this.fileMain.mainAddAntDesignVue3()
   }
 }
 module.exports = WebpackWebVue3

@@ -17,24 +17,37 @@ class WebpackWebVue2 extends Common {
   fileViteConfig = new FileViteConfig()
   fileRootConfig = new FileRootConfig()
 
-  defaultTemplate = () => {
-    // 默认选择的模版
+  defaultPc = () => {
+    this.templateLintStaged()
+    this.templateRemoveConsole()
+    this.templateCrossEnv()
+    this.templateRequest()
+    this.uiElement()
   }
-  templateAddVconsole= () => {
+  defaultMobile = () => {
+    this.templateLintStaged()
+    this.templateCrossEnv()
+    this.templateRemoveConsole()
+    this.templateAddVconsole()
+    this.templateFlexible()
+    this.templateRequest()
+    this.uiVant()
+  }
+  templateAddVconsole = () => {
     this.templateCrossEnv()
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsole()
   }
-  templateRequest= () => {
+  templateRequest = () => {
     this.templateCrossEnv()
     this.fileUtils.request()
     this.filePackage.packageAddAxios()
   }
-  templateES5= () => {
+  templateES5 = () => {
     this.fileBabelConfig.babelConfigEs6ToEs5()
     this.filePackage.packageBabelEs6ToEs5()
   }
-  templateFlexible= () => {
+  templateFlexible = () => {
     this.templateCrossEnv()
     this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
@@ -43,31 +56,31 @@ class WebpackWebVue2 extends Common {
     this.fileVueConfig.vueConfigAddPx2rem()
     this.fileMainVue.mainVueAddMedia()
   }
-  templateLintStaged= () => {
+  templateLintStaged = () => {
     this.filePackage.packageCommitPre()
     this.fileRootConfig.eslintConfigFile()
   }
-  templateRemoveConsole= () => {
+  templateRemoveConsole = () => {
     this.filePackage.packageRemoveConsole()
     this.fileBabelConfig.babelConfigRemoveConsole()
   }
-  templateCrossEnv= () => {
+  templateCrossEnv = () => {
     this.filePackage.packageCrossEnv()
     this.fileUtils.utilConfig()
   }
-  UiElement = () => {
+  uiElement = () => {
     this.filePackage.packageElementUi()
     this.fileUtils.element()
     this.fileBabelConfig.babelConfigAddElement()
     this.fileMain.mainAddElement()
   }
-  UiVant = () => {
+  uiVant = () => {
     this.filePackage.packageVantUi()
     this.fileUtils.vant()
     this.fileBabelConfig.babelConfigAddVant()
     this.fileMain.mainAddVant()
   }
-  UiAntDesign = () => {
+  uiAntDesign = () => {
     this.filePackage.packageAntDesignVue2()
     this.fileUtils.antDesign()
     this.fileBabelConfig.babelConfigAddAntDesign()
