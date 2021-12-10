@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {
-  Message,
-  Base,
+  message,
+  // Base,
   Affix,
   Anchor,
   AutoComplete,
@@ -67,7 +67,7 @@ import {
   Space,
   Notification
 } from 'ant-design-vue'
-Vue.use(Base)
+// Vue.use(Base)
 Vue.use(Affix)
 Vue.use(Anchor)
 Vue.use(AutoComplete)
@@ -130,7 +130,7 @@ Vue.use(Result)
 Vue.use(Descriptions)
 Vue.use(PageHeader)
 Vue.use(Space)
-Vue.prototype.$message = Message
+Vue.prototype.$message = message
 Vue.prototype.$notification = Notification
 Vue.prototype.$info = Modal.info
 Vue.prototype.$success = Modal.success

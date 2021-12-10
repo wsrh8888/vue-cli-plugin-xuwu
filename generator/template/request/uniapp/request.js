@@ -1,8 +1,7 @@
-import { methodList } from './interface'
 export function request({
   url = '',
   data = {},
-  method = methodList.GET,
+  method = 'get',
   header = {},
   timeout = 60000
 }) {

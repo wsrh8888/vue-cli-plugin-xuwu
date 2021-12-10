@@ -5,13 +5,17 @@ class Request {
   options = Xuwu.getOption()
   suffixes = Xuwu.getTsOrJs()
   version = Xuwu.getVueVersion()
-  /******* 
+  /*******
    * @description: ajax请求
-   */  
-  request()  {
+   */
+  request() {
     this.api.render({
-      [`/src/utils/request.${this.suffixes}`]: `../template/request/${Xuwu.getBuildToolName() + '-' +Xuwu.getLanguage()}/request.${this.suffixes}`,
-      [`/src/api/index.${this.suffixes}`]: `../template/request/${Xuwu.getBuildToolName() + '-' +Xuwu.getLanguage()}/index.${this.suffixes}`
+      [`/src/utils/request.${this.suffixes}`]: `../template/request/${
+        Xuwu.getBuildToolName() + '-' + Xuwu.getLanguage()
+      }/request.${this.suffixes}`,
+      [`/src/api/index.${this.suffixes}`]: `../template/request/${
+        Xuwu.getBuildToolName() + '-' + Xuwu.getLanguage()
+      }/index.${this.suffixes}`
     })
   }
   utilConfig() {
