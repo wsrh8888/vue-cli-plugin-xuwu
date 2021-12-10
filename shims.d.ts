@@ -14,6 +14,8 @@ declare module "uni"
 declare module "axios"
 declare module "vite/client"
 declare module "vite"
+declare module "@vitejs/plugin-vue"
+
 
 
 

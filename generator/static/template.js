@@ -18,13 +18,20 @@ module.exports = class Template {
    */
   static elementTemplate() {
     return `
-      plugins.push([
-        'component',
-        {
-          libraryName: 'element-ui',
-          styleLibraryName: 'theme-chalk'
+    plugins.push([
+      'import',
+      {
+        libraryName: 'element-plus',
+        customName: (name) => {
+          name = name.slice(3)
+          return "element-plus/es/components/" + name
         },
-      ])
+        customStyleName: (name) => {
+          name = name.slice(3)
+          return "element-plus/es/components" + name + "/style/css"
+        }
+      }
+    ])
     `
   }
   /**
@@ -175,6 +182,24 @@ module.exports = class Template {
    * @return {*}
    */
   static viteDropConsole() {
-    return `minify: 'terser', terserOptions: { compress: { drop_console: command === 'build' && loadEnv(mode, __dirname).VITE_API_ENV === 'prod', drop_debugger: command === 'build' && loadEnv(mode, __dirname).VITE_API_ENV === 'prod'}}`
+    return 'minify: "terser", terserOptions: { compress: { drop_console: command === "build" && loadEnv(mode, __dirname).VITE_API_ENV === "prod", drop_debugger: command === "build" && loadEnv(mode, __dirname).VITE_API_ENV === "prod"}}'
+  }
+  static viteVantVue3() {
+    return 'styleImport({ libs: [ { libraryName: "vant", esModule: true,  resolveStyle: (name) => `vant/es/${name}/style/index`,},],})'
+  }
+  static viteAntDeginVue3() {
+    return 'styleImport({ libs: [ { libraryName: "ant-design-vue", esModule: true,  resolveStyle: (name) => `ant-design-vue/es/${name}/style/index`,},],})'
+  }
+  static viteElementVue3() {
+    return 'styleImport({ libs: [ { libraryName: "element-plus", esModule: true,  resolveStyle: (name) => `element-plus/es/components/${name.replace("el-","")}/style/index`,},],})'
+  }
+  static viteLess() {
+    return `css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        }
+      },
+    }`
   }
 }

@@ -23,8 +23,8 @@
   },
   "files": ["shims.d.ts"],
   "include": [
-    "generator/module/**/*.ts",
-    "generator/module/**/*.tsx",
+    "generator/template/**/*.ts",
+    "generator/template/**/*.tsx",
   ],
   "exclude": [
     "node_modules"

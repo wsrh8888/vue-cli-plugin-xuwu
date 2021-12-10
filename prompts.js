@@ -104,11 +104,12 @@ module.exports = () => {
       message: '请选择使用的UI库(按需引入)',
       choices: [
         { name: '无', value: '' },
-        { name: 'Element', value: 'Element' },
-        { name: 'Vant', value: 'Vant' },
-        { name: 'AntDesign', value: 'AntDesign' }
+        { name: 'Element', value: 'uiElement' },
+        { name: 'Vant', value: 'uiVant' },
+        { name: 'AntDesign', value: 'uiAntDesign' }
       ],
-      default: (answers) => (answers.promptsScene === 'pc' ? 'Element' : 'Vant')
+      default: (answers) =>
+        answers.promptsScene === 'pc' ? 'uiElement' : 'uiVant'
     }
   ]
   return prompts
