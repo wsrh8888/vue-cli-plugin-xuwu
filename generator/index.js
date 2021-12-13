@@ -5,6 +5,7 @@ const WebpackWebVue3 = require('./platform/webpack-web-vue3')
 const WebpackUniappVue2 = require('./platform/webpack-uniapp-vue2')
 const WebpackUniappVue3 = require('./platform/webpack-uniapp-vue3 ')
 const Tool = require('./utils/tool')
+const chalk = require('chalk')
 
 class Template {
   'vite-web-vue3' = new ViteWebVue3()
@@ -16,11 +17,15 @@ class Template {
 
 module.exports = (api, options) => {
   Xuwu.init(api, options)
+  if (!Xuwu.checkLanguage()) {
+    console.error(chalk.red('👉  请选择匹配的语言'))
+    return
+  }
   const template = new Template()
   const tool = new Tool()
   const newOptions = [
     ...(options.promptsManuallyConfig || []),
-    options.promptsUiConfig
+    ...(options.promptsUiConfig || [])
   ]
   let joinParams =
     Xuwu.getBuildToolName() +
@@ -30,6 +35,8 @@ module.exports = (api, options) => {
     Xuwu.getVueVersion()
   if (options.promptsPcConfig !== 'default') {
     newOptions.forEach((element) => {
+      console.log(joinParams, element)
+
       template[joinParams][element]()
     })
   } else {

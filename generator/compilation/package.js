@@ -80,7 +80,7 @@ class Package {
         extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier']
       },
       'lint-staged': {
-        '*.{js,vue,ts}': ['vue-cli-service lint', 'git add']
+        '*.{js,vue,ts}': ['npm run lint', 'git add']
       },
       devDependencies: this.packageFilter({
         '@vue/cli-plugin-eslint': '^4.5.13',

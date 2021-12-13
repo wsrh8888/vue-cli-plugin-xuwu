@@ -12,6 +12,17 @@ class Xuwu {
     this.api = api
     this.options = options
   }
+  static checkLanguage() {
+    switch (this.single.options.promptsLanguage) {
+      case 'web':
+        return !this.isExistPackage('@dcloudio/vue-cli-plugin-uni')
+      case 'uniapp':
+        return this.isExistPackage('@dcloudio/vue-cli-plugin-uni')
+      default:
+        break
+    }
+    return true
+  }
   /*******
    * @description: 判断项目中使用的打包工具
    */
