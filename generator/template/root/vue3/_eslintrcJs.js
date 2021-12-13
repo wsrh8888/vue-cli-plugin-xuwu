@@ -2,7 +2,6 @@ module.exports = {
   root: true,
   parser: 'vue-eslint-parser', //eslint解析器
   parserOptions: {
-    parser: '@typescript-eslint/parser',
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -13,7 +12,7 @@ module.exports = {
     browser: true,
     node: true
   },
-  plugins: ['@typescript-eslint', 'prettier'], //插件
+  plugins: ['prettier'], //插件
   extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'prettier'],
   overrides: [
     {

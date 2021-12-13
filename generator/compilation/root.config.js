@@ -22,12 +22,21 @@ class RootConfig {
     })
   }
   eslintConfigFileVue3() {
-    this.api.render({
-      '/.eslintrc.js': '../template/root/vue3/_eslintrc.js',
-      '/.gitignore': '../template/root/.gitignore',
-      '/.eslintignore': '../template/root/_eslintignore',
-      '/.prettierrc': '../template/root/_prettierrc'
-    })
+    if (Xuwu.getTsOrJs() === 'ts') {
+      this.api.render({
+        '/.eslintrc.js': '../template/root/vue3/_eslintrc.js',
+        '/.gitignore': '../template/root/.gitignore',
+        '/.eslintignore': '../template/root/_eslintignore',
+        '/.prettierrc': '../template/root/_prettierrc'
+      })
+    } else {
+      this.api.render({
+        '/.eslintrc.js': '../template/root/vue3/_eslintrcJs.js',
+        '/.gitignore': '../template/root/.gitignore',
+        '/.eslintignore': '../template/root/_eslintignore',
+        '/.prettierrc': '../template/root/_prettierrc'
+      })
+    }
   }
   eslintConfigFile() {
     this.api.render({

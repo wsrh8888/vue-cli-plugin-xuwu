@@ -62,28 +62,51 @@ class Package {
     })
   }
   packageCommitPreVue3() {
-    this.api.extendPackage({
-      scripts: {
-        lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
-      },
-      husky: {
-        hooks: {
-          'pre-commit': 'lint-staged'
-        }
-      },
-      'lint-staged': {
-        '*.{js,vue,ts}': ['npm run lint', 'git add']
-      },
-      devDependencies: this.packageFilter({
-        '@typescript-eslint/eslint-plugin': '^5.6.0',
-        '@typescript-eslint/parser': '^5.6.0',
-        eslint: '^8.4.1',
-        'eslint-config-prettier': '^8.3.0',
-        'eslint-plugin-prettier': '^4.0.0',
-        'eslint-plugin-vue': '^8.2.0',
-        prettier: '^2.5.1'
+    if (Xuwu.getTsOrJs() === 'ts') {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
+        },
+        husky: {
+          hooks: {
+            'pre-commit': 'lint-staged'
+          }
+        },
+        'lint-staged': {
+          '*.{js,vue,ts}': ['npm run lint', 'git add']
+        },
+        devDependencies: this.packageFilter({
+          '@typescript-eslint/eslint-plugin': '^5.6.0',
+          '@typescript-eslint/parser': '^5.6.0',
+          eslint: '^8.4.1',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          'eslint-plugin-vue': '^8.2.0',
+          prettier: '^2.5.1'
+        })
       })
-    })
+    } else {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
+        },
+        husky: {
+          hooks: {
+            'pre-commit': 'lint-staged'
+          }
+        },
+        'lint-staged': {
+          '*.{js,vue,ts}': ['npm run lint', 'git add']
+        },
+        devDependencies: this.packageFilter({
+          eslint: '^8.4.1',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          'eslint-plugin-vue': '^8.2.0',
+          prettier: '^2.5.1'
+        })
+      })
+    }
   }
   /**
    * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置
@@ -93,7 +116,7 @@ class Package {
   packageCommitPre() {
     this.api.extendPackage({
       scripts: {
-        lint: 'npm run lint'
+        lint: 'vue-cli-service lint'
       },
       husky: {
         hooks: {
