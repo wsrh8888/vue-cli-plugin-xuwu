@@ -61,7 +61,10 @@ class ViteWebVue3 extends Common {
   /*******
    * @description: commit代码时统一风格
    */
-  templateLintStaged = () => {}
+  templateLintStaged = () => {
+    this.filePackage.packageCommitPreVue3()
+    this.fileRootConfig.eslintConfigFileVue3()
+  }
   /*******
    * @description: templateAddVconsole
    */

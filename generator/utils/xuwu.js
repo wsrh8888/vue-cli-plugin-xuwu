@@ -15,9 +15,9 @@ class Xuwu {
   static checkLanguage() {
     switch (this.single.options.promptsLanguage) {
       case 'web':
-        return !this.isExistPackage('@dcloudio/vue-cli-plugin-uni')
+        return !this.isExistPackage('@dcloudio/uni-automator')
       case 'uniapp':
-        return this.isExistPackage('@dcloudio/vue-cli-plugin-uni')
+        return this.isExistPackage('@dcloudio/uni-automator')
       default:
         break
     }

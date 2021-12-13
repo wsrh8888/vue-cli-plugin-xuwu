@@ -18,6 +18,14 @@ class Request {
       }/index.${this.suffixes}`
     })
   }
+  uniappRequest() {
+    this.api.render({
+      [`/src/utils/request.${this.suffixes}`]: `../template/request/uniapp/request.${this.suffixes}`,
+      [`/src/api/index.${this.suffixes}`]: `../template/request/${
+        Xuwu.getBuildToolName() + '-' + Xuwu.getLanguage()
+      }/index.${this.suffixes}`
+    })
+  }
   utilConfig() {
     this.api.render({
       [`/src/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`

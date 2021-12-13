@@ -21,9 +21,18 @@ class RootConfig {
       '/.env.test': '../template/root/.env.test'
     })
   }
+  eslintConfigFileVue3() {
+    this.api.render({
+      '/.eslintrc.js': '../template/root/vue3/_eslintrc.js',
+      '/.gitignore': '../template/root/.gitignore',
+      '/.eslintignore': '../template/root/_eslintignore',
+      '/.prettierrc': '../template/root/_prettierrc'
+    })
+  }
   eslintConfigFile() {
     this.api.render({
       '/.eslintrc.js': '../template/root/_eslintrc.js',
+      '/.gitignore': '../template/root/.gitignore',
       '/.eslintignore': '../template/root/_eslintignore',
       '/.prettierrc': '../template/root/_prettierrc'
     })
