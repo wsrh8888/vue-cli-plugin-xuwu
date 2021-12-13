@@ -29,15 +29,17 @@ class WebpackUniappVue2 extends Common {
   templateRequest = () => {
     this.templateCrossEnv()
     this.fileUtils.uniappRequest()
-    this.filePackage.packageAddAxios()
   }
+  /*******
+   * @description: commit代码时统一风格
+   */
   templateLintStaged = () => {
-    this.filePackage.packageCommitPre()
-    this.fileRootConfig.eslintConfigFile()
+    this.filePackage.packageCommitPreVue3()
+    this.fileRootConfig.eslintConfigFileVue3()
   }
   templateCrossEnv = () => {
-    this.filePackage.packageUniappWebpack()
-    this.fileUtils.utilConfig()
+    this.filePackage.packageCrossEnvUniappVite()
+    this.fileRootConfig.envConfigFile()
   }
 }
 module.exports = WebpackUniappVue2

@@ -1,12 +1,6 @@
 module.exports = {
   root: true,
-  env: {
-    node: true
-  },
-  globals: {
-    uni: false,
-    process: false
-  },
+  parser: 'vue-eslint-parser', //eslint解析器
   parserOptions: {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
@@ -15,7 +9,20 @@ module.exports = {
       tsx: true
     }
   },
-  extends: ['plugin:vue/essential', '@vue/prettier'],
+  env: {
+    browser: true,
+    node: true
+  },
+  plugins: ['@typescript-eslint', 'prettier'], //插件
+  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'prettier'],
+  overrides: [
+    {
+      files: ['*.ts', '*.vue'],
+      rules: {
+        'no-undef': 'off'
+      }
+    }
+  ],
   rules: {
     'prettier/prettier': [
       'error',
@@ -36,21 +43,13 @@ module.exports = {
         // true: { foo: bar }
         // false: {foo: bar}
         bracketSpacing: true,
-        // JSX标签闭合位置 默认false
-        // false: <div
-        //          className=""
-        //          style={{}}
-        //       >
-        // true: <div
-        //          className=""
-        //          style={{}} >
-        jsxBracketSameLine: false,
         // 箭头函数参数括号 默认avoid 可选 avoid| always
         // avoid 能省略括号的时候就省略 例如x => x
         // always 总是有括号
         arrowParens: 'always'
       }
     ],
+    'vue/require-default-prop': 0,
     'vue/valid-template-root': 0,
     'eslintno-warning-comments': 0,
     'no-alert': 0, //禁止使用alert confirm prompt
@@ -150,13 +149,6 @@ module.exports = {
     'no-unreachable': 1, //不能有无法执行的代码
     'no-unused-expressions': 0, //禁止无用的表达式
     'no-useless-computed-key': 0,
-    'no-unused-vars': [
-      2,
-      {
-        vars: 'all',
-        args: 'after-used'
-      }
-    ], //不能有声明后未被使用的变量或参数
     'no-use-before-define': 2, //未定义前不能使用
     'no-useless-call': 2, //禁止不必要的call和apply
     'no-void': 2, //禁用void操作符

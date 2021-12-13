@@ -1,10 +1,10 @@
 export function request({
   url = '',
   data = {},
-  method = 'get',
+  method = 'GET',
   header = {},
   timeout = 60000
-}): any {
+}: any): any {
   return new Promise((resolve, reject) => {
     // @ts-ignore
     uni.request({

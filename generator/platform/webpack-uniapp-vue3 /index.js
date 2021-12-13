@@ -28,7 +28,7 @@ class WebpackUniappVue3 extends Common {
   }
   templateRequest = () => {
     this.templateCrossEnv()
-    this.fileUtils.request()
+    this.fileUtils.uniappRequest()
     this.filePackage.packageAddAxios()
   }
   templateLintStaged = () => {
@@ -36,7 +36,7 @@ class WebpackUniappVue3 extends Common {
     this.fileRootConfig.eslintConfigFile()
   }
   templateCrossEnv = () => {
-    this.filePackage.packageCrossEnv()
+    this.filePackage.packageUniappWebpack()
     this.fileUtils.utilConfig()
   }
 }

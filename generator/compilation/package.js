@@ -61,6 +61,53 @@ class Package {
       })
     })
   }
+  packageCommitPreVue3() {
+    if (Xuwu.getTsOrJs() === 'ts') {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
+        },
+        husky: {
+          hooks: {
+            'pre-commit': 'lint-staged'
+          }
+        },
+        'lint-staged': {
+          '*.{js,vue,ts}': ['npm run lint', 'git add']
+        },
+        devDependencies: this.packageFilter({
+          '@typescript-eslint/eslint-plugin': '^5.6.0',
+          '@typescript-eslint/parser': '^5.6.0',
+          eslint: '^8.4.1',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          'eslint-plugin-vue': '^8.2.0',
+          prettier: '^2.5.1'
+        })
+      })
+    } else {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
+        },
+        husky: {
+          hooks: {
+            'pre-commit': 'lint-staged'
+          }
+        },
+        'lint-staged': {
+          '*.{js,vue,ts}': ['npm run lint', 'git add']
+        },
+        devDependencies: this.packageFilter({
+          eslint: '^8.4.1',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          'eslint-plugin-vue': '^8.2.0',
+          prettier: '^2.5.1'
+        })
+      })
+    }
+  }
   /**
    * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置
    * @param {*}
@@ -80,7 +127,7 @@ class Package {
         extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier']
       },
       'lint-staged': {
-        '*.{js,vue,ts}': ['vue-cli-service lint', 'git add']
+        '*.{js,vue,ts}': ['npm run lint', 'git add']
       },
       devDependencies: this.packageFilter({
         '@vue/cli-plugin-eslint': '^4.5.13',
@@ -282,12 +329,51 @@ class Package {
       })
     })
   }
+  packageCrossEnvCommon() {
+    this.api.extendPackage({
+      'scripts-info': {
+        serve_test: '启动开发/测试环境',
+        build_test: '打包测试环境',
+        build: '分析打包后包含的模块的大小'
+      }
+    })
+  }
+  packageUniappWebpack() {
+    this.packageCrossEnvCommon()
+    this.api.extendPackage({
+      scripts: {
+        serve_test: 'cross-env API_ENV=test npm run dev:h5',
+        serve_pre: 'cross-env API_ENV=pre npm run dev:h5',
+        serve_prod: 'cross-env API_ENV=prod npm run dev:h5',
+        build_test: 'cross-env API_ENV=test npm run build:h5',
+        build_pre: 'cross-env API_ENV=pre npm run build:h5',
+        build_prod: 'cross-env API_ENV=prod npm run build:h5'
+      },
+      devDependencies: this.packageFilter({
+        'cross-env': '^7.0.3'
+      })
+    })
+  }
+  packageCrossEnvUniappVite() {
+    this.packageCrossEnvCommon()
+    this.api.extendPackage({
+      scripts: {
+        serve_test: 'npm run dev:h5 --mode=test',
+        serve_pre: 'npm run dev:h5 --mode=pre',
+        serve_prod: 'npm run dev:h5 --mode=prod',
+        build_test: 'build:h5 build --mode=test',
+        build_pre: 'build:h5 build --mode=pre',
+        build_prod: 'build:h5 build --mode=prod'
+      }
+    })
+  }
   /**
    * @description: 在package.json文件里，增加Vite环境区分变量和命令相关的依赖包和配置
    * @param {*}
    * @return {void}
    */
   packageCrossEnvVite() {
+    this.packageCrossEnvCommon()
     this.api.extendPackage({
       scripts: {
         serve_test: 'vite serve --mode=test',
@@ -296,11 +382,6 @@ class Package {
         build_test: 'vite build --mode=test',
         build_pre: 'vite build --mode=pre',
         build_prod: 'vite build --mode=prod'
-      },
-      'scripts-info': {
-        serve_test: '启动开发/测试环境',
-        build_test: '打包测试环境',
-        build: '分析打包后包含的模块的大小'
       }
     })
   }
@@ -310,6 +391,7 @@ class Package {
    * @return {void}
    */
   packageCrossEnv() {
+    this.packageCrossEnvCommon()
     this.api.extendPackage({
       scripts: {
         serve_test: 'cross-env API_ENV=test vue-cli-service serve',
@@ -319,11 +401,6 @@ class Package {
         build_pre: 'cross-env API_ENV=pre vue-cli-service build',
         build_prod: 'cross-env API_ENV=prod vue-cli-service build',
         build: 'cross-env API_ENV=prod vue-cli-service build --report'
-      },
-      'scripts-info': {
-        serve_test: '启动开发/测试环境',
-        build_test: '打包测试环境',
-        build: '分析打包后包含的模块的大小'
       },
       devDependencies: this.packageFilter({
         'cross-env': '^7.0.3'
@@ -353,18 +430,6 @@ class Package {
       devDependencies: this.packageFilter({
         less: '^3.12.0',
         'less-loader': '^6.2.0'
-      })
-    })
-  }
-  /**
-   * @description: 在package.json文件里，增加拖拽组建相关的依赖包和配置
-   * @param {*}
-   * @return {void}
-   */
-  packageVuedraggable() {
-    this.api.extendPackage({
-      devDependencies: this.packageFilter({
-        vuedraggable: '^2.24.3'
       })
     })
   }
