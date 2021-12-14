@@ -25,10 +25,10 @@ module.exports = (api, options) => {
   }
   const template = new Template()
   const tool = new Tool()
-  const newOptions = [
-    ...(options.promptsManuallyConfig || []),
-    ...(options.promptsUiConfig || [])
-  ]
+  let newOptions = [...(options.promptsManuallyConfig || [])]
+  if (options.promptsUiConfig) {
+    newOptions.push(options.promptsUiConfig)
+  }
   let joinParams =
     Xuwu.getBuildToolName() +
     '-' +
@@ -40,8 +40,6 @@ module.exports = (api, options) => {
       template[joinParams][element]()
     })
   } else {
-    console.log(joinParams, `default${tool.firstUpperCase(Xuwu.getScene())}`)
-
     template[joinParams][`default${tool.firstUpperCase(Xuwu.getScene())}`]()
   }
 }
