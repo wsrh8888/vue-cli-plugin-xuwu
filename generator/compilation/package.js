@@ -28,52 +28,52 @@ class Package {
     })
     return temp
   }
+  commitHook() {
+    this.api.extendPackage({
+      husky: {
+        hooks: {
+          'pre-commit': 'lint-staged'
+        }
+      },
+      'lint-staged': {
+        '*.{js,vue,ts}': ['npm run lint', 'git add']
+      },
+      devDependencies: this.packageFilter({
+        husky: '^4.3.7',
+        'lint-staged': '^10.5.3'
+      })
+    })
+  }
   /**
    * @description: 在package.json文件里，增加eslint格式化代码相关的依赖包和配置Vite相关
    * @param {*}
    * @return {void}
    */
   packageCommitVite() {
+    this.commitHook()
     this.api.extendPackage({
       scripts: {
         lint: 'eslint --fix ./ --ext .js,.vue,.ts '
       },
-      husky: {
-        hooks: {
-          'pre-commit': 'lint-staged'
-        }
-      },
       eslintConfig: {
         extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier']
-      },
-      'lint-staged': {
-        '*.{js,vue,ts}': ['npm run lint', 'git add']
       },
       devDependencies: this.packageFilter({
         '@vue/eslint-config-prettier': '^6.0.0',
         'eslint-plugin-html': '^5.0.0',
         'eslint-plugin-prettier': '^3.1.3',
-        husky: '^4.3.7',
         'eslint-plugin-vue': '^6.2.2',
         prettier: '^1.8.2',
-        'lint-staged': '^10.5.3',
         eslint: '^5.16.0'
       })
     })
   }
   packageCommitPreVue3() {
+    this.commitHook()
     if (Xuwu.getTsOrJs() === 'ts') {
       this.api.extendPackage({
         scripts: {
           lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
-        },
-        husky: {
-          hooks: {
-            'pre-commit': 'lint-staged'
-          }
-        },
-        'lint-staged': {
-          '*.{js,vue,ts}': ['npm run lint', 'git add']
         },
         devDependencies: this.packageFilter({
           '@typescript-eslint/eslint-plugin': '^5.6.0',
@@ -89,14 +89,6 @@ class Package {
       this.api.extendPackage({
         scripts: {
           lint: 'eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx'
-        },
-        husky: {
-          hooks: {
-            'pre-commit': 'lint-staged'
-          }
-        },
-        'lint-staged': {
-          '*.{js,vue,ts}': ['npm run lint', 'git add']
         },
         devDependencies: this.packageFilter({
           eslint: '^8.4.1',
@@ -114,31 +106,22 @@ class Package {
    * @return {void}
    */
   packageCommitPre() {
+    this.commitHook()
     this.api.extendPackage({
       scripts: {
         lint: 'vue-cli-service lint'
       },
-      husky: {
-        hooks: {
-          'pre-commit': 'lint-staged'
-        }
-      },
       eslintConfig: {
         extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier']
-      },
-      'lint-staged': {
-        '*.{js,vue,ts}': ['npm run lint', 'git add']
       },
       devDependencies: this.packageFilter({
         '@vue/cli-plugin-eslint': '^4.5.13',
         'eslint-plugin-html': '^5.0.0',
         'babel-eslint': '^10.1.0',
         'eslint-plugin-prettier': '^3.1.3',
-        husky: '^4.3.7',
         '@vue/eslint-config-prettier': '^6.0.0',
         'eslint-plugin-vue': '^6.2.2',
         prettier: '^1.8.2',
-        'lint-staged': '^10.5.3',
         eslint: '^5.16.0'
       })
     })

@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-xuwu",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "通过命令行的方式初始化项目模版，从而完成项目的基础配置",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,8 @@
     "generator",
     "index.js",
     "prompts.js",
-    "README.md"
+    "README.md",
+    "RELEASE.md"
   ],
   "repository": {
     "type": "git",
