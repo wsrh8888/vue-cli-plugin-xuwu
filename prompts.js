@@ -5,8 +5,8 @@ module.exports = () => {
       name: 'promptsLanguage',
       message: '请选择自己的语言',
       choices: [
-        { name: 'vue-cli', value: 'web' },
-        { name: 'uniapp', value: 'uniapp' }
+        { name: 'web(vite-cli/vue-cli)', value: 'web' },
+        { name: 'uniapp(uniapp-cli)', value: 'uniapp' }
       ],
       default: 'web'
     },
