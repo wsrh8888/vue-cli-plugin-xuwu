@@ -18,6 +18,22 @@ module.exports = class Template {
    */
   static elementTemplate() {
     return `
+      plugins.push([
+        'component',
+        {
+          libraryName: 'element-ui',
+          styleLibraryName: 'theme-chalk'
+        },
+      ])
+    `
+  }
+  /**
+   * @description: 字符串模板，elementPlus按需引入
+   * @param {*} 无
+   * @return {string}
+   */
+  static elementPlusTemplate() {
+    return  `
     plugins.push([
       'import',
       {
@@ -32,24 +48,6 @@ module.exports = class Template {
         }
       }
     ])
-    `
-  }
-  /**
-   * @description: 字符串模板，elementPlus按需引入
-   * @param {*} 无
-   * @return {string}
-   */
-  static elementPlusTemplate() {
-    return `
-      plugins.push([
-        "import",
-        {
-          libraryName: "element-plus",
-          customStyleName: (name) => {
-            return "element-plus/lib/theme-chalk/"+name+".css";
-          },
-        },
-      ])
     `
   }
   /**
