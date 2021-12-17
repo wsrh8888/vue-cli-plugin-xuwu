@@ -73,4 +73,6 @@ git地址：https://github.com/wsrh8888/vue-cli-plugin-xuwu.git
 ## 展望未来
 插件内部会陆续扩展一些其他功能，敬请期待
 
-
+## 联系方式
+#### 扫码加入QQ群
+![Alt](images/QRcode.jpg)

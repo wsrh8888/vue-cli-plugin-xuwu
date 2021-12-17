@@ -33,7 +33,7 @@ module.exports = class Template {
    * @return {string}
    */
   static elementPlusTemplate() {
-    return  `
+    return `
     plugins.push([
       'import',
       {
@@ -44,7 +44,7 @@ module.exports = class Template {
         },
         customStyleName: (name) => {
           name = name.slice(3)
-          return "element-plus/es/components" + name + "/style/css"
+          return "element-plus/es/components/" + name + "/style/css"
         }
       }
     ])
