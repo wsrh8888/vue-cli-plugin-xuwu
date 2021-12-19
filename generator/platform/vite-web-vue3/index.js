@@ -38,7 +38,8 @@ class ViteWebVue3 extends Common {
    */
   templateAddVconsole = () => {
     this.templateCrossEnv()
-    this.fileViteConfig.viteConfigRemoveConsole()
+    this.filePackage.packageAddConsolePanel()
+    this.fileMain.mainAddVconsoleVue3()
   }
   /*******
    * @description: ajax请求模板
@@ -46,6 +47,7 @@ class ViteWebVue3 extends Common {
   templateRequest = () => {
     this.templateCrossEnv()
     this.fileUtils.request()
+    this.filePackage.packageAddAxios()
   }
   templateES5 = () => {}
   /*******
@@ -71,7 +73,6 @@ class ViteWebVue3 extends Common {
   templateRemoveConsole = () => {
     this.templateCrossEnv()
     this.fileViteConfig.viteConfigRemoveConsole()
-    this.filePackage.packageAddAxios()
   }
   /*******
    * @description: 扩展环境变量

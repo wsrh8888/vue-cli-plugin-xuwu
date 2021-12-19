@@ -22,21 +22,17 @@ class Main {
         throw Error
       }
     } catch (error) {
-      this.api.afterInvoke(() => {
-        let isHasRoute
-        let isHasStore
-        let contentMain = Fs.readFileSync(
-          this.api.resolve(this.api.entryFile),
-          {
-            encoding: 'utf-8'
-          }
-        )
-        const lines = contentMain.split(/\r?\n/g)
-        isHasRoute =
-          lines.findIndex((line) => line.match(/import router from /)) !== -1
-        isHasStore =
-          lines.findIndex((line) => line.match(/import store from /)) !== -1
-        let mainContent = `${EOL} 
+      let isHasRoute
+      let isHasStore
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+        encoding: 'utf-8'
+      })
+      const lines = contentMain.split(/\r?\n/g)
+      isHasRoute =
+        lines.findIndex((line) => line.match(/import router from /)) !== -1
+      isHasStore =
+        lines.findIndex((line) => line.match(/import store from /)) !== -1
+      let mainContent = `${EOL} 
             import { createApp } from 'vue'
             import App from './App.vue'
             ${isHasRoute ? 'import router from "./router"' : ''}
@@ -46,9 +42,8 @@ class Main {
             ${isHasStore ? 'app.use(store);' : ''}
             app.mount('#app')
         `
-        Fs.writeFileSync(this.api.entryFile, mainContent, {
-          encoding: 'utf-8'
-        })
+      Fs.writeFileSync(this.api.entryFile, mainContent, {
+        encoding: 'utf-8'
       })
     }
   }
@@ -105,8 +100,8 @@ class Main {
    * @return {*}
    */
   mainAddRemVue3() {
-    this.initVue3()
     this.api.afterInvoke(() => {
+      this.initVue3()
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
@@ -124,8 +119,9 @@ class Main {
     })
   }
   mainAddVconsoleVue3() {
-    this.initVue3()
     this.api.afterInvoke(() => {
+      this.initVue3()
+
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
@@ -149,8 +145,8 @@ class Main {
    * @return {*}
    */
   mainAddElementVue3() {
-    this.initVue3()
     this.api.afterInvoke(() => {
+      this.initVue3()
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
@@ -196,8 +192,8 @@ class Main {
    * @return {*}
    */
   mainAddAntDesignVue3() {
-    this.initVue3()
     this.api.afterInvoke(() => {
+      this.initVue3()
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
@@ -264,8 +260,8 @@ class Main {
    * @return {*}
    */
   mainAddVantVue3() {
-    this.initVue3()
     this.api.afterInvoke(() => {
+      this.initVue3()
       let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
         encoding: 'utf-8'
       })
