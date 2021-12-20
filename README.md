@@ -75,4 +75,5 @@ git地址：https://github.com/wsrh8888/vue-cli-plugin-xuwu.git
 
 ## 联系方式
 #### 扫码加入QQ群
+##### QQ群：826303267
 ![Alt](images/QRcode.jpg)
