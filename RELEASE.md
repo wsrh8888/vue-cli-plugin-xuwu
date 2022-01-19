@@ -1,6 +1,6 @@
 ## 版本更新
 
-### 1.2.8
+### 1.2.9
 > 1、修复vite按需引入混入了babel-plugin-import依赖
 > 2、优化vue.config.js的初始化时机，提前到了初始化环境变量时
 > 3、优化vue.config.js 的配置lintOnSave， eslint报错奖不在阻断代码编译失败
