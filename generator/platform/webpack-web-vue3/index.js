@@ -50,7 +50,6 @@ class WebpackWebVue3 extends Common {
   }
   templateFlexible = () => {
     this.templateCrossEnv()
-    this.fileVueConfig.vueConfigAddFlexible()
     this.filePackage.packageFlexible()
     this.fileUtils.rem()
     this.fileMain.mainAddRemVue3()
@@ -66,6 +65,7 @@ class WebpackWebVue3 extends Common {
     this.fileBabelConfig.babelConfigRemoveConsole()
   }
   templateCrossEnv = () => {
+    this.fileVueConfig.fileInit()
     this.filePackage.packageCrossEnv()
     this.fileUtils.utilConfig()
   }
