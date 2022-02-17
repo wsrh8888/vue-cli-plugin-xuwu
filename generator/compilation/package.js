@@ -321,6 +321,22 @@ class Package {
       }
     })
   }
+  packageNuetWebpack() {
+    this.packageCrossEnvCommon()
+    this.api.extendPackage({
+      scripts: {
+        serve_test: 'cross-env API_ENV=test npm run dev',
+        serve_pre: 'cross-env API_ENV=pre npm run dev',
+        serve_prod: 'cross-env API_ENV=prod npm run dev',
+        build_test: 'cross-env API_ENV=test npm build',
+        build_pre: 'cross-env API_ENV=pre npm build',
+        build_prod: 'cross-env API_ENV=prod build'
+      },
+      devDependencies: this.packageFilter({
+        'cross-env': '^7.0.3'
+      })
+    })
+  }
   packageUniappWebpack() {
     this.packageCrossEnvCommon()
     this.api.extendPackage({

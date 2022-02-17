@@ -1,6 +1,29 @@
 const Xuwu = require('../utils/xuwu')
 
-class Request {
+class RootRequest {
+  utilRootConfig() {
+    this.api.render({
+      [`/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`
+    })
+  }
+  utilsRootRequest() {
+    this.api.render({
+      [`/utils/request.${this.suffixes}`]: `../template/request/${
+        Xuwu.getBuildToolName() + '-' + 'vue'
+      }/request.${this.suffixes}`,
+      [`/api/index.${this.suffixes}`]: `../template/request/${
+        Xuwu.getBuildToolName() + '-' + 'vue'
+      }/index.${this.suffixes}`
+    })
+  }
+  utilRootConfig() {
+    this.api.render({
+      [`/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`
+    })
+  }
+}
+
+class Request extends RootRequest {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
   suffixes = Xuwu.getTsOrJs()
@@ -31,6 +54,7 @@ class Request {
       [`/src/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`
     })
   }
+
   rem() {
     this.api.render({
       [`/src/utils/rem.${this.suffixes}`]: `../template/utils/rem.${this.suffixes}`

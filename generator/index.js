@@ -4,7 +4,9 @@ const ViteUniappVue3 = require('./platform/vite-uniapp-vue3')
 const WebpackWebVue2 = require('./platform/webpack-web-vue2')
 const WebpackWebVue3 = require('./platform/webpack-web-vue3')
 const WebpackUniappVue2 = require('./platform/webpack-uniapp-vue2')
-const WebpackUniappVue3 = require('./platform/webpack-uniapp-vue3 ')
+const WebpackUniappVue3 = require('./platform/webpack-uniapp-vue3')
+const WebpackNuxtVue2 = require('./platform/nuxt-uniapp-vue2')
+
 const Tool = require('./utils/tool')
 const chalk = require('chalk')
 
@@ -15,6 +17,7 @@ class Template {
   'webpack-web-vue3' = new WebpackWebVue3()
   'webpack-uniapp-vue2' = new WebpackUniappVue2()
   'webpack-uniapp-vue3' = new WebpackUniappVue3()
+  'webpack-nuxt-vue2' = new WebpackNuxtVue2()
 }
 
 module.exports = (api, options) => {
