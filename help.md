@@ -2,3 +2,4 @@
  npm install --save-dev file:../../xuwu
 
  vue invoke xuwu
+ 
