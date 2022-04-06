@@ -22,9 +22,15 @@ class WebpackUniappVue2 extends Common {
     // this.templateLintStaged()
     this.templateRequest()
     this.templateRemoveConsole()
+    this.templateAddVconsole()
   }
   defaultMobile = () => {
     // this.defaultPc()
+  }
+  templateAddVconsole = () => {
+    this.templateCrossEnv()
+    this.filePackage.packageAddConsolePanel()
+    this.filNuxtConfig.nuetConfigAddVconsole()
   }
   templateRequest = () => {
     this.templateCrossEnv()

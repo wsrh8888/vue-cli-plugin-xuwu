@@ -9,10 +9,10 @@ class RootRequest {
   utilsRootRequest() {
     this.api.render({
       [`/utils/request.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + 'vue'
+        Xuwu.getBuildToolName() + '-' + 'web'
       }/request.${this.suffixes}`,
       [`/api/index.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + 'vue'
+        Xuwu.getBuildToolName() + '-' + 'web'
       }/index.${this.suffixes}`
     })
   }
