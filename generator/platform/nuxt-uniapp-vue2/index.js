@@ -4,7 +4,6 @@ const FileMain = require('../../compilation/main')
 const FilePackage = require('../../compilation/package')
 const FileBabelConfig = require('../../compilation/babel.config')
 const FileUtils = require('../../compilation/utils')
-const FileNuxtConfig = require('../../compilation/nuxt.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
 class WebpackUniappVue2 extends Common {
@@ -14,7 +13,6 @@ class WebpackUniappVue2 extends Common {
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
   fileUtils = new FileUtils()
-  filNuxtConfig = new FileNuxtConfig()
   fileRootConfig = new FileRootConfig()
   // 默认选择的模版
   defaultPc = () => {
@@ -30,7 +28,6 @@ class WebpackUniappVue2 extends Common {
   templateAddVconsole = () => {
     this.templateCrossEnv()
     this.filePackage.packageAddConsolePanel()
-    this.filNuxtConfig.nuetConfigAddVconsole()
   }
   templateRequest = () => {
     this.templateCrossEnv()
@@ -42,7 +39,6 @@ class WebpackUniappVue2 extends Common {
     // this.fileRootConfig.eslintConfigFile()
   }
   templateCrossEnv = () => {
-    this.filNuxtConfig.nuxtConfigInitEnv()
     this.filePackage.packageNuetWebpack()
     this.fileUtils.utilRootConfig()
   }
@@ -51,7 +47,6 @@ class WebpackUniappVue2 extends Common {
    */
   templateRemoveConsole = () => {
     this.templateCrossEnv()
-    this.filNuxtConfig.nuxtConfigRemoveConsole()
   }
 }
 module.exports = WebpackUniappVue2
