@@ -1,7 +1,5 @@
-class Tool {
+module.exports = {
   firstUpperCase(value) {
     return value.replace(/^\S/, (s) => s.toUpperCase())
   }
 }
-
-module.exports = Tool

@@ -6,7 +6,7 @@ const WebpackWebVue3 = require('./platform/webpack-web-vue3')
 const WebpackUniappVue2 = require('./platform/webpack-uniapp-vue2')
 const WebpackUniappVue3 = require('./platform/webpack-uniapp-vue3')
 
-const Tool = require('./utils/tool')
+const { firstUpperCase } = require('./utils/tool')
 const chalk = require('chalk')
 
 class Template {
@@ -25,7 +25,6 @@ module.exports = (api, options) => {
     return
   }
   const template = new Template()
-  const tool = new Tool()
   let newOptions = [...(options.promptsManuallyConfig || [])]
   if (options.promptsUiConfig) {
     newOptions.push(options.promptsUiConfig)
@@ -41,6 +40,6 @@ module.exports = (api, options) => {
       template[joinParams][element]()
     })
   } else {
-    template[joinParams][`default${tool.firstUpperCase(Xuwu.getScene())}`]()
+    template[joinParams][`default${firstUpperCase(Xuwu.getScene())}`]()
   }
 }
