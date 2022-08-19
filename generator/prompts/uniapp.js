@@ -2,7 +2,7 @@
  * @description: uniapp自定义pc端
  * @return {*}
  */
-export const uniappManually = {
+const uniappManually = {
   when: (answers) => {
     return (
       answers.promptsLanguage === 'uniapp' &&
@@ -24,4 +24,8 @@ export const uniappManually = {
     'templateRequest',
     'templateCrossEnv'
   ]
+}
+
+module.exports = {
+  uniappManually
 }

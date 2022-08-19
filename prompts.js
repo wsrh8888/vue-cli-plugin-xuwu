@@ -1,5 +1,5 @@
-import { webManuallyPc, webManuallyMobile } from './generator/prompts/web'
-import { uniappManually } from './generator/prompts/uniapp'
+const { webManuallyPc, webManuallyMobile } = require('./generator/prompts/web')
+const { uniappManually } = require('./generator/prompts/uniapp')
 
 module.exports = () => {
   const prompts = [

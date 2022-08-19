@@ -2,7 +2,7 @@
  * @description: web自定义pc端
  * @return {*}
  */
-export const webManuallyPc = {
+const webManuallyPc = {
   when: (answers) => {
     return (
       answers.promptsLanguage === 'web' &&
@@ -46,7 +46,7 @@ export const webManuallyPc = {
  * @description: web自定义移动端
  * @return {*}
  */
-export const webManuallyMobile = {
+const webManuallyMobile = {
   when: (answers) => {
     return (
       answers.promptsLanguage === 'web' &&
@@ -73,4 +73,9 @@ export const webManuallyMobile = {
     'templateRemoveConsole',
     'templateCrossEnv'
   ]
+}
+
+module.exports = {
+  webManuallyPc,
+  webManuallyMobile
 }
