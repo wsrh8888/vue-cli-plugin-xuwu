@@ -184,7 +184,7 @@ class Package {
     this.babelPluginImport()
     this.api.extendPackage({
       dependencies: {
-        'element-plus': '^1.2.0-beta.5'
+        'element-plus': '^2.2.6'
       }
     })
   }
