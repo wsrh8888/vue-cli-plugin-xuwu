@@ -1,12 +1,7 @@
 const {
-  viteWebVue3ManuallyPc,
-  viteWebVue3ManuallyMobile,
-  viteWebVue2ManuallyPc,
-  viteWebVue2ManuallyMobile,
-  webpackWebVue3ManuallyPc,
-  webpackWebVue3ManuallyMobile,
-  webpackWebVue2ManuallyPc,
-  webpackWebVue2ManuallyMobile
+  viteWebVue3Manually,
+  webpackWebVue3Manually,
+  webpackWebVue2Manually
 } = require('./generator/prompts/web')
 // const { uniappManually } = require('./generator/prompts/uniapp')
 const path = require('path')
@@ -34,13 +29,16 @@ module.exports = () => {
     vueVersion = getVueVersion(file)
   } else {
   }
+  console.log('language', language, toolName, vueVersion)
 
-  // 如果有则package.json则是web项目，否则就是其他的项目
-
-  // 如果是web项目则判断是否是uniapp项目
-
-  // 然后判断是否是vite类型
   const prompts = [
+    {
+      when: () => false,
+      type: 'list',
+      name: 'promptsScene',
+      message: '请选择使用的场景',
+      default: language
+    },
     {
       when: () => language === 'web',
       type: 'list',
@@ -54,7 +52,7 @@ module.exports = () => {
     },
     {
       type: 'list',
-      name: 'promptsPcConfig',
+      name: 'promptsConfig',
       message: '请选择配置',
       choices: [
         { name: 'default(默认配置)', value: 'default' },
@@ -62,14 +60,9 @@ module.exports = () => {
       ],
       default: 'default'
     },
-    viteWebVue3ManuallyPc(language, toolName, vueVersion),
-    viteWebVue3ManuallyMobile(language, toolName, vueVersion),
-    viteWebVue2ManuallyPc(language, toolName, vueVersion),
-    viteWebVue2ManuallyMobile(language, toolName, vueVersion),
-    webpackWebVue3ManuallyPc(language, toolName, vueVersion),
-    webpackWebVue3ManuallyMobile(language, toolName, vueVersion),
-    webpackWebVue2ManuallyPc(language, toolName, vueVersion),
-    webpackWebVue2ManuallyMobile(language, toolName, vueVersion)
+    viteWebVue3Manually(language, toolName, vueVersion),
+    webpackWebVue3Manually(language, toolName, vueVersion),
+    webpackWebVue2Manually(language, toolName, vueVersion)
     // uniappManually
   ]
   return prompts

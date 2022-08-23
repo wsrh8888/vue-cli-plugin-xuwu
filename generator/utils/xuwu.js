@@ -96,7 +96,23 @@ class Xuwu {
    * @return {string} |web|uniapp|
    */
   static getLanguage() {
-    return this.single.options.promptsLanguage
+    let result = ''
+    try {
+      let packageData = JSON.parse(
+        this.single.api.generator.files['package.json']
+      )
+      if (
+        packageData.dependencies['@dcloudio/uni-automator'] ||
+        packageData.devDependencies['@dcloudio/uni-automator']
+      ) {
+        return 'uniapp'
+      } else {
+        return 'web'
+      }
+    } catch (error) {
+      result = 'web'
+    }
+    return result
   }
 
   /**
