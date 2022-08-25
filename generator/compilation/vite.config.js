@@ -2,6 +2,7 @@ const Xuwu = require('../utils/xuwu')
 const Template = require('../static/template')
 const Fs = require('fs')
 const { EOL } = require('os')
+const astViteParse = require('../ast/vite.config')
 
 class ViteConfig {
   api = Xuwu.getApi()
@@ -19,9 +20,8 @@ class ViteConfig {
       })
       let lines = contentMain.split(/\r?\n/g)
       if (
-        lines.findIndex((line) =>
-          line.match(/export default defineConfig\(\(\{ mode, command \}\)/)
-        ) === -1
+        lines.findIndex((line) => line.match(/export default defineConfig/)) ===
+        -1
       ) {
         throw Error
       }
@@ -83,15 +83,16 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-
-      const renderIndex = lines.findIndex((line) =>
-        line.match(/export default defineConfig\(\(\{/)
-      )
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
-        lines[renderIndex] += `${EOL} build:{ ${Template.viteDropConsole()}},`
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
+        console.log('contentMain', contentMain)
+
+        Fs.writeFileSync(
+          this.getViteFileName(),
+          astViteParse.viteConfigRemoveConsole(contentMain),
+          {
+            encoding: 'utf-8'
+          }
+        )
       }
     })
   }
