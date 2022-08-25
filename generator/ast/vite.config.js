@@ -22,12 +22,9 @@ module.exports = {
                 )
                 buildList.push(objectProperty)
               }
-              console.log('进入了build')
               // 解析terserOptions属性的相关内容
               buildList.forEach((terserOption) => {
                 if (terserOption.key.name === 'terserOptions') {
-                  console.log('进入了terserOptions')
-
                   let terserOptionList = terserOption.value.properties
                   // 进入了terserOptions中了， 判断是否有compress属性
                   if (
@@ -91,8 +88,6 @@ module.exports = {
                           (item) => item.key.name === 'drop_debugger'
                         ) === -1
                       ) {
-                        console.log('12312312312312')
-
                         let objectProperty = types.objectProperty(
                           types.identifier('drop_debugger'),
                           types.logicalExpression(
@@ -140,7 +135,6 @@ module.exports = {
         }
       }
     }
-    console.log('sourceCode', sourceCode)
 
     let targetSource = core.transform(sourceCode, {
       plugins: [transformClassPlugin]
