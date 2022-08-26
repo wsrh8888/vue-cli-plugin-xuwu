@@ -21,7 +21,8 @@ module.exports = {
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
-        { name: 'Element', value: 'uiElement' }
+        { name: 'Element', value: 'uiElement' },
+        { name: 'SVG加载', value: 'templateSvgLoader' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -30,7 +31,8 @@ module.exports = {
               'templateLintStaged',
               'templateRemoveConsole',
               'templateCrossEnv',
-              'uiElement'
+              'uiElement',
+              'templateSvgLoader'
             ]
           : [
               'templateAddVconsole',
@@ -39,7 +41,8 @@ module.exports = {
               'templateLintStaged',
               'templateRemoveConsole',
               'templateCrossEnv',
-              'uiElement'
+              'uiElement',
+              'templateSvgLoader'
             ]
     }
   },

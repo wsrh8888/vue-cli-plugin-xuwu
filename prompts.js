@@ -2,7 +2,7 @@ const {
   viteWebVue3Manually,
   webpackWebVue3Manually,
   webpackWebVue2Manually
-} = require('./generator/prompts/web')
+} = require('./prompts/web')
 // const { uniappManually } = require('./generator/prompts/uniapp')
 const path = require('path')
 const {

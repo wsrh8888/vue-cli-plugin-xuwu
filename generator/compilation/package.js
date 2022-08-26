@@ -257,6 +257,17 @@ class Package {
       })
     })
   }
+  /*******
+   * @description: svg依赖包
+   * @return {*}
+   */
+  packageSvgLoader() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        'vite-svg-loader': '^3.4.0'
+      })
+    })
+  }
   /**
    * @description: 在package.json文件里 增加Es6转为Es5相关依赖包
    * @param {*}

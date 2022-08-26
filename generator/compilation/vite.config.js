@@ -3,15 +3,9 @@ const Template = require('../static/template')
 const Fs = require('fs')
 const { EOL } = require('os')
 const astViteParse = require('../ast/vite.config')
-
 class ViteConfig {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
-  /**
-   * @description: 判断是否存在babel.config.js文件
-   * @param {*}
-   * @return {string}
-   */
   fileInit() {
     let contentMain
     try {
@@ -34,11 +28,6 @@ class ViteConfig {
   getViteFileName() {
     return `./vite.config.${Xuwu.getTsOrJs()}`
   }
-  /**
-   * @description: viteConfig.js文件中添加去掉console相关配置
-   * @param {*}
-   * @return {*}
-   */
   viteConfigAddAntDesign() {
     this.fileInit()
     this.api.afterInvoke(() => {
@@ -49,7 +38,6 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/ant-design-vue/)) === -1) {
         lines[renderIndex] = lines[renderIndex].replace(
@@ -68,11 +56,6 @@ class ViteConfig {
       }
     })
   }
-  /**
-   * @description: viteConfig.js文件中添加去掉console相关配置
-   * @param {*}
-   * @return {*}
-   */
   viteConfigRemoveConsole() {
     this.fileInit()
     this.api.afterInvoke(() => {
@@ -85,7 +68,6 @@ class ViteConfig {
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
         console.log('contentMain', contentMain)
-
         Fs.writeFileSync(
           this.getViteFileName(),
           astViteParse.viteConfigRemoveConsole(contentMain),
@@ -106,23 +88,6 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-      // let contentMain = Fs.readFileSync(
-      //   this.api.resolve(this.getViteFileName()),
-      //   {
-      //     encoding: 'utf-8'
-      //   }
-      // )
-      // let lines = contentMain.split(/\r?\n/g)
-      // if (lines.findIndex((line) => line.match(/vite-plugin-components/)) === -1) {
-      //   Fs.writeFileSync(
-      //     this.getViteFileName(),
-      //     astViteParse.viteConfigADdElementPlus(contentMain),
-      //     {
-      //       encoding: 'utf-8'
-      //     }
-      //   )
-      // }
-
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {
         lines[renderIndex] = lines[renderIndex].replace(
@@ -171,7 +136,6 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/vant/)) === -1) {
         lines[renderIndex] = lines[renderIndex].replace(
@@ -190,6 +154,28 @@ class ViteConfig {
       }
     })
   }
+  viteConfigSvgLoader() {
+    this.fileInit()
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
+      let lines = contentMain.split(/\r?\n/g)
+      if (
+        lines.findIndex((line) => line.match(/vite-plugin-components/)) === -1
+      ) {
+        Fs.writeFileSync(
+          this.getViteFileName(),
+          astViteParse.viteConfigADdElementPlus(contentMain),
+          {
+            encoding: 'utf-8'
+          }
+        )
+      }
+    })
+  }
 }
-
 module.exports = ViteConfig

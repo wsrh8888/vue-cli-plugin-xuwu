@@ -75,6 +75,13 @@ class ViteWebVue3 extends Common {
     this.fileViteConfig.viteConfigRemoveConsole()
   }
   /*******
+   * @description: svg 解析
+   * @return {*}
+   */
+  templateSvgLoader = () => {
+    this.filePackage.packageSvgLoader()
+  }
+  /*******
    * @description: 扩展环境变量
    */
   templateCrossEnv = () => {
