@@ -3,6 +3,40 @@ let core = require('@babel/core')
 let types = require('@babel/types')
 
 module.exports = {
+  viteConfigADdElementPlus(sourceCode) {
+    let transformClassPlugin = {
+      visitor: {
+        // ObjectExpression(path) {
+        //   let methods = path.node.properties
+        //   methods.forEach((method, index) => {
+        //     if (index === 0) {
+        //       console.log('method', method.ty);
+
+        //     }
+
+        //   })
+
+        // },
+        Program(path) {
+          let methods = path.node.body
+          let astCode = types.importDeclaration(
+            [
+              types.importDefaultSpecifier(types.identifier('ViteComponents')),
+              types.importSpecifier(types.identifier('ElementPlusResolver'))
+            ],
+            types.stringLiteral('vite-plugin-components')
+          )
+          methods.splice(1, 0, astCode)
+          console.log('methods', methods)
+          // importSpecifier.importSpecifier("ElementPlusResolver")
+        }
+      }
+    }
+    let targetSource = core.transform(sourceCode, {
+      plugins: [transformClassPlugin]
+    })
+    return targetSource.code
+  },
   viteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
       visitor: {

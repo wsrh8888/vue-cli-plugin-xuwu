@@ -106,6 +106,22 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
+      // let contentMain = Fs.readFileSync(
+      //   this.api.resolve(this.getViteFileName()),
+      //   {
+      //     encoding: 'utf-8'
+      //   }
+      // )
+      // let lines = contentMain.split(/\r?\n/g)
+      // if (lines.findIndex((line) => line.match(/vite-plugin-components/)) === -1) {
+      //   Fs.writeFileSync(
+      //     this.getViteFileName(),
+      //     astViteParse.viteConfigADdElementPlus(contentMain),
+      //     {
+      //       encoding: 'utf-8'
+      //     }
+      //   )
+      // }
 
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {

@@ -238,6 +238,7 @@ class Package {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
         'vite-plugin-style-import': '^1.4.0'
+        // "vite-plugin-components": "^0.13.3",
       })
     })
   }

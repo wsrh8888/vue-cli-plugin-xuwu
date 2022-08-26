@@ -20,7 +20,8 @@ module.exports = {
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
-        { name: '适配插件', value: 'templateFlexible' }
+        { name: '适配插件', value: 'templateFlexible' },
+        { name: 'Element', value: 'uiElement' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -28,7 +29,8 @@ module.exports = {
               'templateRequest',
               'templateLintStaged',
               'templateRemoveConsole',
-              'templateCrossEnv'
+              'templateCrossEnv',
+              'uiElement'
             ]
           : [
               'templateAddVconsole',
@@ -36,7 +38,8 @@ module.exports = {
               'templateFlexible',
               'templateLintStaged',
               'templateRemoveConsole',
-              'templateCrossEnv'
+              'templateCrossEnv',
+              'uiElement'
             ]
     }
   },

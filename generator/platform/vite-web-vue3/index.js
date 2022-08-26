@@ -91,6 +91,11 @@ class ViteWebVue3 extends Common {
     this.filePackage.packageElementPlusUi()
     this.fileMain.mainAddElementVue3()
     this.fileViteConfig.viteConfigAddElement()
+
+    // this.templateLess()
+    // this.filePackage.packageVue3Vite()
+    // this.filePackage.packageElementPlusUi()
+    // this.fileViteConfig.viteConfigAddElement()
   }
   uiVant = () => {
     this.filePackage.packageVantVue3()
