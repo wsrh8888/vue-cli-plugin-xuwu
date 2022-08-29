@@ -164,12 +164,11 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/vite-plugin-components/)) === -1
-      ) {
+
+      if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
         Fs.writeFileSync(
           this.getViteFileName(),
-          astViteParse.viteConfigADdElementPlus(contentMain),
+          astViteParse.viteConfigADdSvgLoader(contentMain),
           {
             encoding: 'utf-8'
           }

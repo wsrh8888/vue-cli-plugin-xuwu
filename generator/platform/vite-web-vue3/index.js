@@ -80,6 +80,7 @@ class ViteWebVue3 extends Common {
    */
   templateSvgLoader = () => {
     this.filePackage.packageSvgLoader()
+    this.fileViteConfig.viteConfigSvgLoader()
   }
   /*******
    * @description: 扩展环境变量
