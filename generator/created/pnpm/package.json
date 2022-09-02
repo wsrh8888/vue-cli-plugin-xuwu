@@ -1,0 +1,23 @@
+{
+  "name": "xuwu-pnpm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "bootstrap": "pnpm install --no-frozen-lockfile && pnpm i",
+    "build_test": "pnpm --filter \"playground\" build_test",
+    "clean:dist": "rimraf dist **/dist **/**/dist",
+    "clean:modules": "rimraf node_modules **/node_modules **/**/node_modules",
+    "playground": "pnpm --filter \"playground\" serve_test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.3.4",
+    "vue-cli-plugin-xuwu": "~1.2.9"
+  },
+  "packageManager": "pnpm@7.1.9",
+  "workspaces": [
+    "packages/utils"
+  ]
+}
