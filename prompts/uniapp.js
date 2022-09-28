@@ -96,7 +96,6 @@ module.exports = {
     }
   },
   webpackUniappVue2Manually(language, toolName, frame) {
-    console.log('language, toolName, frame', language, toolName, frame)
 
     return {
       when: (answers) => {

@@ -29,16 +29,7 @@ module.exports = () => {
     vueVersion = getVueVersion(file)
   } else {
   }
-  console.log('language', language, toolName, vueVersion)
-
   const prompts = [
-    {
-      when: () => false,
-      type: 'list',
-      name: 'promptsScene',
-      message: '请选择使用的场景',
-      default: language
-    },
     {
       when: () => language === 'web',
       type: 'list',
