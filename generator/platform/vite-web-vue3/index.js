@@ -23,6 +23,7 @@ class ViteWebVue3 extends Common {
     this.templateCrossEnv()
     this.templateRequest()
     this.uiElement()
+    this.templateSvgLoader()
   }
   defaultMobile = () => {
     this.templateLintStaged()
@@ -32,6 +33,7 @@ class ViteWebVue3 extends Common {
     this.templateFlexible()
     this.templateRequest()
     this.uiVant()
+    this.templateSvgLoader()
   }
   /*******
    * @description: consoleLog控制台

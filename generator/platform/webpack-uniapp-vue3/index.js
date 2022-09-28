@@ -21,7 +21,7 @@ class WebpackUniappVue3 extends Common {
     this.templateCrossEnv()
     this.templateLintStaged()
     this.templateRequest()
-    this.templateSass
+    this.templateLess()
   }
   defaultMobile = () => {
     this.defaultPc()

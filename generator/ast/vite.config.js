@@ -40,13 +40,11 @@ module.exports = {
           methods.splice(1, 0, astCode)
         },
         ExportDefaultDeclaration(path) {
-          console.log('properties',  path.node.declaration.arguments[0]);
 
           let properties  = path.node.declaration.arguments[0].body.properties
           
           let currentProperties
           properties.forEach(item => {
-            console.log('11');
             
             if (item.key.name === 'plugins') {
               currentProperties = item
@@ -78,132 +76,157 @@ module.exports = {
   astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
       visitor: {
-        ObjectExpression(path) {
-          let methods = path.node.properties
-          methods.forEach((method) => {
-            if (method.key.name === 'build') {
-              let buildList = method.value.properties
+        ExportDefaultDeclaration(path) {
+          let properties  = path.node.declaration.arguments[0].body.properties
+          
+          let currentProperties
+          properties.forEach(item => {
+            
+            if (item.key.name === 'build') {
+              currentProperties = item
+            }
+          })
+          
+          if (!currentProperties) {
+           let currentObject =  types.objectProperty(types.identifier('build'), types.objectExpression([]))
+           currentProperties = currentObject
+           properties.push(currentObject)
+          }
+          const buildList = currentProperties.value.properties
+          console.log('buildList', buildList);
+          // 判断是否存在minify属性
+          if (
+            properties.findIndex(
+              (item) => item.key.name === 'minify'
+            ) === -1
+          ) {
+            let objectProperty = types.objectProperty(
+              types.identifier('minify'),
+              types.stringLiteral('terser')
+            )
+            buildList.push(objectProperty)
+          }
+
+          if (
+            properties.findIndex(
+              (item) => item.key.name === 'terserOptions'
+            ) === -1
+          ) {
+            let objectProperty = types.objectProperty(
+              types.identifier('terserOptions'),
+              types.objectExpression([])
+            )
+            buildList.push(objectProperty)
+          }
+          // 解析terserOptions属性的相关内容
+          buildList.forEach((terserOption) => {
+            if (terserOption.key.name === 'terserOptions') {
+              let terserOptionList = terserOption.value.properties
+              // 进入了terserOptions中了， 判断是否有compress属性
               if (
-                buildList.findIndex(
-                  (item) => item.key.name === 'terserOptions'
+                terserOptionList.findIndex(
+                  (item) => item.key.name === 'compress'
                 ) === -1
               ) {
                 let objectProperty = types.objectProperty(
-                  types.identifier('terserOptions'),
+                  types.identifier('compress'),
                   types.objectExpression([])
                 )
-                buildList.push(objectProperty)
+                terserOptionList.push(objectProperty)
               }
-              // 解析terserOptions属性的相关内容
-              buildList.forEach((terserOption) => {
-                if (terserOption.key.name === 'terserOptions') {
-                  let terserOptionList = terserOption.value.properties
-                  // 进入了terserOptions中了， 判断是否有compress属性
+              console.log('进入了compress')
+              ;` 此时变成了code为:
+                build: {
+                  terserOptions: {
+                    compress: {}
+                  }
+                },
+              `
+              terserOptionList.forEach((compress) => {
+                if (compress.key.name === 'compress') {
+                  let compressList = compress.value.properties
+                  // 是否有drop_console属性
                   if (
-                    terserOptionList.findIndex(
-                      (item) => item.key.name === 'compress'
+                    compressList.findIndex(
+                      (item) => item.key.name === 'drop_console'
                     ) === -1
                   ) {
                     let objectProperty = types.objectProperty(
-                      types.identifier('compress'),
-                      types.objectExpression([])
+                      types.identifier('drop_console'),
+                      types.logicalExpression(
+                        '&&',
+                        types.binaryExpression(
+                          '===',
+                          types.identifier('command'),
+                          types.stringLiteral('build')
+                        ),
+                        types.binaryExpression(
+                          '===',
+                          types.memberExpression(
+                            types.callExpression(
+                              types.identifier('loadEnv'),
+                              [
+                                types.identifier('mode'),
+                                types.identifier('__dirname')
+                              ]
+                            ),
+                            types.identifier('VITE_API_ENV')
+                          ),
+                          types.stringLiteral('prod')
+                        )
+                      )
                     )
-                    terserOptionList.push(objectProperty)
+                    compressList.push(objectProperty)
                   }
-                  console.log('进入了compress')
-                  ;` 此时变成了code为:
-                    build: {
-                      terserOptions: {
-                        compress: {}
-                      }
-                    },
-                  `
-                  terserOptionList.forEach((compress) => {
-                    if (compress.key.name === 'compress') {
-                      let compressList = compress.value.properties
-                      // 是否有drop_console属性
-                      if (
-                        compressList.findIndex(
-                          (item) => item.key.name === 'drop_console'
-                        ) === -1
-                      ) {
-                        let objectProperty = types.objectProperty(
-                          types.identifier('drop_console'),
-                          types.logicalExpression(
-                            '&&',
-                            types.binaryExpression(
-                              '===',
-                              types.identifier('command'),
-                              types.stringLiteral('build')
+                  // 是否有drop_debugger属性
+                  if (
+                    compressList.findIndex(
+                      (item) => item.key.name === 'drop_debugger'
+                    ) === -1
+                  ) {
+                    let objectProperty = types.objectProperty(
+                      types.identifier('drop_debugger'),
+                      types.logicalExpression(
+                        '&&',
+                        types.binaryExpression(
+                          '===',
+                          types.identifier('command'),
+                          types.stringLiteral('build')
+                        ),
+                        types.binaryExpression(
+                          '===',
+                          types.memberExpression(
+                            types.callExpression(
+                              types.identifier('loadEnv'),
+                              [
+                                types.identifier('mode'),
+                                types.identifier('__dirname')
+                              ]
                             ),
-                            types.binaryExpression(
-                              '===',
-                              types.memberExpression(
-                                types.callExpression(
-                                  types.identifier('loadEnv'),
-                                  [
-                                    types.identifier('mode'),
-                                    types.identifier('__dirname')
-                                  ]
-                                ),
-                                types.identifier('VITE_API_ENV')
-                              ),
-                              types.stringLiteral('prod')
-                            )
-                          )
+                            types.identifier('VITE_API_ENV')
+                          ),
+                          types.stringLiteral('prod')
                         )
-                        compressList.push(objectProperty)
-                      }
-                      // 是否有drop_debugger属性
-                      if (
-                        compressList.findIndex(
-                          (item) => item.key.name === 'drop_debugger'
-                        ) === -1
-                      ) {
-                        let objectProperty = types.objectProperty(
-                          types.identifier('drop_debugger'),
-                          types.logicalExpression(
-                            '&&',
-                            types.binaryExpression(
-                              '===',
-                              types.identifier('command'),
-                              types.stringLiteral('build')
-                            ),
-                            types.binaryExpression(
-                              '===',
-                              types.memberExpression(
-                                types.callExpression(
-                                  types.identifier('loadEnv'),
-                                  [
-                                    types.identifier('mode'),
-                                    types.identifier('__dirname')
-                                  ]
-                                ),
-                                types.identifier('VITE_API_ENV')
-                              ),
-                              types.stringLiteral('prod')
-                            )
-                          )
-                        )
-                        compressList.push(objectProperty)
-                      }
-                    }
-                  })
-                  // 此时变成了terserOptions: {
-                  //   compress: {}
-                  // }
-                  // compress中增加去除console的代码
+                      )
+                    )
+                    compressList.push(objectProperty)
+                  }
                 }
               })
-              // return 'minify: "terser",
-              // terserOptions: { compress:
-              // { drop_console: command === "build" && loadEnv(mode, __dirname).VITE_API_ENV === "prod",
-              // drop_debugger: command === "build" && loadEnv(mode, __dirname).VITE_API_ENV === "prod"}}'
-
-              // let objectExpression = types.objectProperty(types.identifier('path'), types.stringLiteral('newRoute.path'))
-              // method.value.properties.push(objectExpression)
+              // 此时变成了terserOptions: {
+              //   compress: {}
+              // }
+              // compress中增加去除console的代码
             }
           })
+
+          // let methods =currentProperties.value
+          // methods.forEach((method) => {
+          //   if (method.key.name === 'build') {
+          //     let buildList = method.value.properties
+              
+          //   }
+          // })
         }
       }
     }
