@@ -19,6 +19,10 @@ class ViteConfig {
       ) {
         throw Error
       }
+      // 判断vite.config.js 中是否是 =>的写法
+      if (!astViteParse.astViteConfigIsInit(contentMain)) {
+        throw Error
+      }
     } catch (error) {
       this.api.render({
         [`/vite.config.${Xuwu.getTsOrJs()}`]: `../template/vite.config.${Xuwu.getTsOrJs()}`
@@ -90,7 +94,7 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
+      if (lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) === -1) {
         Fs.writeFileSync(
           this.getViteFileName(),
           astViteParse.astViteConfigAddElementPlus(contentMain),
@@ -102,6 +106,7 @@ class ViteConfig {
     })
   }
   viteConfigLess() {
+    this.fileInit()
     this.api.afterInvoke(() => {
       let contentMain = Fs.readFileSync(
         this.api.resolve(this.getViteFileName()),

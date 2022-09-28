@@ -10,19 +10,7 @@ module.exports = {
    * @param {*} name 包名
    * @return {*}
    */
-  isExistPackage(file, name) {
+   fsIsExistPackage(file, name) {
     return file.search('"' + name + '"') !== -1
-  },
-  getVueVersion(file) {
-    let result = 'vue2'
-    try {
-      let packageData = JSON.parse(file)
-      let version =
-        packageData.dependencies.vue || packageData.devDependencies.vue
-      result = 'vue' + version[version.indexOf('.') - 1].toString()
-    } catch (error) {
-      result = 'vue2'
-    }
-    return result
   }
 }

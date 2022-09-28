@@ -3,6 +3,27 @@ let core = require('@babel/core')
 let types = require('@babel/types')
 
 module.exports = {
+  astViteConfigIsInit() {
+    let isExit = true
+    let transformClassPlugin = {
+      visitor: {
+        ExportDefaultDeclaration(path) {
+          try {
+            let types  = path.node.declaration.arguments[0].type
+            if (types === 'ArrowFunctionExpression') {
+              isExit = true
+            }
+          } catch (error) {
+            isExit = false
+          }
+        }
+      }
+    }
+    core.transform(sourceCode, {
+      plugins: [transformClassPlugin]
+    })
+    return isExit
+  },
   /******* 
    * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
    */  
@@ -13,14 +34,15 @@ module.exports = {
           // 添加依赖包的引入
           let methods = path.node.body
           let astCode = types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('ElementPlus'))],
+            [types.importDefaultSpecifier(types.identifier('elementPlus'))],
             types.stringLiteral('unplugin-element-plus/vite')
           )
           methods.splice(1, 0, astCode)
         },
         ExportDefaultDeclaration(path) {
-            
-          let properties  = path.node.declaration.arguments[0].properties
+          console.log('properties',  path.node.declaration.arguments[0]);
+
+          let properties  = path.node.declaration.arguments[0].body.properties
           
           let currentProperties
           properties.forEach(item => {
@@ -40,7 +62,7 @@ module.exports = {
           
           let pluginsList = currentProperties.value.elements
           pluginsList.push(
-            types.callExpression(types.identifier('ElementPlus'), [])
+            types.callExpression(types.identifier('elementPlus'), [])
           )
           
           

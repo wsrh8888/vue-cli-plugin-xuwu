@@ -6,7 +6,7 @@ module.exports = {
           language === 'web' &&
           frame === 'vue3' &&
           toolName === 'vite' &&
-          answers.promptsPcConfig === 'manually' &&
+          answers.promptsConfig === 'manually' &&
           answers.promptsScene === 'mobile'
         )
       },
@@ -38,7 +38,7 @@ module.exports = {
           language === 'web' &&
           frame === 'vue2' &&
           toolName === 'vite' &&
-          answers.promptsPcConfig === 'manually' &&
+          answers.promptsConfig === 'manually' &&
           answers.promptsScene === 'mobile'
         )
       },
@@ -70,7 +70,7 @@ module.exports = {
           language === 'web' &&
           frame === 'vue3' &&
           toolName === 'webpack' &&
-          answers.promptsPcConfig === 'manually' &&
+          answers.promptsConfig === 'manually' &&
           answers.promptsScene === 'mobile'
         )
       },
@@ -103,7 +103,7 @@ module.exports = {
           language === 'web' &&
           frame === 'vue2' &&
           toolName === 'webpack' &&
-          answers.promptsPcConfig === 'manually' &&
+          answers.promptsConfig === 'manually' &&
           answers.promptsScene === 'mobile'
         )
       },

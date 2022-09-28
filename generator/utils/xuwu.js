@@ -1,3 +1,6 @@
+const fs = require('fs-extra')
+const { fsIsExistPackage } = require('./fs')
+const path = require('path')
 /**
  * @description: Xuwu项目全局属性
  * @param {*}
@@ -12,28 +15,24 @@ class Xuwu {
     this.api = api
     this.options = options
   }
-  static checkLanguage() {
-    switch (this.single.options.promptsLanguage) {
-      case 'web':
-        return !this.isExistPackage('@dcloudio/uni-automator')
-      case 'uniapp':
-        return this.isExistPackage('@dcloudio/uni-automator')
-      default:
-        break
-    }
-    return true
+  static getLanguage() {
+    let file = fs.readFileSync(
+      path.join(process.cwd(), 'package.json'),
+      'utf-8'
+    )
+     return fsIsExistPackage(file, '@dcloudio/uni-automator')
+      ? 'uniapp'
+      : 'web'
   }
   /*******
    * @description: 判断项目中使用的打包工具
    */
   static getBuildToolName() {
-    if (
-      this.single.api.generator.files['package.json'].search('"vite"') !== -1
-    ) {
-      return 'vite'
-    } else {
-      return 'webpack'
-    }
+    let file = fs.readFileSync(
+      path.join(process.cwd(), 'package.json'),
+      'utf-8'
+    )
+   return fsIsExistPackage(file, 'vite') ? 'vite' : 'webpack'
   }
   /**
    * @description: 判断package中是否存在某个依赖包
@@ -78,11 +77,13 @@ class Xuwu {
    * @return {string} |vue2 | vue3|
    */
   static getVueVersion() {
+    let file = fs.readFileSync(
+      path.join(process.cwd(), 'package.json'),
+      'utf-8'
+    )
     let result = 'vue2'
     try {
-      let packageData = JSON.parse(
-        this.single.api.generator.files['package.json']
-      )
+      let packageData = JSON.parse(file)
       let version =
         packageData.dependencies.vue || packageData.devDependencies.vue
       result = 'vue' + version[version.indexOf('.') - 1].toString()

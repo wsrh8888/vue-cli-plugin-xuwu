@@ -7,10 +7,9 @@ const {
 const path = require('path')
 const {
   fileIsExit,
-  isExistPackage,
-  getVueVersion
 } = require('./generator/utils/fs')
 const fs = require('fs-extra')
+const { getBuildToolName, getLanguage, getVueVersion } = require('./generator/utils/xuwu')
 
 module.exports = () => {
   let language = ''
@@ -18,15 +17,9 @@ module.exports = () => {
   let vueVersion = ''
   // 判断是否是package.json的项目
   if (fileIsExit(path.join(process.cwd(), 'package.json'))) {
-    let file = fs.readFileSync(
-      path.join(process.cwd(), 'package.json'),
-      'utf-8'
-    )
-    language = isExistPackage(file, '@dcloudio/uni-automator')
-      ? 'uniapp'
-      : 'web'
-    toolName = isExistPackage(file, 'vite') ? 'vite' : 'webpack'
-    vueVersion = getVueVersion(file)
+    language = getLanguage()
+    toolName =  getBuildToolName()
+    vueVersion = getVueVersion()
   } else {
   }
   const prompts = [

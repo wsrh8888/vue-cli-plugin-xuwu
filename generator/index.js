@@ -20,10 +20,6 @@ class Template {
 
 module.exports = (api, options) => {
   Xuwu.init(api, options)
-  if (!Xuwu.checkLanguage()) {
-    console.error(chalk.red('👉  请选择匹配的语言'))
-    return
-  }
   const template = new Template()
   let newOptions = [...(options.promptsManuallyConfig || [])]
   if (options.promptsUiConfig) {
@@ -35,11 +31,15 @@ module.exports = (api, options) => {
     Xuwu.getLanguage() +
     '-' +
     Xuwu.getVueVersion()
-  if (options.promptsPcConfig !== 'default') {
+    console.log('12312312', options.promptsConfig);
+
+  if (options.promptsConfig !== 'default') {
     newOptions.forEach((element) => {
       template[joinParams][element]()
     })
   } else {
+    console.log('12312312');
+    
     template[joinParams][`default${firstUpperCase(Xuwu.getScene())}`]()
   }
 }
