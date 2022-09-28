@@ -177,8 +177,6 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加elementPlusUi相关的按需引入的的依赖包和配置
-   * @param {*}
-   * @return {void}
    */
   packageElementPlusUi() {
     this.babelPluginImport()
@@ -188,6 +186,9 @@ class Package {
       }
     })
   }
+
+
+  
   /**
    * @description: 在package.json文件里，增加antVue3和按需引入相关的依赖包和配置
    * @param {*}
@@ -201,6 +202,17 @@ class Package {
       })
     })
   }
+  /******* 
+   * @description: vite中按需引入库
+   */  
+  packageUnpluginElementPlus() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        'unplugin-element-plus': '^0.4.1'
+      })
+    })
+  }
+  
   /**
    * @description: 在package.json文件里，增加antVue2和按需引入相关的依赖包和配置
    * @param {*}
@@ -231,8 +243,6 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加vantUi3相关的依赖包和配置
-   * @param {*}
-   * @return {void}
    */
   packageVue3Vite() {
     this.api.extendPackage({

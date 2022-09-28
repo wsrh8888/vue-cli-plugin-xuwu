@@ -67,10 +67,9 @@ class ViteConfig {
       )
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
-        console.log('contentMain', contentMain)
         Fs.writeFileSync(
           this.getViteFileName(),
-          astViteParse.viteConfigRemoveConsole(contentMain),
+          astViteParse.astViteConfigRemoveConsole(contentMain),
           {
             encoding: 'utf-8'
           }
@@ -78,6 +77,9 @@ class ViteConfig {
       }
     })
   }
+  /******* 
+   * @description: vite.config.ts 引入按需的相关代码
+   */  
   viteConfigAddElement() {
     this.fileInit()
     this.api.afterInvoke(() => {
@@ -88,21 +90,14 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
-      if (lines.findIndex((line) => line.match(/element-plus/)) === -1) {
-        lines[renderIndex] = lines[renderIndex].replace(
-          /vue\(\)/,
-          `vue(),${Template.viteElementVue3()}`
+      if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
+        Fs.writeFileSync(
+          this.getViteFileName(),
+          astViteParse.astViteConfigAddElementPlus(contentMain),
+          {
+            encoding: 'utf-8'
+          }
         )
-        if (
-          lines.findIndex((line) => line.match(/vite-plugin-style-import/)) ===
-          -1
-        ) {
-          lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
-        }
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
       }
     })
   }
@@ -168,7 +163,7 @@ class ViteConfig {
       if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
         Fs.writeFileSync(
           this.getViteFileName(),
-          astViteParse.viteConfigADdSvgLoader(contentMain),
+          astViteParse.astViteConfigAddSvgLoader(contentMain),
           {
             encoding: 'utf-8'
           }

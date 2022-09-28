@@ -3,32 +3,48 @@ let core = require('@babel/core')
 let types = require('@babel/types')
 
 module.exports = {
-  viteConfigADdElementPlus(sourceCode) {
+  /******* 
+   * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
+   */  
+  astViteConfigAddElementPlus(sourceCode) {
     let transformClassPlugin = {
       visitor: {
-        // ObjectExpression(path) {
-        //   let methods = path.node.properties
-        //   methods.forEach((method, index) => {
-        //     if (index === 0) {
-        //       console.log('method', method.ty);
-
-        //     }
-
-        //   })
-
-        // },
         Program(path) {
+          // 添加依赖包的引入
           let methods = path.node.body
           let astCode = types.importDeclaration(
-            [
-              types.importDefaultSpecifier(types.identifier('ViteComponents')),
-              types.importSpecifier(types.identifier('ElementPlusResolver'))
-            ],
-            types.stringLiteral('vite-plugin-components')
+            [types.importDefaultSpecifier(types.identifier('ElementPlus'))],
+            types.stringLiteral('unplugin-element-plus/vite')
           )
           methods.splice(1, 0, astCode)
-          console.log('methods', methods)
-          // importSpecifier.importSpecifier("ElementPlusResolver")
+        },
+        ExportDefaultDeclaration(path) {
+            
+          let properties  = path.node.declaration.arguments[0].properties
+          
+          let currentProperties
+          properties.forEach(item => {
+            console.log('11');
+            
+            if (item.key.name === 'plugins') {
+              currentProperties = item
+            }
+          })
+          
+
+          if (!currentProperties) {
+           let currentObject =  types.objectProperty(types.identifier('plugins'),  types.arrayExpression([]))
+           currentProperties = currentObject
+           properties.push(currentObject)
+          }
+          
+          let pluginsList = currentProperties.value.elements
+          pluginsList.push(
+            types.callExpression(types.identifier('ElementPlus'), [])
+          )
+          
+          
+          // let arrowFunction = path.node.declar
         }
       }
     }
@@ -37,7 +53,7 @@ module.exports = {
     })
     return targetSource.code
   },
-  viteConfigRemoveConsole(sourceCode) {
+  astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
       visitor: {
         ObjectExpression(path) {
@@ -175,7 +191,7 @@ module.exports = {
     })
     return targetSource.code
   },
-  viteConfigADdSvgLoader(sourceCode) {
+  astViteConfigAddSvgLoader(sourceCode) {
     let transformClassPlugin = {
       visitor: {
         Program(path) {

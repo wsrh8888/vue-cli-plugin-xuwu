@@ -93,17 +93,11 @@ class ViteWebVue3 extends Common {
    * @description: Element Ui
    */
   uiElement = () => {
-    this.templateSass()
-    this.filePackage.packageVue3Vite()
-    this.fileUtils.element()
     this.filePackage.packageElementPlusUi()
-    this.fileMain.mainAddElementVue3()
+    // 增加按需引入的依赖包
+    this.filePackage.packageUnpluginElementPlus()
+    // 按需引入的配置代码
     this.fileViteConfig.viteConfigAddElement()
-
-    // this.templateLess()
-    // this.filePackage.packageVue3Vite()
-    // this.filePackage.packageElementPlusUi()
-    // this.fileViteConfig.viteConfigAddElement()
   }
   uiVant = () => {
     this.filePackage.packageVantVue3()
