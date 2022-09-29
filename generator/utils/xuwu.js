@@ -20,9 +20,7 @@ class Xuwu {
       path.join(process.cwd(), 'package.json'),
       'utf-8'
     )
-     return fsIsExistPackage(file, '@dcloudio/uni-automator')
-      ? 'uniapp'
-      : 'web'
+    return fsIsExistPackage(file, '@dcloudio/uni-automator') ? 'uniapp' : 'web'
   }
   /*******
    * @description: 判断项目中使用的打包工具
@@ -32,7 +30,7 @@ class Xuwu {
       path.join(process.cwd(), 'package.json'),
       'utf-8'
     )
-   return fsIsExistPackage(file, 'vite') ? 'vite' : 'webpack'
+    return fsIsExistPackage(file, 'vite') ? 'vite' : 'webpack'
   }
   /**
    * @description: 判断package中是否存在某个依赖包

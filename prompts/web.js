@@ -22,7 +22,10 @@ module.exports = {
         { name: '适配插件', value: 'templateFlexible' },
         { name: 'Element', value: 'uiElement' },
         { name: 'SVG解析', value: 'templateSvgLoader' },
-        { name: '打包体积分析', value: 'templateVisualizer' }
+        { name: '打包体积分析', value: 'templateVisualizer' },
+        { name: 'Pinia', value: 'templatePinia' },
+        { name: 'Vant', value: 'uiVant' },
+
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -41,7 +44,7 @@ module.exports = {
               'templateLintStaged',
               'templateRemoveConsole',
               'templateCrossEnv',
-              'uiElement',
+              'uiVant',
               'templateSvgLoader'
             ]
     }
@@ -66,7 +69,10 @@ module.exports = {
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
-        { name: '适配插件', value: 'templateFlexible' }
+        { name: '适配插件', value: 'templateFlexible' },
+        { name: 'Element', value: 'uiElement' },
+        { name: 'Vant', value: 'uiVant' },
+
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -75,7 +81,8 @@ module.exports = {
               'templateES5',
               'templateLintStaged',
               'templateRemoveConsole',
-              'templateCrossEnv'
+              'templateCrossEnv',
+              'uiElement'
             ]
           : [
               'templateAddVconsole',
@@ -84,7 +91,8 @@ module.exports = {
               'templateFlexible',
               'templateLintStaged',
               'templateRemoveConsole',
-              'templateCrossEnv'
+              'templateCrossEnv',
+              'uiVant'
             ]
     }
   },
@@ -108,7 +116,10 @@ module.exports = {
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
-        { name: '适配插件', value: 'templateFlexible' }
+        { name: '适配插件', value: 'templateFlexible' },
+        { name: 'Element', value: 'uiElement' },
+        { name: 'Vant', value: 'uiVant' },
+        
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -117,7 +128,8 @@ module.exports = {
               'templateES5',
               'templateLintStaged',
               'templateRemoveConsole',
-              'templateCrossEnv'
+              'templateCrossEnv',
+              'uiElement'
             ]
           : [
               'templateAddVconsole',
@@ -126,7 +138,8 @@ module.exports = {
               'templateFlexible',
               'templateLintStaged',
               'templateRemoveConsole',
-              'templateCrossEnv'
+              'templateCrossEnv',
+              'uiVant'
             ]
     }
   }

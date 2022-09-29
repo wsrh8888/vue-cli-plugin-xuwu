@@ -1,8 +1,8 @@
 <template>
-  <div>虚无模版--{{name}}</div>
+  <div>虚无模版--{{ name }}</div>
 </template>
 
-<script lang="ts" >
+<script lang="ts">
 import { defineComponent } from 'vue'
 import { name } from '@xuwu-utils'
 export default defineComponent({
@@ -13,6 +13,4 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="less">
-
-</style>
+<style lang="less"></style>

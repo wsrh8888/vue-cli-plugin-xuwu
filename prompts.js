@@ -2,18 +2,16 @@ const {
   viteWebVue3Manually,
   webpackWebVue3Manually,
   webpackWebVue2Manually
-}= require('./prompts/web')
-const webPrompt= require('./prompts/web')
+} = require('./prompts/web')
+const webPrompt = require('./prompts/web')
 const {
   webpackUniappVue3Manually,
   webpackUniappVue2Manually
 } = require('./prompts/uniapp')
 const uniappPrompt = require('./prompts/uniapp')
 const path = require('path')
-const {
-  fileIsExit,
-} = require('./generator/utils/fs')
-const Xuwu= require('./generator/utils/xuwu')
+const { fileIsExit } = require('./generator/utils/fs')
+const Xuwu = require('./generator/utils/xuwu')
 const chalk = require('chalk')
 const { firstUpperCase } = require('./generator/utils/tool')
 
@@ -25,24 +23,25 @@ module.exports = () => {
 
   if (fileIsExit(path.join(process.cwd(), 'package.json'))) {
     language = Xuwu.getLanguage()
-    toolName =  Xuwu.getBuildToolName()
+    toolName = Xuwu.getBuildToolName()
     vueVersion = Xuwu.getVueVersion()
   } else {
   }
-  console.log('当前项目基础信息:');
-  console.log('语言:', language);
-  console.log('打包工具:', toolName);
-  console.log('框架:', vueVersion);
+  console.log('当前项目基础信息:')
+  console.log('语言:', language)
+  console.log('打包工具:', toolName)
+  console.log('框架:', vueVersion)
   try {
-    let result = `${toolName}${firstUpperCase(language)}${firstUpperCase(vueVersion)}Manually`    
-   if (!(webPrompt[result] || uniappPrompt[result])) {
-    throw Error()
-   }
+    let result = `${toolName}${firstUpperCase(language)}${firstUpperCase(
+      vueVersion
+    )}Manually`
+    if (!(webPrompt[result] || uniappPrompt[result])) {
+      throw Error()
+    }
   } catch (error) {
-    console.error( chalk.red('Error：暂未兼容该版本哦'))
+    console.error(chalk.red('Error：暂未兼容该版本哦'))
     return
   }
-  
 
   const prompts = [
     {
@@ -71,7 +70,6 @@ module.exports = () => {
     webpackWebVue2Manually(language, toolName, vueVersion),
     webpackUniappVue3Manually(language, toolName, vueVersion),
     webpackUniappVue2Manually(language, toolName, vueVersion)
-
   ]
   return prompts
 }

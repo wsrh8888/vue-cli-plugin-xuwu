@@ -54,7 +54,11 @@ class Request extends RootRequest {
       [`/src/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`
     })
   }
-
+  pinia() {
+    this.api.render({
+      [`/src/store/index.${this.suffixes}`]: `../template/store/index.${this.suffixes}`
+    })
+  }
   rem() {
     this.api.render({
       [`/src/utils/rem.${this.suffixes}`]: `../template/utils/rem.${this.suffixes}`

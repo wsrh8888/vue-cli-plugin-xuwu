@@ -16,6 +16,7 @@ declare module "vite/client"
 declare module "vite"
 declare module "@vitejs/plugin-vue"
 declare module "vconsole"
+declare module "pinia"
 
 
 

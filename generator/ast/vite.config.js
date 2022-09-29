@@ -9,7 +9,7 @@ module.exports = {
       visitor: {
         ExportDefaultDeclaration(path) {
           try {
-            let types  = path.node.declaration.arguments[0].type
+            let types = path.node.declaration.arguments[0].type
             if (types === 'ArrowFunctionExpression') {
               isExit = true
             }
@@ -24,9 +24,9 @@ module.exports = {
     })
     return isExit
   },
-  /******* 
+  /*******
    * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
-   */  
+   */
   astViteConfigAddElementPlus(sourceCode) {
     let transformClassPlugin = {
       visitor: {
@@ -40,30 +40,29 @@ module.exports = {
           methods.splice(1, 0, astCode)
         },
         ExportDefaultDeclaration(path) {
+          let properties = path.node.declaration.arguments[0].body.properties
 
-          let properties  = path.node.declaration.arguments[0].body.properties
-          
           let currentProperties
-          properties.forEach(item => {
-            
+          properties.forEach((item) => {
             if (item.key.name === 'plugins') {
               currentProperties = item
             }
           })
-          
 
           if (!currentProperties) {
-           let currentObject =  types.objectProperty(types.identifier('plugins'),  types.arrayExpression([]))
-           currentProperties = currentObject
-           properties.push(currentObject)
+            let currentObject = types.objectProperty(
+              types.identifier('plugins'),
+              types.arrayExpression([])
+            )
+            currentProperties = currentObject
+            properties.push(currentObject)
           }
-          
+
           let pluginsList = currentProperties.value.elements
           pluginsList.push(
             types.callExpression(types.identifier('elementPlus'), [])
           )
-          
-          
+
           // let arrowFunction = path.node.declar
         }
       }
@@ -77,27 +76,27 @@ module.exports = {
     let transformClassPlugin = {
       visitor: {
         ExportDefaultDeclaration(path) {
-          let properties  = path.node.declaration.arguments[0].body.properties
-          
+          let properties = path.node.declaration.arguments[0].body.properties
+
           let currentProperties
-          properties.forEach(item => {
-            
+          properties.forEach((item) => {
             if (item.key.name === 'build') {
               currentProperties = item
             }
           })
-          
+
           if (!currentProperties) {
-           let currentObject =  types.objectProperty(types.identifier('build'), types.objectExpression([]))
-           currentProperties = currentObject
-           properties.push(currentObject)
+            let currentObject = types.objectProperty(
+              types.identifier('build'),
+              types.objectExpression([])
+            )
+            currentProperties = currentObject
+            properties.push(currentObject)
           }
           const buildList = currentProperties.value.properties
           // 判断是否存在minify属性
           if (
-            properties.findIndex(
-              (item) => item.key.name === 'minify'
-            ) === -1
+            properties.findIndex((item) => item.key.name === 'minify') === -1
           ) {
             let objectProperty = types.objectProperty(
               types.identifier('minify'),
@@ -161,13 +160,10 @@ module.exports = {
                         types.binaryExpression(
                           '===',
                           types.memberExpression(
-                            types.callExpression(
-                              types.identifier('loadEnv'),
-                              [
-                                types.identifier('mode'),
-                                types.identifier('__dirname')
-                              ]
-                            ),
+                            types.callExpression(types.identifier('loadEnv'), [
+                              types.identifier('mode'),
+                              types.identifier('__dirname')
+                            ]),
                             types.identifier('VITE_API_ENV')
                           ),
                           types.stringLiteral('prod')
@@ -194,13 +190,10 @@ module.exports = {
                         types.binaryExpression(
                           '===',
                           types.memberExpression(
-                            types.callExpression(
-                              types.identifier('loadEnv'),
-                              [
-                                types.identifier('mode'),
-                                types.identifier('__dirname')
-                              ]
-                            ),
+                            types.callExpression(types.identifier('loadEnv'), [
+                              types.identifier('mode'),
+                              types.identifier('__dirname')
+                            ]),
                             types.identifier('VITE_API_ENV')
                           ),
                           types.stringLiteral('prod')
@@ -222,7 +215,7 @@ module.exports = {
           // methods.forEach((method) => {
           //   if (method.key.name === 'build') {
           //     let buildList = method.value.properties
-              
+
           //   }
           // })
         }
@@ -241,36 +234,40 @@ module.exports = {
           // 添加依赖包的引入
           let methods = path.node.body
           let astCode = types.importDeclaration(
-            [types.importSpecifier(types.identifier('visualizer'), types.identifier('visualizer'))],
+            [
+              types.importSpecifier(
+                types.identifier('visualizer'),
+                types.identifier('visualizer')
+              )
+            ],
             types.stringLiteral('rollup-plugin-visualizer')
           )
           methods.splice(1, 0, astCode)
         },
         ExportDefaultDeclaration(path) {
+          let properties = path.node.declaration.arguments[0].body.properties
 
-          let properties  = path.node.declaration.arguments[0].body.properties
-          
           let currentProperties
-          properties.forEach(item => {
-            
+          properties.forEach((item) => {
             if (item.key.name === 'plugins') {
               currentProperties = item
             }
           })
-          
 
           if (!currentProperties) {
-           let currentObject =  types.objectProperty(types.identifier('plugins'),  types.arrayExpression([]))
-           currentProperties = currentObject
-           properties.push(currentObject)
+            let currentObject = types.objectProperty(
+              types.identifier('plugins'),
+              types.arrayExpression([])
+            )
+            currentProperties = currentObject
+            properties.push(currentObject)
           }
-          
+
           let pluginsList = currentProperties.value.elements
           pluginsList.push(
             types.callExpression(types.identifier('visualizer'), [])
           )
-          
-          
+
           // let arrowFunction = path.node.declar
         }
       }

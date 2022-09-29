@@ -11,6 +11,7 @@ class Package {
       }
     })
   }
+
   /**
    * @description: 过滤已经安装的依赖
    * @param {*} data
@@ -187,8 +188,6 @@ class Package {
     })
   }
 
-
-  
   /**
    * @description: 在package.json文件里，增加antVue3和按需引入相关的依赖包和配置
    * @param {*}
@@ -202,9 +201,9 @@ class Package {
       })
     })
   }
-  /******* 
+  /*******
    * @description: vite中按需引入库
-   */  
+   */
   packageUnpluginElementPlus() {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
@@ -212,7 +211,7 @@ class Package {
       })
     })
   }
-  
+
   /**
    * @description: 在package.json文件里，增加antVue2和按需引入相关的依赖包和配置
    * @param {*}
@@ -318,6 +317,14 @@ class Package {
       })
     })
   }
+  packagePinia() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        pinia: '^2.0.22'
+      })
+    })
+  }
+
   packageFlexibleVite() {
     this.api.extendPackage({
       browserslist: ['last 2 versions', '> 1%', 'iOS 7', 'last 3 iOS versions'],

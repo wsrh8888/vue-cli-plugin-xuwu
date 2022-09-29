@@ -91,7 +91,9 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1) {
+      if (
+        lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1
+      ) {
         Fs.writeFileSync(
           this.getViteFileName(),
           astViteParse.astViteConfigVisualizer(contentMain),
@@ -102,9 +104,9 @@ class ViteConfig {
       }
     })
   }
-  /******* 
+  /*******
    * @description: vite.config.ts 引入按需的相关代码
-   */  
+   */
   viteConfigAddElement() {
     this.fileInit()
     this.api.afterInvoke(() => {
@@ -115,7 +117,10 @@ class ViteConfig {
         }
       )
       let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) === -1) {
+      if (
+        lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) ===
+        -1
+      ) {
         Fs.writeFileSync(
           this.getViteFileName(),
           astViteParse.astViteConfigAddElementPlus(contentMain),

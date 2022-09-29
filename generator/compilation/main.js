@@ -2,6 +2,7 @@ const Xuwu = require('../utils/xuwu')
 const Template = require('../static/template')
 const { EOL } = require('os')
 const Fs = require('fs')
+const astMainParse = require('../ast/main')
 
 /**
  * @description: main.js/main.ts文件配置
@@ -115,6 +116,24 @@ class Main {
         Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
+      }
+    })
+  }
+  mainAddPinia() {
+    this.api.afterInvoke(() => {
+      this.initVue3()
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+        encoding: 'utf-8'
+      })
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
+        Fs.writeFileSync(
+          this.api.entryFile,
+          astMainParse.astMainPinia(contentMain),
+          {
+            encoding: 'utf-8'
+          }
+        )
       }
     })
   }

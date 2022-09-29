@@ -10,7 +10,7 @@ module.exports = {
    * @param {*} name 包名
    * @return {*}
    */
-   fsIsExistPackage(file, name) {
+  fsIsExistPackage(file, name) {
     return file.search('"' + name + '"') !== -1
   }
 }
