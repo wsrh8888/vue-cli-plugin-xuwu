@@ -82,5 +82,8 @@
     "core-js": "^2.6.12",
     "fs-extra": "^10.1.0",
     "typescript": "^4.3.5"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
