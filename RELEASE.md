@@ -1,5 +1,11 @@
 ## 版本更新
 
+### 1.2.10
+> 1、优化prompts相关代码
+> 2、vite新增加pinia，svg解析
+> 3、使用ast对部分读写文件进行重写
+> 4、修复package引用无用变量bug
+
 ### 1.2.9
 > 1、修复vite按需引入混入了babel-plugin-import依赖
 > 2、优化vue.config.js的初始化时机，提前到了初始化环境变量时
