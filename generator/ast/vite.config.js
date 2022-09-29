@@ -12,6 +12,8 @@ module.exports = {
             let currentTypes = path.node.declaration.arguments[0].type
             if (currentTypes === 'ArrowFunctionExpression') {
               isExit = true
+            } else {
+              isExit = false
             }
           } catch (error) {
             isExit = false
