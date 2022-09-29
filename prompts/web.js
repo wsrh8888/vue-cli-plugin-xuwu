@@ -62,7 +62,7 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: '打包编译为ES5（vite暂不支持）', value: 'templateES5' },
+        { name: '打包编译为ES5', value: 'templateES5' },
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
@@ -104,7 +104,7 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: '打包编译为ES5（vite暂不支持）', value: 'templateES5' },
+        { name: '打包编译为ES5', value: 'templateES5' },
         { name: '生产环境去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },

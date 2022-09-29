@@ -70,16 +70,12 @@ class WebpackWebVue3 extends Common {
     this.fileUtils.utilConfig()
   }
   uiElement = () => {
-    this.fileUtils.element()
     this.filePackage.packageElementPlusUi()
     this.fileBabelConfig.babelConfigAddElementPlus()
-    this.fileMain.mainAddElementVue3()
   }
   uiVant = () => {
     this.filePackage.packageVantVue3()
-    this.fileUtils.vant()
     this.fileBabelConfig.babelConfigAddVant()
-    this.fileMain.mainAddVantVue3()
   }
   uiAntDesign = () => {
     this.filePackage.packageAntDesignVue3()

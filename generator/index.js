@@ -31,15 +31,11 @@ module.exports = (api, options) => {
     Xuwu.getLanguage() +
     '-' +
     Xuwu.getVueVersion()
-    console.log('12312312', options.promptsConfig);
-
   if (options.promptsConfig !== 'default') {
     newOptions.forEach((element) => {
       template[joinParams][element]()
     })
   } else {
-    console.log('12312312');
-    
     template[joinParams][`default${firstUpperCase(Xuwu.getScene())}`]()
   }
 }

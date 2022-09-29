@@ -93,7 +93,6 @@ module.exports = {
            properties.push(currentObject)
           }
           const buildList = currentProperties.value.properties
-          console.log('buildList', buildList);
           // 判断是否存在minify属性
           if (
             properties.findIndex(
@@ -134,7 +133,6 @@ module.exports = {
                 )
                 terserOptionList.push(objectProperty)
               }
-              console.log('进入了compress')
               ;` 此时变成了code为:
                 build: {
                   terserOptions: {

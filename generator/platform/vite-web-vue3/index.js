@@ -112,9 +112,7 @@ class ViteWebVue3 extends Common {
   uiVant = () => {
     this.filePackage.packageVantVue3()
     this.filePackage.packageVue3Vite()
-    this.fileUtils.vant()
     this.fileViteConfig.viteConfigAddVant()
-    this.fileMain.mainAddVantVue3()
   }
   uiAntDesign = () => {
     this.templateLess()

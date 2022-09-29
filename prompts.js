@@ -3,7 +3,6 @@ const {
   webpackWebVue3Manually,
   webpackWebVue2Manually
 } = require('./prompts/web')
-// const { uniappManually } = require('./generator/prompts/uniapp')
 const path = require('path')
 const {
   fileIsExit,
@@ -22,6 +21,7 @@ module.exports = () => {
     vueVersion = getVueVersion()
   } else {
   }
+  
   const prompts = [
     {
       when: () => language === 'web',
