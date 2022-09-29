@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-xuwu",
-  "version": "1.2.11",
+  "version": "1.2.13-beta.1",
   "description": "通过命令行的方式初始化项目模版，从而完成项目的基础配置",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,7 @@
   "license": "ISC",
   "files": [
     "generator",
+    "prompts",
     "index.js",
     "prompts.js",
     "README.md",
@@ -45,6 +46,7 @@
     "url": "https://github.com/wsrh8888/vue-cli-plugin-xuwu.git"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^5.6.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.27.0",
@@ -53,9 +55,7 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.3.0",
-    "vite": "^2.7.1",
-    "vue-cli-plugin-element": "~1.0.1",
-    "vue-cli-plugin-init-structure": "~1.0.5"
+    "typescript": "^4.3.5"
   },
   "eslintConfig": {
     "root": true,
@@ -74,16 +74,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.13",
-    "@babel/parser": "^7.18.13",
     "@babel/types": "^7.18.13",
-    "@types/node": "^16.4.3",
-    "@typescript-eslint/parser": "^5.6.0",
-    "chalk": "^4.1.2",
-    "core-js": "^2.6.12",
-    "fs-extra": "^10.1.0",
-    "typescript": "^4.3.5"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "chalk": "^4.1.2"
   }
 }
