@@ -22,8 +22,6 @@ module.exports = {
           let resultIndex = methods.length - 1
           methods.forEach((element, index) => {
             if (element.type === 'VariableDeclaration') {
-              console.log('element.declaration', element.declarations[0].id)
-
               if (element.declarations[0].id.name === 'app') {
                 resultIndex = index + 1
               }
@@ -38,7 +36,6 @@ module.exports = {
               [types.callExpression(types.identifier('createPinia'), [])]
             )
           )
-          console.log('resultIndex', resultIndex)
 
           methods.splice(resultIndex, 0, createPiniaAst)
         }

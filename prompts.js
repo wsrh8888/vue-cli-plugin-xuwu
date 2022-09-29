@@ -26,10 +26,12 @@ module.exports = () => {
     toolName = Xuwu.getBuildToolName()
     vueVersion = Xuwu.getVueVersion()
   }
-  console.log('当前项目基础信息:')
+
+  console.log(chalk.blueBright('<--当前项目基础信息:-->'))
   console.log('语言:', language)
   console.log('打包工具:', toolName)
   console.log('框架:', vueVersion)
+  console.log(chalk.blueBright('<-------------------->'))
   try {
     let result = `${toolName}${firstUpperCase(language)}${firstUpperCase(
       vueVersion
