@@ -263,7 +263,7 @@ class Package {
     }
     this.api.extendPackage({
       devDependencies: this.packageFilter({
-        vant: '^3.3.6'
+        vant: '^3.6.3'
       })
     })
   }
@@ -308,6 +308,13 @@ class Package {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
         vconsole: '^3.3.4'
+      })
+    })
+  }
+  packageVisualizer() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        'rollup-plugin-visualizer': '^5.7.1'
       })
     })
   }

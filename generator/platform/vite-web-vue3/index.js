@@ -35,6 +35,14 @@ class ViteWebVue3 extends Common {
     this.uiVant()
     this.templateSvgLoader()
   }
+  /******* 
+   * @description: 打包后体积分析
+   */  
+  templateVisualizer = () =>{
+    this.filePackage.packageVisualizer()
+    this.fileViteConfig.viteConfigVisualizer()
+
+  }
   /*******
    * @description: consoleLog控制台
    */

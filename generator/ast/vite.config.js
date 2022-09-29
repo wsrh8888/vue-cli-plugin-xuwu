@@ -236,6 +236,52 @@ module.exports = {
     })
     return targetSource.code
   },
+  astViteConfigVisualizer(sourceCode) {
+    let transformClassPlugin = {
+      visitor: {
+        Program(path) {
+          // 添加依赖包的引入
+          let methods = path.node.body
+          let astCode = types.importDeclaration(
+            [types.importSpecifier(types.identifier('visualizer'), types.identifier('visualizer'))],
+            types.stringLiteral('rollup-plugin-visualizer')
+          )
+          methods.splice(1, 0, astCode)
+        },
+        ExportDefaultDeclaration(path) {
+
+          let properties  = path.node.declaration.arguments[0].body.properties
+          
+          let currentProperties
+          properties.forEach(item => {
+            
+            if (item.key.name === 'plugins') {
+              currentProperties = item
+            }
+          })
+          
+
+          if (!currentProperties) {
+           let currentObject =  types.objectProperty(types.identifier('plugins'),  types.arrayExpression([]))
+           currentProperties = currentObject
+           properties.push(currentObject)
+          }
+          
+          let pluginsList = currentProperties.value.elements
+          pluginsList.push(
+            types.callExpression(types.identifier('visualizer'), [])
+          )
+          
+          
+          // let arrowFunction = path.node.declar
+        }
+      }
+    }
+    let targetSource = core.transform(sourceCode, {
+      plugins: [transformClassPlugin]
+    })
+    return targetSource.code
+  },
   astViteConfigAddSvgLoader(sourceCode) {
     let transformClassPlugin = {
       visitor: {

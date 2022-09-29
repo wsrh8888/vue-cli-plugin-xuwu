@@ -1,6 +1,5 @@
 module.exports = {
   viteWebVue3Manually(language, toolName, frame) {
-    console.log('language, toolName, frame', language, toolName, frame)
 
     return {
       when: (answers) => {
@@ -22,7 +21,8 @@ module.exports = {
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
         { name: 'Element', value: 'uiElement' },
-        { name: 'SVG加载', value: 'templateSvgLoader' }
+        { name: 'SVG解析', value: 'templateSvgLoader' },
+        { name: '打包体积分析', value: 'templateVisualizer' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'

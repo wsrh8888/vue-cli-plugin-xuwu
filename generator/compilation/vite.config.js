@@ -81,6 +81,27 @@ class ViteConfig {
       }
     })
   }
+  viteConfigVisualizer() {
+    this.fileInit()
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(
+        this.api.resolve(this.getViteFileName()),
+        {
+          encoding: 'utf-8'
+        }
+      )
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1) {
+        Fs.writeFileSync(
+          this.getViteFileName(),
+          astViteParse.astViteConfigVisualizer(contentMain),
+          {
+            encoding: 'utf-8'
+          }
+        )
+      }
+    })
+  }
   /******* 
    * @description: vite.config.ts 引入按需的相关代码
    */  
