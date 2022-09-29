@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const fs = require('fs')
 const { fsIsExistPackage } = require('./fs')
 const path = require('path')
 /**
@@ -92,30 +92,6 @@ class Xuwu {
     }
     return result
   }
-  /**
-   * @description: 获取全局属性，项目的类型
-   * @return {string} |web|uniapp|
-   */
-  static getLanguage() {
-    let result = ''
-    try {
-      let packageData = JSON.parse(
-        this.single.api.generator.files['package.json']
-      )
-      if (
-        packageData.dependencies['@dcloudio/uni-automator'] ||
-        packageData.devDependencies['@dcloudio/uni-automator']
-      ) {
-        return 'uniapp'
-      } else {
-        return 'web'
-      }
-    } catch (error) {
-      result = 'web'
-    }
-    return result
-  }
-
   /**
    * @description: 获取全局属性，使用场景
    * @return {string} |pc|mobile|
