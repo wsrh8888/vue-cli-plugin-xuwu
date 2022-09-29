@@ -13,7 +13,7 @@ vue add xuwu
 |扩展环境变量|✅|✅|✅|✅|✅|
 |生产环境去掉console|✅|✅|❌|❌|✅|
 |统一代码风格|✅|✅|✅|✅|✅|
-|consoleLog控制台|✅|✅|❌|✅|
+|consoleLog控制台|✅|✅|❌|❌|✅|
 |适配|✅|✅|❌|❌|✅|
 |Element|✅|✅|❌|❌|✅|
 |SVG解析|❌|❌|❌|❌|✅|
@@ -38,10 +38,7 @@ vue add xuwu
 > ![Alt](images/configContent.png)
 > ### 5. 请选择要使用的ui库，目前移动端默认使用vant，pc端默认使用element
 > ![Alt](images/ui.png)
-## 地址
-```
-git地址：https://github.com/wsrh8888/vue-cli-plugin-xuwu.git
-```
+
 ## 更新记录
 [点击查看更新记录](./RELEASE.md)
 
