@@ -6,7 +6,6 @@ const WebpackUniappVue2 = require('./platform/webpack-uniapp-vue2')
 const WebpackUniappVue3 = require('./platform/webpack-uniapp-vue3')
 
 const { firstUpperCase } = require('./utils/tool')
-const chalk = require('chalk')
 
 class Template {
   'vite-web-vue3' = new ViteWebVue3()

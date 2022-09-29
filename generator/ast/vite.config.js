@@ -3,14 +3,14 @@ let core = require('@babel/core')
 let types = require('@babel/types')
 
 module.exports = {
-  astViteConfigIsInit() {
+  astViteConfigIsInit(sourceCode) {
     let isExit = true
     let transformClassPlugin = {
       visitor: {
         ExportDefaultDeclaration(path) {
           try {
-            let types = path.node.declaration.arguments[0].type
-            if (types === 'ArrowFunctionExpression') {
+            let currentTypes = path.node.declaration.arguments[0].type
+            if (currentTypes === 'ArrowFunctionExpression') {
               isExit = true
             }
           } catch (error) {

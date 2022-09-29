@@ -25,7 +25,6 @@ module.exports = () => {
     language = Xuwu.getLanguage()
     toolName = Xuwu.getBuildToolName()
     vueVersion = Xuwu.getVueVersion()
-  } else {
   }
   console.log('当前项目基础信息:')
   console.log('语言:', language)

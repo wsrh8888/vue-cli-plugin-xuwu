@@ -3,27 +3,6 @@ let core = require('@babel/core')
 let types = require('@babel/types')
 
 module.exports = {
-  astViteConfigIsInit() {
-    let isExit = true
-    let transformClassPlugin = {
-      visitor: {
-        ExportDefaultDeclaration(path) {
-          try {
-            let types = path.node.declaration.arguments[0].type
-            if (types === 'ArrowFunctionExpression') {
-              isExit = true
-            }
-          } catch (error) {
-            isExit = false
-          }
-        }
-      }
-    }
-    core.transform(sourceCode, {
-      plugins: [transformClassPlugin]
-    })
-    return isExit
-  },
   astMainPinia(sourceCode) {
     let transformClassPlugin = {
       visitor: {
