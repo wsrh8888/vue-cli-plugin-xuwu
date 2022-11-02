@@ -30,7 +30,18 @@ class Xuwu {
       path.join(process.cwd(), 'package.json'),
       'utf-8'
     )
-    return fsIsExistPackage(file, 'vite') ? 'vite' : 'webpack'
+    if (fsIsExistPackage(file, 'vite')) {
+      try {
+        let packageData = JSON.parse(file)
+        let version =
+          packageData.dependencies.vue || packageData.devDependencies.vue
+        return 'vite' + version[version.indexOf('.') - 1].toString()
+      } catch (error) {
+        return 'vue2'
+      }
+    } else {
+      return 'webpack'
+    }
   }
   /**
    * @description: 判断package中是否存在某个依赖包

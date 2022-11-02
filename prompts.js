@@ -1,5 +1,6 @@
 const {
-  viteWebVue3Manually,
+  vite2WebVue3Manually,
+  vite3WebVue3Manually,
   webpackWebVue3Manually,
   webpackWebVue2Manually
 } = require('./prompts/web')
@@ -28,9 +29,10 @@ module.exports = () => {
   }
 
   console.log(chalk.blueBright('<--当前项目基础信息:-->'))
-  console.log('语言:', language)
-  console.log('打包工具:', toolName)
-  console.log('框架:', vueVersion)
+  console.log('语言:', chalk.redBright(language))
+  console.log('打包工具:', chalk.redBright(toolName))
+  console.log('框架:', chalk.redBright(vueVersion))
+  console.log('node:', chalk.redBright(process.version))
   console.log(chalk.blueBright('<-------------------->'))
   try {
     let result = `${toolName}${firstUpperCase(language)}${firstUpperCase(
@@ -66,7 +68,8 @@ module.exports = () => {
       ],
       default: 'default'
     },
-    viteWebVue3Manually(language, toolName, vueVersion),
+    vite2WebVue3Manually(language, toolName, vueVersion),
+    vite3WebVue3Manually(language, toolName, vueVersion),
     webpackWebVue3Manually(language, toolName, vueVersion),
     webpackWebVue2Manually(language, toolName, vueVersion),
     webpackUniappVue3Manually(language, toolName, vueVersion),

@@ -75,6 +75,7 @@
   "dependencies": {
     "@babel/core": "^7.18.13",
     "@babel/types": "^7.18.13",
-    "chalk": "^4.1.2"
+    "chalk": "^4.1.2",
+    "semver": "^7.3.8"
   }
 }
