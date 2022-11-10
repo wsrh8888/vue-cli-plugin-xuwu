@@ -1,0 +1,62 @@
+let types = require('@babel/types')
+
+class ViteConfigAstCommon {
+  /*******
+   * @description: 给vite增加loadEnv属性
+   */
+  viteConfigAddloadEnv() {
+    return {
+      ImportDeclaration(path) {
+        if (path.node.source.value !== 'vite') {
+          return
+        }
+        // 判断是否找到loadEnv属性
+        let isExitLoadEnv = false
+        path.node.specifiers.forEach((item) => {
+          if (item.imported.name === 'loadEnv') {
+            isExitLoadEnv = true
+          }
+        })
+        if (!isExitLoadEnv) {
+          path.node.specifiers.push(
+            types.importSpecifier(
+              types.identifier('loadEnv'),
+              types.identifier('loadEnv')
+            )
+          )
+        }
+      }
+    }
+  }
+  /*******
+   * @description: 给声明方法增加mode和command参数
+   */
+  viteConifAddParams() {
+    return {
+      ExportDefaultDeclaration(path) {
+        if (path.node.declaration.callee.name !== 'defineConfig') {
+          return
+        }
+        let childrenItem = path.node.declaration.arguments[0]
+        childrenItem.params = [
+          types.objectPattern([
+            types.objectProperty(
+              types.identifier('mode'),
+              types.identifier('mode'),
+              false,
+              true
+            ),
+            types.objectProperty(
+              types.identifier('command'),
+              types.identifier('command'),
+              false,
+              true
+            )
+          ])
+        ]
+      }
+    }
+  }
+}
+
+module.exports = new ViteConfigAstCommon()

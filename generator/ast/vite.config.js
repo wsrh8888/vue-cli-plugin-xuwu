@@ -1,8 +1,8 @@
-let core = require('@babel/core')
-
 let types = require('@babel/types')
-
-module.exports = {
+let core = require('@babel/core')
+const AST = require('./ast')
+const astCommon = require('./viteConfig/viteCommon')
+class ViteConfigAst extends AST {
   astViteConfigIsInit(sourceCode) {
     let isExit = true
     let transformClassPlugin = {
@@ -25,7 +25,7 @@ module.exports = {
       plugins: [transformClassPlugin]
     })
     return isExit
-  },
+  }
   /*******
    * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
    */
@@ -73,7 +73,7 @@ module.exports = {
       plugins: [transformClassPlugin]
     })
     return targetSource.code
-  },
+  }
   astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
       visitor: {
@@ -228,7 +228,7 @@ module.exports = {
       plugins: [transformClassPlugin]
     })
     return targetSource.code
-  },
+  }
   astViteConfigVisualizer(sourceCode) {
     let transformClassPlugin = {
       visitor: {
@@ -278,7 +278,7 @@ module.exports = {
       plugins: [transformClassPlugin]
     })
     return targetSource.code
-  },
+  }
   astViteConfigAddSvgLoader(sourceCode) {
     let transformClassPlugin = {
       visitor: {
@@ -309,6 +309,22 @@ module.exports = {
       plugins: [transformClassPlugin]
     })
     return targetSource.code
-  },
+  }
   astViteConfigAddEnv() {}
+  astViteConfigAddBaseUrl(source) {
+    return this.writeAst(source, {
+      visitor: {
+        Program() {
+          // let rootChildren = path.node.body
+          // rootChildren.forEach(rootItem => {
+          //   rootItem.
+          // })
+        },
+        ...astCommon.viteConfigAddloadEnv(),
+        ...astCommon.viteConifAddParams()
+      }
+    })
+  }
 }
+
+module.exports = new ViteConfigAst()

@@ -21,6 +21,18 @@ class Vite3Config extends ViteConfig {
    */
   addEnvConfig() {
     this.fileInit()
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/baseUrl\(/)) === -1) {
+        // 如果没有则进行ast处理
+        // 1、增加baseUrl方法
+        // 2、在defineConfig中调用baseUrl方法
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddBaseUrl(contentMain)
+        )
+      }
+    })
   }
 }
 module.exports = Vite3Config
