@@ -57,6 +57,44 @@ class ViteConfigAstCommon {
       }
     }
   }
+  /*******
+   * @description: 将vite中base的value值替换为baseUrl()
+   */
+  viteConfigChangeBase() {
+    return {
+      ExportDefaultDeclaration(path) {
+        if (path.node.declaration.callee.name !== 'defineConfig') {
+          return
+        }
+        let childrenList = path.node.declaration.arguments[0].body.properties
+        let childrenLength = childrenList.length
+        childrenList.forEach((item, index) => {
+          if (item.key.name === 'base') {
+            childrenLength = index
+          }
+        })
+        childrenList[childrenLength] = types.objectProperty(
+          types.identifier('base'),
+          types.callExpression(types.identifier('baseUrl'), [
+            types.objectExpression([
+              types.objectProperty(
+                types.identifier('mode'),
+                types.identifier('mode'),
+                false,
+                true
+              ),
+              types.objectProperty(
+                types.identifier('command'),
+                types.identifier('command'),
+                false,
+                true
+              )
+            ])
+          ])
+        )
+      }
+    }
+  }
 }
 
 module.exports = new ViteConfigAstCommon()

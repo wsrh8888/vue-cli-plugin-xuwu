@@ -321,7 +321,8 @@ class ViteConfigAst extends AST {
           // })
         },
         ...astCommon.viteConfigAddloadEnv(),
-        ...astCommon.viteConifAddParams()
+        ...astCommon.viteConifAddParams(),
+        ...astCommon.viteConfigChangeBase()
       }
     })
   }
