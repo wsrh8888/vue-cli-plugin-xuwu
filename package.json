@@ -7,7 +7,8 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "build": "tsc && npm run lint",
-    "lint": "eslint --fix ./prompts.js ./generator  --ext .vue,.js,.ts"
+    "lint": "eslint --fix ./prompts.js ./generator  --ext .vue,.js,.ts",
+    "test": "node '/Users/wymac/Documents/source/my-source/xuwu/xuwu/generator/static/ast.js'"
   },
   "husky": {
     "hooks": {
@@ -77,6 +78,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.13",
+    "@babel/generator": "^7.20.4",
     "@babel/types": "^7.18.13",
     "chalk": "^4.1.2",
     "semver": "^7.3.8"

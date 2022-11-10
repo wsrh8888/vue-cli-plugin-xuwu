@@ -1,16 +1,12 @@
 const Xuwu = require('../../utils/xuwu')
 const Template = require('../../static/template')
-const Fs = require('fs')
 const { EOL } = require('os')
 const astViteParse = require('../../ast/vite.config')
 const ViteConfig = require('./vite.config')
 class Vite2Config extends ViteConfig {
   fileInit() {
-    let contentMain
     try {
-      contentMain = Fs.readFileSync(this.api.resolve(this.getViteFileName()), {
-        encoding: 'utf-8'
-      })
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       if (
         lines.findIndex((line) => line.match(/export default defineConfig/)) ===
@@ -28,29 +24,17 @@ class Vite2Config extends ViteConfig {
       })
     }
   }
-  getViteFileName() {
-    return `./vite.config.${Xuwu.getTsOrJs()}`
-  }
   /*******
    * @description: 增加环境变量的基础配置
    */
   addEnvConfig() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/env.VITE_API_ENV/)) === -1) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigAddEnv(contentMain),
-          {
-            encoding: 'utf-8'
-          }
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddEnv(contentMain)
         )
       }
     })
@@ -58,12 +42,7 @@ class Vite2Config extends ViteConfig {
   viteConfigAddAntDesign() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/ant-design-vue/)) === -1) {
@@ -77,29 +56,18 @@ class Vite2Config extends ViteConfig {
         ) {
           lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
         }
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
+        this.writeViteConfigContent(lines.join(EOL))
       }
     })
   }
   viteConfigRemoveConsole() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigRemoveConsole(contentMain),
-          {
-            encoding: 'utf-8'
-          }
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigRemoveConsole(contentMain)
         )
       }
     })
@@ -107,22 +75,13 @@ class Vite2Config extends ViteConfig {
   viteConfigVisualizer() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       if (
         lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1
       ) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigVisualizer(contentMain),
-          {
-            encoding: 'utf-8'
-          }
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigVisualizer(contentMain)
         )
       }
     })
@@ -133,23 +92,14 @@ class Vite2Config extends ViteConfig {
   viteConfigAddElement() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       if (
         lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) ===
         -1
       ) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigAddElementPlus(contentMain),
-          {
-            encoding: 'utf-8'
-          }
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddElementPlus(contentMain)
         )
       }
     })
@@ -157,33 +107,21 @@ class Vite2Config extends ViteConfig {
   viteConfigLess() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) =>
         line.match(/export default defineConfig\(\(\{/)
       )
       if (lines.findIndex((line) => line.match(/less/)) === -1) {
         lines[renderIndex] += `${EOL} ${Template.viteLess()},`
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
+        this.writeViteConfigContent(lines.join(EOL))
       }
     })
   }
   viteConfigAddVant() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
       if (lines.findIndex((line) => line.match(/vant/)) === -1) {
@@ -197,30 +135,19 @@ class Vite2Config extends ViteConfig {
         ) {
           lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
         }
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
+        this.writeViteConfigContent(lines.join(EOL))
       }
     })
   }
   viteConfigSvgLoader() {
     this.fileInit()
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
+      let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
 
       if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigAddSvgLoader(contentMain),
-          {
-            encoding: 'utf-8'
-          }
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddSvgLoader(contentMain)
         )
       }
     })

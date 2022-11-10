@@ -1,23 +1,11 @@
 const Xuwu = require('../../utils/xuwu')
-const Template = require('../../static/template')
-const Fs = require('fs')
-const { EOL } = require('os')
+// const Template = require('../../static/template')
 const astViteParse = require('../../ast/vite.config')
 const ViteConfig = require('./vite.config')
 class Vite3Config extends ViteConfig {
   fileInit() {
-    let contentMain
     try {
-      contentMain = Fs.readFileSync(this.api.resolve(this.getViteFileName()), {
-        encoding: 'utf-8'
-      })
-      let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/export default defineConfig/)) ===
-        -1
-      ) {
-        throw Error
-      }
+      let contentMain = this.getContentViteConfig()
       // 判断vite.config.js 中是否是 =>的写法
       if (!astViteParse.astViteConfigIsInit(contentMain)) {
         throw Error
@@ -28,202 +16,11 @@ class Vite3Config extends ViteConfig {
       })
     }
   }
-  getViteFileName() {
-    return `./vite.config.${Xuwu.getTsOrJs()}`
-  }
   /*******
-   * @description: 增加环境变量的基础配置
+   * @description: 增加环境变量
    */
   addEnvConfig() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/env.VITE_API_ENV/)) === -1) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigAddEnv(contentMain),
-          {
-            encoding: 'utf-8'
-          }
-        )
-      }
-    })
-  }
-  viteConfigAddAntDesign() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
-      if (lines.findIndex((line) => line.match(/ant-design-vue/)) === -1) {
-        lines[renderIndex] = lines[renderIndex].replace(
-          /vue\(\)/,
-          `vue(),${Template.viteAntDeginVue3()}`
-        )
-        if (
-          lines.findIndex((line) => line.match(/vite-plugin-style-import/)) ===
-          -1
-        ) {
-          lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
-        }
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
-      }
-    })
-  }
-  viteConfigRemoveConsole() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigRemoveConsole(contentMain),
-          {
-            encoding: 'utf-8'
-          }
-        )
-      }
-    })
-  }
-  viteConfigVisualizer() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1
-      ) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigVisualizer(contentMain),
-          {
-            encoding: 'utf-8'
-          }
-        )
-      }
-    })
-  }
-  /*******
-   * @description: vite.config.ts 引入按需的相关代码
-   */
-  viteConfigAddElement() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) ===
-        -1
-      ) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigAddElementPlus(contentMain),
-          {
-            encoding: 'utf-8'
-          }
-        )
-      }
-    })
-  }
-  viteConfigLess() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) =>
-        line.match(/export default defineConfig\(\(\{/)
-      )
-      if (lines.findIndex((line) => line.match(/less/)) === -1) {
-        lines[renderIndex] += `${EOL} ${Template.viteLess()},`
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
-      }
-    })
-  }
-  viteConfigAddVant() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
-      if (lines.findIndex((line) => line.match(/vant/)) === -1) {
-        lines[renderIndex] = lines[renderIndex].replace(
-          /vue\(\)/,
-          `vue(),${Template.viteVantVue3()}`
-        )
-        if (
-          lines.findIndex((line) => line.match(/vite-plugin-style-import/)) ===
-          -1
-        ) {
-          lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
-        }
-        Fs.writeFileSync(this.getViteFileName(), lines.join(EOL), {
-          encoding: 'utf-8'
-        })
-      }
-    })
-  }
-  viteConfigSvgLoader() {
-    this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(
-        this.api.resolve(this.getViteFileName()),
-        {
-          encoding: 'utf-8'
-        }
-      )
-      let lines = contentMain.split(/\r?\n/g)
-
-      if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
-        Fs.writeFileSync(
-          this.getViteFileName(),
-          astViteParse.astViteConfigAddSvgLoader(contentMain),
-          {
-            encoding: 'utf-8'
-          }
-        )
-      }
-    })
   }
 }
 module.exports = Vite3Config

@@ -34,7 +34,7 @@ class Xuwu {
       try {
         let packageData = JSON.parse(file)
         let version =
-          packageData.dependencies.vue || packageData.devDependencies.vue
+          packageData.dependencies.vite || packageData.devDependencies.vite
         return 'vite' + version[version.indexOf('.') - 1].toString()
       } catch (error) {
         return 'vue2'

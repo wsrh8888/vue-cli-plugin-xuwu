@@ -16,22 +16,22 @@ class ViteWebVue3 extends Common {
   fileRootConfig = new FileRootConfig()
 
   defaultPc = () => {
-    this.templateLintStaged()
-    this.templateRemoveConsole()
+    // this.templateLintStaged()
+    // this.templateRemoveConsole()
     this.templateCrossEnv()
     this.templateRequest()
-    this.uiElement()
-    this.templateSvgLoader()
+    // this.uiElement()
+    // this.templateSvgLoader()
   }
   defaultMobile = () => {
-    this.templateLintStaged()
+    // this.templateLintStaged()
     this.templateCrossEnv()
-    this.templateRemoveConsole()
-    this.templateAddVconsole()
-    this.templateFlexible()
-    this.templateRequest()
-    this.uiVant()
-    this.templateSvgLoader()
+    // this.templateRemoveConsole()
+    // this.templateAddVconsole()
+    // this.templateFlexible()
+    // this.templateRequest()
+    // this.uiVant()
+    // this.templateSvgLoader()
   }
   /*******
    * @description: 打包后体积分析
@@ -60,11 +60,9 @@ class ViteWebVue3 extends Common {
    * @description: ajax请求模板
    */
   templateRequest = () => {
-    this.templateCrossEnv()
     this.fileUtils.request()
     this.filePackage.packageAddAxios()
   }
-  templateES5 = () => {}
   /*******
    * @description: 适配插件
    */
