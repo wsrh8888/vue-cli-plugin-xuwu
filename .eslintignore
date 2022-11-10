@@ -1,2 +1,3 @@
 interface.js
 *.d.ts
+generator/template/viteConfig

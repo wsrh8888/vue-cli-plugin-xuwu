@@ -4,7 +4,6 @@ const FileMain = require('../../compilation/main')
 const FilePackage = require('../../compilation/package')
 const FileBabelConfig = require('../../compilation/babel.config')
 const FileUtils = require('../../compilation/utils')
-const FileViteConfig = require('../../compilation/vite.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
 class WebpackUniappVue2 extends Common {
@@ -14,7 +13,6 @@ class WebpackUniappVue2 extends Common {
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
   fileUtils = new FileUtils()
-  fileViteConfig = new FileViteConfig()
   fileRootConfig = new FileRootConfig()
   // 默认选择的模版
   defaultPc = () => {

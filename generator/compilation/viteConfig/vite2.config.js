@@ -1,11 +1,10 @@
-const Xuwu = require('../utils/xuwu')
-const Template = require('../static/template')
+const Xuwu = require('../../utils/xuwu')
+const Template = require('../../static/template')
 const Fs = require('fs')
 const { EOL } = require('os')
-const astViteParse = require('../ast/vite.config')
-class ViteConfig {
-  api = Xuwu.getApi()
-  options = Xuwu.getOption()
+const astViteParse = require('../../ast/vite.config')
+const ViteConfig = require('./vite.config')
+class Vite2Config extends ViteConfig {
   fileInit() {
     let contentMain
     try {
@@ -25,7 +24,7 @@ class ViteConfig {
       }
     } catch (error) {
       this.api.render({
-        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../template/vite3.config.${Xuwu.getTsOrJs()}`
+        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/viteConfig/vite3.config.${Xuwu.getTsOrJs()}`
       })
     }
   }
@@ -227,4 +226,4 @@ class ViteConfig {
     })
   }
 }
-module.exports = ViteConfig
+module.exports = Vite2Config

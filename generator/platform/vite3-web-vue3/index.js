@@ -3,7 +3,7 @@ const FileMain = require('../../compilation/main')
 const FilePackage = require('../../compilation/package')
 const FileBabelConfig = require('../../compilation/babel.config')
 const FileUtils = require('../../compilation/utils')
-const FileVite3Config = require('../../compilation/vite3.config')
+const FileVite3Config = require('../../compilation/viteConfig/vite3.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
 class ViteWebVue3 extends Common {
