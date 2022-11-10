@@ -91,18 +91,7 @@ class Vite2Config extends ViteConfig {
    */
   viteConfigAddElement() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) ===
-        -1
-      ) {
-        this.writeViteConfigContent(
-          astViteParse.astViteConfigAddElementPlus(contentMain)
-        )
-      }
-    })
+    this.viteConfigCommonElement()
   }
   viteConfigLess() {
     this.fileInit()

@@ -29,18 +29,10 @@ class ViteConfigAst extends AST {
   /*******
    * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
    */
-  astViteConfigAddElementPlus(sourceCode) {
+  astViteConfigAddElementPlus(source) {
+    // eslint-disable-next-line no-unused-vars
     let transformClassPlugin = {
       visitor: {
-        Program(path) {
-          // 添加依赖包的引入
-          let methods = path.node.body
-          let astCode = types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('elementPlus'))],
-            types.stringLiteral('unplugin-element-plus/vite')
-          )
-          methods.splice(1, 0, astCode)
-        },
         ExportDefaultDeclaration(path) {
           let properties = path.node.declaration.arguments[0].body.properties
 
@@ -69,10 +61,12 @@ class ViteConfigAst extends AST {
         }
       }
     }
-    let targetSource = core.transform(sourceCode, {
-      plugins: [transformClassPlugin]
+
+    return this.writeAst(source, {
+      visitor: {
+        ...astCommon.viteConfigAddElementPlus()
+      }
     })
-    return targetSource.code
   }
   astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {

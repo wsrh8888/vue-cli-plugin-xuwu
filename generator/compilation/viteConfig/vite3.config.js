@@ -5,7 +5,7 @@ const ViteConfig = require('./vite.config')
 class Vite3Config extends ViteConfig {
   fileInit() {
     try {
-      let contentMain = this.getContentViteConfig()
+      let contentMain = this.getViteConfigContent()
       // 判断vite.config.js 中是否是 =>的写法
       if (!astViteParse.astViteConfigIsInit(contentMain)) {
         throw Error
@@ -33,6 +33,13 @@ class Vite3Config extends ViteConfig {
         )
       }
     })
+  }
+  /*******
+   * @description: vite.config.ts 引入按需的相关代码
+   */
+  viteConfigAddElement() {
+    this.fileInit()
+    this.viteConfigCommonElement()
   }
 }
 module.exports = Vite3Config

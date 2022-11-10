@@ -29,6 +29,36 @@ class ViteConfigAstCommon {
     }
   }
   /*******
+   * @description: 给vite增加unplugin-element-plus 头文件
+   */
+  viteConfigAddElementPlus() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+        console.log('bodys', bodys)
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === 'unplugin-element-plus/vite'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        let astCode = types.importDeclaration(
+          [types.importDefaultSpecifier(types.identifier('elementPlus'))],
+          types.stringLiteral('unplugin-element-plus/vite')
+        )
+        bodys.splice(1, 0, astCode)
+      }
+    }
+  }
+  /*******
    * @description: 给声明方法增加mode和command参数
    */
   viteConifAddParams() {
