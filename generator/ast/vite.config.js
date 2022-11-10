@@ -309,5 +309,6 @@ module.exports = {
       plugins: [transformClassPlugin]
     })
     return targetSource.code
-  }
+  },
+  astViteConfigAddEnv() {}
 }

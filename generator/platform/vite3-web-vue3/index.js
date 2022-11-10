@@ -1,20 +1,18 @@
 const FileMainVue = require('../../compilation/main.vue')
-const FileVueConfig = require('../../compilation/vue.config')
 const FileMain = require('../../compilation/main')
 const FilePackage = require('../../compilation/package')
 const FileBabelConfig = require('../../compilation/babel.config')
 const FileUtils = require('../../compilation/utils')
-const FileViteConfig = require('../../compilation/vite.config')
+const FileVite3Config = require('../../compilation/vite3.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
 class ViteWebVue3 extends Common {
   fileMainVue = new FileMainVue()
-  fileVueConfig = new FileVueConfig()
   fileMain = new FileMain()
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
   fileUtils = new FileUtils()
-  fileViteConfig = new FileViteConfig()
+  fileVite3Config = new FileVite3Config()
   fileRootConfig = new FileRootConfig()
 
   defaultPc = () => {
@@ -40,7 +38,7 @@ class ViteWebVue3 extends Common {
    */
   templateVisualizer = () => {
     this.filePackage.packageVisualizer()
-    this.fileViteConfig.viteConfigVisualizer()
+    this.fileVite3Config.viteConfigVisualizer()
   }
   templatePinia() {
     // 引入package包
@@ -89,7 +87,7 @@ class ViteWebVue3 extends Common {
    */
   templateRemoveConsole = () => {
     this.templateCrossEnv()
-    this.fileViteConfig.viteConfigRemoveConsole()
+    this.fileVite3Config.viteConfigRemoveConsole()
   }
   /*******
    * @description: svg 解析
@@ -97,12 +95,13 @@ class ViteWebVue3 extends Common {
    */
   templateSvgLoader = () => {
     this.filePackage.packageSvgLoader()
-    this.fileViteConfig.viteConfigSvgLoader()
+    this.fileVite3Config.viteConfigSvgLoader()
   }
   /*******
    * @description: 扩展环境变量
    */
   templateCrossEnv = () => {
+    this.fileVite3Config.addEnvConfig()
     this.filePackage.packageCrossEnvVite()
     this.fileRootConfig.envConfigFile()
   }
@@ -114,20 +113,20 @@ class ViteWebVue3 extends Common {
     // 增加按需引入的依赖包
     this.filePackage.packageUnpluginElementPlus()
     // 按需引入的配置代码
-    this.fileViteConfig.viteConfigAddElement()
+    this.fileVite3Config.viteConfigAddElement()
   }
   uiVant = () => {
     this.filePackage.packageVantVue3()
     this.filePackage.packageVue3Vite()
-    this.fileViteConfig.viteConfigAddVant()
+    this.fileVite3Config.viteConfigAddVant()
   }
   uiAntDesign = () => {
     this.templateLess()
-    this.fileViteConfig.viteConfigLess()
+    this.fileVite3Config.viteConfigLess()
     this.filePackage.packageVue3Vite()
     this.filePackage.packageAntDesignVue3()
     this.fileUtils.antDesign()
-    this.fileViteConfig.viteConfigAddAntDesign()
+    this.fileVite3Config.viteConfigAddAntDesign()
     this.fileMain.mainAddAntDesignVue3()
   }
 }
