@@ -40,6 +40,23 @@ class ViteConfig {
       }
     })
   }
+  /*******
+   * @description: vite.config.ts 增加svg laoder相关内容
+   */
+  viteConfigCommonSvgLoader() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (
+        lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) ===
+        -1
+      ) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddElementPlus(contentMain)
+        )
+      }
+    })
+  }
 }
 
 module.exports = ViteConfig

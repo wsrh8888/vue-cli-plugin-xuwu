@@ -130,16 +130,7 @@ class Vite2Config extends ViteConfig {
   }
   viteConfigSvgLoader() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-
-      if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
-        this.writeViteConfigContent(
-          astViteParse.astViteConfigAddSvgLoader(contentMain)
-        )
-      }
-    })
+    this.viteConfigCommonSvgLoader()
   }
 }
 module.exports = Vite2Config

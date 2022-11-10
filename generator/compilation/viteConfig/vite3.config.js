@@ -41,5 +41,9 @@ class Vite3Config extends ViteConfig {
     this.fileInit()
     this.viteConfigCommonElement()
   }
+  viteConfigSvgLoader() {
+    this.fileInit()
+    this.viteConfigCommonSvgLoader()
+  }
 }
 module.exports = Vite3Config

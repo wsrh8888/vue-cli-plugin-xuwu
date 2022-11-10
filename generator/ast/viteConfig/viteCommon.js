@@ -125,6 +125,88 @@ class ViteConfigAstCommon {
       }
     }
   }
+  /*******
+   * @description: 在vite的plugin增加element的包
+   */
+  viteConfigAddElementPlugin() {
+    return {
+      ExportDefaultDeclaration(path) {
+        let properties = path.node.declaration.arguments[0].body.properties
+        let currentProperties
+        properties.forEach((item) => {
+          if (item.key.name === 'plugins') {
+            currentProperties = item
+          }
+        })
+        if (!currentProperties) {
+          let currentObject = types.objectProperty(
+            types.identifier('plugins'),
+            types.arrayExpression([])
+          )
+          currentProperties = currentObject
+          properties.push(currentObject)
+        }
+
+        let pluginsList = currentProperties.value.elements
+        pluginsList.push(
+          types.callExpression(types.identifier('elementPlus'), [])
+        )
+
+        // let arrowFunction = path.node.declar
+      }
+    }
+  }
+  /*******
+   * @description: 在vite头文件中增加SvgLoader
+   */
+  viteConfigHeaderAddSvgLoader() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+        console.log('bodys', bodys)
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === 'vite-svg-loader'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('svgLoader'))],
+            types.stringLiteral('vite-svg-loader')
+          )
+        )
+      }
+    }
+  }
+  /*******
+   * @description: 在body中增加SvgLoader相关内容
+   */
+  viteConfigBodyAddSvgLoader() {
+    return {
+      ObjectExpression(path) {
+        let methods = path.node.properties
+        methods.forEach((method) => {
+          if (method.key.name === 'plugins') {
+            let pluginsList = method.value.elements
+            pluginsList.push(
+              types.callExpression(types.identifier('svgLoader'), [])
+            )
+          }
+        })
+      }
+    }
+  }
 }
 
 module.exports = new ViteConfigAstCommon()

@@ -30,41 +30,10 @@ class ViteConfigAst extends AST {
    * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
    */
   astViteConfigAddElementPlus(source) {
-    // eslint-disable-next-line no-unused-vars
-    let transformClassPlugin = {
-      visitor: {
-        ExportDefaultDeclaration(path) {
-          let properties = path.node.declaration.arguments[0].body.properties
-
-          let currentProperties
-          properties.forEach((item) => {
-            if (item.key.name === 'plugins') {
-              currentProperties = item
-            }
-          })
-
-          if (!currentProperties) {
-            let currentObject = types.objectProperty(
-              types.identifier('plugins'),
-              types.arrayExpression([])
-            )
-            currentProperties = currentObject
-            properties.push(currentObject)
-          }
-
-          let pluginsList = currentProperties.value.elements
-          pluginsList.push(
-            types.callExpression(types.identifier('elementPlus'), [])
-          )
-
-          // let arrowFunction = path.node.declar
-        }
-      }
-    }
-
     return this.writeAst(source, {
       visitor: {
-        ...astCommon.viteConfigAddElementPlus()
+        ...astCommon.viteConfigAddElementPlus(),
+        ...astCommon.viteConfigAddElementPlugin()
       }
     })
   }
@@ -273,36 +242,13 @@ class ViteConfigAst extends AST {
     })
     return targetSource.code
   }
-  astViteConfigAddSvgLoader(sourceCode) {
-    let transformClassPlugin = {
+  astViteConfigAddSvgLoader(source) {
+    return this.writeAst(source, {
       visitor: {
-        Program(path) {
-          // 添加依赖包的引入
-          let methods = path.node.body
-          let astCode = types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('svgLoader'))],
-            types.stringLiteral('vite-svg-loader')
-          )
-          methods.splice(1, 0, astCode)
-        },
-        ObjectExpression(path) {
-          let methods = path.node.properties
-          methods.forEach((method) => {
-            if (method.key.name === 'plugins') {
-              let pluginsList = method.value.elements
-              pluginsList.push(
-                types.callExpression(types.identifier('svgLoader'), [])
-              )
-            }
-          })
-        }
+        ...astCommon.viteConfigBodyAddSvgLoader(),
+        ...astCommon.viteConfigHeaderAddSvgLoader()
       }
-    }
-
-    let targetSource = core.transform(sourceCode, {
-      plugins: [transformClassPlugin]
     })
-    return targetSource.code
   }
   astViteConfigAddEnv() {}
   astViteConfigAddBaseUrl(source) {

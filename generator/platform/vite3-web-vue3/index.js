@@ -20,8 +20,8 @@ class ViteWebVue3 extends Common {
     // this.templateRemoveConsole()
     // this.templateCrossEnv()
     // this.templateRequest()
-    this.uiElement()
-    // this.templateSvgLoader()
+    // this.uiElement()
+    this.templateSvgLoader()
   }
   defaultMobile = () => {
     // this.templateLintStaged()
