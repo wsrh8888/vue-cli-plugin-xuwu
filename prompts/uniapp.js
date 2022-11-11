@@ -1,11 +1,9 @@
 module.exports = {
   webpackUniappVue3Manually(language, toolName, frame) {
     return {
-      when: (answers) => {
+      when: () => {
         return (
-          language === 'uniapp' &&
-          frame === 'vue3' &&
-          toolName === 'webpack'
+          language === 'uniapp' && frame === 'vue3' && toolName === 'webpack'
         )
       },
       type: 'checkbox',
@@ -14,7 +12,7 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' }
       ],
       default: () => [
         'templateRequest',
@@ -27,9 +25,7 @@ module.exports = {
     return {
       when: () => {
         return (
-          language === 'uniapp' &&
-          frame === 'vue2' &&
-          toolName === 'webpack'
+          language === 'uniapp' && frame === 'vue2' && toolName === 'webpack'
         )
       },
       type: 'checkbox',
@@ -38,7 +34,7 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' }
       ],
       default: () => [
         'templateRequest',

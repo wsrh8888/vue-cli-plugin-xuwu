@@ -7,7 +7,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "build": "tsc && npm run lint",
-    "lint": "eslint --fix ./prompts.js ./generator  --ext .vue,.js,.ts",
+    "lint": "eslint --fix ./prompts.js ./generator ./prompts  --ext .vue,.js,.ts",
     "test": "node '/Users/wymac/Documents/source/my-source/xuwu/xuwu/generator/static/ast.js'"
   },
   "husky": {

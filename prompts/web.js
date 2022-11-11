@@ -23,7 +23,8 @@ module.exports = {
         { name: 'SVG解析', value: 'templateSvgLoader' },
         { name: '打包体积分析', value: 'templateVisualizer' },
         { name: 'Pinia', value: 'templatePinia' },
-        { name: 'Vant', value: 'uiVant' }
+        { name: 'Vant', value: 'uiVant' },
+        { name: 'file工具', value: 'templateFileUtils' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -71,7 +72,8 @@ module.exports = {
         { name: 'SVG解析', value: 'templateSvgLoader' },
         { name: '打包体积分析', value: 'templateVisualizer' },
         { name: 'Pinia', value: 'templatePinia' },
-        { name: 'Vant', value: 'uiVant' }
+        { name: 'Vant', value: 'uiVant' },
+        { name: 'file工具', value: 'templateFileUtils' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -117,7 +119,8 @@ module.exports = {
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
         { name: 'Element', value: 'uiElement' },
-        { name: 'Vant', value: 'uiVant' }
+        { name: 'Vant', value: 'uiVant' },
+        { name: 'file工具', value: 'templateFileUtils' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'
@@ -163,7 +166,8 @@ module.exports = {
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
         { name: 'Element', value: 'uiElement' },
-        { name: 'Vant', value: 'uiVant' }
+        { name: 'Vant', value: 'uiVant' },
+        { name: 'file工具', value: 'templateFileUtils' }
       ],
       default: (answers) =>
         answers.promptsScene === 'pc'

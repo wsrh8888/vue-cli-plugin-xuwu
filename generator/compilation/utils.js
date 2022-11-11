@@ -74,6 +74,11 @@ class Request extends RootRequest {
       [`/src/plugins/vant.${this.suffixes}`]: `../template/plugins/${this.version}/vant.${this.suffixes}`
     })
   }
+  fileUtilsPlus() {
+    this.api.render({
+      [`/src/utils/upload.${this.suffixes}`]: `../template/utils/upload.${this.suffixes}`
+    })
+  }
   antDesign() {
     this.api.render({
       [`/src/plugins/antDesign.${this.suffixes}`]: `../template/plugins/${this.version}/antDesign.${this.suffixes}`

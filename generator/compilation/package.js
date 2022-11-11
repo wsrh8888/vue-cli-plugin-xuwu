@@ -140,6 +140,18 @@ class Package {
     })
   }
   /**
+   * @description: 在package.json文件里，增加file-utils-plus依赖包
+   * @param {*}
+   * @return {void}
+   */
+  packageFileUtils() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        'file-utils-plus': '^1.0.1'
+      })
+    })
+  }
+  /**
    * @description: 在package.json文件里，增加elementUI的按需引入相关的依赖包和配置
    * @param {*}
    * @return {void}

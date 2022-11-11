@@ -18,7 +18,8 @@ class ViteWebVue3 extends Common {
   defaultPc = () => {
     // this.templateLintStaged()
     // this.templateRemoveConsole()
-    this.templateCrossEnv()
+    // this.templateCrossEnv()
+    this.templateFileUtils()
     // this.templateRequest()
     // this.uiElement()
     // this.templateSvgLoader()
@@ -117,6 +118,10 @@ class ViteWebVue3 extends Common {
     this.filePackage.packageVantVue3()
     this.filePackage.packageVue3Vite()
     this.fileVite3Config.viteConfigAddVant()
+  }
+  templateFileUtils() {
+    this.filePackage.packageFileUtils()
+    this.fileUtils.fileUtilsPlus()
   }
   uiAntDesign = () => {
     this.templateLess()
