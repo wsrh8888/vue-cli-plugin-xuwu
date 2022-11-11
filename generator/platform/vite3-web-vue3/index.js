@@ -18,10 +18,10 @@ class ViteWebVue3 extends Common {
   defaultPc = () => {
     // this.templateLintStaged()
     // this.templateRemoveConsole()
-    // this.templateCrossEnv()
+    this.templateCrossEnv()
     // this.templateRequest()
     // this.uiElement()
-    this.templateSvgLoader()
+    // this.templateSvgLoader()
   }
   defaultMobile = () => {
     // this.templateLintStaged()

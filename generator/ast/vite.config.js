@@ -254,15 +254,10 @@ class ViteConfigAst extends AST {
   astViteConfigAddBaseUrl(source) {
     return this.writeAst(source, {
       visitor: {
-        Program() {
-          // let rootChildren = path.node.body
-          // rootChildren.forEach(rootItem => {
-          //   rootItem.
-          // })
-        },
         ...astCommon.viteConfigAddloadEnv(),
         ...astCommon.viteConifAddParams(),
-        ...astCommon.viteConfigChangeBase()
+        ...astCommon.viteConfigChangeBase(),
+        ...astCommon.viteConfigContentAddBaseUrl()
       }
     })
   }

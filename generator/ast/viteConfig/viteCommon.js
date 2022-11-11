@@ -207,6 +207,134 @@ class ViteConfigAstCommon {
       }
     }
   }
+  viteConfigContentAddBaseUrl() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+        console.log('bodys', bodys)
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'FunctionDeclaration' &&
+            body.id.name === 'baseUrl'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        let astCode = types.functionDeclaration(
+          types.identifier('baseUrl'),
+          [
+            types.objectPattern([
+              types.objectProperty(
+                types.identifier('mode'),
+                types.identifier('mode'),
+                false,
+                true
+              ),
+              types.objectProperty(
+                types.identifier('command'),
+                types.identifier('command'),
+                false,
+                true
+              )
+            ])
+          ],
+
+          types.blockStatement([
+            // 第二行
+            types.variableDeclaration('const', [
+              types.variableDeclarator(
+                types.identifier('env'),
+                types.callExpression(types.identifier('loadEnv'), [
+                  types.identifier('mode'),
+                  types.identifier('command')
+                ])
+              )
+            ]),
+            // 第三行
+            types.variableDeclaration('let', [
+              types.variableDeclarator(
+                types.identifier('base'),
+                types.stringLiteral('./')
+              )
+            ]),
+            //第四行
+            types.ifStatement(
+              types.logicalExpression(
+                '&&',
+                types.binaryExpression(
+                  '===',
+                  types.identifier('command'),
+                  types.stringLiteral('build')
+                ),
+                types.binaryExpression(
+                  '===',
+                  types.identifier('env.VITE_API_ENV'),
+                  types.stringLiteral('test')
+                )
+              ),
+              // 第五行
+              types.blockStatement([
+                types.expressionStatement(
+                  types.assignmentExpression(
+                    '=',
+                    types.identifier('base'),
+                    types.stringLiteral('./')
+                  )
+                )
+              ]),
+              // 第六行
+              types.ifStatement(
+                types.logicalExpression(
+                  '&&',
+                  types.binaryExpression(
+                    '===',
+                    types.identifier('command'),
+                    types.stringLiteral('build')
+                  ),
+                  types.binaryExpression(
+                    '===',
+                    types.identifier('env.VITE_API_ENV'),
+                    types.stringLiteral('prod')
+                  )
+                ),
+                // 第七行
+                types.blockStatement([
+                  types.expressionStatement(
+                    types.assignmentExpression(
+                      '=',
+                      types.identifier('base'),
+                      types.stringLiteral('./')
+                    )
+                  )
+                ]),
+                // 第八行
+                types.blockStatement([
+                  //第九行
+                  types.expressionStatement(
+                    types.assignmentExpression(
+                      '=',
+                      types.identifier('base'),
+                      types.stringLiteral('./')
+                    )
+                  )
+                ])
+              )
+            ),
+
+            // return 行
+            types.returnStatement(types.identifier('base'))
+          ])
+        )
+        bodys.splice(1, 0, astCode)
+      }
+    }
+  }
 }
 
 module.exports = new ViteConfigAstCommon()
