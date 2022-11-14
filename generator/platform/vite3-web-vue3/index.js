@@ -52,7 +52,6 @@ class ViteWebVue3 extends Common {
    * @description: consoleLog控制台
    */
   templateAddVconsole = () => {
-    this.templateCrossEnv()
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsoleVue3()
   }
@@ -84,7 +83,6 @@ class ViteWebVue3 extends Common {
    * @description: templateAddVconsole
    */
   templateRemoveConsole = () => {
-    this.templateCrossEnv()
     this.fileVite3Config.viteConfigRemoveConsole()
   }
   /*******

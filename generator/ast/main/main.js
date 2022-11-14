@@ -2,9 +2,9 @@ let types = require('@babel/types')
 
 class MainAstCommon {
   /*******
-   * @description: 给vite增加loadEnv属性
+   * @description:
    */
-  viteConfigAddloadEnv() {
+  astMainHeaderAddPinia() {
     return {
       Program(path) {
         // 添加依赖包的引入

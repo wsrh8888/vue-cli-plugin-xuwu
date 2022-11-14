@@ -33,7 +33,6 @@ class WebpackWebVue3 extends Common {
     this.uiVant()
   }
   templateAddVconsole = () => {
-    this.templateCrossEnv()
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsoleVue3()
   }

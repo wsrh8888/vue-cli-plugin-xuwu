@@ -129,7 +129,7 @@ class Main {
       if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
         Fs.writeFileSync(
           this.api.entryFile,
-          astMainParse.astMainPinia(contentMain),
+          astMainParse.astMainAddPinia(contentMain),
           {
             encoding: 'utf-8'
           }

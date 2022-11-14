@@ -5,7 +5,7 @@ class MainAst extends AST {
   astMainAddPinia(source) {
     return this.writeAst(source, {
       visitor: {
-        ...astCommon.astMainAddPinia()
+        ...astCommon.astMainHeaderAddPinia()
       }
     })
   }

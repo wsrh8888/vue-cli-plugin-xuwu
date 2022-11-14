@@ -32,7 +32,6 @@ class WebpackWebVue2 extends Common {
     this.uiVant()
   }
   templateAddVconsole = () => {
-    this.templateCrossEnv()
     this.filePackage.packageAddConsolePanel()
     this.fileMain.mainAddVconsole()
   }

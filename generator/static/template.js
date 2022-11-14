@@ -151,12 +151,14 @@ module.exports = class Template {
   static vConsoleVue3() {
     return `
       import VConsole from 'vconsole'
+      // @ts-ignore 
       app.use(new VConsole())
     `
   }
   static vConsoleVue3Vite() {
     return `
       import VConsole from 'vconsole'
+      // @ts-ignore
       app.use(new VConsole())
     `
   }
