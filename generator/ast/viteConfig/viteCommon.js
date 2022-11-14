@@ -361,6 +361,63 @@ class ViteConfigAstCommon {
       }
     }
   }
+  viteConfigBodyStyleImportant() {
+    return {
+      ObjectExpression(path) {
+        let methods = path.node.properties
+        methods.forEach((method) => {
+          if (method.key.name === 'plugins') {
+            let pluginsList = method.value.elements
+            pluginsList.push(
+              types.callExpression(types.identifier('styleImport'), [
+                types.objectExpression([
+                  types.objectProperty(
+                    types.identifier('libs'),
+                    types.arrayExpression([
+                      types.objectExpression([
+                        types.objectProperty(
+                          types.identifier('libraryName'),
+                          types.stringLiteral('vant')
+                        ),
+
+                        types.objectProperty(
+                          types.identifier('esModule'),
+                          types.booleanLiteral(true)
+                        ),
+
+                        types.objectProperty(
+                          types.identifier('resolveStyle'),
+                          types.arrowFunctionExpression(
+                            [types.identifier('name')],
+                            types.templateLiteral(
+                              [
+                                types.templateElement(
+                                  { raw: '../es/', cooked: '../es' },
+                                  false
+                                ),
+                                types.templateElement(
+                                  {
+                                    raw: '/style/index',
+                                    cooked: '/style/index'
+                                  },
+                                  true
+                                )
+                              ],
+                              [types.identifier('name')]
+                            )
+                          )
+                        )
+                      ])
+                    ])
+                  )
+                ])
+              ])
+            )
+          }
+        })
+      }
+    }
+  }
 }
 
 module.exports = new ViteConfigAstCommon()

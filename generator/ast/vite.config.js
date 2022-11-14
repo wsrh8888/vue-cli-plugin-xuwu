@@ -250,7 +250,6 @@ class ViteConfigAst extends AST {
       }
     })
   }
-  astViteConfigAddEnv() {}
   astViteConfigAddBaseUrl(source) {
     return this.writeAst(source, {
       visitor: {
@@ -264,7 +263,8 @@ class ViteConfigAst extends AST {
   astViteConfigAddStyleImportant(source) {
     return this.writeAst(source, {
       visitor: {
-        ...astCommon.viteConfigHeaderStyleImportant()
+        ...astCommon.viteConfigHeaderStyleImportant(),
+        ...astCommon.viteConfigBodyStyleImportant()
       }
     })
   }
