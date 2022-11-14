@@ -15,7 +15,7 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: '生产环境去掉console', value: 'templateRemoveConsole' },
+        { name: '去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
@@ -29,12 +29,12 @@ module.exports = {
       default: (answers) =>
         answers.promptsScene === 'pc'
           ? [
-              // 'templateRequest',
-              // 'templateLintStaged',
-              // 'templateRemoveConsole',
-              // 'templateCrossEnv',
-              // 'uiElement',
-              // 'templateSvgLoader'
+              'templateRequest',
+              'templateLintStaged',
+              'templateRemoveConsole',
+              'templateCrossEnv',
+              'uiElement',
+              'templateSvgLoader'
             ]
           : [
               'templateAddVconsole',
@@ -64,7 +64,7 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: '生产环境去掉console', value: 'templateRemoveConsole' },
+        { name: '去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
@@ -114,7 +114,7 @@ module.exports = {
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
         { name: '打包编译为ES5', value: 'templateES5' },
-        { name: '生产环境去掉console', value: 'templateRemoveConsole' },
+        { name: '去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
@@ -161,7 +161,7 @@ module.exports = {
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
         { name: '打包编译为ES5', value: 'templateES5' },
-        { name: '生产环境去掉console', value: 'templateRemoveConsole' },
+        { name: '去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
         { name: '适配插件', value: 'templateFlexible' },
@@ -172,12 +172,12 @@ module.exports = {
       default: (answers) =>
         answers.promptsScene === 'pc'
           ? [
-              'templateRequest',
-              'templateES5',
-              'templateLintStaged',
-              'templateRemoveConsole',
-              'templateCrossEnv',
-              'uiElement'
+              // 'templateRequest',
+              // 'templateES5',
+              // 'templateLintStaged',
+              // 'templateRemoveConsole',
+              // 'templateCrossEnv',
+              // 'uiElement'
             ]
           : [
               'templateAddVconsole',

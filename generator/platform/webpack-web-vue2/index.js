@@ -36,16 +36,14 @@ class WebpackWebVue2 extends Common {
     this.fileMain.mainAddVconsole()
   }
   templateRequest = () => {
-    this.templateCrossEnv()
-    this.fileUtils.request()
     this.filePackage.packageAddAxios()
+    this.fileUtils.request()
   }
   templateES5 = () => {
     this.fileBabelConfig.babelConfigEs6ToEs5()
     this.filePackage.packageBabelEs6ToEs5()
   }
   templateFlexible = () => {
-    this.templateCrossEnv()
     this.filePackage.packageFlexible()
     this.fileUtils.rem()
     this.fileMain.mainAddRem()
@@ -67,21 +65,19 @@ class WebpackWebVue2 extends Common {
   }
   uiElement = () => {
     this.filePackage.packageElementUi()
-    this.fileUtils.element()
     this.fileBabelConfig.babelConfigAddElement()
-    this.fileMain.mainAddElement()
   }
   uiVant = () => {
     this.filePackage.packageVantUi()
-    this.fileUtils.vant()
     this.fileBabelConfig.babelConfigAddVant()
-    this.fileMain.mainAddVant()
   }
   uiAntDesign = () => {
     this.filePackage.packageAntDesignVue2()
-    this.fileUtils.antDesign()
     this.fileBabelConfig.babelConfigAddAntDesign()
-    this.fileMain.mainAddAntDesign()
+  }
+  templateFileUtils() {
+    this.filePackage.packageFileUtils()
+    this.fileUtils.fileUtilsPlus()
   }
 }
 module.exports = WebpackWebVue2

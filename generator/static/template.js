@@ -6,9 +6,7 @@ module.exports = class Template {
    */
   static reoveConsoleTemplate() {
     return `
-      if (process.env.API_ENV === 'prod') {
-        plugins.push('transform-remove-console')
-      }
+      plugins.push('transform-remove-console')
     `
   }
   /**
@@ -137,10 +135,8 @@ module.exports = class Template {
   static vConsoleVue2() {
     return `
       import VConsole from 'vconsole'
-      if (process.env.API_ENV !== 'prod') { 
-        // @ts-ignore
-        Vue.use(new VConsole())
-      }
+      // @ts-ignore
+      Vue.use(new VConsole())
     `
   }
   /**
