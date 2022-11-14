@@ -118,7 +118,7 @@ module.exports = class Template {
    * @return {string}
    */
   static mainVueTemplate() {
-    return `
+    return `<style>
       @media only screen and (min-width: 375px) {
         #app {
           width: 375px;
@@ -126,6 +126,7 @@ module.exports = class Template {
           margin: 0 auto;
         }
       }
+      </style>
     `
   }
   /**

@@ -99,8 +99,6 @@ class ViteWebVue3 extends Common {
    * @description: 扩展环境变量
    */
   templateCrossEnv = () => {
-    console.log('123123123123')
-
     this.fileVite3Config.addEnvConfig()
     this.filePackage.packageCrossEnvVite()
     this.fileRootConfig.envConfigFile()

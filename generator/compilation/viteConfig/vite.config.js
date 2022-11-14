@@ -14,8 +14,6 @@ class ViteConfig {
     return `./vite.config.${Xuwu.getTsOrJs()}`
   }
   writeViteConfigContent(code) {
-    console.log('123123123123123')
-
     Fs.writeFileSync(this.getViteFileName(), code, {
       encoding: 'utf-8'
     })

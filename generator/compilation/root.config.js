@@ -11,7 +11,7 @@ class RootConfig {
    */
   postcssConfigFile() {
     this.api.render({
-      '/postcss.config.js': '../template/root/postcss.config.js'
+      '/postcss.config.cjs': '../template/root/postcss.config.js'
     })
   }
   envConfigFile() {
