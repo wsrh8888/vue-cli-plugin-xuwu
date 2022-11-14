@@ -124,11 +124,11 @@ module.exports = {
       default: (answers) =>
         answers.promptsScene === 'pc'
           ? [
-              // 'templateRequest',
-              // 'templateLintStaged',
-              // 'templateRemoveConsole',
-              // 'templateCrossEnv',
-              // 'uiElement'
+              'templateRequest',
+              'templateLintStaged',
+              'templateRemoveConsole',
+              'templateCrossEnv',
+              'uiElement'
             ]
           : [
               'templateAddVconsole',
@@ -169,12 +169,12 @@ module.exports = {
       default: (answers) =>
         answers.promptsScene === 'pc'
           ? [
-              // 'templateRequest',
-              // 'templateES5',
-              // 'templateLintStaged',
-              // 'templateRemoveConsole',
-              // 'templateCrossEnv',
-              // 'uiElement'
+              'templateRequest',
+              'templateES5',
+              'templateLintStaged',
+              'templateRemoveConsole',
+              'templateCrossEnv',
+              'uiElement'
             ]
           : [
               'templateAddVconsole',
