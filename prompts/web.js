@@ -113,7 +113,6 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: '打包编译为ES5', value: 'templateES5' },
         { name: '去掉console', value: 'templateRemoveConsole' },
         { name: 'commit代码时统一风格', value: 'templateLintStaged' },
         { name: 'consoleLog控制台', value: 'templateAddVconsole' },
@@ -125,17 +124,15 @@ module.exports = {
       default: (answers) =>
         answers.promptsScene === 'pc'
           ? [
-              'templateRequest',
-              'templateES5',
-              'templateLintStaged',
-              'templateRemoveConsole',
-              'templateCrossEnv',
-              'uiElement'
+              // 'templateRequest',
+              // 'templateLintStaged',
+              // 'templateRemoveConsole',
+              // 'templateCrossEnv',
+              // 'uiElement'
             ]
           : [
               'templateAddVconsole',
               'templateRequest',
-              'templateES5',
               'templateFlexible',
               'templateLintStaged',
               'templateRemoveConsole',

@@ -37,7 +37,6 @@ class WebpackWebVue3 extends Common {
     this.fileMain.mainAddVconsoleVue3()
   }
   templateRequest = () => {
-    this.templateCrossEnv()
     this.fileUtils.request()
     this.filePackage.packageAddAxios()
   }
@@ -46,7 +45,6 @@ class WebpackWebVue3 extends Common {
     this.filePackage.packageBabelEs6ToEs5()
   }
   templateFlexible = () => {
-    this.templateCrossEnv()
     this.filePackage.packageFlexible()
     this.fileUtils.rem()
     this.fileMain.mainAddRemVue3()
@@ -79,6 +77,10 @@ class WebpackWebVue3 extends Common {
     this.fileUtils.antDesign()
     this.fileBabelConfig.babelConfigAddAntDesign()
     this.fileMain.mainAddAntDesignVue3()
+  }
+  templateFileUtils() {
+    this.filePackage.packageFileUtils()
+    this.fileUtils.fileUtilsPlus()
   }
 }
 module.exports = WebpackWebVue3

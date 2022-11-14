@@ -25,7 +25,6 @@ class WebpackUniappVue3 extends Common {
     this.defaultPc()
   }
   templateRequest = () => {
-    this.templateCrossEnv()
     this.fileUtils.uniappRequest()
     this.filePackage.packageAddAxios()
   }
