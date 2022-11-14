@@ -7,20 +7,20 @@ vue add xuwu
 
 ## 功能
 
-| 功能 | webpack-web-vue2 | webpack-web-vue3 | webpack-uniapp-vue2 | webpack-uniapp-vue3 |vite-web-vue3 |
+| 功能 | webpack-web-vue2 | webpack-web-vue3 | webpack-uniapp-vue2 | webpack-uniapp-vue3 |vite2-web-vue3 |vite3-web-vue3 |
 |:---------:|:--------:|:--------:|:--------:|:--------:|:--------:|
-|ajax请求|✅|✅|✅|✅|✅|
-|扩展环境变量|✅|✅|✅|✅|✅|
-|去掉console|✅|✅|❌|❌|✅|
-|统一代码风格|✅|✅|✅|✅|✅|
-|consoleLog控制台|✅|✅|❌|❌|✅|
-|移动端适配|✅|✅|❌|❌|✅|
-|SVG解析|❌|❌|❌|❌|✅|
-|打包体积分析|✅|✅|❌|❌|✅|
-|pinia|❌|❌|❌|❌|✅|
-|ES6为ES5|✅|❌|❌|❌|❌|
-|Element|✅|✅|❌|❌|✅|
-|vant|✅|✅|✅|✅|✅|
+|ajax请求|✅|✅|✅|✅|✅|✅|
+|扩展环境变量|✅|✅|✅|✅|✅|✅|
+|去掉console|✅|✅|❌|❌|✅|✅|
+|统一代码风格|✅|✅|✅|✅|✅|✅|
+|consoleLog控制台|✅|✅|❌|❌|✅|✅|
+|移动端适配|✅|✅|❌|❌|✅|✅|
+|SVG解析|❌|❌|❌|❌|✅|✅|
+|打包体积分析|✅|✅|❌|❌|✅|✅|
+|pinia|❌|❌|❌|❌|✅|✅|
+|ES6为ES5|✅|❌|❌|❌|❌|❌|
+|Element|✅|✅|❌|❌|✅|✅|
+|vant|✅|✅|✅|✅|✅|✅|
 
 
 ## 安装教程

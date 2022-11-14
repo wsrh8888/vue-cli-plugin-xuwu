@@ -19,15 +19,12 @@ class WebpackUniappVue2 extends Common {
     this.templateCrossEnv()
     this.templateLintStaged()
     this.templateRequest()
-    this.templateLess()
   }
   defaultMobile = () => {
     this.defaultPc()
   }
   templateRequest = () => {
-    this.templateCrossEnv()
     this.fileUtils.uniappRequest()
-    this.filePackage.packageAddAxios()
   }
   templateLintStaged = () => {
     this.filePackage.packageCommitPre()
