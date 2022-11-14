@@ -61,11 +61,9 @@ class ViteWebVue3 extends Common {
    * @description: ajax请求模板
    */
   templateRequest = () => {
-    this.templateCrossEnv()
     this.fileUtils.request()
     this.filePackage.packageAddAxios()
   }
-  templateES5 = () => {}
   /*******
    * @description: 适配插件
    */
@@ -101,6 +99,7 @@ class ViteWebVue3 extends Common {
    * @description: 扩展环境变量
    */
   templateCrossEnv = () => {
+    this.fileViteConfig.addEnvConfig()
     this.filePackage.packageCrossEnvVite()
     this.fileRootConfig.envConfigFile()
   }
@@ -127,6 +126,10 @@ class ViteWebVue3 extends Common {
     this.fileUtils.antDesign()
     this.fileViteConfig.viteConfigAddAntDesign()
     this.fileMain.mainAddAntDesignVue3()
+  }
+  templateFileUtils() {
+    this.filePackage.packageFileUtils()
+    this.fileUtils.fileUtilsPlus()
   }
 }
 module.exports = ViteWebVue3

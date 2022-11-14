@@ -20,7 +20,7 @@ class Vite2Config extends ViteConfig {
       }
     } catch (error) {
       this.api.render({
-        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/viteConfig/vite3.config.${Xuwu.getTsOrJs()}`
+        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/viteConfig/vite2.config.${Xuwu.getTsOrJs()}`
       })
     }
   }

@@ -115,24 +115,10 @@ class ViteConfigAst extends AST {
                   ) {
                     let objectProperty = types.objectProperty(
                       types.identifier('drop_console'),
-                      types.logicalExpression(
-                        '&&',
-                        types.binaryExpression(
-                          '===',
-                          types.identifier('command'),
-                          types.stringLiteral('build')
-                        ),
-                        types.binaryExpression(
-                          '===',
-                          types.memberExpression(
-                            types.callExpression(types.identifier('loadEnv'), [
-                              types.identifier('mode'),
-                              types.identifier('__dirname')
-                            ]),
-                            types.identifier('VITE_API_ENV')
-                          ),
-                          types.stringLiteral('prod')
-                        )
+                      types.binaryExpression(
+                        '===',
+                        types.identifier('command'),
+                        types.stringLiteral('build')
                       )
                     )
                     compressList.push(objectProperty)
@@ -145,24 +131,10 @@ class ViteConfigAst extends AST {
                   ) {
                     let objectProperty = types.objectProperty(
                       types.identifier('drop_debugger'),
-                      types.logicalExpression(
-                        '&&',
-                        types.binaryExpression(
-                          '===',
-                          types.identifier('command'),
-                          types.stringLiteral('build')
-                        ),
-                        types.binaryExpression(
-                          '===',
-                          types.memberExpression(
-                            types.callExpression(types.identifier('loadEnv'), [
-                              types.identifier('mode'),
-                              types.identifier('__dirname')
-                            ]),
-                            types.identifier('VITE_API_ENV')
-                          ),
-                          types.stringLiteral('prod')
-                        )
+                      types.binaryExpression(
+                        '===',
+                        types.identifier('command'),
+                        types.stringLiteral('build')
                       )
                     )
                     compressList.push(objectProperty)
