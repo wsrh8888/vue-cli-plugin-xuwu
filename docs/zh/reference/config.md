@@ -130,9 +130,6 @@ export default {
   - [description](#description)
   - [head](#head)
 
-- 参考：
-  - [指南 > I18n](../guide/i18n.md)
-
 ## 主题配置
 
 ### theme
@@ -192,7 +189,7 @@ export default {
   指定临时文件目录。
 
 ::: warning
-VuePress 在开发和构建时会加载临时文件，因此临时文件目录应位于项目根目录内部，以便可以正确地解析到依赖。
+xuwu 在开发和构建时会加载临时文件，因此临时文件目录应位于项目根目录内部，以便可以正确地解析到依赖。
 :::
 
 ### cache
@@ -343,7 +340,7 @@ VuePress 在开发和构建时会加载临时文件，因此临时文件目录�
 
 - 详情：
 
-  对 VuePress 内置的 Markdown 语法扩展进行配置。
+  对 xuwu 内置的 Markdown 语法扩展进行配置。
 
   它可以接收 [markdown-it](https://github.com/markdown-it/markdown-it) 的所有配置项，以及下列额外的配置项。
 
@@ -384,7 +381,7 @@ const defaultOptions = {
 
 - 详情：
 
-  VuePress 内置的 markdown-it assets 插件的配置项。
+  xuwu 内置的 markdown-it assets 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 
@@ -398,7 +395,7 @@ const defaultOptions = {
 
 - 详情：
 
-  VuePress 内置的 markdown-it code 插件的配置项。
+  xuwu 内置的 markdown-it code 插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 
@@ -574,7 +571,7 @@ const defaultOptions = {
 
 - 详情：
 
-  VuePress 内置的 markdown-it 导入代码插件的配置项。
+  xuwu 内置的 markdown-it 导入代码插件的配置项。
 
   设置为 `false` 可以禁用该插件。
 
@@ -597,7 +594,7 @@ const defaultOptions = {
 
 - 详情：
 
-  VuePress 内置的 markdown-it 链接插件的配置项。
+  xuwu 内置的 markdown-it 链接插件的配置项。
 
   它可以把站内链接转换为 `<RouterLink>` ，并且可以在站外链接上添加额外的属性和图标。
 
@@ -688,6 +685,6 @@ const defaultOptions = {
 
 ## 插件 API
 
-用户配置文件同样可以作为一个 VuePress 插件，所以除了 `name` 和 `multiple` 配置项以外的所有插件 API 都可以在配置文件中使用。
+用户配置文件同样可以作为一个 xuwu 插件，所以除了 `name` 和 `multiple` 配置项以外的所有插件 API 都可以在配置文件中使用。
 
 前往 [插件 API 参考](./plugin-api.md) 查看所有插件 API 。

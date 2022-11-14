@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-container" />
 
-为你的 VuePress 站点注册自定义容器。
+为你的 xuwu 站点注册自定义容器。
 
 该插件简化了 [markdown-it-container](https://github.com/markdown-it/markdown-it-container) 的使用方法，但同时也保留了其原本的能力。
 
@@ -84,8 +84,6 @@ export default {
 }
 ```
 
-- 参考：
-  - [指南 > 多语言支持](../../guide/i18n.md)
 
 ### before
 

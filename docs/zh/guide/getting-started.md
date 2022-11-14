@@ -1,7 +1,7 @@
 # 快速上手
 
 ::: warning
-VuePress v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的站点，但是它的配置和 API 还不够稳定，很可能会在 Minor 版本中发生 Breaking Changes 。因此，在每次更新 beta 版本之后，请一定要仔细阅读 [更新日志](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md)。
+xuwu v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的站点，但是它的配置和 API 还不够稳定，很可能会在 Minor 版本中发生 Breaking Changes 。因此，在每次更新 beta 版本之后，请一定要仔细阅读 [更新日志](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md)。
 :::
 
 ## 依赖环境
@@ -16,7 +16,7 @@ VuePress v2 目前仍处于 `beta` 阶段。你已经可以用它来构建你的
 
 ## 手动安装
 
-这一章节会帮助你从头搭建一个简单的 VuePress 文档网站。如果你想在一个现有项目中使用 VuePress 管理文档，从步骤 3 开始。
+这一章节会帮助你从头搭建一个简单的 xuwu 文档网站。如果你想在一个现有项目中使用 xuwu 管理文档，从步骤 3 开始。
 
 - **步骤1**: 创建并进入一个新目录
 
@@ -48,7 +48,7 @@ npm init
 </CodeGroup>
 
 
-- **步骤3**: 将 VuePress 安装为本地依赖
+- **步骤3**: 将 xuwu 安装为本地依赖
 
 <CodeGroup>
   <CodeGroupItem title="YARN" active>
@@ -91,7 +91,7 @@ echo '.cache' >> .gitignore
 
 ```bash
 mkdir docs
-echo '# Hello VuePress' > docs/README.md
+echo '# Hello xuwu' > docs/README.md
 ```
 
 - **步骤7**: 在本地启动服务器来开发你的文档网站
@@ -114,6 +114,6 @@ npm run docs:dev
   </CodeGroupItem>
 </CodeGroup>
 
-  VuePress 会在 [http://localhost:8080](http://localhost:8080) 启动一个热重载的开发服务器。当你修改你的 Markdown 文件时，浏览器中的内容也会自动更新。
+  xuwu 会在 [http://localhost:8080](http://localhost:8080) 启动一个热重载的开发服务器。当你修改你的 Markdown 文件时，浏览器中的内容也会自动更新。
 
-现在，你应该已经有了一个简单可用的 VuePress 文档网站。接下来，了解一下 VuePress [配置](./configuration.md) 相关的内容。
+现在，你应该已经有了一个简单可用的 xuwu 文档网站。接下来，了解一下 xuwu [配置](./configuration.md) 相关的内容。

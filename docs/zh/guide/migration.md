@@ -1,17 +1,17 @@
 # 从 v1 迁移
 
 ::: warning
-VuePress v1 的插件和主题与 VuePress v2 不兼容。你需要将它们升级到与 v2 对应的版本。
+xuwu v1 的插件和主题与 xuwu v2 不兼容。你需要将它们升级到与 v2 对应的版本。
 :::
 
-VuePress v2 的一些主要改动和优化：
+xuwu v2 的一些主要改动和优化：
 
-- VuePress v2 现在使用 Vue 3 ，因此你要保证你的组件和其他客户端文件是适用于 Vue 3 的。
-- VuePress v2 是使用 TypeScript 开发的，因此它现在提供了更好的类型支持。我们强烈推荐你使用 TypeScript 来开发插件和主题。 VuePress 配置文件也同样支持 TypeScript ，你可以直接使用 `.vuepress/config.ts` 。
-- VuePress v2 支持使用 Webpack 和 Vite 作为打包工具。现在默认的打包工具是 Vite ，但你仍然可以选择使用 Webpack 。你甚至可以在开发模式使用 Vite 来获取更好的开发体验，而在构建模式使用 Webpack 来获取更好的浏览器兼容性。
-- VuePress v2 现在是纯 ESM 包， CommonJS 格式的配置文件不再被支持。
+- xuwu v2 现在使用 Vue 3 ，因此你要保证你的组件和其他客户端文件是适用于 Vue 3 的。
+- xuwu v2 是使用 TypeScript 开发的，因此它现在提供了更好的类型支持。我们强烈推荐你使用 TypeScript 来开发插件和主题。 xuwu 配置文件也同样支持 TypeScript ，你可以直接使用 `.vuepress/config.ts` 。
+- xuwu v2 支持使用 Webpack 和 Vite 作为打包工具。现在默认的打包工具是 Vite ，但你仍然可以选择使用 Webpack 。你甚至可以在开发模式使用 Vite 来获取更好的开发体验，而在构建模式使用 Webpack 来获取更好的浏览器兼容性。
+- xuwu v2 现在是纯 ESM 包， CommonJS 格式的配置文件不再被支持。
 
-VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了重新设计，更加标准化。因此在将现有的 v1 项目迁移至 v2 时，你很可能会遇到一些 Breaking Changes 。本指南将帮助你将 v1 的站点 / 插件 / 主题迁移至 v2 。
+xuwu v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了重新设计，更加标准化。因此在将现有的 v1 项目迁移至 v2 时，你很可能会遇到一些 Breaking Changes 。本指南将帮助你将 v1 的站点 / 插件 / 主题迁移至 v2 。
 
 - 如果你是一个普通用户，你需要阅读 [给用户](#给用户) 的指南。
 - 如果你是一个插件作者，你需要阅读 [给插件作者](#给插件作者) 的指南。
@@ -211,7 +211,7 @@ export default {
 
 ### 调色板系统变更
 
-VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/index.styl`） 不再由 VuePress Core 默认提供支持。
+xuwu v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/index.styl`） 不再由 xuwu Core 默认提供支持。
 
 调色板系统提取到了 [@vuepress/plugin-palette](../reference/plugin/palette.md) 当中。
 
@@ -291,7 +291,7 @@ v1 的主题和插件和 v2 并不兼容。
 
 - 你不能再在你的插件中使用其他插件了，这避免了很多由于插件嵌套引发的问题。如果你的插件依赖于别的插件，你可以在文档中列出他们，并让用户手动引入。或者，你也可以向用户提供一个插件数组以方便使用。
 - 大部分 v1 Hook 都在 v2 中存在等效的 Hook 或实现方式。唯一的例外是 `extendsCli` ，它被移除了。
-- Webpack 相关的 Hook 都被移除了，因为 VuePress Core 已经和 Webpack 解耦了。你可以尝试使用 [extendsBundlerOptions](../reference/plugin-api.md#extendsbundleroptions) Hook 来进行相似的操作，但要注意应适配所有不同的打包工具。
+- Webpack 相关的 Hook 都被移除了，因为 xuwu Core 已经和 Webpack 解耦了。你可以尝试使用 [extendsBundlerOptions](../reference/plugin-api.md#extendsbundleroptions) Hook 来进行相似的操作，但要注意应适配所有不同的打包工具。
 
 你可以参考 [深入 > 开发插件](../advanced/plugin.md) 来了解如何开发一个 v2 插件。
 

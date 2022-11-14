@@ -53,7 +53,7 @@ export default defineClientConfig({
 
 ### 使用不支持 SSR 的功能
 
-VuePress 会在构建过程中生成一个 SSR 应用，用以对页面进行预渲染。一般而言，如果一段代码在客户端应用 Mount 之前就使用了浏览器或 DOM API ，我们就认为其对 SSR 不友好，即不支持 SSR 。
+xuwu 会在构建过程中生成一个 SSR 应用，用以对页面进行预渲染。一般而言，如果一段代码在客户端应用 Mount 之前就使用了浏览器或 DOM API ，我们就认为其对 SSR 不友好，即不支持 SSR 。
 
 我们已经提供了一个 [ClientOnly](../../reference/components.md#clientonly) 组件来包裹不支持 SSR 的内容。
 

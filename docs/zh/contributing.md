@@ -10,12 +10,12 @@ sidebar: auto
 
 在 `packages` 目录下：
 
-- `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
-- `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
-- `cli`: 命令行接口 (CLI) 模块。包含解析用户配置文件、调用 `@vuepress/core` 创建 VuePress App 、执行对应命令等功能。
+- `bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 xuwu App 执行 `dev` 和 `build` 操作。
+- `bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 xuwu App 执行 `dev` 和 `build` 操作。
+- `cli`: 命令行接口 (CLI) 模块。包含解析用户配置文件、调用 `@vuepress/core` 创建 xuwu App 、执行对应命令等功能。
 - `client`: Client 模块。包含客户端页面入口，并提供了客户端开发时可以用到的类型和工具函数。
-- `core`: Core 模块。提供 Node API 来创建 VuePress App ，包括页面逻辑、插件系统、数据准备等功能。
-- `markdown`: Markdown 模块。使用 `markdown-it` 作为 Markdown 解析器，并集成了一些 VuePress 中用到的插件。
+- `core`: Core 模块。提供 Node API 来创建 xuwu App ，包括页面逻辑、插件系统、数据准备等功能。
+- `markdown`: Markdown 模块。使用 `markdown-it` 作为 Markdown 解析器，并集成了一些 xuwu 中用到的插件。
 - `shared`: 既可以在 Node 端使用、也可以在客户端使用的工具函数模块。
 - `utils`: 仅可以在 Node 端使用的工具函数模块。
 
@@ -84,9 +84,9 @@ pnpm docs:dev
 
 `docs:` 前缀表明，这些命令是针对文档 (documentation) 进行操作的，即 `docs` 目录。
 
-VuePress 使用它自己来构建自己的文档网站。
+xuwu 使用它自己来构建自己的文档网站。
 
-你需要先执行 `pnpm build` 来构建 VuePress 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
+你需要先执行 `pnpm build` 来构建 xuwu 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
 
 #### `pnpm docs:serve`
 
@@ -104,7 +104,7 @@ VuePress 使用它自己来构建自己的文档网站。
 
 ## 文档
 
-VuePress 的文档是由 VuePress 自己驱动的，是由该仓库中的源码构建而来。
+xuwu 的文档是由 xuwu 自己驱动的，是由该仓库中的源码构建而来。
 
 所有的 Markdown 源文件都放置在 `docs` 目录下。我们维护了两种翻译：
 

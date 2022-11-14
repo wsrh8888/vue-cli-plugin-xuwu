@@ -1,7 +1,7 @@
 # 开发插件
 
 ::: tip
-在阅读该指南之前，你最好先了解一下 VuePress 的 [架构](./architecture.md) 。
+在阅读该指南之前，你最好先了解一下 xuwu 的 [架构](./architecture.md) 。
 :::
 
 ## 创建一个插件

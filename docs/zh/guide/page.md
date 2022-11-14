@@ -1,6 +1,6 @@
 # 页面
 
-VuePress 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件都是一个单独的页面。
+xuwu 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件都是一个单独的页面。
 
 ## 路由
 
@@ -30,7 +30,7 @@ VuePress 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件
 ::: tip
 默认配置下， `README.md` 和 `index.md` 都会被转换成 `index.html` ，并且其对应的路由路径都是由斜杠结尾的。然而，如果你想同时保留这两个文件，就可能会造成冲突。
 
-在这种情况下，你可以设置 [pagePatterns](../reference/config.md#pagepatterns) 来避免某个文件被 VuePress 处理，例如使用 `['**/*.md', '!**/README.md', '!.vuepress', '!node_modules']` 来排除所有的 `README.md` 文件。
+在这种情况下，你可以设置 [pagePatterns](../reference/config.md#pagepatterns) 来避免某个文件被 xuwu 处理，例如使用 `['**/*.md', '!**/README.md', '!.vuepress', '!node_modules']` 来排除所有的 `README.md` 文件。
 :::
 
 ## Frontmatter
@@ -50,7 +50,7 @@ description: 页面的描述
 同样的，VuePress 有一些内置支持的 Frontmatter 字段，而你使用的主题也可能有它自己的特殊 Frontmatter 。
 
 ::: tip
-前往 [Frontmatter 参考](../reference/config.md) 查看 VuePress 支持的 Frontmatter 配置。
+前往 [Frontmatter 参考](../reference/config.md) 查看 xuwu 支持的 Frontmatter 配置。
 
 前往 [默认主题 > Frontmatter 参考](../reference/default-theme/frontmatter.md) 查看默认主题的 Frontmatter 配置。
 :::
@@ -59,4 +59,4 @@ description: 页面的描述
 
 页面的主要内容是使用 Markdown 书写的。VuePress 首先会将 Markdown 转换为 HTML ，然后将 HTML 作为 Vue 单文件组件的 `<template>` 。
 
-借助 [markdown-it](https://github.com/markdown-it/markdown-it) 和 Vue 模板语法的能力，基础的 Markdown 可以得到很多的扩展功能。接下来，前往 [Markdown](./markdown.md) 章节来了解 VuePress 中 Markdown 的扩展功能。
+借助 [markdown-it](https://github.com/markdown-it/markdown-it) 和 Vue 模板语法的能力，基础的 Markdown 可以得到很多的扩展功能。接下来，前往 [Markdown](./markdown.md) 章节来了解 xuwu 中 Markdown 的扩展功能。

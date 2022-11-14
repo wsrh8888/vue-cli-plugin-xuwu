@@ -18,7 +18,7 @@ export default defineUserConfig({
   locales: {
     '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress',
+      title: 'xuwu',
       description: 'Vue 驱动的静态网站生成器',
     },
   },

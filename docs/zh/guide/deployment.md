@@ -5,7 +5,7 @@
 - Markdown 源文件放置在你项目的 `docs` 目录；
 - 使用的是默认的构建输出目录 (`.vuepress/dist`) ；
 - 使用 [Yarn classic](https://classic.yarnpkg.com/zh-Hans/) 作为包管理器，当然也可以使用 NPM 。
-- VuePress 作为项目依赖安装，并在 `package.json` 中配置了如下脚本：
+- xuwu 作为项目依赖安装，并在 `package.json` 中配置了如下脚本：
 
 ```json
 {
@@ -71,7 +71,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       # 运行构建脚本
-      - name: Build VuePress site
+      - name: Build xuwu site
         run: yarn docs:build
 
       # 查看 workflow 的文档来获取更多信息
@@ -81,7 +81,7 @@ jobs:
         with:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
-          # 部署目录为 VuePress 的默认输出目录
+          # 部署目录为 xuwu 的默认输出目录
           build_dir: docs/.vuepress/dist
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
@@ -193,7 +193,7 @@ heroku login
 
 ## Layer0
 
-请查看 [Layer0 Documentation > Framework Guides > VuePress](https://docs.layer0.co/guides/vuepress) 。
+请查看 [Layer0 Documentation > Framework Guides > xuwu](https://docs.layer0.co/guides/vuepress) 。
 
 ## Netlify
 
@@ -230,7 +230,7 @@ heroku login
 npm install -g @cloudbase/cli
 ```
 
-2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
+2. 在项目根目录运行以下命令一键部署 xuwu 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
 
 ```bash
 cloudbase init --without-template
@@ -239,9 +239,9 @@ cloudbase framework:deploy
 
   CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
 
-  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
+  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 xuwu 应用。
 
-  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
+  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 xuwu 应用。
 
 ::: tip
 更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
@@ -249,4 +249,4 @@ cloudbase framework:deploy
 
 ## 21 云盒子
 
-请查看 [21 云盒子 - 部署一个 VuePress 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。
+请查看 [21 云盒子 - 部署一个 xuwu 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。

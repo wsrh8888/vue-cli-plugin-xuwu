@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-pwa" />
 
-使你的 VuePress 站点成为一个 [渐进式 Web 应用 (PWA)](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps).
+使你的 xuwu 站点成为一个 [渐进式 Web 应用 (PWA)](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps).
 
 该插件使用 [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) 来生成 Service Worker 文件，并通过 [register-service-worker](https://github.com/yyx990803/register-service-worker) 来注册 Service Worker 。
 
@@ -36,8 +36,8 @@ export default {
 
 ```json
 {
-  "name": "VuePress",
-  "short_name": "VuePress",
+  "name": "xuwu",
+  "short_name": "xuwu",
   "description": "Vue-powered Static Site Generator",
   "start_url": "/index.html",
   "display": "standalone",

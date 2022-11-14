@@ -2,7 +2,7 @@
 
 ## 配置文件
 
-如果没有任何配置，你的 VuePress 站点仅有一些最基础的功能。为了更好地自定义你的网站，让我们首先在你的文档目录下创建一个 `.vuepress` 目录，所有 VuePress 相关的文件都将会被放在这里。你的项目结构可能是这样：
+如果没有任何配置，你的 xuwu 站点仅有一些最基础的功能。为了更好地自定义你的网站，让我们首先在你的文档目录下创建一个 `.vuepress` 目录，所有 xuwu 相关的文件都将会被放在这里。你的项目结构可能是这样：
 
 ```
 ├─ docs
@@ -13,7 +13,7 @@
 └─ package.json
 ```
 
-VuePress 站点的基本配置文件是 `.vuepress/config.js` ，但也同样支持 TypeScript 配置文件。你可以使用 `.vuepress/config.ts` 来得到更好的类型提示。
+xuwu 站点的基本配置文件是 `.vuepress/config.js` ，但也同样支持 TypeScript 配置文件。你可以使用 `.vuepress/config.ts` 来得到更好的类型提示。
 
 具体而言，我们对于配置文件的路径有着约定（按照优先顺序）：
 
@@ -39,18 +39,18 @@ import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   lang: 'zh-CN',
-  title: '你好， VuePress ！',
-  description: '这是我的第一个 VuePress 站点',
+  title: '你好， xuwu ！',
+  description: '这是我的第一个 xuwu 站点',
 })
 ```
 
 ::: tip
-前往 [配置参考](../reference/config.md) 查看所有 VuePress 配置。
+前往 [配置参考](../reference/config.md) 查看所有 xuwu 配置。
 :::
 
 ## 客户端配置文件
 
-在大多数情况下，配置文件已经足够帮助你配置好你的 VuePress 站点。不过，有些时候用户们可能希望直接添加一些客户端代码。 VuePress 通过客户端配置文件来支持这种需求：
+在大多数情况下，配置文件已经足够帮助你配置好你的 xuwu 站点。不过，有些时候用户们可能希望直接添加一些客户端代码。 xuwu 通过客户端配置文件来支持这种需求：
 
 ```
 ├─ docs

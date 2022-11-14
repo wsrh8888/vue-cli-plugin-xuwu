@@ -26,7 +26,7 @@ const createBuildApp: (config: AppConfig) => BuildApp
 
 | 参数      | 类型         | 描述                      |
 |-----------|-------------|---------------------------|
-| config    | `AppConfig` | 创建 VuePress App 的选项。 |
+| config    | `AppConfig` | 创建 xuwu App 的选项。 |
 
 - 详情：
 
@@ -67,7 +67,7 @@ const createDevApp: (config: AppConfig) => DevApp
 
 | 参数      | 类型         | 描述                      |
 |-----------|-------------|---------------------------|
-| config    | `AppConfig` | 创建 VuePress App 的选项。 |
+| config    | `AppConfig` | 创建 xuwu App 的选项。 |
 
 - 详情：
 
@@ -118,7 +118,7 @@ const dev = async () => {
 
 - 详情：
 
-  VuePress App 的配置项。
+  xuwu App 的配置项。
 
   这些配置项来自于 [createBuildApp](#createbuildapp) / [createDevApp](#createdevapp) 的 `config` 参数，但所有可选的字段都填充上了默认值。
 
@@ -136,7 +136,7 @@ const dev = async () => {
 
 - 详情：
 
-  VuePress App 的版本，即 `@vuepress/core` 包的版本。
+  xuwu App 的版本，即 `@vuepress/core` 包的版本。
 
 ### env.isBuild
 
@@ -260,7 +260,7 @@ init(): Promise<void>
 
 - 详情：
 
-  初始化 VuePress App 。
+  初始化 xuwu App 。
 
 - 参考：
   - [深入 > 架构 > 核心流程与 Hooks](../advanced/architecture.md#核心流程与-hooks)
@@ -328,12 +328,12 @@ const createPage: (app: App, options: PageOptions) => Promise<Page>
 
 | 参数      | 类型          | 描述                        |
 |-----------|---------------|----------------------------|
-| app       | `App`         | VuePress App 实例。        |
-| options   | `PageOptions` | 创建 VuePress Page 的选项。 |
+| app       | `App`         | xuwu App 实例。        |
+| options   | `PageOptions` | 创建 xuwu Page 的选项。 |
 
 - 详情：
 
-  创建一个 VuePress Page 对象。
+  创建一个 xuwu Page 对象。
 
 - 示例：
 

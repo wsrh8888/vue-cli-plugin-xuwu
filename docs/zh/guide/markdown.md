@@ -4,9 +4,9 @@
 
 ## 语法扩展
 
-VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来解析 Markdown 内容，因此可以借助于 markdown-it 插件来实现 [语法扩展](https://github.com/markdown-it/markdown-it#syntax-extensions) 。
+xuwu 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来解析 Markdown 内容，因此可以借助于 markdown-it 插件来实现 [语法扩展](https://github.com/markdown-it/markdown-it#syntax-extensions) 。
 
-本章节将会介绍 VuePress 内置支持的 Markdown 语法扩展。
+本章节将会介绍 xuwu 内置支持的 Markdown 语法扩展。
 
 你也可以通过 [markdown](../reference/config.md#markdown) 和 [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) 来配置这些内置扩展、加载更多 markdown-it 插件、实现你自己的扩展等。
 
@@ -29,7 +29,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 ### 链接
 
-在你使用 Markdown 的 [链接语法](https://spec.commonmark.org/0.29/#link-reference-definitions) 时， VuePress 会为你进行一些转换。
+在你使用 Markdown 的 [链接语法](https://spec.commonmark.org/0.29/#link-reference-definitions) 时， xuwu 会为你进行一些转换。
 
 以我们文档的源文件为例：
 
@@ -109,12 +109,12 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 **输入**
 
 ```md
-VuePress 2 已经发布 :tada: ！
+xuwu 2 已经发布 :tada: ！
 ```
 
 **输出**
 
-VuePress 2 已经发布 :tada: ！
+xuwu 2 已经发布 :tada: ！
 
 ::: tip
 Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji) 支持。
@@ -160,7 +160,7 @@ Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-e
 import { defaultTheme, defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  title: '你好， VuePress',
+  title: '你好， xuwu',
 
   theme: defaultTheme({
     logo: 'https://vuejs.org/images/logo.png',
@@ -175,7 +175,7 @@ export default defineUserConfig({
 import { defaultTheme, defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  title: '你好， VuePress',
+  title: '你好， xuwu',
 
   theme: defaultTheme({
     logo: 'https://vuejs.org/images/logo.png',
@@ -241,7 +241,7 @@ const line3 = 'This is line 3'
 
 由于 [模板语法可以在 Markdown 中使用](#模板语法)，它也同样可以在代码块中生效。
 
-为了避免你的代码块被 Vue 编译， VuePress 默认会在你的代码块添加 [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) 指令。这一默认行为可以在配置中关闭。
+为了避免你的代码块被 Vue 编译， xuwu 默认会在你的代码块添加 [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) 指令。这一默认行为可以在配置中关闭。
 
 
 你可以在代码块添加 `:v-pre` / `:no-v-pre` 标记来覆盖配置项中的设置。

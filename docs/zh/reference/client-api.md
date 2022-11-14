@@ -110,7 +110,7 @@
 
 - 详情：
 
-  VuePress Core 的版本号。
+  xuwu Core 的版本号。
 
 ### `__VUEPRESS_DEV__`
 
@@ -154,5 +154,5 @@ export default defineClientConfig({
 ```
 
 ::: danger
-`resolvers` 会直接影响 VuePress 的基础功能，在修改前请确保你已充分了解其用途。
+`resolvers` 会直接影响 xuwu 的基础功能，在修改前请确保你已充分了解其用途。
 :::

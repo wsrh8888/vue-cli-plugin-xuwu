@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/core" />
 
-插件 API 是由 [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) 包支持的。你可以查看 [Node API](./node-api.md) 来了解如何使用插件 Hooks 中的 VuePress App 实例。
+插件 API 是由 [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) 包支持的。你可以查看 [Node API](./node-api.md) 来了解如何使用插件 Hooks 中的 xuwu App 实例。
 
 ## 概览
 
@@ -335,7 +335,7 @@ export default {
 
 - 详情：
 
-  该 Hook 会在 VuePress App 初始化后被立即调用。
+  该 Hook 会在 xuwu App 初始化后被立即调用。
 
 ### onPrepared
 
@@ -343,7 +343,7 @@ export default {
 
 - 详情：
 
-  该 Hook 会在 VuePress App 完成文件准备后被立即调用。
+  该 Hook 会在 xuwu App 完成文件准备后被立即调用。
 
 ### onWatched
 
@@ -351,7 +351,7 @@ export default {
 
 - 详情：
 
-  该 Hook 会在 VuePress App 启动开发服务器并开始监听文件修改后被调用。
+  该 Hook 会在 xuwu App 启动开发服务器并开始监听文件修改后被调用。
 
   `watchers` 是一个文件监听器的数组。在修改配置文件导致重启 dev 命令时，这些监听器会被自动关闭。如果你在当前 Hook 中添加了新的监听器，你应该把它们也加入到这个数组中，确保在重启 dev 命令时它们能被正确关闭。
 
@@ -363,4 +363,4 @@ export default {
 
 - 详情：
 
-  该 Hook 会在 VuePress App 完成静态文件生成后被立即调用。
+  该 Hook 会在 xuwu App 完成静态文件生成后被立即调用。

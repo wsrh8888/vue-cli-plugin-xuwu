@@ -4,12 +4,12 @@
 
 ![vuepress-architecture-overview](/images/guide/vuepress-architecture-overview.png)
 
-上图展示了 VuePress 的简要架构：
+上图展示了 xuwu 的简要架构：
 
 - Node App 会生成临时文件，包括页面、路由等。
 - Bundler 会将 Client App 和临时文件一起进行打包，就像处理一个普通的 Vue SPA 一样。
 
-作为开发者，你必须要意识到 VuePress 分为两个主要部分： **Node App** 和 **Client App** ，这一点对于开发插件和主题来说都十分重要。
+作为开发者，你必须要意识到 xuwu 分为两个主要部分： **Node App** 和 **Client App** ，这一点对于开发插件和主题来说都十分重要。
 
 - 插件或者主题的入口文件会在 Node App 中被加载。
 - 客户端文件会在 Client App 中被加载，也就是会被 Bundler 处理。比如组件、客户端配置文件等。
@@ -18,7 +18,7 @@
 
 ![vuepress-core-process](/images/guide/vuepress-core-process.png)
 
-上图展示了 VuePress 的核心流程以及 [插件 API](../reference/plugin-api.md) 的 Hooks ：
+上图展示了 xuwu 的核心流程以及 [插件 API](../reference/plugin-api.md) 的 Hooks ：
 
 - 在 **init** 阶段：
   - 主题和插件会被加载。这意味着插件需要在初始化之前使用。

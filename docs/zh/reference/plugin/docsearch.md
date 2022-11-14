@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-docsearch" />
 
-将 [Algolia DocSearch](https://docsearch.algolia.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
+将 [Algolia DocSearch](https://docsearch.algolia.com/) 集成到 xuwu 中，为你的文档网站提供搜索功能。
 
 ::: tip
 当你正确配置该插件后，默认主题会把 DocSearch 按钮添加到导航栏。
@@ -30,7 +30,7 @@ export default {
 
 ## 获取搜索索引
 
-你需要 [提交你的网站 URL](https://docsearch.algolia.com/apply/) 来加入 DocSearch 项目。当你的索引成功创建后， DocSearch 团队会将 [apiKey](#apikey) 和 [indexName](#indexname) 发送到你的邮箱。接下来，你就可以配置该插件，在 VuePress 中启用 DocSearch 了。
+你需要 [提交你的网站 URL](https://docsearch.algolia.com/apply/) 来加入 DocSearch 项目。当你的索引成功创建后， DocSearch 团队会将 [apiKey](#apikey) 和 [indexName](#indexname) 发送到你的邮箱。接下来，你就可以配置该插件，在 xuwu 中启用 DocSearch 了。
 
 或者，你也可以 [运行你自己的爬虫](https://docsearch.algolia.com/docs/run-your-own/) 来创建索引，然后使用你自己的 [appId](#appId), [apiKey](#apikey) 和 [indexName](#indexname) 来配置该插件。
 
@@ -311,9 +311,6 @@ export default {
   ],
 }
 ```
-
-- 参考：
-  - [指南 > 多语言支持](../../guide/i18n.md)
 
 ## 样式
 

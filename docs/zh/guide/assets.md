@@ -22,7 +22,7 @@
 - 你可能想要托管一些共享的静态资源，甚至可能需要在你的网站外部引用它，比如 Logo 图片。
 - 你可能想在你的 Markdown 内容中通过绝对路径来引入图片。
 
-以我们文档的源文件为例，我们把 VuePress 的 Logo 放在了 Public 目录下：
+以我们文档的源文件为例，我们把 xuwu 的 Logo 放在了 Public 目录下：
 
 ```bash
 └─ docs
@@ -39,25 +39,25 @@
 **Input**
 
 ```md
-![VuePress Logo](/images/hero.png)
+![xuwu Logo](/images/hero.png)
 ```
 
 **Output**
 
-![VuePress Logo](/images/hero.png)
+![xuwu Logo](/images/hero.png)
 
 ### Base Helper
 
 如果你的网站部署在非根路径下，例如 `https://foo.github.io/bar/` ，那么你应该把 [base](../reference/config.md#base) 设置为 `'/bar/'`。显然，此时你的 Public 文件会被部署在 `https://foo.github.io/bar/images/hero.png` 这样的链接下。
 
-在大多数情况下，你不需要担心这些 Public 文件的引用路径，因为 VuePress 会自动帮你处理 `base` 前缀：
+在大多数情况下，你不需要担心这些 Public 文件的引用路径，因为 xuwu 会自动帮你处理 `base` 前缀：
 
 ```md
 <!-- 你不需要给 `/images/hero.png` 手动添加 `/bar/` 前缀 -->
-![VuePress Logo](/images/hero.png)
+![xuwu Logo](/images/hero.png)
 ```
 
-然而，有些情况下，你可能会有一些指向 Public 文件的动态路径，尤其是在你开发一个自定义主题的时候。在这种情况下， `base` 无法被自动处理。为了解决这个问题，VuePress 提供了 [withBase](../reference/client-api.md#withbase) 工具函数，它可以帮助你添加 `base` 前缀：
+然而，有些情况下，你可能会有一些指向 Public 文件的动态路径，尤其是在你开发一个自定义主题的时候。在这种情况下， `base` 无法被自动处理。为了解决这个问题，xuwu 提供了 [withBase](../reference/client-api.md#withbase) 工具函数，它可以帮助你添加 `base` 前缀：
 
 ```vue
 <template>
@@ -75,7 +75,7 @@ const logoPath = ref('/images/hero.png')
 你也可以通过 `$withBase` 来直接使用这个工具函数：
 
 ```md
-<img :src="$withBase('/images/hero.png')" alt="VuePress Logo">
+<img :src="$withBase('/images/hero.png')" alt="xuwu Logo">
 ```
 
 ## 依赖包和路径别名

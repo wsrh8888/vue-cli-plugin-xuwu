@@ -28,9 +28,6 @@ export default {
 
   该配置项仅能在默认主题内生效，注意不要和 [站点配置](../config.md#locales) 中的 `locales` 混淆。
 
-- 参考：
-  - [指南 > 多语言支持](../../guide/i18n.md)
-
 ## Locale 配置
 
 该章节内的配置项可以作为一般配置使用，也可以使用在 [locales](#locales) 内。
@@ -385,7 +382,7 @@ export default {
     sidebar: {
       '/reference/': [
         {
-          text: 'VuePress Reference',
+          text: 'xuwu Reference',
           collapsible: true,
           children: ['/reference/cli.md', '/reference/config.md'],
         },

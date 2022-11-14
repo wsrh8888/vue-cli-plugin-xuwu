@@ -11,7 +11,6 @@ export const sidebarZh: SidebarConfig = {
         '/zh/guide/page.md',
         '/zh/guide/markdown.md',
         '/zh/guide/assets.md',
-        '/zh/guide/i18n.md',
         '/zh/guide/deployment.md',
         '/zh/guide/theme.md',
         '/zh/guide/plugin.md',
@@ -43,7 +42,7 @@ export const sidebarZh: SidebarConfig = {
   ],
   '/zh/reference/': [
     {
-      text: 'VuePress 参考',
+      text: 'xuwu 参考',
       collapsible: true,
       children: [
         '/zh/reference/cli.md',

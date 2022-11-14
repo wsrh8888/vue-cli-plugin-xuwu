@@ -74,7 +74,7 @@
 
 ::: details 点击查看代码
 ```ts
-console.log('你好，VuePress！')
+console.log('你好，xuwu！')
 ```
 :::
 ````
@@ -87,7 +87,7 @@ console.log('你好，VuePress！')
 
 ::: details 点击查看代码
 ```ts
-console.log('你好，VuePress！')
+console.log('你好，xuwu！')
 ```
 :::
 

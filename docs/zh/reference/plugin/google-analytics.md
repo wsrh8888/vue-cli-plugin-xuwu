@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-google-analytics" />
 
-将 [Google Analytics](https://analytics.google.com/) 集成到 VuePress 中。
+将 [Google Analytics](https://analytics.google.com/) 集成到 xuwu 中。
 
 该插件会通过引入 [gtag.js](https://developers.google.com/analytics/devguides/collection/gtagjs) 来启用 [Google Analytics 4](https://support.google.com/analytics/answer/10089681) 。
 

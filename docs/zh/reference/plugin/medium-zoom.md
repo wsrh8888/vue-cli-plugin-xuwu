@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-medium-zoom" />
 
-将 [medium-zoom](https://github.com/francoischalifour/medium-zoom#readme) 集成到 VuePress 中，为图片提供可缩放的功能。
+将 [medium-zoom](https://github.com/francoischalifour/medium-zoom#readme) 集成到 xuwu 中，为图片提供可缩放的功能。
 
 该插件已经集成到默认主题中。
 
