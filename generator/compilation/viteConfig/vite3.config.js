@@ -21,18 +21,11 @@ class Vite3Config extends ViteConfig {
    */
   addEnvConfig() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/baseUrl\(/)) === -1) {
-        // 如果没有则进行ast处理
-        // 1、增加baseUrl方法
-        // 2、在defineConfig中调用baseUrl方法
-        this.writeViteConfigContent(
-          astViteParse.astViteConfigAddBaseUrl(contentMain)
-        )
-      }
-    })
+    this.viteConfigCommonAddEnv()
+  }
+  viteConfigRemoveConsole() {
+    this.fileInit()
+    this.viteConfigCommonRemoveConsole()
   }
   /*******
    * @description: vite.config.ts 引入按需的相关代码
@@ -41,9 +34,21 @@ class Vite3Config extends ViteConfig {
     this.fileInit()
     this.viteConfigCommonElement()
   }
+  viteConfigAddAntDesign() {
+    this.fileInit()
+    this.viteConfigCommonantStyleImportant()
+  }
   viteConfigSvgLoader() {
     this.fileInit()
     this.viteConfigCommonSvgLoader()
+  }
+  viteConfigAddVant() {
+    this.fileInit()
+    this.viteConfigCommonantStyleImportant()
+  }
+  viteConfigVisualizer() {
+    this.fileInit()
+    this.viteConfigCommonVisualizer()
   }
 }
 module.exports = Vite3Config

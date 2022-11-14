@@ -29,62 +29,19 @@ class Vite2Config extends ViteConfig {
    */
   addEnvConfig() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/env.VITE_API_ENV/)) === -1) {
-        this.writeViteConfigContent(
-          astViteParse.astViteConfigAddEnv(contentMain)
-        )
-      }
-    })
+    this.viteConfigCommonAddEnv()
   }
   viteConfigAddAntDesign() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
-      if (lines.findIndex((line) => line.match(/ant-design-vue/)) === -1) {
-        lines[renderIndex] = lines[renderIndex].replace(
-          /vue\(\)/,
-          `vue(),${Template.viteAntDeginVue3()}`
-        )
-        if (
-          lines.findIndex((line) => line.match(/vite-plugin-style-import/)) ===
-          -1
-        ) {
-          lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
-        }
-        this.writeViteConfigContent(lines.join(EOL))
-      }
-    })
+    this.viteConfigCommonantStyleImportant()
   }
   viteConfigRemoveConsole() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
-        this.writeViteConfigContent(
-          astViteParse.astViteConfigRemoveConsole(contentMain)
-        )
-      }
-    })
+    this.viteConfigCommonRemoveConsole()
   }
   viteConfigVisualizer() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1
-      ) {
-        this.writeViteConfigContent(
-          astViteParse.astViteConfigVisualizer(contentMain)
-        )
-      }
-    })
+    this.viteConfigCommonVisualizer()
   }
   /*******
    * @description: vite.config.ts 引入按需的相关代码
@@ -109,24 +66,7 @@ class Vite2Config extends ViteConfig {
   }
   viteConfigAddVant() {
     this.fileInit()
-    this.api.afterInvoke(() => {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/vue\(\)/))
-      if (lines.findIndex((line) => line.match(/vant/)) === -1) {
-        lines[renderIndex] = lines[renderIndex].replace(
-          /vue\(\)/,
-          `vue(),${Template.viteVantVue3()}`
-        )
-        if (
-          lines.findIndex((line) => line.match(/vite-plugin-style-import/)) ===
-          -1
-        ) {
-          lines[1] += `${EOL} import styleImport from 'vite-plugin-style-import';`
-        }
-        this.writeViteConfigContent(lines.join(EOL))
-      }
-    })
+    this.viteConfigCommonantStyleImportant()
   }
   viteConfigSvgLoader() {
     this.fileInit()

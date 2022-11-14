@@ -14,6 +14,8 @@ class ViteConfig {
     return `./vite.config.${Xuwu.getTsOrJs()}`
   }
   writeViteConfigContent(code) {
+    console.log('123123123123123')
+
     Fs.writeFileSync(this.getViteFileName(), code, {
       encoding: 'utf-8'
     })
@@ -21,6 +23,17 @@ class ViteConfig {
   getViteConfigContent() {
     return Fs.readFileSync(this.api.resolve(this.getViteFileName()), {
       encoding: 'utf-8'
+    })
+  }
+  viteConfigCommonRemoveConsole() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigRemoveConsole(contentMain)
+        )
+      }
     })
   }
   /*******
@@ -47,12 +60,48 @@ class ViteConfig {
     this.api.afterInvoke(() => {
       let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddSvgLoader(contentMain)
+        )
+      }
+    })
+  }
+  viteConfigCommonVisualizer() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
       if (
-        lines.findIndex((line) => line.match(/unplugin-element-plus\/vite/)) ===
-        -1
+        lines.findIndex((line) => line.match(/rollup-plugin-visualizer/)) === -1
       ) {
         this.writeViteConfigContent(
-          astViteParse.astViteConfigAddElementPlus(contentMain)
+          astViteParse.astViteConfigVisualizer(contentMain)
+        )
+      }
+    })
+  }
+  viteConfigCommonantStyleImportant() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (
+        lines.findIndex((line) => line.match(/vite-plugin-style-import/)) === -1
+      ) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddStyleImportant(contentMain)
+        )
+      }
+    })
+  }
+  viteConfigCommonAddEnv() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/baseUrl\(/)) === -1) {
+        // 1、增加baseUrl方法
+        // 2、在defineConfig中调用baseUrl方法
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddBaseUrl(contentMain)
         )
       }
     })

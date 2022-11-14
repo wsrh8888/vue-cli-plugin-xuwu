@@ -261,6 +261,13 @@ class ViteConfigAst extends AST {
       }
     })
   }
+  astViteConfigAddStyleImportant(source) {
+    return this.writeAst(source, {
+      visitor: {
+        ...astCommon.viteConfigHeaderStyleImportant()
+      }
+    })
+  }
 }
 
 module.exports = new ViteConfigAst()

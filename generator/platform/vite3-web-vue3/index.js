@@ -16,23 +16,22 @@ class ViteWebVue3 extends Common {
   fileRootConfig = new FileRootConfig()
 
   defaultPc = () => {
-    // this.templateLintStaged()
-    // this.templateRemoveConsole()
-    // this.templateCrossEnv()
-    this.templateFileUtils()
-    // this.templateRequest()
-    // this.uiElement()
-    // this.templateSvgLoader()
+    this.templateLintStaged()
+    this.templateRemoveConsole()
+    this.templateCrossEnv()
+    this.templateRequest()
+    this.uiElement()
+    this.templateSvgLoader()
   }
   defaultMobile = () => {
-    // this.templateLintStaged()
+    this.templateLintStaged()
     this.templateCrossEnv()
-    // this.templateRemoveConsole()
-    // this.templateAddVconsole()
-    // this.templateFlexible()
-    // this.templateRequest()
-    // this.uiVant()
-    // this.templateSvgLoader()
+    this.templateRemoveConsole()
+    this.templateAddVconsole()
+    this.templateFlexible()
+    this.templateRequest()
+    this.uiVant()
+    this.templateSvgLoader()
   }
   /*******
    * @description: 打包后体积分析
@@ -100,6 +99,8 @@ class ViteWebVue3 extends Common {
    * @description: 扩展环境变量
    */
   templateCrossEnv = () => {
+    console.log('123123123123')
+
     this.fileVite3Config.addEnvConfig()
     this.filePackage.packageCrossEnvVite()
     this.fileRootConfig.envConfigFile()

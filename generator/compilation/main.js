@@ -147,11 +147,7 @@ class Main {
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
-        lines[renderIndex] += `${EOL}  ${
-          Xuwu.getBuildToolName() === 'vite'
-            ? Template.vConsoleVue3Vite()
-            : Template.vConsoleVue3()
-        }`
+        lines[renderIndex] += `${EOL}  ${Template.vConsoleVue3()}`
         Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })

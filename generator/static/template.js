@@ -150,19 +150,13 @@ module.exports = class Template {
   static vConsoleVue3() {
     return `
       import VConsole from 'vconsole'
-      if (process.env.API_ENV !== 'prod') {
-        // @ts-ignore
-        app.use(new VConsole())
-      }
+      app.use(new VConsole())
     `
   }
   static vConsoleVue3Vite() {
     return `
       import VConsole from 'vconsole'
-      if (import.meta.env.VITE_API_ENV !== 'prod') {
-        // @ts-ignore
-        app.use(new VConsole())
-      }
+      app.use(new VConsole())
     `
   }
   /**

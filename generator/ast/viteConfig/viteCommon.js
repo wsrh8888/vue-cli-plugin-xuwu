@@ -37,7 +37,6 @@ class ViteConfigAstCommon {
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
-        console.log('bodys', bodys)
 
         bodys.forEach((body) => {
           if (
@@ -165,7 +164,6 @@ class ViteConfigAstCommon {
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
-        console.log('bodys', bodys)
 
         bodys.forEach((body) => {
           if (
@@ -207,13 +205,41 @@ class ViteConfigAstCommon {
       }
     }
   }
+  viteConfigHeaderStyleImportant() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === 'vite-plugin-style-import'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('styleImport'))],
+            types.stringLiteral('vite-plugin-style-import')
+          )
+        )
+      }
+    }
+  }
   viteConfigContentAddBaseUrl() {
     return {
       Program(path) {
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
-        console.log('bodys', bodys)
 
         bodys.forEach((body) => {
           if (
