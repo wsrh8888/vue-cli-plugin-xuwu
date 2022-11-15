@@ -59,7 +59,7 @@ class WebpackWebVue2 extends Common {
     this.fileBabelConfig.babelConfigRemoveConsole()
   }
   templateCrossEnv = () => {
-    this.fileVueConfig.fileInit()
+    this.fileVueConfig.vueConfigAddCrossEnv()
     this.filePackage.packageCrossEnv()
     this.fileUtils.utilConfig()
   }

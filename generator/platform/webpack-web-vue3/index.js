@@ -76,7 +76,6 @@ class WebpackWebVue3 extends Common {
     this.filePackage.packageAntDesignVue3()
     this.fileUtils.antDesign()
     this.fileBabelConfig.babelConfigAddAntDesign()
-    this.fileMain.mainAddAntDesignVue3()
   }
   templateFileUtils() {
     this.filePackage.packageFileUtils()

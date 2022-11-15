@@ -125,7 +125,6 @@ class ViteWebVue3 extends Common {
     this.filePackage.packageAntDesignVue3()
     this.fileUtils.antDesign()
     this.fileViteConfig.viteConfigAddAntDesign()
-    this.fileMain.mainAddAntDesignVue3()
   }
   templateFileUtils() {
     this.filePackage.packageFileUtils()

@@ -127,7 +127,6 @@ class ViteWebVue3 extends Common {
     this.filePackage.packageAntDesignVue3()
     this.fileUtils.antDesign()
     this.fileVite3Config.viteConfigAddAntDesign()
-    this.fileMain.mainAddAntDesignVue3()
   }
 }
 module.exports = ViteWebVue3

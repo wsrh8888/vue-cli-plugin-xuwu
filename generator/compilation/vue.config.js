@@ -1,6 +1,7 @@
 const Xuwu = require('../utils/xuwu')
 const Template = require('../static/template')
 const Fs = require('fs')
+const astVueConfigParse = require('../ast/vue.config')
 
 /**
  * @description: 在vue.config里增加适配相关代码
@@ -10,6 +11,19 @@ const Fs = require('fs')
 class VueConfig {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
+  getVueFileName() {
+    return './vue.config.js'
+  }
+  writeVueConfigContent(code) {
+    Fs.writeFileSync(this.getVueFileName(), code, {
+      encoding: 'utf-8'
+    })
+  }
+  getVueConfigContent() {
+    return Fs.readFileSync(this.api.resolve(this.getVueFileName()), {
+      encoding: 'utf-8'
+    })
+  }
   /**
    * @description: 判断是否存在babel.config.js文件
    * @param {*}
@@ -30,6 +44,21 @@ class VueConfig {
         '/vue.config.js': '../template/vue.config.js'
       })
     }
+  }
+  vueConfigAddCrossEnv() {
+    this.fileInit()
+    this.api.afterInvoke(() => {
+      let contentMain = this.getVueConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (
+        lines.findIndex((line) => line.match(/webUrl/)) === -1 &&
+        lines.findIndex((line) => line.match(/baseUrl/)) === -1
+      ) {
+        this.writeVueConfigContent(
+          astVueConfigParse.astVueConfigAddCrossEnv(contentMain)
+        )
+      }
+    })
   }
   /**
    * @description: 在vue.config.js文件中增加px转rem配置
