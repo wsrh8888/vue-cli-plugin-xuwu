@@ -30,7 +30,7 @@ export default defineUserConfig({
   // configure default theme
   theme: defaultTheme({
     logo: '/images/hero.png',
-    repo: 'vuepress/vuepress-next',
+    repo: 'wsrh8888/vue-cli-plugin-xuwu',
     docsDir: 'docs',
 
     // theme-level locales config
