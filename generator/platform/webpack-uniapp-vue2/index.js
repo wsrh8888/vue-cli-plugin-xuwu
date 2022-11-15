@@ -24,7 +24,7 @@ class WebpackUniappVue2 extends Common {
     this.defaultPc()
   }
   templateRequest = () => {
-    this.fileUtils.uniappRequest()
+    this.fileUtils.request()
   }
   templateLintStaged = () => {
     this.filePackage.packageCommitPre()

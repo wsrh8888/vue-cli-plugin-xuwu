@@ -6,16 +6,6 @@ class RootRequest {
       [`/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`
     })
   }
-  utilsRootRequest() {
-    this.api.render({
-      [`/utils/request.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + 'web'
-      }/request.${this.suffixes}`,
-      [`/api/index.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + 'web'
-      }/index.${this.suffixes}`
-    })
-  }
   utilRootConfig() {
     this.api.render({
       [`/utils/config.${this.suffixes}`]: `../template/utils/config.${this.suffixes}`
@@ -28,25 +18,14 @@ class Request extends RootRequest {
   options = Xuwu.getOption()
   suffixes = Xuwu.getTsOrJs()
   version = Xuwu.getVueVersion()
+  language = Xuwu.getLanguage()
   /*******
    * @description: ajax请求
    */
   request() {
     this.api.render({
-      [`/src/utils/request.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + Xuwu.getLanguage()
-      }/request.${this.suffixes}`,
-      [`/src/api/index.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + Xuwu.getLanguage()
-      }/index.${this.suffixes}`
-    })
-  }
-  uniappRequest() {
-    this.api.render({
-      [`/src/utils/request.${this.suffixes}`]: `../template/request/uniapp/request.${this.suffixes}`,
-      [`/src/api/index.${this.suffixes}`]: `../template/request/${
-        Xuwu.getBuildToolName() + '-' + Xuwu.getLanguage()
-      }/index.${this.suffixes}`
+      [`/src/utils/request.${this.suffixes}`]: `../template/request/${this.language}.${this.suffixes}`,
+      [`/src/api/index.${this.suffixes}`]: `../template/request/index.${this.suffixes}`
     })
   }
   utilConfig() {
