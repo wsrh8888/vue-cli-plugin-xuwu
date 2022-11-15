@@ -240,13 +240,20 @@ class ViteConfigAstCommon {
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
+        let moduleExportsIndex = 1
 
-        bodys.forEach((body) => {
+        bodys.forEach((body, index) => {
           if (
             body.type === 'FunctionDeclaration' &&
             body.id.name === 'baseUrl'
           ) {
             isEnd = true
+          }
+          if (
+            body.type === 'ExportDefaultDeclaration' &&
+            body.declaration.callee.name === 'defineConfig'
+          ) {
+            moduleExportsIndex = index
           }
         })
         if (isEnd) {
@@ -357,7 +364,7 @@ class ViteConfigAstCommon {
             types.returnStatement(types.identifier('base'))
           ])
         )
-        bodys.splice(1, 0, astCode)
+        bodys.splice(moduleExportsIndex, 0, astCode)
       }
     }
   }

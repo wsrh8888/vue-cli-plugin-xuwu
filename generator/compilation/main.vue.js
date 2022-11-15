@@ -33,7 +33,7 @@ class MainVue {
       let lines = contentMain.split(/\r?\n/g)
       if (
         lines.findIndex((line) =>
-          line.match(/@media only screen and (min-width: 375px)/)
+          line.match(/\@media only screen and \(min-width: 375px\)/)
         ) === -1
       ) {
         lines[lines.length - 1] += `${EOL}  ${Template.mainVueTemplate()}`
