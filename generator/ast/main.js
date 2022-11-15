@@ -3,11 +3,10 @@ const astCommon = require('./main/main')
 
 class MainAst extends AST {
   astMainAddPinia(source) {
-    return this.writeAst(source, {
-      visitor: {
-        ...astCommon.astMainHeaderAddPinia()
-      }
-    })
+    return this.writeAst(
+      source,
+      this.getAstCoreList([astCommon.astMainHeaderAddPinia])
+    )
   }
 }
 

@@ -30,12 +30,13 @@ class ViteConfigAst extends AST {
    * @description: 使用ast在vite.config.ts中增加elemnet的ui引入
    */
   astViteConfigAddElementPlus(source) {
-    return this.writeAst(source, {
-      visitor: {
-        ...astCommon.viteConfigAddElementPlus(),
-        ...astCommon.viteConfigAddElementPlugin()
-      }
-    })
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigAddElementPlus,
+        astCommon.viteConfigAddElementPlugin
+      ])
+    )
   }
   astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
@@ -215,30 +216,33 @@ class ViteConfigAst extends AST {
     return targetSource.code
   }
   astViteConfigAddSvgLoader(source) {
-    return this.writeAst(source, {
-      visitor: {
-        ...astCommon.viteConfigBodyAddSvgLoader(),
-        ...astCommon.viteConfigHeaderAddSvgLoader()
-      }
-    })
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigBodyAddSvgLoader,
+        astCommon.viteConfigHeaderAddSvgLoader
+      ])
+    )
   }
   astViteConfigAddBaseUrl(source) {
-    return this.writeAst(source, {
-      visitor: {
-        ...astCommon.viteConfigAddloadEnv(),
-        ...astCommon.viteConifAddParams(),
-        ...astCommon.viteConfigChangeBase(),
-        ...astCommon.viteConfigContentAddBaseUrl()
-      }
-    })
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigAddloadEnv,
+        astCommon.viteConifAddParams,
+        astCommon.viteConfigChangeBase,
+        astCommon.viteConfigContentAddBaseUrl
+      ])
+    )
   }
   astViteConfigAddStyleImportant(source) {
-    return this.writeAst(source, {
-      visitor: {
-        ...astCommon.viteConfigHeaderStyleImportant(),
-        ...astCommon.viteConfigBodyStyleImportant()
-      }
-    })
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigHeaderStyleImportant,
+        astCommon.viteConfigBodyStyleImportant
+      ])
+    )
   }
 }
 
