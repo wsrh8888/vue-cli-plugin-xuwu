@@ -7,8 +7,6 @@ class VueConfigAstCommon {
   vueConfigHeaderAddProcess() {
     return {
       Program(path) {
-        console.log('A3')
-
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
@@ -47,7 +45,6 @@ class VueConfigAstCommon {
   vueConfigHeaderAddCrossEnv() {
     return {
       Program(path) {
-        console.log('A2')
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
@@ -212,7 +209,6 @@ class VueConfigAstCommon {
   vueConfigBodyAddCrossEnv() {
     return {
       Program(path) {
-        console.log('A1')
         // 添加依赖包的引入
         let bodys = path.node.body
         let rightList = []
