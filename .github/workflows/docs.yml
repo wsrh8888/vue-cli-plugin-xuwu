@@ -44,7 +44,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.2.0
         with:
-          repo: vuepress/vuepress.github.io
+          repo: wsrh8888/xuwu.github.io
           # 部署到 gh-pages 分支
           target_branch: main
           # 部署目录为 VuePress 的默认输出目录
