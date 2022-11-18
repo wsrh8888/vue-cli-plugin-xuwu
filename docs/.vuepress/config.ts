@@ -9,7 +9,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 
 export default defineUserConfig({
   // set site base to default value
-  base: '/',
+  base: '/toolbox/',
 
   // extra tags in `<head>`
   head,
