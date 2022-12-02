@@ -38,6 +38,30 @@ class ViteConfigAst extends AST {
       ])
     )
   }
+  /*******
+   * @description: 使用ast在vite.config.ts中增加alias的配置
+   */
+  astVite3ConfigAddAlias(source) {
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigHeaderNodeUrl,
+        astCommon.vite3ConfigBodyPath
+      ])
+    )
+  }
+  /*******
+   * @description: 使用ast在vite.config.ts中增加alias的配置
+   */
+  astViteConfigAddAlias(source) {
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigHeaderPath,
+        astCommon.viteConfigBodyPath
+      ])
+    )
+  }
   astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
       visitor: {
@@ -215,6 +239,31 @@ class ViteConfigAst extends AST {
     })
     return targetSource.code
   }
+  astViteConfigVitePluginUni(source) {
+    return this.writeAst(
+      source,
+
+      this.getAstCoreList([
+        astCommon.viteConfigBodyVitePluginUni,
+        astCommon.viteConfigHeaderVitePluginUni
+      ])
+    )
+  }
+  /**
+   * @description: 在vite.config.ts中增加vue()插件
+   */
+  astViteConfigAddVue(source) {
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigBodyAddVue,
+        astCommon.viteConfigHeaderAddVue
+      ])
+    )
+  }
+  /**
+   * @description: 在vite.config.ts中增加svgLoader()插件
+   */
   astViteConfigAddSvgLoader(source) {
     return this.writeAst(
       source,

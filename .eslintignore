@@ -1,6 +1,6 @@
 interface.js
 *.d.ts
-generator/template/viteConfig
+generator/template/vite.config.*
 
 docs/.vuepress/.temp/
 docs/.vuepress/.cache/

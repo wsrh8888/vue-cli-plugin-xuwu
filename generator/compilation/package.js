@@ -369,6 +369,7 @@ class Package {
       }
     })
   }
+
   packageUniappWebpack() {
     this.packageCrossEnvCommon()
     this.api.extendPackage({
@@ -386,7 +387,6 @@ class Package {
     })
   }
   packageCrossEnvUniappVite() {
-    this.packageCrossEnvCommon()
     this.api.extendPackage({
       scripts: {
         serve_test: 'npm run dev:h5 --mode=test',

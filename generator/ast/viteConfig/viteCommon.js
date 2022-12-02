@@ -155,6 +155,136 @@ class ViteConfigAstCommon {
       }
     }
   }
+
+  viteConfigHeaderNodeUrl() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === 'node:url'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [
+              types.importSpecifier(
+                types.identifier('fileURLToPath'),
+                types.identifier('fileURLToPath')
+              ),
+              types.importSpecifier(
+                types.identifier('URL'),
+                types.identifier('URL')
+              )
+            ],
+            types.stringLiteral('node:url')
+          )
+        )
+      }
+    }
+  }
+  viteConfigHeaderPath() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === 'path'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('path'))],
+            types.stringLiteral('path')
+          )
+        )
+      }
+    }
+  }
+  viteConfigHeaderVitePluginUni() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === '@dcloudio/vite-plugin-uni'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('uni'))],
+            types.stringLiteral('@dcloudio/vite-plugin-uni')
+          )
+        )
+      }
+    }
+  }
+
+  /*******
+   * @description: 在vite头文件中增加vue
+   */
+  viteConfigHeaderAddVue() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === '@vitejs/plugin-vue'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('vue'))],
+            types.stringLiteral('@vitejs/plugin-vue')
+          )
+        )
+      }
+    }
+  }
   /*******
    * @description: 在vite头文件中增加SvgLoader
    */
@@ -184,6 +314,166 @@ class ViteConfigAstCommon {
             types.stringLiteral('vite-svg-loader')
           )
         )
+      }
+    }
+  }
+  vite3ConfigBodyPath() {
+    return {
+      ExportDefaultDeclaration(path) {
+        if (path.node.declaration.callee.name !== 'defineConfig') {
+          return
+        }
+        let methods = path.node.declaration.arguments[0].body.properties
+        let resolveIndex = -1
+        methods.forEach((method, resolveKey) => {
+          if (method.key.name === 'resolve') {
+            resolveIndex = resolveKey
+          }
+        })
+
+        // 判断vite.config.ts是否有resolve:{}对象
+        if (resolveIndex === -1) {
+          methods.push(
+            types.objectProperty(
+              types.identifier('resolve'),
+              types.objectExpression([])
+            )
+          )
+          resolveIndex = methods.length - 1
+        }
+
+        // resolve添加完毕
+        let resolves = methods[resolveIndex].value.properties
+        let aliasIndex = -1
+        resolves.forEach((method, index) => {
+          if (method.key.name === 'alias') {
+            aliasIndex = index
+          }
+        })
+        // 判断是否有alias对象
+        if (aliasIndex === -1) {
+          resolves.push(
+            types.objectProperty(
+              types.identifier('alias'),
+              types.objectExpression([])
+            )
+          )
+          aliasIndex = resolves.length - 1
+        }
+        let alias = resolves[aliasIndex].value.properties
+        alias.push(
+          types.objectProperty(
+            types.stringLiteral('@'),
+            types.callExpression(types.identifier('fileURLToPath'), [
+              types.newExpression(types.identifier('URL'), [
+                types.stringLiteral('./src'),
+                types.memberExpression(
+                  types.metaProperty(
+                    types.identifier('import'),
+                    types.identifier('meta')
+                  ),
+                  types.identifier('url')
+                )
+              ])
+            ])
+          )
+        )
+      }
+    }
+  }
+  /**
+   * @description: 在body中增加alias相关配置内容
+   */
+  viteConfigBodyPath() {
+    return {
+      ExportDefaultDeclaration(path) {
+        if (path.node.declaration.callee.name !== 'defineConfig') {
+          return
+        }
+        let methods = path.node.declaration.arguments[0].body.properties
+        let resolveIndex = -1
+        methods.forEach((method, resolveKey) => {
+          if (method.key.name === 'resolve') {
+            resolveIndex = resolveKey
+          }
+        })
+
+        // 判断vite.config.ts是否有resolve:{}对象
+        if (resolveIndex === -1) {
+          methods.push(
+            types.objectProperty(
+              types.identifier('resolve'),
+              types.objectExpression([])
+            )
+          )
+          resolveIndex = methods.length - 1
+        }
+        console.log(
+          resolveIndex,
+          methods.length,
+          'resolveIndexresolveIndexresolveIndex'
+        )
+        // resolve添加完毕
+        let resolves = methods[resolveIndex].value.properties
+        let aliasIndex = -1
+        resolves.forEach((method, index) => {
+          if (method.key.name === 'alias') {
+            aliasIndex = index
+          }
+        })
+        // 判断是否有alias对象
+        if (aliasIndex === -1) {
+          resolves.push(
+            types.objectProperty(
+              types.identifier('alias'),
+              types.objectExpression([])
+            )
+          )
+          aliasIndex = resolves.length - 1
+        }
+        let alias = resolves[aliasIndex].value.properties
+        alias.push(
+          types.objectProperty(
+            types.stringLiteral('@'),
+            types.callExpression(
+              types.memberExpression(
+                types.identifier('path'),
+                types.identifier('resolve')
+              ),
+              [types.identifier('__dirname'), types.stringLiteral('./src')]
+            )
+          )
+        )
+      }
+    }
+  }
+  viteConfigBodyVitePluginUni() {
+    return {
+      ObjectExpression(path) {
+        let methods = path.node.properties
+        methods.forEach((method) => {
+          if (method.key.name === 'plugins') {
+            let pluginsList = method.value.elements
+            pluginsList.push(types.callExpression(types.identifier('uni'), []))
+          }
+        })
+      }
+    }
+  }
+
+  /*******
+   * @description: 在body中增加vue相关内容
+   */
+  viteConfigBodyAddVue() {
+    return {
+      ObjectExpression(path) {
+        let methods = path.node.properties
+        methods.forEach((method) => {
+          if (method.key.name === 'plugins') {
+            let pluginsList = method.value.elements
+            pluginsList.push(types.callExpression(types.identifier('vue'), []))
+          }
+        })
       }
     }
   }

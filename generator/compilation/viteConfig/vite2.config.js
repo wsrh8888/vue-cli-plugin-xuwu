@@ -1,57 +1,50 @@
-const Xuwu = require('../../utils/xuwu')
 const Template = require('../../static/template')
 const { EOL } = require('os')
-const astViteParse = require('../../ast/vite.config')
 const ViteConfig = require('./vite.config')
 class Vite2Config extends ViteConfig {
-  fileInit() {
-    try {
-      let contentMain = this.getViteConfigContent()
-      let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/export default defineConfig/)) ===
-        -1
-      ) {
-        throw Error
-      }
-      // 判断vite.config.js 中是否是 =>的写法
-      if (!astViteParse.astViteConfigIsInit(contentMain)) {
-        throw Error
-      }
-    } catch (error) {
-      this.api.render({
-        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/viteConfig/vite2.config.${Xuwu.getTsOrJs()}`
-      })
-    }
+  fileInitWebVite2() {
+    this.fileInitWeb()
+    this.viteConfigAddAliasVite2()
+  }
+  fileInitUniappVite2() {
+    this.fileInitUniapp()
+    this.viteConfigAddAliasVite2()
+  }
+  /*******
+   * @description: 增加环境变量的基础配置
+   */
+  addEnvConfigUniapp() {
+    this.fileInitUniappVite2()
+    this.viteConfigCommonAddEnv()
   }
   /*******
    * @description: 增加环境变量的基础配置
    */
   addEnvConfig() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonAddEnv()
   }
   viteConfigAddAntDesign() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonantStyleImportant()
   }
   viteConfigRemoveConsole() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonRemoveConsole()
   }
   viteConfigVisualizer() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonVisualizer()
   }
   /*******
    * @description: vite.config.ts 引入按需的相关代码
    */
   viteConfigAddElement() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonElement()
   }
   viteConfigLess() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.api.afterInvoke(() => {
       let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
@@ -65,11 +58,11 @@ class Vite2Config extends ViteConfig {
     })
   }
   viteConfigAddVant() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonantStyleImportant()
   }
   viteConfigSvgLoader() {
-    this.fileInit()
+    this.fileInitWebVite2()
     this.viteConfigCommonSvgLoader()
   }
 }

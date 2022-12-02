@@ -6,6 +6,8 @@ const {
 } = require('./prompts/web')
 const webPrompt = require('./prompts/web')
 const {
+  vite2UniappVue3Manually,
+  vite3UniappVue3Manually,
   webpackUniappVue3Manually,
   webpackUniappVue2Manually
 } = require('./prompts/uniapp')
@@ -68,6 +70,8 @@ module.exports = () => {
       ],
       default: 'default'
     },
+    vite2UniappVue3Manually(language, toolName, vueVersion),
+    vite3UniappVue3Manually(language, toolName, vueVersion),
     vite2WebVue3Manually(language, toolName, vueVersion),
     vite3WebVue3Manually(language, toolName, vueVersion),
     webpackWebVue3Manually(language, toolName, vueVersion),

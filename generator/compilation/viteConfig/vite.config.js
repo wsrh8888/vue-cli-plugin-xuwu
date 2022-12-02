@@ -10,6 +10,37 @@ const astViteParse = require('../../ast/vite.config')
 class ViteConfig {
   api = Xuwu.getApi()
   options = Xuwu.getOption()
+  fileInit() {
+    try {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (
+        lines.findIndex((line) => line.match(/export default defineConfig/)) ===
+        -1
+      ) {
+        throw Error
+      }
+      // 判断vite.config.js 中是否是 =>的写法
+      if (!astViteParse.astViteConfigIsInit(contentMain)) {
+        throw Error
+      }
+    } catch (error) {
+      this.api.render({
+        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/vite.config.${Xuwu.getTsOrJs()}`
+      })
+    }
+  }
+  fileInitWeb() {
+    this.fileInit()
+    this.viteConfigCommonVue()
+  }
+  /**
+   * @description: 初始化uniapp的vite
+   */
+  fileInitUniapp() {
+    this.fileInit()
+    this.viteConfigCommonVitePluginUni()
+  }
   getViteFileName() {
     return `./vite.config.${Xuwu.getTsOrJs()}`
   }
@@ -34,6 +65,31 @@ class ViteConfig {
       }
     })
   }
+  viteConfigAddAliasVite3() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/alias/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astVite3ConfigAddAlias(contentMain)
+        )
+      }
+    })
+  }
+  /**
+   * @description: vite.config.ts 引入alias的相关代码
+   */
+  viteConfigAddAliasVite2() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/alias/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddAlias(contentMain)
+        )
+      }
+    })
+  }
   /*******
    * @description: vite.config.ts 引入按需的相关代码
    */
@@ -52,6 +108,21 @@ class ViteConfig {
     })
   }
   /*******
+   * @description: vite.config.ts 增加vue()相关内容
+   */
+  viteConfigCommonVue() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+
+      if (lines.findIndex((line) => line.match(/@vitejs\/plugin-vue/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddVue(contentMain)
+        )
+      }
+    })
+  }
+  /*******
    * @description: vite.config.ts 增加svg laoder相关内容
    */
   viteConfigCommonSvgLoader() {
@@ -61,6 +132,20 @@ class ViteConfig {
       if (lines.findIndex((line) => line.match(/vite-svg-loader/)) === -1) {
         this.writeViteConfigContent(
           astViteParse.astViteConfigAddSvgLoader(contentMain)
+        )
+      }
+    })
+  }
+  /*******
+   * @description: vite.config.ts 增加uni的插件
+   */
+  viteConfigCommonVitePluginUni() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/vite-plugin-uni/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigVitePluginUni(contentMain)
         )
       }
     })

@@ -1,5 +1,7 @@
 const Xuwu = require('./utils/xuwu')
 const Vite2WebVue3 = require('./platform/vite2-web-vue3')
+const Vite2UniappVue3 = require('./platform/vite2-uniapp-vue3')
+const Vite3UniappVue3 = require('./platform/vite3-uniapp-vue3')
 const Vite3WebVue3 = require('./platform/vite3-web-vue3')
 const WebpackWebVue2 = require('./platform/webpack-web-vue2')
 const WebpackWebVue3 = require('./platform/webpack-web-vue3')
@@ -15,6 +17,8 @@ class Template {
   'webpack-web-vue3' = new WebpackWebVue3()
   'webpack-uniapp-vue2' = new WebpackUniappVue2()
   'webpack-uniapp-vue3' = new WebpackUniappVue3()
+  'vite3-uniapp-vue3' = new Vite3UniappVue3()
+  'vite2-uniapp-vue3' = new Vite2UniappVue3()
 }
 
 module.exports = (api, options) => {

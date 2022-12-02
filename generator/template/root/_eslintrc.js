@@ -41,6 +41,7 @@ module.exports = {
         arrowParens: 'always'
       }
     ],
+    'vue/multi-word-component-names': 0,
     'vue/no-multiple-template-root': 0,
     'vue/valid-template-root': 0,
     'no-alert': 0, //禁止使用alert confirm prompt

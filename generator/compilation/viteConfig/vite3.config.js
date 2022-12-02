@@ -1,53 +1,52 @@
-const Xuwu = require('../../utils/xuwu')
-// const Template = require('../../static/template')
-const astViteParse = require('../../ast/vite.config')
 const ViteConfig = require('./vite.config')
 class Vite3Config extends ViteConfig {
-  fileInit() {
-    try {
-      let contentMain = this.getViteConfigContent()
-      // 判断vite.config.js 中是否是 =>的写法
-      if (!astViteParse.astViteConfigIsInit(contentMain)) {
-        throw Error
-      }
-    } catch (error) {
-      this.api.render({
-        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/viteConfig/vite3.config.${Xuwu.getTsOrJs()}`
-      })
-    }
+  fileInitWebVite3() {
+    this.fileInitWeb()
+    this.viteConfigAddAliasVite3()
+  }
+  fileInitUniappVite3() {
+    this.fileInit()
+    this.viteConfigAddAliasVite3()
+  }
+  /*******
+   * @description: 增加环境变量的基础配置
+   */
+  addEnvConfigUniapp() {
+    this.fileInitUniappVite3()
+    this.viteConfigCommonAddEnv()
   }
   /*******
    * @description: 增加环境变量
    */
   addEnvConfig() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonAddEnv()
   }
   viteConfigRemoveConsole() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonRemoveConsole()
   }
   /*******
    * @description: vite.config.ts 引入按需的相关代码
    */
   viteConfigAddElement() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonElement()
   }
   viteConfigAddAntDesign() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonantStyleImportant()
   }
   viteConfigSvgLoader() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonSvgLoader()
   }
   viteConfigAddVant() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonantStyleImportant()
   }
   viteConfigVisualizer() {
-    this.fileInit()
+    this.fileInitWebVite3()
     this.viteConfigCommonVisualizer()
   }
 }
