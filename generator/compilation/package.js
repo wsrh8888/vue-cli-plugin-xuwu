@@ -389,12 +389,12 @@ class Package {
   packageCrossEnvUniappVite() {
     this.api.extendPackage({
       scripts: {
-        serve_test: 'npm run dev:h5 --mode=test',
-        serve_pre: 'npm run dev:h5 --mode=pre',
-        serve_prod: 'npm run dev:h5 --mode=prod',
-        build_test: 'build:h5 build --mode=test',
-        build_pre: 'build:h5 build --mode=pre',
-        build_prod: 'build:h5 build --mode=prod'
+        serve_test: 'uni --mode=test',
+        serve_pre: 'uni --mode=pre',
+        serve_prod: 'uni --mode=prod',
+        build_test: 'uni build --mode=test',
+        build_pre: 'uni build --mode=pre',
+        build_prod: 'uni build --mode=prod'
       }
     })
   }

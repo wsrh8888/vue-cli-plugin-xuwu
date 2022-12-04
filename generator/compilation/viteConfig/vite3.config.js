@@ -5,7 +5,7 @@ class Vite3Config extends ViteConfig {
     this.viteConfigAddAliasVite3()
   }
   fileInitUniappVite3() {
-    this.fileInit()
+    this.fileInitUniapp()
     this.viteConfigAddAliasVite3()
   }
   /*******
