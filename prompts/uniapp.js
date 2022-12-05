@@ -3,7 +3,9 @@ module.exports = {
     return {
       when: (answers) => {
         return (
-          language === 'uniapp' && frame === 'vue3' && toolName === 'webpack' &&
+          language === 'uniapp' &&
+          frame === 'vue3' &&
+          toolName === 'webpack' &&
           answers.promptsConfig === 'manually'
         )
       },
@@ -26,7 +28,9 @@ module.exports = {
     return {
       when: (answers) => {
         return (
-          language === 'uniapp' && frame === 'vue2' && toolName === 'webpack' &&
+          language === 'uniapp' &&
+          frame === 'vue2' &&
+          toolName === 'webpack' &&
           answers.promptsConfig === 'manually'
         )
       },
@@ -48,8 +52,12 @@ module.exports = {
   vite2UniappVue3Manually(language, toolName, frame) {
     return {
       when: (answers) => {
-        return language === 'uniapp' && frame === 'vue3' && toolName === 'vite2' &&
-        answers.promptsConfig === 'manually'
+        return (
+          language === 'uniapp' &&
+          frame === 'vue3' &&
+          toolName === 'vite2' &&
+          answers.promptsConfig === 'manually'
+        )
       },
       type: 'checkbox',
       name: 'promptsManuallyConfig',
@@ -69,8 +77,12 @@ module.exports = {
   vite3UniappVue3Manually(language, toolName, frame) {
     return {
       when: (answers) => {
-        return language === 'uniapp' && frame === 'vue3' && toolName === 'vite3' &&
-        answers.promptsConfig === 'manually'
+        return (
+          language === 'uniapp' &&
+          frame === 'vue3' &&
+          toolName === 'vite3' &&
+          answers.promptsConfig === 'manually'
+        )
       },
       type: 'checkbox',
       name: 'promptsManuallyConfig',
