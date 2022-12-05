@@ -4,6 +4,9 @@
 > 1、修复uniappajax请求字段错误
 > 2、兼容vite2， vite关于uniapp的相关配置
 > 3、优化vite.config.ts关于vite2和vite3的配置文件, 默认不在增加vue()插件
+> 4、优化baseUrl方法，不在使用loadEnv方法进行解析
+> 5、
+
 ### 1.3.0
 > 1、ast部分进行优化
 > 2、删除模块互相调用导致的代码冗余逻辑，保存每个功能的独立性

@@ -277,7 +277,7 @@ class ViteConfigAst extends AST {
     return this.writeAst(
       source,
       this.getAstCoreList([
-        astCommon.viteConfigAddloadEnv,
+        // astCommon.viteConfigAddloadEnv,
         astCommon.viteConifAddParams,
         astCommon.viteConfigChangeBase,
         astCommon.viteConfigContentAddBaseUrl

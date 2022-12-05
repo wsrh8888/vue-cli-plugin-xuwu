@@ -570,15 +570,15 @@ class ViteConfigAstCommon {
 
           types.blockStatement([
             // 第二行
-            types.variableDeclaration('const', [
-              types.variableDeclarator(
-                types.identifier('env'),
-                types.callExpression(types.identifier('loadEnv'), [
-                  types.identifier('mode'),
-                  types.identifier('command')
-                ])
-              )
-            ]),
+            // types.variableDeclaration('const', [
+            //   types.variableDeclarator(
+            //     types.identifier('env'),
+            //     types.callExpression(types.identifier('loadEnv'), [
+            //       types.identifier('mode'),
+            //       types.identifier('command')
+            //     ])
+            //   )
+            // ]),
             // 第三行
             types.variableDeclaration('let', [
               types.variableDeclarator(
@@ -597,7 +597,7 @@ class ViteConfigAstCommon {
                 ),
                 types.binaryExpression(
                   '===',
-                  types.identifier('env.VITE_API_ENV'),
+                  types.identifier('mode'),
                   types.stringLiteral('test')
                 )
               ),
@@ -622,7 +622,7 @@ class ViteConfigAstCommon {
                   ),
                   types.binaryExpression(
                     '===',
-                    types.identifier('env.VITE_API_ENV'),
+                    types.identifier('mode'),
                     types.stringLiteral('prod')
                   )
                 ),
