@@ -9,7 +9,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 
 export default defineUserConfig({
   // set site base to default value
-  base: '/xuwu/',
+  base: '/vue-cli-plugin-xuwu/',
   lang: 'zh-CN',
   // extra tags in `<head>`
   head,
