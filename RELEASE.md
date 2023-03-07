@@ -1,5 +1,10 @@
 ## 版本更新
 
+### 1.3.2
+> 1、增加vite4的全链路
+> 2、uniapp vite2,vite3，vite4 增加Pinia功能
+> 3、web/uniapp vite2， vite3， vite4 增加mitt 方法
+
 ### 1.3.1
 > 1、修复uniappajax请求字段错误
 > 2、兼容vite2， vite3关于uniapp的相关配置

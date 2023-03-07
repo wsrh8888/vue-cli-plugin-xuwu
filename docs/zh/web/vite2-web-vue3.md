@@ -1,4 +1,4 @@
-# vite3-web-vue3
+# vite2-web-vue3
  
 ## ajax请求模版
 
@@ -7,6 +7,8 @@
 ## 去掉console
 
 ## commit代码时统一风格
+
+## consoleLog控制台
 
 ## 适配插件
 
@@ -21,3 +23,5 @@
 ## Vant
 
 ## file工具库
+
+## mitt通信

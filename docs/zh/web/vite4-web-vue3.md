@@ -8,6 +8,8 @@
 
 ## commit代码时统一风格
 
+## consoleLog控制台
+
 ## 适配插件
 
 ## Element
@@ -21,3 +23,5 @@
 ## Vant
 
 ## file工具库
+
+## mitt通信

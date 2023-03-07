@@ -13,12 +13,14 @@ const { firstUpperCase } = require('./utils/tool')
 class Template {
   'vite2-web-vue3' = new Vite2WebVue3()
   'vite3-web-vue3' = new Vite3WebVue3()
+  // 'vite4-web-vue3' = new Vite3WebVue3()
   'webpack-web-vue2' = new WebpackWebVue2()
   'webpack-web-vue3' = new WebpackWebVue3()
   'webpack-uniapp-vue2' = new WebpackUniappVue2()
   'webpack-uniapp-vue3' = new WebpackUniappVue3()
-  'vite3-uniapp-vue3' = new Vite3UniappVue3()
   'vite2-uniapp-vue3' = new Vite2UniappVue3()
+  'vite3-uniapp-vue3' = new Vite3UniappVue3()
+  // 'vite4-uniapp-vue3' = new Vite2UniappVue3()
 }
 
 module.exports = (api, options) => {
