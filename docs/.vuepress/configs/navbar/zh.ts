@@ -3,18 +3,12 @@ import { version } from '../meta.js'
 
 export const navbarZh: NavbarConfig = [
   {
-    text: '指南',
-    link: '/zh/guide/getting-started.html',
+    text: 'web',
+    link: '/zh/web/index.html',
   },
   {
-    text: '了解更多',
-    children: [
-      {
-        text: '深入Xuwu',
-        children: [
-          '/zh/advanced/architecture.md'
-        ],
-      }
-    ],
+    text: 'uniapp',
+    link: '/zh/uniapp/index.html',
   },
+
 ]

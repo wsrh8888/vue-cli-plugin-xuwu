@@ -1,22 +1,29 @@
 import type { SidebarConfig } from '@vuepress/theme-default'
 
 export const sidebarZh: SidebarConfig = {
-  '/zh/guide/': [
+  '/zh/web/': [
     {
-      text: '指南',
+      text: 'web',
       children: [
-        '/zh/guide/getting-started.md',
-        '/zh/guide/configuration.md',
-        '/zh/guide/page.md',
-        '/zh/guide/markdown.md',
-        '/zh/guide/assets.md',
-        '/zh/guide/deployment.md',
-        '/zh/guide/theme.md',
-        '/zh/guide/plugin.md',
-        '/zh/guide/bundler.md',
-        '/zh/guide/migration.md',
+        '/zh/web/index.md',
+        '/zh/web/vite2-web-vue3.md',
+        '/zh/web/vite3-web-vue3.md',
+        '/zh/web/vite4-web-vue3.md',
+        '/zh/web/webpack-web-vue2.md',
+        '/zh/web/webpack-web-vue3.md',
       ],
     },
   ],
-  
+  '/zh/uniapp/': [
+    {
+      text: 'uniapp',
+      children: [
+        '/zh/uniapp/index.md',
+        '/zh/uniapp/vite2-uniapp-vue3.md',
+        '/zh/uniapp/vite3-uniapp-vue3.md',
+        '/zh/uniapp/vite4-uniapp-vue3.md',
+        '/zh/uniapp/webpack-uniapp-vue2.md',
+      ],
+    },
+  ]
 }

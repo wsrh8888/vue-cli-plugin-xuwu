@@ -10,17 +10,17 @@ import { defaultTheme } from '@vuepress/theme-default'
 export default defineUserConfig({
   // set site base to default value
   base: '/xuuw/',
-
+  lang: 'zh-CN',
   // extra tags in `<head>`
   head,
 
   // site-level locales config
   locales: {
-    '/zh/': {
+    '/': {
       lang: 'zh-CN',
-      title: 'xuwu',
-      description: 'Vue 驱动的静态网站生成器',
-    },
+      title: 'Xuwu',
+      description: '欢迎使用xuwu插件库',
+    }
   },
 
   // specify bundler via environment variable
@@ -29,17 +29,18 @@ export default defineUserConfig({
 
   // configure default theme
   theme: defaultTheme({
-    logo: '/images/hero.png',
-    repo: 'wsrh8888/vue-cli-plugin-xuwu',
+    docsRepo: 'https://github.com/wsrh8888/vue-cli-plugin-xuwu.git',
+    docsBranch: 'master',
     docsDir: 'docs',
-
+    editLinkPattern: ':repo/edit/:branch/:path',
+    logo: '/images/hero.png',
     // theme-level locales config
     locales: {
 
       /**
        * Chinese locale config
        */
-      '/zh/': {
+      '/': {
         // navbar
         navbar: navbarZh,
         selectLanguageName: '简体中文',
@@ -48,7 +49,7 @@ export default defineUserConfig({
         // sidebar
         sidebar: sidebarZh,
         // page meta
-        editLinkText: '在 GitHub 上编辑此页',
+        editLinkText: '在 GitLab 上编辑此页',
         lastUpdatedText: '上次更新',
         contributorsText: '贡献者',
         // custom containers
@@ -75,7 +76,7 @@ export default defineUserConfig({
       git: true,
       // use shiki plugin in production mode instead
       prismjs: false,
-    },
+    }
   }),
   // configure markdown
   markdown: {
