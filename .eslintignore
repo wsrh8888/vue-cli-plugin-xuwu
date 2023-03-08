@@ -1,5 +1,6 @@
 interface.js
 *.d.ts
+generator/template/vite.config.*
 generator/template/vite2.config.*
 generator/template/vite3.config.*
 generator/template/vite4.config.*

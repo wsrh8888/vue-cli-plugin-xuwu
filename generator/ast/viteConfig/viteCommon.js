@@ -160,9 +160,9 @@ class ViteConfigAstCommon {
       }
     }
   }
-  /******* 
+  /*******
    * @description: 在vite的plugin增加visualizer的导入
-   */  
+   */
   viteConfigHeaderVisualizer() {
     return {
       Program(path) {
@@ -181,9 +181,9 @@ class ViteConfigAstCommon {
       }
     }
   }
-  /******* 
+  /*******
    * @description: 在vite的plugin增加visualizer的包
-   */  
+   */
   viteConfigBodyVisualizer() {
     return {
       CallExpression(path) {
@@ -191,7 +191,7 @@ class ViteConfigAstCommon {
         if (!properties.length) {
           return
         }
-        
+
         let currentProperties
         properties.forEach((item) => {
           if (item.key.name === 'plugins') {
