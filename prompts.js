@@ -1,6 +1,7 @@
 const {
   vite2WebVue3Manually,
   vite3WebVue3Manually,
+  vite4WebVue3Manually,
   webpackWebVue3Manually,
   webpackWebVue2Manually
 } = require('./prompts/web')
@@ -74,6 +75,7 @@ module.exports = () => {
     vite3UniappVue3Manually(language, toolName, vueVersion),
     vite2WebVue3Manually(language, toolName, vueVersion),
     vite3WebVue3Manually(language, toolName, vueVersion),
+    vite4WebVue3Manually(language, toolName, vueVersion),
     webpackWebVue3Manually(language, toolName, vueVersion),
     webpackWebVue2Manually(language, toolName, vueVersion),
     webpackUniappVue3Manually(language, toolName, vueVersion),

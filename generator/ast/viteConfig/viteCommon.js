@@ -1,5 +1,5 @@
 let types = require('@babel/types')
-
+const compatibility = require('./compatibility')
 class ViteConfigAstCommon {
   /*******
    * @description: 给vite增加loadEnv属性
@@ -63,10 +63,10 @@ class ViteConfigAstCommon {
   viteConifAddParams() {
     return {
       ExportDefaultDeclaration(path) {
-        if (path.node.declaration.callee.name !== 'defineConfig') {
+        let childrenItem = compatibility.exportArgument(path)
+        if (!childrenItem.params.length) {
           return
         }
-        let childrenItem = path.node.declaration.arguments[0]
         childrenItem.params = [
           types.objectPattern([
             types.objectProperty(
@@ -91,11 +91,11 @@ class ViteConfigAstCommon {
    */
   viteConfigChangeBase() {
     return {
-      ExportDefaultDeclaration(path) {
-        if (path.node.declaration.callee.name !== 'defineConfig') {
+      CallExpression(path) {
+        let childrenList = compatibility.callExpression(path)
+        if (!childrenList.length) {
           return
         }
-        let childrenList = path.node.declaration.arguments[0].body.properties
         let childrenLength = childrenList.length
         childrenList.forEach((item, index) => {
           if (item.key.name === 'base') {
@@ -129,8 +129,11 @@ class ViteConfigAstCommon {
    */
   viteConfigAddElementPlugin() {
     return {
-      ExportDefaultDeclaration(path) {
-        let properties = path.node.declaration.arguments[0].body.properties
+      CallExpression(path) {
+        let properties = compatibility.callExpression(path)
+        if (!properties.length) {
+          return
+        }
         let currentProperties
         properties.forEach((item) => {
           if (item.key.name === 'plugins') {
@@ -148,14 +151,72 @@ class ViteConfigAstCommon {
 
         let pluginsList = currentProperties.value.elements
         pluginsList.push(
-          types.callExpression(types.identifier('elementPlus'), [])
+          types.callExpression(types.identifier('elementPlus'), [
+            types.objectExpression([])
+          ])
         )
 
         // let arrowFunction = path.node.declar
       }
     }
   }
+  /******* 
+   * @description: 在vite的plugin增加visualizer的导入
+   */  
+  viteConfigHeaderVisualizer() {
+    return {
+      Program(path) {
+        //       // 添加依赖包的引入
+        let methods = path.node.body
+        let astCode = types.importDeclaration(
+          [
+            types.importSpecifier(
+              types.identifier('visualizer'),
+              types.identifier('visualizer')
+            )
+          ],
+          types.stringLiteral('rollup-plugin-visualizer')
+        )
+        methods.splice(1, 0, astCode)
+      }
+    }
+  }
+  /******* 
+   * @description: 在vite的plugin增加visualizer的包
+   */  
+  viteConfigBodyVisualizer() {
+    return {
+      CallExpression(path) {
+        let properties = compatibility.callExpression(path)
+        if (!properties.length) {
+          return
+        }
+        
+        let currentProperties
+        properties.forEach((item) => {
+          if (item.key.name === 'plugins') {
+            currentProperties = item
+          }
+        })
 
+        if (!currentProperties) {
+          let currentObject = types.objectProperty(
+            types.identifier('plugins'),
+            types.arrayExpression([])
+          )
+          currentProperties = currentObject
+          properties.push(currentObject)
+        }
+
+        let pluginsList = currentProperties.value.elements
+        pluginsList.push(
+          types.callExpression(types.identifier('visualizer'), [])
+        )
+
+        // let arrowFunction = path.node.declar
+      }
+    }
+  }
   viteConfigHeaderNodeUrl() {
     return {
       Program(path) {
@@ -294,7 +355,6 @@ class ViteConfigAstCommon {
         // 添加依赖包的引入
         let bodys = path.node.body
         let isEnd = false
-
         bodys.forEach((body) => {
           if (
             body.type === 'ImportDeclaration' &&
@@ -386,11 +446,11 @@ class ViteConfigAstCommon {
    */
   viteConfigBodyPath() {
     return {
-      ExportDefaultDeclaration(path) {
-        if (path.node.declaration.callee.name !== 'defineConfig') {
+      CallExpression(path) {
+        let methods = compatibility.callExpression(path)
+        if (!methods.length) {
           return
         }
-        let methods = path.node.declaration.arguments[0].body.properties
         let resolveIndex = -1
         methods.forEach((method, resolveKey) => {
           if (method.key.name === 'resolve') {
@@ -408,11 +468,6 @@ class ViteConfigAstCommon {
           )
           resolveIndex = methods.length - 1
         }
-        console.log(
-          resolveIndex,
-          methods.length,
-          'resolveIndexresolveIndexresolveIndex'
-        )
         // resolve添加完毕
         let resolves = methods[resolveIndex].value.properties
         let aliasIndex = -1
@@ -482,8 +537,11 @@ class ViteConfigAstCommon {
    */
   viteConfigBodyAddSvgLoader() {
     return {
-      ObjectExpression(path) {
-        let methods = path.node.properties
+      CallExpression(path) {
+        let methods = compatibility.callExpression(path)
+        if (!methods.length) {
+          return
+        }
         methods.forEach((method) => {
           if (method.key.name === 'plugins') {
             let pluginsList = method.value.elements
@@ -539,10 +597,7 @@ class ViteConfigAstCommon {
           ) {
             isEnd = true
           }
-          if (
-            body.type === 'ExportDefaultDeclaration' &&
-            body.declaration.callee.name === 'defineConfig'
-          ) {
+          if (body.type === 'ExportDefaultDeclaration') {
             moduleExportsIndex = index
           }
         })

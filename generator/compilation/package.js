@@ -219,7 +219,7 @@ class Package {
   packageUnpluginElementPlus() {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
-        'unplugin-element-plus': '^0.4.1'
+        'unplugin-element-plus': '^0.7.0'
       })
     })
   }

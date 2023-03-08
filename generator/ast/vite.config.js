@@ -2,22 +2,18 @@ let types = require('@babel/types')
 let core = require('@babel/core')
 const AST = require('./ast')
 const astCommon = require('./viteConfig/viteCommon')
+const compatibility = require('./viteConfig/compatibility')
+
 class ViteConfigAst extends AST {
+  /*******
+   * @description: vite.config.ts是否需要初始化
+   */
   astViteConfigIsInit(sourceCode) {
     let isExit = true
     let transformClassPlugin = {
       visitor: {
         ExportDefaultDeclaration(path) {
-          try {
-            let currentTypes = path.node.declaration.arguments[0].type
-            if (currentTypes === 'ArrowFunctionExpression') {
-              isExit = true
-            } else {
-              isExit = false
-            }
-          } catch (error) {
-            isExit = false
-          }
+          isExit = compatibility.viteIsInit(path)
         }
       }
     }
@@ -65,9 +61,11 @@ class ViteConfigAst extends AST {
   astViteConfigRemoveConsole(sourceCode) {
     let transformClassPlugin = {
       visitor: {
-        ExportDefaultDeclaration(path) {
-          let properties = path.node.declaration.arguments[0].body.properties
-
+        CallExpression(path) {
+          let properties = compatibility.callExpression(path)
+          if (!properties.length) {
+            return
+          }
           let currentProperties
           properties.forEach((item) => {
             if (item.key.name === 'build') {
@@ -166,20 +164,8 @@ class ViteConfigAst extends AST {
                   }
                 }
               })
-              // 此时变成了terserOptions: {
-              //   compress: {}
-              // }
-              // compress中增加去除console的代码
             }
           })
-
-          // let methods =currentProperties.value
-          // methods.forEach((method) => {
-          //   if (method.key.name === 'build') {
-          //     let buildList = method.value.properties
-
-          //   }
-          // })
         }
       }
     }
@@ -189,55 +175,14 @@ class ViteConfigAst extends AST {
     })
     return targetSource.code
   }
-  astViteConfigVisualizer(sourceCode) {
-    let transformClassPlugin = {
-      visitor: {
-        Program(path) {
-          // 添加依赖包的引入
-          let methods = path.node.body
-          let astCode = types.importDeclaration(
-            [
-              types.importSpecifier(
-                types.identifier('visualizer'),
-                types.identifier('visualizer')
-              )
-            ],
-            types.stringLiteral('rollup-plugin-visualizer')
-          )
-          methods.splice(1, 0, astCode)
-        },
-        ExportDefaultDeclaration(path) {
-          let properties = path.node.declaration.arguments[0].body.properties
-
-          let currentProperties
-          properties.forEach((item) => {
-            if (item.key.name === 'plugins') {
-              currentProperties = item
-            }
-          })
-
-          if (!currentProperties) {
-            let currentObject = types.objectProperty(
-              types.identifier('plugins'),
-              types.arrayExpression([])
-            )
-            currentProperties = currentObject
-            properties.push(currentObject)
-          }
-
-          let pluginsList = currentProperties.value.elements
-          pluginsList.push(
-            types.callExpression(types.identifier('visualizer'), [])
-          )
-
-          // let arrowFunction = path.node.declar
-        }
-      }
-    }
-    let targetSource = core.transform(sourceCode, {
-      plugins: [transformClassPlugin]
-    })
-    return targetSource.code
+  astViteConfigVisualizer(source) {
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigHeaderVisualizer,
+        astCommon.viteConfigBodyVisualizer
+      ])
+    )
   }
   astViteConfigVitePluginUni(source) {
     return this.writeAst(
@@ -277,7 +222,6 @@ class ViteConfigAst extends AST {
     return this.writeAst(
       source,
       this.getAstCoreList([
-        // astCommon.viteConfigAddloadEnv,
         astCommon.viteConifAddParams,
         astCommon.viteConfigChangeBase,
         astCommon.viteConfigContentAddBaseUrl

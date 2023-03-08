@@ -14,10 +14,7 @@ class ViteConfig {
     try {
       let contentMain = this.getViteConfigContent()
       let lines = contentMain.split(/\r?\n/g)
-      if (
-        lines.findIndex((line) => line.match(/export default defineConfig/)) ===
-        -1
-      ) {
+      if (lines.findIndex((line) => line.match(/export default/)) === -1) {
         throw Error
       }
       // 判断vite.config.js 中是否是 =>的写法
@@ -26,7 +23,7 @@ class ViteConfig {
       }
     } catch (error) {
       this.api.render({
-        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/vite.config.${Xuwu.getTsOrJs()}`
+        [`/vite.config.${Xuwu.getTsOrJs()}`]: `../../template/${Xuwu.getBuildToolName()}.config.${Xuwu.getTsOrJs()}`
       })
     }
   }
@@ -61,6 +58,17 @@ class ViteConfig {
       if (lines.findIndex((line) => line.match(/drop_console/)) === -1) {
         this.writeViteConfigContent(
           astViteParse.astViteConfigRemoveConsole(contentMain)
+        )
+      }
+    })
+  }
+  viteConfigAddAliasVite4() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/alias/)) === -1) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddAlias(contentMain)
         )
       }
     })
