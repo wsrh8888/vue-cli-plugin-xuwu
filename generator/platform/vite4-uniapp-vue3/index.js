@@ -19,9 +19,9 @@ class WebpackUniappVue3 extends Common {
   fileRootConfig = new FileRootConfig()
   // 默认选择的模版
   defaultPc = () => {
-    // this.templateCrossEnv()
-    // this.templateLintStaged()
-    // this.templateRequest()
+    this.templateCrossEnv()
+    this.templateLintStaged()
+    this.templateRequest()
   }
   defaultMobile = () => {
     this.defaultPc()

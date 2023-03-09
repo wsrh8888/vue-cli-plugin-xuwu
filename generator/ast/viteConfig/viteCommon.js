@@ -379,11 +379,11 @@ class ViteConfigAstCommon {
   }
   vite3ConfigBodyPath() {
     return {
-      ExportDefaultDeclaration(path) {
-        if (path.node.declaration.callee.name !== 'defineConfig') {
+      CallExpression(path) {
+        let methods = compatibility.callExpression(path)
+        if (!methods.length) {
           return
         }
-        let methods = path.node.declaration.arguments[0].body.properties
         let resolveIndex = -1
         methods.forEach((method, resolveKey) => {
           if (method.key.name === 'resolve') {
