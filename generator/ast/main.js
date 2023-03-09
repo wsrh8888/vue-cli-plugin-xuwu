@@ -5,7 +5,19 @@ class MainAst extends AST {
   astMainAddPinia(source) {
     return this.writeAst(
       source,
-      this.getAstCoreList([astCommon.astMainHeaderAddPinia])
+      this.getAstCoreList([
+        astCommon.astMainHeaderAddPinia,
+        astCommon.astMainBodyAddPinia
+      ])
+    )
+  }
+  astMainAddPiniaUniapp(source) {
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.astMainHeaderAddPinia,
+        astCommon.astMainBodyAddPiniaUniapp
+      ])
     )
   }
 }

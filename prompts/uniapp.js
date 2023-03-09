@@ -71,8 +71,7 @@ module.exports = {
       default: () => [
         'templateRequest',
         'templateLintStaged',
-        'templateCrossEnv',
-        'templatePinia'
+        'templateCrossEnv'
       ]
     }
   },
@@ -96,7 +95,6 @@ module.exports = {
         { name: 'Pinia', value: 'templatePinia' }
       ],
       default: () => [
-        'templatePinia',
         'templateRequest',
         'templateLintStaged',
         'templateCrossEnv'
@@ -123,7 +121,6 @@ module.exports = {
         { name: 'Pinia', value: 'templatePinia' }
       ],
       default: () => [
-        'templatePinia',
         'templateRequest',
         'templateLintStaged',
         'templateCrossEnv'

@@ -119,6 +119,26 @@ class Main {
       }
     })
   }
+  /*******
+   * @description: uniapp在main.ts增加pinia相关配置
+   */
+  mainAddPiniaUniapp() {
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+        encoding: 'utf-8'
+      })
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
+        Fs.writeFileSync(
+          this.api.entryFile,
+          astMainParse.astMainAddPiniaUniapp(contentMain),
+          {
+            encoding: 'utf-8'
+          }
+        )
+      }
+    })
+  }
   mainAddPinia() {
     this.api.afterInvoke(() => {
       this.initVue3()

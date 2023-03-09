@@ -38,5 +38,16 @@ class WebpackUniappVue3 extends Common {
     this.fileViteConfig.addEnvConfigUniapp()
     this.fileRootConfig.envConfigFile()
   }
+  /*******
+   * @description: pinia 模块
+   */
+  templatePinia() {
+    // 引入package包
+    this.filePackage.packagePinia()
+    // 在main.js引入
+    this.fileMain.mainAddPiniaUniapp()
+    // 引入store静态文件
+    this.fileUtils.pinia()
+  }
 }
 module.exports = WebpackUniappVue3
