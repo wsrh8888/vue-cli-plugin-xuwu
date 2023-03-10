@@ -5,6 +5,7 @@ const Vite4UniappVue3 = require('./platform/vite4-uniapp-vue3')
 const Vite2WebVue3 = require('./platform/vite2-web-vue3')
 const Vite3WebVue3 = require('./platform/vite3-web-vue3')
 const Vite4WebVue3 = require('./platform/vite4-web-vue3')
+const Vite4WebReact = require('./platform/vite4-web-react')
 const WebpackWebVue2 = require('./platform/webpack-web-vue2')
 const WebpackWebVue3 = require('./platform/webpack-web-vue3')
 const WebpackUniappVue2 = require('./platform/webpack-uniapp-vue2')
@@ -23,6 +24,7 @@ class Template {
   'vite2-uniapp-vue3' = new Vite2UniappVue3()
   'vite3-uniapp-vue3' = new Vite3UniappVue3()
   'vite4-uniapp-vue3' = new Vite4UniappVue3()
+  'vite4-web-react' = new Vite4WebReact()
 }
 
 module.exports = (api, options) => {

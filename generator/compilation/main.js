@@ -15,7 +15,7 @@ class Main {
 
   initVue3() {
     try {
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
@@ -25,7 +25,7 @@ class Main {
     } catch (error) {
       let isHasRoute
       let isHasStore
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -43,7 +43,7 @@ class Main {
             ${isHasStore ? 'app.use(store);' : ''}
             app.mount('#app')
         `
-      Fs.writeFileSync(this.api.entryFile, mainContent, {
+      Fs.writeFileSync(this.api._entryFile, mainContent, {
         encoding: 'utf-8'
       })
     }
@@ -57,7 +57,7 @@ class Main {
   mainAddVconsole() {
     this.api.afterInvoke(() => {
       const contentMain = Fs.readFileSync(
-        this.api.resolve(this.api.entryFile),
+        this.api.resolve(this.api._entryFile),
         {
           encoding: 'utf-8'
         }
@@ -66,7 +66,7 @@ class Main {
       const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
       if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
         lines[renderIndex] += `${EOL} ${Template.vConsoleVue2()}`
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -79,7 +79,7 @@ class Main {
    */
   mainAddRem() {
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -89,7 +89,7 @@ class Main {
           import 'lib-flexible/flexible'
           import './utils/rem'
         `
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -103,7 +103,7 @@ class Main {
   mainAddRemVue3() {
     this.api.afterInvoke(() => {
       this.initVue3()
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -113,7 +113,7 @@ class Main {
           import 'lib-flexible/flexible'
           import './utils/rem'
         `
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -124,13 +124,13 @@ class Main {
    */
   mainAddPiniaUniapp() {
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
         Fs.writeFileSync(
-          this.api.entryFile,
+          this.api._entryFile,
           astMainParse.astMainAddPiniaUniapp(contentMain),
           {
             encoding: 'utf-8'
@@ -142,13 +142,13 @@ class Main {
   mainAddPinia() {
     this.api.afterInvoke(() => {
       this.initVue3()
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
         Fs.writeFileSync(
-          this.api.entryFile,
+          this.api._entryFile,
           astMainParse.astMainAddPinia(contentMain),
           {
             encoding: 'utf-8'
@@ -161,14 +161,14 @@ class Main {
     this.api.afterInvoke(() => {
       this.initVue3()
 
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
         lines[renderIndex] += `${EOL}  ${Template.vConsoleVue3()}`
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
