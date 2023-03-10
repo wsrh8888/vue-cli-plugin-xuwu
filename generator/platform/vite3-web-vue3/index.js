@@ -56,6 +56,15 @@ class ViteWebVue3 extends Common {
     this.fileMain.mainAddVconsoleVue3()
   }
   /*******
+   * @description: mitt 组件间通信
+   */
+  templateMitt() {
+    // 引入package包
+    this.filePackage.packageMitt()
+    // 在utils引入mitt文件
+    this.fileUtils.mitt()
+  }
+  /*******
    * @description: ajax请求模板
    */
   templateRequest = () => {

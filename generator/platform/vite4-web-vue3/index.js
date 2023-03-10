@@ -49,6 +49,15 @@ class ViteWebVue3 extends Common {
     this.fileUtils.pinia()
   }
   /*******
+   * @description: mitt 组件间通信
+   */
+  templateMitt() {
+    // 引入package包
+    this.filePackage.packageMitt()
+    // 在utils引入mitt文件
+    this.fileUtils.mitt()
+  }
+  /*******
    * @description: consoleLog控制台
    */
   templateAddVconsole = () => {

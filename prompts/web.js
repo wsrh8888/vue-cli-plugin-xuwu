@@ -24,6 +24,7 @@ module.exports = {
         { name: '打包体积分析', value: 'templateVisualizer' },
         { name: 'Pinia', value: 'templatePinia' },
         { name: 'Vant', value: 'uiVant' },
+        { name: 'mitt通信', value: 'templateMitt' },
         { name: 'file工具库', value: 'templateFileUtils' }
       ],
       default: (answers) =>
@@ -73,6 +74,7 @@ module.exports = {
         { name: '打包体积分析', value: 'templateVisualizer' },
         { name: 'Pinia', value: 'templatePinia' },
         { name: 'Vant', value: 'uiVant' },
+        { name: 'mitt通信', value: 'templateMitt' },
         { name: 'file工具库', value: 'templateFileUtils' }
       ],
       default: (answers) =>
@@ -122,6 +124,7 @@ module.exports = {
         { name: '打包体积分析', value: 'templateVisualizer' },
         { name: 'Pinia', value: 'templatePinia' },
         { name: 'Vant', value: 'uiVant' },
+        { name: 'mitt通信', value: 'templateMitt' },
         { name: 'file工具库', value: 'templateFileUtils' }
       ],
       default: (answers) =>
