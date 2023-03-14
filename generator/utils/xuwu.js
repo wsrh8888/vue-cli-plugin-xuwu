@@ -101,7 +101,7 @@ class Xuwu {
   }
   /**
    * @description: 获取全局属性，vue的版本
-   * @return {string} |vue2 | vue3|
+   * @return {string} |vue2 | vue3| react
    */
   static getVueVersion() {
     let file = fs.readFileSync(

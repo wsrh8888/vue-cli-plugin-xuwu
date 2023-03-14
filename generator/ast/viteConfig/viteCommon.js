@@ -346,6 +346,36 @@ class ViteConfigAstCommon {
       }
     }
   }
+  viteConfigHeaderAddReact() {
+    return {
+      Program(path) {
+        // 添加依赖包的引入
+        let bodys = path.node.body
+        let isEnd = false
+
+        bodys.forEach((body) => {
+          if (
+            body.type === 'ImportDeclaration' &&
+            body.source.value === '@vitejs/plugin-react'
+          ) {
+            isEnd = true
+          }
+        })
+        if (isEnd) {
+          return
+        }
+        bodys.splice(
+          1,
+          0,
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('react'))],
+            types.stringLiteral('@vitejs/plugin-react')
+          )
+        )
+      }
+    }
+  }
+
   /*******
    * @description: 在vite头文件中增加SvgLoader
    */
@@ -527,6 +557,21 @@ class ViteConfigAstCommon {
           if (method.key.name === 'plugins') {
             let pluginsList = method.value.elements
             pluginsList.push(types.callExpression(types.identifier('vue'), []))
+          }
+        })
+      }
+    }
+  }
+  viteConfigBodyAddReact() {
+    return {
+      ObjectExpression(path) {
+        let methods = path.node.properties
+        methods.forEach((method) => {
+          if (method.key.name === 'plugins') {
+            let pluginsList = method.value.elements
+            pluginsList.push(
+              types.callExpression(types.identifier('react'), [])
+            )
           }
         })
       }

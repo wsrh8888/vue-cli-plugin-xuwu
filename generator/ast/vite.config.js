@@ -206,6 +206,15 @@ class ViteConfigAst extends AST {
       ])
     )
   }
+  astViteConfigAddReact(source) {
+    return this.writeAst(
+      source,
+      this.getAstCoreList([
+        astCommon.viteConfigBodyAddReact,
+        astCommon.viteConfigHeaderAddReact
+      ])
+    )
+  }
   /**
    * @description: 在vite.config.ts中增加svgLoader()插件
    */

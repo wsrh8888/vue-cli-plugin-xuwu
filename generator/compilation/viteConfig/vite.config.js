@@ -27,9 +27,20 @@ class ViteConfig {
       })
     }
   }
-  fileInitWeb() {
+  fileInitReact() {
+    this.fileInit()
+    this.viteConfigCommonReact()
+  }
+  fileInitVue() {
     this.fileInit()
     this.viteConfigCommonVue()
+  }
+  fileInitWeb() {
+    if (Xuwu.getVueVersion() === 'react') {
+      this.fileInitReact()
+    } else {
+      this.fileInitVue()
+    }
   }
   /**
    * @description: 初始化uniapp的vite
@@ -127,6 +138,23 @@ class ViteConfig {
       if (lines.findIndex((line) => line.match(/@vitejs\/plugin-vue/)) === -1) {
         this.writeViteConfigContent(
           astViteParse.astViteConfigAddVue(contentMain)
+        )
+      }
+    })
+  }
+  /*******
+   * @description: vite.config.ts 增加react()相关内容
+   */
+  viteConfigCommonReact() {
+    this.api.afterInvoke(() => {
+      let contentMain = this.getViteConfigContent()
+      let lines = contentMain.split(/\r?\n/g)
+
+      if (
+        lines.findIndex((line) => line.match(/@vitejs\/plugin-react/)) === -1
+      ) {
+        this.writeViteConfigContent(
+          astViteParse.astViteConfigAddReact(contentMain)
         )
       }
     })
