@@ -50,7 +50,6 @@ class ViteConfig {
     this.viteConfigCommonVitePluginUni()
   }
   getViteFileName() {
-    console.log(Xuwu.getTsOrJs(), Xuwu.single.api._entryFile, '!!!!')
     return `./vite.config.${Xuwu.getTsOrJs()}`
   }
   writeViteConfigContent(code) {

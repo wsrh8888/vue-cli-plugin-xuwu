@@ -1,4 +1,3 @@
-const FileMainVue = require('../../compilation/main.vue')
 const FileMain = require('../../compilation/main')
 const FilePackage = require('../../compilation/package')
 const FileBabelConfig = require('../../compilation/babel.config')
@@ -6,8 +5,7 @@ const FileUtils = require('../../compilation/utils')
 const FileVite4Config = require('../../compilation/viteConfig/vite4.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
-class ViteWebVue3 extends Common {
-  fileMainVue = new FileMainVue()
+class ViteWebVite extends Common {
   fileMain = new FileMain()
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
@@ -17,14 +15,19 @@ class ViteWebVue3 extends Common {
 
   defaultPc = () => {
     this.templateCrossEnv()
-    // this.templateLintStaged()
-    // this.templateRemoveConsole()
+    this.templateLintStaged()
+    this.templateRemoveConsole()
 
-    // this.templateRequest()
-    // this.uiElement()
-    // this.templateSvgLoader()
+    this.templateRequest()
   }
-  defaultMobile = () => {}
+  defaultMobile = () => {
+    this.templateLintStaged()
+    this.templateCrossEnv()
+    this.templateRemoveConsole()
+    this.templateAddVconsole()
+    this.templateFlexible()
+    this.templateRequest()
+  }
   /*******
    * @description: 打包后体积分析
    */
@@ -54,7 +57,7 @@ class ViteWebVue3 extends Common {
    */
   templateAddVconsole = () => {
     this.filePackage.packageAddConsolePanel()
-    this.fileMain.mainAddVconsoleVue3()
+    this.fileMain.mainAddVconsole()
   }
   /*******
    * @description: ajax请求模板
@@ -70,15 +73,14 @@ class ViteWebVue3 extends Common {
     this.fileRootConfig.postcssConfigFile()
     this.filePackage.packageFlexibleVite()
     this.fileUtils.rem()
-    this.fileMain.mainAddRemVue3()
-    this.fileMainVue.mainVueAddMedia()
+    this.fileMain.mainAddRem()
   }
   /*******
    * @description: commit代码时统一风格
    */
   templateLintStaged = () => {
-    this.filePackage.packageCommitPreVue3()
-    this.fileRootConfig.eslintConfigFileVue3()
+    this.filePackage.packageCommitPreReact()
+    this.fileRootConfig.eslintConfigFileReact()
   }
   /*******
    * @description: templateAddVconsole
@@ -112,22 +114,10 @@ class ViteWebVue3 extends Common {
     // 按需引入的配置代码
     this.FileVite4Config.viteConfigAddElement()
   }
-  uiVant = () => {
-    this.filePackage.packageVantVue3()
-    this.filePackage.packageVue3Vite()
-    this.FileVite4Config.viteConfigAddVant()
-  }
+  uiVant = () => {}
   templateFileUtils() {
     this.filePackage.packageFileUtils()
     this.fileUtils.fileUtilsPlus()
   }
-  uiAntDesign = () => {
-    this.templateLess()
-    this.FileVite4Config.viteConfigLess()
-    this.filePackage.packageVue3Vite()
-    this.filePackage.packageAntDesignVue3()
-    this.fileUtils.antDesign()
-    this.FileVite4Config.viteConfigAddAntDesign()
-  }
 }
-module.exports = ViteWebVue3
+module.exports = ViteWebVite

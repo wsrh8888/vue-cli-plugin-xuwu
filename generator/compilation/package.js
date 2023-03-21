@@ -63,11 +63,41 @@ class Package {
         '@vue/eslint-config-prettier': '^6.0.0',
         'eslint-plugin-html': '^5.0.0',
         'eslint-plugin-prettier': '^3.1.3',
-        'eslint-plugin-vue': '^6.2.2',
         prettier: '^1.8.2',
         eslint: '^5.16.0'
       })
     })
+  }
+  packageCommitPreReact() {
+    this.commitHook()
+    if (Xuwu.getTsOrJs() === 'ts') {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .js,.jsx,.ts,.tsx'
+        },
+        devDependencies: this.packageFilter({
+          '@typescript-eslint/eslint-plugin': '^5.6.0',
+          '@typescript-eslint/parser': '^5.6.0',
+          eslint: '^8.4.1',
+          'eslint-plugin-react': '^7.31.10',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          prettier: '^2.5.1'
+        })
+      })
+    } else {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .js,.jsx,.ts,.tsx'
+        },
+        devDependencies: this.packageFilter({
+          eslint: '^8.4.1',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          prettier: '^2.5.1'
+        })
+      })
+    }
   }
   packageCommitPreVue3() {
     this.commitHook()
@@ -82,7 +112,6 @@ class Package {
           eslint: '^8.4.1',
           'eslint-config-prettier': '^8.3.0',
           'eslint-plugin-prettier': '^4.0.0',
-          'eslint-plugin-vue': '^8.2.0',
           prettier: '^2.5.1'
         })
       })
@@ -95,7 +124,6 @@ class Package {
           eslint: '^8.4.1',
           'eslint-config-prettier': '^8.3.0',
           'eslint-plugin-prettier': '^4.0.0',
-          'eslint-plugin-vue': '^8.2.0',
           prettier: '^2.5.1'
         })
       })

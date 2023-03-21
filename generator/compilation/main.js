@@ -48,13 +48,34 @@ class Main {
       })
     }
   }
+  /*******
+   * @description: 在main里增加Vconsole相关配置代码
+   */
+  mainAddVconsole() {
+    this.api.afterInvoke(() => {
+      const contentMain = Fs.readFileSync(
+        this.api.resolve(this.api._entryFile),
+        {
+          encoding: 'utf-8'
+        }
+      )
+      const lines = contentMain.split(/\r?\n/g)
+      const renderIndex = 0
+      if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
+        lines[renderIndex] += `${EOL} ${Template.vConsole()}`
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
+  }
   /**
    * @description: 在main里增加console相关配置代码
    * @param {*} this.api
    * @param {*} options
    * @return {*}
    */
-  mainAddVconsole() {
+  mainAddVconsoleVue2() {
     this.api.afterInvoke(() => {
       const contentMain = Fs.readFileSync(
         this.api.resolve(this.api._entryFile),
@@ -107,7 +128,28 @@ class Main {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/const app/))
+      const renderIndex = 1
+      if (lines.findIndex((line) => line.match(/rem/)) === -1) {
+        lines[renderIndex] += `${EOL} 
+          import 'lib-flexible/flexible'
+          import './utils/rem'
+        `
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
+  }
+  /*******
+   * @description: 直接在main.js 直接增加rem相关配置
+   */
+  mainAddRem() {
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
+        encoding: 'utf-8'
+      })
+      const lines = contentMain.split(/\r?\n/g)
+      const renderIndex = 0
       if (lines.findIndex((line) => line.match(/rem/)) === -1) {
         lines[renderIndex] += `${EOL} 
           import 'lib-flexible/flexible'

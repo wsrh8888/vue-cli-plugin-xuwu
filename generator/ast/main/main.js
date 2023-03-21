@@ -24,10 +24,11 @@ class MainAstCommon {
   }
   astMainBodyAddPinia() {
     return {
-      VariableDeclarator(path) {
+      Program(path) {
         // 添加依赖包的引入
-        let methods = path.node
+        let methods = path.node.body
         let resultIndex = methods.length - 1
+        console.log('!!!@!@', methods)
         methods.forEach((element, index) => {
           if (element.type === 'VariableDeclaration') {
             if (element.declarations[0].id.name === 'app') {

@@ -139,6 +139,12 @@ module.exports = class Template {
       Vue.use(new VConsole())
     `
   }
+  static vConsole() {
+    return `
+      import VConsole from 'vconsole'
+      new VConsole()
+    `
+  }
   /**
    * @description: 字符串模板，在main.vue文件中增加Vconsole相关配置，在generator/common/main.js文件中使用
    * @param {*}

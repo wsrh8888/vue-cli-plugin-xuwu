@@ -33,7 +33,7 @@ class WebpackWebVue2 extends Common {
   }
   templateAddVconsole = () => {
     this.filePackage.packageAddConsolePanel()
-    this.fileMain.mainAddVconsole()
+    this.fileMain.mainAddVconsoleVue2()
   }
   templateRequest = () => {
     this.filePackage.packageAddAxios()

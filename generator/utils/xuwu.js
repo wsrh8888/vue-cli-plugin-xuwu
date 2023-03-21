@@ -62,13 +62,13 @@ class Xuwu {
    */
   static _rectifyEntryFile() {
     if (fs.existsSync(path.join(process.cwd(), 'src/main.js'))) {
-      this.single.api._entryFile = 'main.js'
+      this.single.api._entryFile = 'src/main.js'
     } else if (fs.existsSync(path.join(process.cwd(), 'src/main.ts'))) {
-      this.single.api._entryFile = 'main.ts'
+      this.single.api._entryFile = 'src/main.ts'
     } else if (fs.existsSync(path.join(process.cwd(), 'src/main.jsx'))) {
-      this.single.api._entryFile = 'main.jsx'
+      this.single.api._entryFile = 'src/main.jsx'
     } else if (fs.existsSync(path.join(process.cwd(), 'src/main.tsx'))) {
-      this.single.api._entryFile = 'main.tsx'
+      this.single.api._entryFile = 'src/main.tsx'
     }
   }
   /**
