@@ -3,7 +3,7 @@ const FileMain = require('../../compilation/main')
 const FilePackage = require('../../compilation/package')
 const FileBabelConfig = require('../../compilation/babel.config')
 const FileUtils = require('../../compilation/utils')
-const FileVite3Config = require('../../compilation/viteConfig/vite3.config')
+const FileVite4Config = require('../../compilation/viteConfig/vite4.config')
 const FileRootConfig = require('../../compilation/root.config')
 const Common = require('../main')
 class ViteWebVue3 extends Common {
@@ -12,7 +12,7 @@ class ViteWebVue3 extends Common {
   filePackage = new FilePackage()
   fileBabelConfig = new FileBabelConfig()
   fileUtils = new FileUtils()
-  fileVite3Config = new FileVite3Config()
+  FileVite4Config = new FileVite4Config()
   fileRootConfig = new FileRootConfig()
 
   defaultPc = () => {
@@ -38,7 +38,7 @@ class ViteWebVue3 extends Common {
    */
   templateVisualizer = () => {
     this.filePackage.packageVisualizer()
-    this.fileVite3Config.viteConfigVisualizer()
+    this.FileVite4Config.viteConfigVisualizer()
   }
   templatePinia() {
     // 引入package包
@@ -49,13 +49,6 @@ class ViteWebVue3 extends Common {
     this.fileUtils.pinia()
   }
   /*******
-   * @description: consoleLog控制台
-   */
-  templateAddVconsole = () => {
-    this.filePackage.packageAddConsolePanel()
-    this.fileMain.mainAddVconsoleVue3()
-  }
-  /*******
    * @description: mitt 组件间通信
    */
   templateMitt() {
@@ -63,6 +56,13 @@ class ViteWebVue3 extends Common {
     this.filePackage.packageMitt()
     // 在utils引入mitt文件
     this.fileUtils.mitt()
+  }
+  /*******
+   * @description: consoleLog控制台
+   */
+  templateAddVconsole = () => {
+    this.filePackage.packageAddConsolePanel()
+    this.fileMain.mainAddVconsoleVue3()
   }
   /*******
    * @description: ajax请求模板
@@ -92,7 +92,7 @@ class ViteWebVue3 extends Common {
    * @description: templateAddVconsole
    */
   templateRemoveConsole = () => {
-    this.fileVite3Config.viteConfigRemoveConsole()
+    this.FileVite4Config.viteConfigRemoveConsole()
   }
   /*******
    * @description: svg 解析
@@ -100,13 +100,13 @@ class ViteWebVue3 extends Common {
    */
   templateSvgLoader = () => {
     this.filePackage.packageSvgLoader()
-    this.fileVite3Config.viteConfigSvgLoader()
+    this.FileVite4Config.viteConfigSvgLoader()
   }
   /*******
    * @description: 扩展环境变量
    */
   templateCrossEnv = () => {
-    this.fileVite3Config.addEnvConfig()
+    this.FileVite4Config.addEnvConfig()
     this.filePackage.packageCrossEnvVite()
     this.fileRootConfig.envConfigFile()
   }
@@ -118,12 +118,12 @@ class ViteWebVue3 extends Common {
     // 增加按需引入的依赖包
     this.filePackage.packageUnpluginElementPlus()
     // 按需引入的配置代码
-    this.fileVite3Config.viteConfigAddElement()
+    this.FileVite4Config.viteConfigAddElement()
   }
   uiVant = () => {
     this.filePackage.packageVantVue3()
     this.filePackage.packageVue3Vite()
-    this.fileVite3Config.viteConfigAddVant()
+    this.FileVite4Config.viteConfigAddVant()
   }
   templateFileUtils() {
     this.filePackage.packageFileUtils()
@@ -131,11 +131,11 @@ class ViteWebVue3 extends Common {
   }
   uiAntDesign = () => {
     this.templateLess()
-    this.fileVite3Config.viteConfigLess()
+    this.FileVite4Config.viteConfigLess()
     this.filePackage.packageVue3Vite()
     this.filePackage.packageAntDesignVue3()
     this.fileUtils.antDesign()
-    this.fileVite3Config.viteConfigAddAntDesign()
+    this.FileVite4Config.viteConfigAddAntDesign()
   }
 }
 module.exports = ViteWebVue3

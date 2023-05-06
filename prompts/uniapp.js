@@ -65,7 +65,8 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: 'commit代码时统一风格', value: 'templateLintStaged' }
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'Pinia', value: 'templatePinia' }
       ],
       default: () => [
         'templateRequest',
@@ -90,7 +91,34 @@ module.exports = {
       choices: [
         { name: 'ajax请求模版', value: 'templateRequest' },
         { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: 'commit代码时统一风格', value: 'templateLintStaged' }
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'Pinia', value: 'templatePinia' }
+      ],
+      default: () => [
+        'templateRequest',
+        'templateLintStaged',
+        'templateCrossEnv'
+      ]
+    }
+  },
+  vite4UniappVue3Manually(language, toolName, frame) {
+    return {
+      when: (answers) => {
+        return (
+          language === 'uniapp' &&
+          frame === 'vue3' &&
+          toolName === 'vite4' &&
+          answers.promptsConfig === 'manually'
+        )
+      },
+      type: 'checkbox',
+      name: 'promptsManuallyConfig',
+      message: 'Check the features needed for your project',
+      choices: [
+        { name: 'ajax请求模版', value: 'templateRequest' },
+        { name: '扩展环境变量', value: 'templateCrossEnv' },
+        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+        { name: 'Pinia', value: 'templatePinia' }
       ],
       default: () => [
         'templateRequest',

@@ -15,7 +15,7 @@ class Main {
 
   initVue3() {
     try {
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
@@ -25,7 +25,7 @@ class Main {
     } catch (error) {
       let isHasRoute
       let isHasStore
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -43,10 +43,31 @@ class Main {
             ${isHasStore ? 'app.use(store);' : ''}
             app.mount('#app')
         `
-      Fs.writeFileSync(this.api.entryFile, mainContent, {
+      Fs.writeFileSync(this.api._entryFile, mainContent, {
         encoding: 'utf-8'
       })
     }
+  }
+  /*******
+   * @description: 在main里增加Vconsole相关配置代码
+   */
+  mainAddVconsole() {
+    this.api.afterInvoke(() => {
+      const contentMain = Fs.readFileSync(
+        this.api.resolve(this.api._entryFile),
+        {
+          encoding: 'utf-8'
+        }
+      )
+      const lines = contentMain.split(/\r?\n/g)
+      const renderIndex = 0
+      if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
+        lines[renderIndex] += `${EOL} ${Template.vConsole()}`
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
   }
   /**
    * @description: 在main里增加console相关配置代码
@@ -54,10 +75,10 @@ class Main {
    * @param {*} options
    * @return {*}
    */
-  mainAddVconsole() {
+  mainAddVconsoleVue2() {
     this.api.afterInvoke(() => {
       const contentMain = Fs.readFileSync(
-        this.api.resolve(this.api.entryFile),
+        this.api.resolve(this.api._entryFile),
         {
           encoding: 'utf-8'
         }
@@ -66,7 +87,7 @@ class Main {
       const renderIndex = lines.findIndex((line) => line.match(/new Vue/)) - 1
       if (lines.findIndex((line) => line.match(/new VConsole()/)) === -1) {
         lines[renderIndex] += `${EOL} ${Template.vConsoleVue2()}`
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -79,7 +100,7 @@ class Main {
    */
   mainAddRem() {
     this.api.afterInvoke(() => {
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
@@ -89,7 +110,7 @@ class Main {
           import 'lib-flexible/flexible'
           import './utils/rem'
         `
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }
@@ -103,32 +124,73 @@ class Main {
   mainAddRemVue3() {
     this.api.afterInvoke(() => {
       this.initVue3()
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
-      const renderIndex = lines.findIndex((line) => line.match(/const app/))
+      const renderIndex = 1
       if (lines.findIndex((line) => line.match(/rem/)) === -1) {
         lines[renderIndex] += `${EOL} 
           import 'lib-flexible/flexible'
           import './utils/rem'
         `
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
+      }
+    })
+  }
+  /*******
+   * @description: 直接在main.js 直接增加rem相关配置
+   */
+  mainAddRem() {
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
+        encoding: 'utf-8'
+      })
+      const lines = contentMain.split(/\r?\n/g)
+      const renderIndex = 0
+      if (lines.findIndex((line) => line.match(/rem/)) === -1) {
+        lines[renderIndex] += `${EOL} 
+          import 'lib-flexible/flexible'
+          import './utils/rem'
+        `
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
+          encoding: 'utf-8'
+        })
+      }
+    })
+  }
+  /*******
+   * @description: uniapp在main.ts增加pinia相关配置
+   */
+  mainAddPiniaUniapp() {
+    this.api.afterInvoke(() => {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
+        encoding: 'utf-8'
+      })
+      let lines = contentMain.split(/\r?\n/g)
+      if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
+        Fs.writeFileSync(
+          this.api._entryFile,
+          astMainParse.astMainAddPiniaUniapp(contentMain),
+          {
+            encoding: 'utf-8'
+          }
+        )
       }
     })
   }
   mainAddPinia() {
     this.api.afterInvoke(() => {
       this.initVue3()
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       let lines = contentMain.split(/\r?\n/g)
       if (lines.findIndex((line) => line.match(/pinia/)) === -1) {
         Fs.writeFileSync(
-          this.api.entryFile,
+          this.api._entryFile,
           astMainParse.astMainAddPinia(contentMain),
           {
             encoding: 'utf-8'
@@ -141,14 +203,14 @@ class Main {
     this.api.afterInvoke(() => {
       this.initVue3()
 
-      let contentMain = Fs.readFileSync(this.api.resolve(this.api.entryFile), {
+      let contentMain = Fs.readFileSync(this.api.resolve(this.api._entryFile), {
         encoding: 'utf-8'
       })
       const lines = contentMain.split(/\r?\n/g)
       const renderIndex = lines.findIndex((line) => line.match(/const app/))
       if (lines.findIndex((line) => line.match(/vconsole/)) === -1) {
         lines[renderIndex] += `${EOL}  ${Template.vConsoleVue3()}`
-        Fs.writeFileSync(this.api.entryFile, lines.join(EOL), {
+        Fs.writeFileSync(this.api._entryFile, lines.join(EOL), {
           encoding: 'utf-8'
         })
       }

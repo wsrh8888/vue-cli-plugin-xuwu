@@ -63,11 +63,41 @@ class Package {
         '@vue/eslint-config-prettier': '^6.0.0',
         'eslint-plugin-html': '^5.0.0',
         'eslint-plugin-prettier': '^3.1.3',
-        'eslint-plugin-vue': '^6.2.2',
         prettier: '^1.8.2',
         eslint: '^5.16.0'
       })
     })
+  }
+  packageCommitPreReact() {
+    this.commitHook()
+    if (Xuwu.getTsOrJs() === 'ts') {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .js,.jsx,.ts,.tsx'
+        },
+        devDependencies: this.packageFilter({
+          '@typescript-eslint/eslint-plugin': '^5.6.0',
+          '@typescript-eslint/parser': '^5.6.0',
+          eslint: '^8.4.1',
+          'eslint-plugin-react': '^7.31.10',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          prettier: '^2.5.1'
+        })
+      })
+    } else {
+      this.api.extendPackage({
+        scripts: {
+          lint: 'eslint --fix . --ext .js,.jsx,.ts,.tsx'
+        },
+        devDependencies: this.packageFilter({
+          eslint: '^8.4.1',
+          'eslint-config-prettier': '^8.3.0',
+          'eslint-plugin-prettier': '^4.0.0',
+          prettier: '^2.5.1'
+        })
+      })
+    }
   }
   packageCommitPreVue3() {
     this.commitHook()
@@ -82,7 +112,6 @@ class Package {
           eslint: '^8.4.1',
           'eslint-config-prettier': '^8.3.0',
           'eslint-plugin-prettier': '^4.0.0',
-          'eslint-plugin-vue': '^8.2.0',
           prettier: '^2.5.1'
         })
       })
@@ -95,7 +124,6 @@ class Package {
           eslint: '^8.4.1',
           'eslint-config-prettier': '^8.3.0',
           'eslint-plugin-prettier': '^4.0.0',
-          'eslint-plugin-vue': '^8.2.0',
           prettier: '^2.5.1'
         })
       })
@@ -219,7 +247,7 @@ class Package {
   packageUnpluginElementPlus() {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
-        'unplugin-element-plus': '^0.4.1'
+        'unplugin-element-plus': '^0.7.0'
       })
     })
   }
@@ -329,6 +357,16 @@ class Package {
       })
     })
   }
+  packageMitt() {
+    this.api.extendPackage({
+      devDependencies: this.packageFilter({
+        mitt: '^3.0.0'
+      })
+    })
+  }
+  /*******
+   * @description: pinia依赖包
+   */
   packagePinia() {
     this.api.extendPackage({
       devDependencies: this.packageFilter({
@@ -337,6 +375,9 @@ class Package {
     })
   }
 
+  /*******
+   * @description: vite中移动端适配依赖包
+   */
   packageFlexibleVite() {
     this.api.extendPackage({
       browserslist: ['last 2 versions', '> 1%', 'iOS 7', 'last 3 iOS versions'],
@@ -360,6 +401,9 @@ class Package {
       })
     })
   }
+  /*******
+   * @description: uniapp中环境相关配置
+   */
   packageCrossEnvCommon() {
     this.api.extendPackage({
       'scripts-info': {
@@ -386,6 +430,9 @@ class Package {
       })
     })
   }
+  /*******
+   * @description: uniapp中环境相关配置
+   */
   packageCrossEnvUniappVite() {
     this.api.extendPackage({
       scripts: {
@@ -400,8 +447,6 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加Vite环境区分变量和命令相关的依赖包和配置
-   * @param {*}
-   * @return {void}
    */
   packageCrossEnvVite() {
     this.packageCrossEnvCommon()
@@ -418,8 +463,6 @@ class Package {
   }
   /**
    * @description: 在package.json文件里，增加环境区分变量和命令相关的依赖包和配置
-   * @param {*}
-   * @return {void}
    */
   packageCrossEnv() {
     this.packageCrossEnvCommon()

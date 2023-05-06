@@ -38,6 +38,14 @@ class Request extends RootRequest {
       [`/src/store/index.${this.suffixes}`]: `../template/store/index.${this.suffixes}`
     })
   }
+  /*******
+   * @description: 在utils增加mitt文件
+   */
+  mitt() {
+    this.api.render({
+      [`/src/utils/mitt.${this.suffixes}`]: `../template/utils/mitt.${this.suffixes}`
+    })
+  }
   rem() {
     this.api.render({
       [`/src/utils/rem.${this.suffixes}`]: `../template/utils/rem.${this.suffixes}`

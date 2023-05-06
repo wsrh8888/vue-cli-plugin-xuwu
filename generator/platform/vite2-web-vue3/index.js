@@ -36,12 +36,24 @@ class ViteWebVue3 extends Common {
     this.templateSvgLoader()
   }
   /*******
+   * @description: mitt 组件间通信
+   */
+  templateMitt() {
+    // 引入package包
+    this.filePackage.packageMitt()
+    // 在utils引入mitt文件
+    this.fileUtils.mitt()
+  }
+  /*******
    * @description: 打包后体积分析
    */
   templateVisualizer = () => {
     this.filePackage.packageVisualizer()
     this.fileViteConfig.viteConfigVisualizer()
   }
+  /*******
+   * @description: pinia状态管理
+   */
   templatePinia() {
     // 引入package包
     this.filePackage.packagePinia()

@@ -21,17 +21,34 @@ class RootConfig {
       '/.env.test': '../template/root/.env.test'
     })
   }
-  eslintConfigFileVue3() {
+  eslintConfigFileReact() {
     if (Xuwu.getTsOrJs() === 'ts') {
       this.api.render({
-        '/.eslintrc.js': '../template/root/vue3/_eslintrc.js',
+        '/.eslintrc.cjs': '../template/root/react/_eslintrc.js',
         '/.gitignore': '../template/root/_gitignore',
         '/.eslintignore': '../template/root/_eslintignore',
         '/.prettierrc': '../template/root/_prettierrc'
       })
     } else {
       this.api.render({
-        '/.eslintrc.js': '../template/root/vue3/_eslintrcJs.js',
+        '/.eslintrc.cjs': '../template/root/react/_eslintrcJs.js',
+        '/.gitignore': '../template/root/_gitignore',
+        '/.eslintignore': '../template/root/_eslintignore',
+        '/.prettierrc': '../template/root/_prettierrc'
+      })
+    }
+  }
+  eslintConfigFileVue3() {
+    if (Xuwu.getTsOrJs() === 'ts') {
+      this.api.render({
+        '/.eslintrc.cjs': '../template/root/vue3/_eslintrc.js',
+        '/.gitignore': '../template/root/_gitignore',
+        '/.eslintignore': '../template/root/_eslintignore',
+        '/.prettierrc': '../template/root/_prettierrc'
+      })
+    } else {
+      this.api.render({
+        '/.eslintrc.cjs': '../template/root/vue3/_eslintrcJs.js',
         '/.gitignore': '../template/root/_gitignore',
         '/.eslintignore': '../template/root/_eslintignore',
         '/.prettierrc': '../template/root/_prettierrc'

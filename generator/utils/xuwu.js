@@ -15,6 +15,9 @@ class Xuwu {
     this.api = api
     this.options = options
   }
+
+  // 矫正主文件entryFile的正确值
+  _
   static getLanguage() {
     let file = fs.readFileSync(
       path.join(process.cwd(), 'package.json'),
@@ -54,12 +57,27 @@ class Xuwu {
       ) !== -1
     )
   }
+  /*******
+   * @description: 矫正主文件entryFile的正确值
+   */
+  static _rectifyEntryFile() {
+    if (fs.existsSync(path.join(process.cwd(), 'src/main.js'))) {
+      this.single.api._entryFile = 'src/main.js'
+    } else if (fs.existsSync(path.join(process.cwd(), 'src/main.ts'))) {
+      this.single.api._entryFile = 'src/main.ts'
+    } else if (fs.existsSync(path.join(process.cwd(), 'src/main.jsx'))) {
+      this.single.api._entryFile = 'src/main.jsx'
+    } else if (fs.existsSync(path.join(process.cwd(), 'src/main.tsx'))) {
+      this.single.api._entryFile = 'src/main.tsx'
+    }
+  }
   /**
    * @description: 使用单例模式初始化基类的api，和option属性。全局使用
    */
   static init(api, options) {
     if (this.single === undefined && api && options) {
       this.single = new Xuwu(api, options)
+      this._rectifyEntryFile()
     }
     return this.single
   }
@@ -83,7 +101,7 @@ class Xuwu {
   }
   /**
    * @description: 获取全局属性，vue的版本
-   * @return {string} |vue2 | vue3|
+   * @return {string} |vue2 | vue3| react
    */
   static getVueVersion() {
     let file = fs.readFileSync(
@@ -93,9 +111,14 @@ class Xuwu {
     let result = 'vue2'
     try {
       let packageData = JSON.parse(file)
-      let version =
-        packageData.dependencies.vue || packageData.devDependencies.vue
-      result = 'vue' + version[version.indexOf('.') - 1].toString()
+      // 判断是vue还是react
+      if (fsIsExistPackage(file, 'react')) {
+        result = 'react'
+      } else {
+        let version =
+          packageData.dependencies.vue || packageData.devDependencies.vue
+        result = 'vue' + version[version.indexOf('.') - 1].toString()
+      }
     } catch (error) {
       result = 'vue2'
     }
@@ -110,13 +133,19 @@ class Xuwu {
       ? this.single.options.promptsScene
       : 'pc'
   }
-
+  static MainFile() {
+    return this.single.api._entryFile
+  }
   /**
    * @description: 获取全局属性，项目使用的语言类型
    * @return {string} |js|ts|
    */
   static getTsOrJs() {
-    return this.single.api.entryFile.endsWith('.ts') ? 'ts' : 'js'
+    // 获取文件后缀
+    const fileName = this.single.api._entryFile
+    const index = fileName.lastIndexOf('.')
+    const ext = fileName.substr(index + 1)
+    return ext.startsWith('ts') ? 'ts' : 'js'
   }
 }
 

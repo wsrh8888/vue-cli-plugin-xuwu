@@ -1,7 +1,12 @@
 ## 版本更新
 
+### 1.3.2
+> 1、增加vite4的全链路
+> 2、uniapp vite2,vite3，vite4 增加Pinia功能
+> 3、web vite2， vite3， vite4 增加mitt 方法
+
 ### 1.3.1
-> 1、修复uniappajax请求字段错误
+> 1、修复uniapp ajax请求字段错误
 > 2、兼容vite2， vite3关于uniapp的相关配置
 > 3、优化vite.config.ts关于vite2和vite3的配置文件, 默认不在增加vue()插件
 > 4、优化vite.config.ts中的baseUrl方法，不在使用loadEnv方法进行解析

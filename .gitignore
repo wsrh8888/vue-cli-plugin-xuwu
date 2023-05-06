@@ -3,7 +3,7 @@ node_modules
 generator/template/plugins/**/*.js
 generator/template/request/**/*.js
 generator/template/utils/*.js
-generator/template/vite.config.js
+generator/template/vite*.config.js
 
 node_modules
 .temp
