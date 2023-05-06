@@ -149,56 +149,56 @@ module.exports = {
             ]
     }
   },
-  vite4WebReactManually(language, toolName, frame) {
-    return {
-      when: (answers) => {
-        return (
-          language === 'web' &&
-          frame === 'react' &&
-          toolName === 'vite2' &&
-          answers.promptsConfig === 'manually'
-        )
-      },
-      type: 'checkbox',
-      name: 'promptsManuallyConfig',
-      message: 'Check the features needed for your project',
-      choices: [
-        { name: 'ajax请求模版', value: 'templateRequest' },
-        { name: '扩展环境变量', value: 'templateCrossEnv' },
-        { name: '去掉console', value: 'templateRemoveConsole' },
-        { name: 'commit代码时统一风格', value: 'templateLintStaged' },
-        { name: 'consoleLog控制台', value: 'templateAddVconsole' },
-        { name: '适配插件', value: 'templateFlexible' },
-        { name: 'Element', value: 'uiElement' },
-        { name: 'SVG解析', value: 'templateSvgLoader' },
-        { name: '打包体积分析', value: 'templateVisualizer' },
-        { name: 'Pinia', value: 'templatePinia' },
-        { name: 'Vant', value: 'uiVant' },
-        { name: 'mitt通信', value: 'templateMitt' },
-        { name: 'file工具库', value: 'templateFileUtils' }
-      ],
-      default: (answers) =>
-        answers.promptsScene === 'pc'
-          ? [
-              'templateRequest',
-              'templateLintStaged',
-              'templateRemoveConsole',
-              'templateCrossEnv',
-              'uiElement',
-              'templateSvgLoader'
-            ]
-          : [
-              'templateAddVconsole',
-              'templateRequest',
-              'templateFlexible',
-              'templateLintStaged',
-              'templateRemoveConsole',
-              'templateCrossEnv',
-              'uiVant',
-              'templateSvgLoader'
-            ]
-    }
-  },
+  // vite4WebReactManually(language, toolName, frame) {
+  //   return {
+  //     when: (answers) => {
+  //       return (
+  //         language === 'web' &&
+  //         frame === 'react' &&
+  //         toolName === 'vite2' &&
+  //         answers.promptsConfig === 'manually'
+  //       )
+  //     },
+  //     type: 'checkbox',
+  //     name: 'promptsManuallyConfig',
+  //     message: 'Check the features needed for your project',
+  //     choices: [
+  //       { name: 'ajax请求模版', value: 'templateRequest' },
+  //       { name: '扩展环境变量', value: 'templateCrossEnv' },
+  //       { name: '去掉console', value: 'templateRemoveConsole' },
+  //       { name: 'commit代码时统一风格', value: 'templateLintStaged' },
+  //       { name: 'consoleLog控制台', value: 'templateAddVconsole' },
+  //       { name: '适配插件', value: 'templateFlexible' },
+  //       { name: 'Element', value: 'uiElement' },
+  //       { name: 'SVG解析', value: 'templateSvgLoader' },
+  //       { name: '打包体积分析', value: 'templateVisualizer' },
+  //       { name: 'Pinia', value: 'templatePinia' },
+  //       { name: 'Vant', value: 'uiVant' },
+  //       { name: 'mitt通信', value: 'templateMitt' },
+  //       { name: 'file工具库', value: 'templateFileUtils' }
+  //     ],
+  //     default: (answers) =>
+  //       answers.promptsScene === 'pc'
+  //         ? [
+  //             'templateRequest',
+  //             'templateLintStaged',
+  //             'templateRemoveConsole',
+  //             'templateCrossEnv',
+  //             'uiElement',
+  //             'templateSvgLoader'
+  //           ]
+  //         : [
+  //             'templateAddVconsole',
+  //             'templateRequest',
+  //             'templateFlexible',
+  //             'templateLintStaged',
+  //             'templateRemoveConsole',
+  //             'templateCrossEnv',
+  //             'uiVant',
+  //             'templateSvgLoader'
+  //           ]
+  //   }
+  // },
   webpackWebVue3Manually(language, toolName, frame) {
     return {
       when: (answers) => {
