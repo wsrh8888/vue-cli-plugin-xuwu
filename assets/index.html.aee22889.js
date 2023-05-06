@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as n,a as e,b as c}from"./app.97c4e4f3.js";const o={},r=e("h1",{id:"uniapp-简介",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#uniapp-简介","aria-hidden":"true"},"#"),c(" uniapp 简介")],-1),s=[r];function i(_,d){return t(),n("div",null,s)}const l=a(o,[["render",i],["__file","index.html.vue"]]);export{l as default};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-781e24f6","path":"/zh/uniapp/","title":"uniapp 简介","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1678175961000,"contributors":[{"name":"renhao1","email":"renhao1@tal.com","commits":1}]},"filePathRelative":"zh/uniapp/index.md"}');export{e as data};
